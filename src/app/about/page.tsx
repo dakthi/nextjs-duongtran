@@ -1,5 +1,5 @@
 import { Container } from "@/components/Container";
-import { AboutTitle } from "@/components/AboutTitle";
+
 import { AboutBody } from "@/components/AboutBody";
 import { FaqPage } from "@/components/Faq2";
 import { PostGallery } from "@/components/PostGallery";
@@ -32,19 +32,12 @@ export default async function Home() {
   return (
     <Container>
       {/* Intro Section: Image + Text */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
         <div>
-          <img
-            src="/img/lieu/lieu-1.jpeg"
-            alt="About Lieu"
-            className="w-full h-auto rounded-lg shadow-md"
-          />
-        </div>
-        <div>
-          <AboutTitle />
+
           <AboutBody />
         </div>
-      </div>
+
 
       {/* Blog Section */}
       <div className="mt-16">
