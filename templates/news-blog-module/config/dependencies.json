@@ -1,0 +1,99 @@
+{
+  "description": "Required dependencies for News & Blog Module",
+  "instructions": "Add these dependencies to your package.json file using npm install or yarn add",
+  "dependencies": {
+    "core": {
+      "@prisma/client": "^6.13.0",
+      "prisma": "^6.13.0",
+      "next-auth": "^4.24.11"
+    },
+    "optional": {
+      "react-hook-form": "^7.51.4",
+      "zod": "^3.22.0",
+      "@hookform/resolvers": "^3.3.0"
+    }
+  },
+  "peerDependencies": {
+    "description": "These should already be present in your Next.js project",
+    "required": {
+      "next": "14.x",
+      "react": "^18",
+      "react-dom": "^18",
+      "typescript": "^5"
+    }
+  },
+  "installCommands": {
+    "npm": [
+      "npm install @prisma/client prisma next-auth",
+      "npm install react-hook-form zod @hookform/resolvers"
+    ],
+    "yarn": [
+      "yarn add @prisma/client prisma next-auth",
+      "yarn add react-hook-form zod @hookform/resolvers"
+    ],
+    "pnpm": [
+      "pnpm add @prisma/client prisma next-auth",
+      "pnpm add react-hook-form zod @hookform/resolvers"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18"
+  },
+  "notes": {
+    "prisma": "Database ORM for managing news posts. You'll need to run 'prisma generate' after adding the schema.",
+    "next-auth": "Required for authentication in admin interface. Can be replaced with custom auth solution.",
+    "react-hook-form": "Optional but recommended for form handling in admin interface.",
+    "zod": "Optional schema validation library that pairs well with react-hook-form."
+  },
+  "optionalEnhancementDependencies": {
+    "description": "Additional packages for enhanced functionality",
+    "richTextEditor": {
+      "@tiptap/react": "^2.x",
+      "@tiptap/pm": "^2.x",
+      "@tiptap/starter-kit": "^2.x",
+      "description": "Rich text editor for better content creation"
+    },
+    "markdown": {
+      "react-markdown": "^9.x",
+      "remark-gfm": "^4.x",
+      "rehype-highlight": "^7.x",
+      "description": "Markdown support for content rendering"
+    },
+    "dateHandling": {
+      "date-fns": "^3.x",
+      "description": "Better date manipulation and formatting"
+    },
+    "seo": {
+      "next-seo": "^6.x",
+      "description": "SEO optimization for news posts"
+    },
+    "imageOptimization": {
+      "sharp": "^0.34.3",
+      "description": "Image optimization for featured images"
+    },
+    "search": {
+      "fuse.js": "^7.x",
+      "description": "Client-side fuzzy search functionality"
+    },
+    "analytics": {
+      "@vercel/analytics": "^1.x",
+      "description": "Analytics tracking for post views"
+    }
+  },
+  "stylingDependencies": {
+    "description": "CSS frameworks and styling dependencies (choose one)",
+    "tailwindcss": {
+      "tailwindcss": "^3.4.1",
+      "postcss": "^8",
+      "autoprefixer": "^10",
+      "description": "Utility-first CSS framework (recommended)"
+    },
+    "styledComponents": {
+      "styled-components": "^6.x",
+      "@types/styled-components": "^5.x",
+      "description": "CSS-in-JS styling solution"
+    }
+  }
+}

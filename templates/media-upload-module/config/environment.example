@@ -1,0 +1,43 @@
+# Media Upload Module - Environment Variables
+# Copy these variables to your .env.local file and configure as needed
+
+# Database Configuration (Required)
+DATABASE_URL="postgresql://user:password@localhost:5432/database"
+# or for SQLite: DATABASE_URL="file:./dev.db"
+
+# Authentication (Required - implement your own auth middleware)
+NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Cloudflare R2 Configuration (Optional - for cloud storage)
+# If not configured, files will be stored locally in public/uploads/
+R2_ACCOUNT_ID="your-cloudflare-account-id"
+R2_ACCESS_KEY_ID="your-r2-access-key"
+R2_SECRET_ACCESS_KEY="your-r2-secret-key"
+R2_BUCKET_NAME="your-bucket-name"
+R2_REGION="auto"
+R2_PUBLIC_URL="https://your-custom-domain.com"
+
+# Local Storage Configuration (Optional)
+# Override default local upload path if needed
+UPLOAD_PATH="public/uploads"
+# or use absolute path: UPLOAD_PATH="/var/www/uploads"
+
+# Rate Limiting Configuration (Optional)
+UPLOAD_RATE_LIMIT_MAX="10"
+UPLOAD_RATE_LIMIT_WINDOW_MS="900000"
+
+# File Upload Limits (Optional)
+MAX_FILE_SIZE="5242880"  # 5MB in bytes
+ALLOWED_FILE_TYPES="image/jpeg,image/png,image/gif,image/webp"
+
+# Image Processing Configuration (Optional)
+ENABLE_IMAGE_PROCESSING="true"
+ENABLE_AUTO_OPTIMIZATION="true"
+GENERATE_THUMBNAILS="true"
+MAX_IMAGE_WIDTH="2048"
+MAX_IMAGE_HEIGHT="2048"
+
+# Development/Debug Settings
+NODE_ENV="development"
+DEBUG_MEDIA_UPLOADS="false"

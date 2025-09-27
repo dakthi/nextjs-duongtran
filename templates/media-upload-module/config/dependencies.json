@@ -1,0 +1,60 @@
+{
+  "description": "Required dependencies for Media Upload Module",
+  "instructions": "Add these dependencies to your package.json file using npm install or yarn add",
+  "dependencies": {
+    "core": {
+      "@prisma/client": "^6.13.0",
+      "prisma": "^6.13.0"
+    },
+    "cloudStorage": {
+      "@aws-sdk/client-s3": "^3.864.0",
+      "@aws-sdk/s3-request-presigner": "^3.864.0"
+    },
+    "imageProcessing": {
+      "sharp": "^0.34.3"
+    },
+    "devDependencies": {
+      "@types/node": "^20"
+    }
+  },
+  "peerDependencies": {
+    "description": "These should already be present in your Next.js project",
+    "required": {
+      "next": "14.x",
+      "react": "^18",
+      "react-dom": "^18",
+      "typescript": "^5"
+    }
+  },
+  "installCommands": {
+    "npm": [
+      "npm install @prisma/client prisma",
+      "npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner",
+      "npm install sharp",
+      "npm install --save-dev @types/node"
+    ],
+    "yarn": [
+      "yarn add @prisma/client prisma",
+      "yarn add @aws-sdk/client-s3 @aws-sdk/s3-request-presigner",
+      "yarn add sharp",
+      "yarn add --dev @types/node"
+    ],
+    "pnpm": [
+      "pnpm add @prisma/client prisma",
+      "pnpm add @aws-sdk/client-s3 @aws-sdk/s3-request-presigner",
+      "pnpm add sharp",
+      "pnpm add --save-dev @types/node"
+    ]
+  },
+  "notes": {
+    "sharp": "Used for image processing and optimization. Platform-specific binary, may require rebuild on deployment.",
+    "aws-sdk": "Only required if using Cloudflare R2 or AWS S3 for cloud storage. Can be omitted if using local storage only.",
+    "prisma": "Database ORM for managing media items. You'll need to run 'prisma generate' after adding the schema."
+  },
+  "optionalEnhancementDependencies": {
+    "description": "Additional packages for enhanced functionality",
+    "rateLimit": "For API rate limiting - implement your own or use express-rate-limit equivalent",
+    "validation": "For advanced file validation - consider file-type or magic-bytes packages",
+    "thumbnails": "For advanced thumbnail generation - consider jimp or canvas alternatives"
+  }
+}

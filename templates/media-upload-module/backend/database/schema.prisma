@@ -1,0 +1,42 @@
+// Media Upload Module - Database Schema
+// Add this to your existing schema.prisma file
+
+model MediaItem {
+  id           Int      @id @default(autoincrement())
+  filename     String   // Storage key/filename
+  originalName String   // Original filename from user
+  filePath     String   // Public URL or path to file
+  fileType     String   // MIME type (image/jpeg, etc.)
+  fileSize     Int?     // File size in bytes
+  altText      String?  // Alt text for accessibility
+  caption      String?  // Optional caption
+  uploadedAt   DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Optional: Add relationships to other models
+  // For example, if you want to link media to specific content:
+  // programImages Program[] @relation("ProgramImages")
+  // facilityImages Facility[] @relation("FacilityImages")
+  // newsImages    NewsPost[] @relation("NewsImages")
+
+  @@map("media_items")
+}
+
+// Example usage with related models:
+//
+// model Program {
+//   id           Int      @id @default(autoincrement())
+//   name         String
+//   description  String?
+//   imageId      Int?     // Foreign key to MediaItem
+//   image        MediaItem? @relation("ProgramImage", fields: [imageId], references: [id])
+//   // ... other fields
+// }
+//
+// model Facility {
+//   id           Int      @id @default(autoincrement())
+//   name         String
+//   description  String?
+//   images       MediaItem[] @relation("FacilityImages")
+//   // ... other fields
+// }

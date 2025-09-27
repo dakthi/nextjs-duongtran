@@ -1,0 +1,103 @@
+// News & Blog Module - Database Schema
+// Add this to your existing schema.prisma file
+
+model NewsPost {
+  id           Int       @id @default(autoincrement())
+  title        String
+  slug         String    @unique
+  excerpt      String?
+  content      String
+  imageUrl     String?   @map("image_url")
+  category     String    @default("general")
+  tags         String?
+  author       String?
+  featured     Boolean   @default(false)
+  published    Boolean   @default(false)
+  publishedAt  DateTime? @map("published_at")
+  displayOrder Int       @default(0) @map("display_order")
+  viewCount    Int       @default(0) @map("view_count")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  // Indexes for better query performance
+  @@index([published, featured, publishedAt])
+  @@index([category, published])
+  @@index([slug])
+  @@index([author, published])
+  @@map("news_posts")
+}
+
+// Optional: If you want to have a separate Categories table for better organization
+// Uncomment and customize as needed
+
+// model NewsCategory {
+//   id          Int    @id @default(autoincrement())
+//   name        String @unique
+//   slug        String @unique
+//   description String?
+//   color       String @default("#6B7280") // Hex color for UI
+//   icon        String? // Optional icon name or URL
+//   active      Boolean @default(true)
+//   displayOrder Int   @default(0) @map("display_order")
+//   createdAt   DateTime @default(now()) @map("created_at")
+//   updatedAt   DateTime @updatedAt @map("updated_at")
+//
+//   // Relations
+//   posts       NewsPost[] @relation("NewsPostCategory")
+//
+//   @@map("news_categories")
+// }
+
+// Optional: If you want to have separate Tags table for better organization
+// Uncomment and customize as needed
+
+// model NewsTag {
+//   id        Int      @id @default(autoincrement())
+//   name      String   @unique
+//   slug      String   @unique
+//   color     String   @default("#6B7280")
+//   createdAt DateTime @default(now()) @map("created_at")
+//   updatedAt DateTime @updatedAt @map("updated_at")
+//
+//   // Many-to-many relationship with news posts
+//   posts     NewsPostTag[]
+//
+//   @@map("news_tags")
+// }
+
+// model NewsPostTag {
+//   newsPost   NewsPost @relation(fields: [newsPostId], references: [id], onDelete: Cascade)
+//   newsPostId Int      @map("news_post_id")
+//   tag        NewsTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+//   tagId      Int      @map("tag_id")
+//
+//   @@id([newsPostId, tagId])
+//   @@map("news_post_tags")
+// }
+
+// Migration commands to run after adding this schema:
+// npx prisma migrate dev --name add_news_posts
+// npx prisma generate
+
+// Example of how to extend with relationships to other models:
+//
+// model Program {
+//   id           Int      @id @default(autoincrement())
+//   name         String
+//   description  String?
+//   // ... other fields
+//
+//   // One-to-many: A program can have multiple news posts
+//   newsPosts    NewsPost[] @relation("ProgramNews")
+// }
+//
+// // Then add to NewsPost model:
+// model NewsPost {
+//   // ... existing fields
+//
+//   // Optional: Link to other content
+//   programId    Int?     @map("program_id")
+//   program      Program? @relation("ProgramNews", fields: [programId], references: [id])
+//
+//   @@index([programId])
+// }

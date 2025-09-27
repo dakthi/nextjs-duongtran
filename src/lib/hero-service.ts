@@ -1,0 +1,173 @@
+// Hero Service adapted for existing HeroContent model
+
+import { prisma } from '@/lib/prisma'
+import { HeroData, HeroPreviewData } from '@/types/hero.types'
+
+// Cache for hero data
+let heroCache: HeroData | null = null
+let cacheTimestamp: number = 0
+const CACHE_DURATION = 30 * 1000 // 30 seconds
+
+export class HeroService {
+  /**
+   * Get active hero content
+   */
+  static async getHeroData(): Promise<HeroData | null> {
+    // Check cache first
+    const now = Date.now()
+    if (heroCache && (now - cacheTimestamp) < CACHE_DURATION) {
+      return heroCache
+    }
+
+    try {
+      const heroContent = await prisma.heroContent.findFirst({
+        where: { isActive: true },
+        orderBy: { updatedAt: 'desc' }
+      })
+
+      // Update cache
+      heroCache = heroContent
+      cacheTimestamp = now
+
+      return heroContent
+    } catch (error) {
+      console.error('Error fetching hero data:', error)
+      // Return null instead of throwing error when no data exists
+      return null
+    }
+  }
+
+  /**
+   * Update hero content
+   */
+  static async updateHeroData(data: Partial<HeroData>): Promise<HeroData> {
+    try {
+      let heroContent
+
+      if (data.id) {
+        // Update existing content
+        heroContent = await prisma.heroContent.update({
+          where: { id: data.id },
+          data: {
+            title: data.title,
+            subtitle: data.subtitle,
+            description: data.description,
+            ctaText: data.ctaText,
+            ctaLink: data.ctaLink,
+            image: data.image
+          }
+        })
+      } else {
+        // Deactivate existing active content
+        await prisma.heroContent.updateMany({
+          where: { isActive: true },
+          data: { isActive: false }
+        })
+
+        // Create new content
+        heroContent = await prisma.heroContent.create({
+          data: {
+            title: data.title || 'Untitled',
+            subtitle: data.subtitle,
+            description: data.description,
+            ctaText: data.ctaText,
+            ctaLink: data.ctaLink,
+            image: data.image,
+            isActive: true
+          }
+        })
+      }
+
+      // Clear cache
+      this.clearCache()
+
+      return heroContent
+    } catch (error) {
+      console.error('Error updating hero data:', error)
+      throw new Error('Failed to update hero data')
+    }
+  }
+
+  /**
+   * Generate preview data from form input
+   */
+  static generatePreviewData(formData: Partial<HeroData>): HeroPreviewData {
+    return {
+      title: formData.title || 'Your Title Here',
+      subtitle: formData.subtitle ?? undefined,
+      description: formData.description ?? undefined,
+      image: formData.image ?? undefined,
+      ctaText: formData.ctaText ?? undefined,
+      ctaLink: formData.ctaLink ?? '#'
+    }
+  }
+
+  /**
+   * Clear hero data cache
+   */
+  static clearCache(): void {
+    heroCache = null
+    cacheTimestamp = 0
+  }
+
+  /**
+   * Validate hero data
+   */
+  static validateHeroData(data: Partial<HeroData>): Record<string, string> {
+    const errors: Record<string, string> = {}
+
+    // Validate required fields
+    if (!data.title || !data.title.trim()) {
+      errors.title = 'Title is required'
+    }
+
+    // Validate text length
+    if (data.title && data.title.length > 200) {
+      errors.title = 'Title too long (maximum 200 characters)'
+    }
+
+    if (data.subtitle && data.subtitle.length > 300) {
+      errors.subtitle = 'Subtitle too long (maximum 300 characters)'
+    }
+
+    if (data.description && data.description.length > 500) {
+      errors.description = 'Description too long (maximum 500 characters)'
+    }
+
+    if (data.ctaText && data.ctaText.length > 50) {
+      errors.ctaText = 'CTA text too long (maximum 50 characters)'
+    }
+
+    // Validate URL
+    if (data.ctaLink && !this.isValidUrl(data.ctaLink)) {
+      errors.ctaLink = 'Must be a valid URL or path'
+    }
+
+    return errors
+  }
+
+  /**
+   * Check if a string is a valid URL or path
+   */
+  private static isValidUrl(value: string): boolean {
+    // Allow relative paths
+    if (value.startsWith('/')) return true
+
+    // Allow hash links
+    if (value.startsWith('#')) return true
+
+    // Allow full URLs
+    try {
+      new URL(value)
+      return true
+    } catch {
+      return false
+    }
+  }
+}
+
+// Export convenience functions
+export const getHeroData = () => HeroService.getHeroData()
+export const updateHeroData = (data: Partial<HeroData>) => HeroService.updateHeroData(data)
+export const generatePreviewData = (formData: Partial<HeroData>) => HeroService.generatePreviewData(formData)
+export const clearHeroCache = () => HeroService.clearCache()

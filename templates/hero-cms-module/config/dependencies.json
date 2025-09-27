@@ -1,0 +1,108 @@
+{
+  "name": "hero-cms-module",
+  "description": "Complete Hero CMS Module for Next.js applications",
+  "version": "1.0.0",
+  "dependencies": {
+    "core": {
+      "next": "^14.0.0",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0",
+      "typescript": "^5.0.0"
+    },
+    "database": {
+      "@prisma/client": "^5.0.0",
+      "prisma": "^5.0.0"
+    },
+    "styling": {
+      "tailwindcss": "^3.3.0",
+      "@tailwindcss/forms": "^0.5.0",
+      "autoprefixer": "^10.4.0",
+      "postcss": "^8.4.0"
+    },
+    "authentication": {
+      "next-auth": "^4.24.0"
+    },
+    "development": {
+      "@types/node": "^20.0.0",
+      "@types/react": "^18.0.0",
+      "@types/react-dom": "^18.0.0"
+    }
+  },
+  "peerDependencies": {
+    "next": ">=13.0.0",
+    "react": ">=18.0.0",
+    "@prisma/client": ">=4.0.0",
+    "tailwindcss": ">=3.0.0"
+  },
+  "optionalDependencies": {
+    "redis": "^4.6.0",
+    "@vercel/blob": "^0.15.0",
+    "cloudinary": "^1.41.0"
+  },
+  "scripts": {
+    "install-hero-module": "npm install",
+    "setup-database": "npx prisma migrate dev",
+    "seed-hero-data": "npx prisma db seed",
+    "build": "next build",
+    "dev": "next dev",
+    "type-check": "tsc --noEmit"
+  },
+  "files": [
+    "backend/",
+    "frontend/",
+    "types/",
+    "config/",
+    "README.md"
+  ],
+  "keywords": [
+    "nextjs",
+    "cms",
+    "hero",
+    "content-management",
+    "react",
+    "typescript",
+    "prisma",
+    "tailwind",
+    "admin-panel"
+  ],
+  "requirements": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "compatibility": {
+    "nextjs": "13.x, 14.x",
+    "react": "18.x",
+    "database": ["postgresql", "mysql", "sqlite"],
+    "auth": ["next-auth", "clerk", "auth0", "custom"]
+  },
+  "features": [
+    "Visual hero editor with live preview",
+    "Complete CRUD operations for hero content",
+    "Image upload and management",
+    "Real-time validation and error handling",
+    "Responsive design with mobile preview",
+    "Auto-save functionality",
+    "Database caching with invalidation",
+    "TypeScript support",
+    "Tailwind CSS styling",
+    "Authentication integration",
+    "SEO optimization ready",
+    "Production ready"
+  ],
+  "installationSteps": [
+    "1. Copy template files to your Next.js project",
+    "2. Install required dependencies",
+    "3. Set up Prisma schema with SiteSetting model",
+    "4. Configure authentication middleware",
+    "5. Add admin routes and navigation",
+    "6. Update homepage to use HeroDisplay component",
+    "7. Seed initial hero data (optional)",
+    "8. Deploy and test"
+  ],
+  "directoryStructure": {
+    "backend/": "Server-side logic and API routes",
+    "frontend/": "React components and admin pages",
+    "types/": "TypeScript type definitions",
+    "config/": "Configuration files and documentation"
+  }
+}

@@ -1,0 +1,121 @@
+# News & Blog Module - Environment Variables
+# Copy these variables to your .env.local file and configure as needed
+
+# Database Configuration (Required)
+DATABASE_URL="postgresql://user:password@localhost:5432/database"
+# or for SQLite: DATABASE_URL="file:./dev.db"
+
+# Authentication (Required - for admin interface)
+NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Optional: Specific authentication provider settings
+# Google OAuth (example)
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+
+# GitHub OAuth (example)
+GITHUB_ID="your-github-client-id"
+GITHUB_SECRET="your-github-client-secret"
+
+# News Module Configuration
+NEWS_POSTS_PER_PAGE="10"
+NEWS_EXCERPT_LENGTH="160"
+NEWS_DEFAULT_CATEGORY="general"
+NEWS_ENABLE_COMMENTS="false"
+NEWS_ENABLE_VIEW_TRACKING="true"
+NEWS_REQUIRE_APPROVAL="false"
+
+
+# SEO Configuration
+SITE_NAME="Your Website Name"
+SITE_URL="https://your-website.com"
+SITE_DESCRIPTION="Your website description"
+DEFAULT_OG_IMAGE="https://your-website.com/og-image.jpg"
+
+# Media/Image Configuration
+MAX_IMAGE_SIZE="5242880"  # 5MB in bytes
+ALLOWED_IMAGE_TYPES="image/jpeg,image/png,image/gif,image/webp"
+ENABLE_IMAGE_OPTIMIZATION="true"
+
+# Content Configuration
+ENABLE_RICH_TEXT_EDITOR="false"
+ENABLE_MARKDOWN="false"
+AUTO_GENERATE_EXCERPTS="true"
+AUTO_GENERATE_SLUGS="true"
+
+# Email/Newsletter Configuration (Optional)
+ENABLE_NEWSLETTER="false"
+SMTP_HOST="your-smtp-host"
+SMTP_PORT="587"
+SMTP_USER="your-smtp-user"
+SMTP_PASS="your-smtp-password"
+FROM_EMAIL="noreply@yoursite.com"
+FROM_NAME="Your Site Name"
+
+# RSS Feed Configuration
+ENABLE_RSS_FEED="true"
+RSS_TITLE="Your Site News"
+RSS_DESCRIPTION="Latest news and updates"
+RSS_LANGUAGE="en-us"
+RSS_POSTS_LIMIT="20"
+
+# Social Media Integration (Optional)
+TWITTER_HANDLE="@yourhandle"
+FACEBOOK_APP_ID="your-facebook-app-id"
+LINKEDIN_COMPANY_ID="your-linkedin-company-id"
+
+# Analytics Configuration (Optional)
+GOOGLE_ANALYTICS_ID="GA_MEASUREMENT_ID"
+ENABLE_ANALYTICS="true"
+
+# Search Configuration
+ENABLE_SEARCH="true"
+SEARCH_RESULTS_LIMIT="20"
+
+# Cache Configuration
+ENABLE_CACHE="true"
+CACHE_TTL="3600"  # 1 hour in seconds
+
+# Rate Limiting (Optional)
+ENABLE_RATE_LIMITING="true"
+API_RATE_LIMIT="100"  # requests per hour per IP
+API_RATE_WINDOW="3600000"  # 1 hour in milliseconds
+
+# Development/Debug Settings
+NODE_ENV="development"
+DEBUG_NEWS_MODULE="false"
+ENABLE_DEBUG_LOGGING="false"
+
+# Date and Time Configuration
+DEFAULT_TIMEZONE="UTC"
+DATE_FORMAT="YYYY-MM-DD"
+TIME_FORMAT="HH:mm:ss"
+DISPLAY_DATE_FORMAT="MMMM D, YYYY"
+
+# Content Moderation (Optional)
+ENABLE_CONTENT_MODERATION="false"
+PROFANITY_FILTER="false"
+AUTO_MODERATE_COMMENTS="false"
+
+# Backup Configuration (Optional)
+ENABLE_AUTO_BACKUP="false"
+BACKUP_FREQUENCY="daily"  # daily, weekly, monthly
+BACKUP_RETENTION_DAYS="30"
+
+# Third-party Integrations (Optional)
+# Cloudinary for image management
+CLOUDINARY_CLOUD_NAME="your-cloud-name"
+CLOUDINARY_API_KEY="your-api-key"
+CLOUDINARY_API_SECRET="your-api-secret"
+
+# Algolia for advanced search
+ALGOLIA_APP_ID="your-app-id"
+ALGOLIA_API_KEY="your-search-only-api-key"
+ALGOLIA_ADMIN_API_KEY="your-admin-api-key"
+ALGOLIA_INDEX_NAME="news_posts"
+
+# Webhook Configuration (Optional)
+WEBHOOK_SECRET="your-webhook-secret"
+DISCORD_WEBHOOK_URL="your-discord-webhook-url"
+SLACK_WEBHOOK_URL="your-slack-webhook-url"
