@@ -15,12 +15,14 @@ RUN npm install
 # 5. Copy the rest of the app (but not media files)
 COPY . .
 
-# 6. Build the Next.js app
+# 6. Generate Prisma client before building the app
+RUN npx prisma generate
+
+# 7. Build the Next.js app
 RUN npm run build
 
-# 7. Expose the port
+# 8. Expose the port
 EXPOSE 3000
 
-# 8. Start the app
+# 9. Start the app
 CMD ["npm", "run", "start"]
-
