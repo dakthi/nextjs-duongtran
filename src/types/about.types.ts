@@ -8,6 +8,7 @@ export interface AboutSection {
 
 export interface AboutContentRecord {
   id: string
+  locale: string
   slug: string
   headline: string | null
   intro: string | null
@@ -19,6 +20,7 @@ export interface AboutContentRecord {
 
 export interface AboutContentInput {
   id?: string
+  locale?: string
   slug?: string
   headline?: string | null
   intro?: string | null

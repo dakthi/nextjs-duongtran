@@ -14,6 +14,7 @@ let cacheTimestamp = 0
 
 const mapPrismaAbout = (record: PrismaAboutContent): AboutContentRecord => ({
   id: record.id,
+  locale: record.locale,
   slug: record.slug,
   headline: record.headline,
   intro: record.intro,
@@ -68,11 +69,13 @@ export class AboutService {
     }
 
     const slug = (input.slug || 'default').trim() || 'default'
+    const locale = input.locale || 'en'
 
     const record = input.id
       ? await prisma.aboutContent.update({
           where: { id: input.id },
           data: {
+            locale,
             slug,
             headline: input.headline?.trim() ?? null,
             intro: input.intro?.trim() ?? null,
@@ -81,7 +84,12 @@ export class AboutService {
           }
         })
       : await prisma.aboutContent.upsert({
-          where: { slug },
+          where: {
+            locale_slug: {
+              locale,
+              slug
+            }
+          },
           update: {
             headline: input.headline?.trim() ?? null,
             intro: input.intro?.trim() ?? null,
@@ -89,6 +97,7 @@ export class AboutService {
             isActive: input.isActive ?? true,
           },
           create: {
+            locale,
             slug,
             headline: input.headline?.trim() ?? null,
             intro: input.intro?.trim() ?? null,

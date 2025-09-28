@@ -22,6 +22,7 @@ const postCache = new Map<string, { data: BlogPostRecord; timestamp: number }>()
 
 const mapPrismaPost = (post: PrismaBlogPost): BlogPostRecord => ({
   id: post.id,
+  locale: post.locale,
   slug: post.slug,
   title: post.title,
   excerpt: post.excerpt,
@@ -84,21 +85,27 @@ export class BlogService {
     }
   }
 
-  static async listAllPosts(): Promise<BlogPostRecord[]> {
+  static async listAllPosts(locale?: string): Promise<BlogPostRecord[]> {
     const now = Date.now()
 
-    if (allPostsCache && this.isCacheFresh(cacheTimestamp)) {
+    if (allPostsCache && this.isCacheFresh(cacheTimestamp) && !locale) {
       return allPostsCache
     }
 
     const posts = await prisma.blogPost.findMany({
+      where: locale ? { locale } : undefined,
       orderBy: [{ createdAt: 'desc' }],
     })
 
-    allPostsCache = posts.map(mapPrismaPost)
-    cacheTimestamp = now
+    const mappedPosts = posts.map(mapPrismaPost)
 
-    return allPostsCache
+    // Only cache if no locale filter (for backwards compatibility)
+    if (!locale) {
+      allPostsCache = mappedPosts
+      cacheTimestamp = now
+    }
+
+    return mappedPosts
   }
 
   static async getPostBySlug(slug: string, includeDraft = false): Promise<BlogPostRecord | null> {
@@ -156,6 +163,7 @@ export class BlogService {
     }
 
     const data = {
+      locale: input.locale,
       slug: input.slug.trim(),
       title: input.title.trim(),
       excerpt: input.excerpt?.trim() ?? null,
@@ -182,7 +190,12 @@ export class BlogService {
           data,
         })
       : await prisma.blogPost.upsert({
-          where: { slug: input.slug.trim() },
+          where: {
+            locale_slug: {
+              locale: input.locale,
+              slug: input.slug.trim()
+            }
+          },
           update: data,
           create: data,
         })
@@ -272,7 +285,7 @@ export class BlogService {
 }
 
 export const listPublishedPosts = () => BlogService.listPublishedPosts()
-export const listAllPosts = () => BlogService.listAllPosts()
+export const listAllPosts = (locale?: string) => BlogService.listAllPosts(locale)
 export const getBlogPostBySlug = (slug: string, includeDraft = false) => BlogService.getPostBySlug(slug, includeDraft)
 export const getBlogPostById = (id: string) => BlogService.getPostById(id)
 export const upsertBlogPost = (input: BlogPostInput) => BlogService.upsertPost(input)

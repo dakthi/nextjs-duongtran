@@ -19,6 +19,7 @@ const toBoolean = (value: unknown, fallback = false): boolean => {
 
 const parseBlogInput = (payload: any): BlogPostInput => ({
   id: typeof payload?.id === 'string' ? payload.id : undefined,
+  locale: payload?.locale ? String(payload.locale) : 'en',
   slug: String(payload?.slug ?? ''),
   title: String(payload?.title ?? ''),
   excerpt: payload?.excerpt ? String(payload.excerpt) : null,

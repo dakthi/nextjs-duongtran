@@ -32,7 +32,10 @@ export const Navbar = () => {
   const switchLanguage = (newLocale: string) => {
     const segments = pathname.split('/');
     segments[1] = newLocale;
-    router.push(segments.join('/'));
+    const newPath = segments.join('/');
+
+    // Force a hard navigation to avoid caching issues
+    window.location.href = newPath;
   };
 
   const [scrolled, setScrolled] = useState(false);

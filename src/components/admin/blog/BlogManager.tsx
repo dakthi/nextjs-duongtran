@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
@@ -107,6 +108,10 @@ const slugify = generateSlug
 const isEqual = (a: BlogFormState, b: BlogFormState) => JSON.stringify(a) === JSON.stringify(b)
 
 export default function BlogManager() {
+  const pathname = usePathname()
+  // Extract locale from pathname
+  const locale = pathname.split('/')[1] || 'en'
+
   const [posts, setPosts] = useState<BlogPostRecord[]>([])
   const [formState, setFormState] = useState<BlogFormState>(emptyForm)
   const [originalState, setOriginalState] = useState<BlogFormState>(emptyForm)
@@ -128,7 +133,8 @@ export default function BlogManager() {
   const fetchPosts = useCallback(async () => {
     setLoading(true)
     try {
-      const response = await fetch('/api/blog', { cache: 'no-store' })
+      const url = `/api/blog?locale=${locale}`
+      const response = await fetch(url, { cache: 'no-store' })
       if (!response.ok) {
         const payload = await response.json().catch(() => null)
         throw new Error(payload?.error || 'Failed to load posts')
@@ -153,7 +159,7 @@ export default function BlogManager() {
     } finally {
       setLoading(false)
     }
-  }, [showStatus])
+  }, [showStatus, locale])
 
   useEffect(() => {
     fetchPosts()
@@ -209,7 +215,7 @@ export default function BlogManager() {
     setSaving(true)
     try {
       const payload = formStateToPayload(formState)
-      const endpoint = selectedId ? `/api/blog/${selectedId}` : '/api/blog'
+      const endpoint = selectedId ? `/api/blog/${selectedId}?locale=${locale}` : `/api/blog?locale=${locale}`
       const method = selectedId ? 'PUT' : 'POST'
       const response = await fetch(endpoint, {
         method,

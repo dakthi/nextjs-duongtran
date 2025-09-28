@@ -1,5 +1,6 @@
 export interface BlogPostRecord {
   id: string
+  locale: string
   slug: string
   title: string
   excerpt: string | null
@@ -24,6 +25,7 @@ export interface BlogPostRecord {
 
 export interface BlogPostInput {
   id?: string
+  locale: string
   slug: string
   title: string
   excerpt?: string | null
