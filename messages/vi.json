@@ -52,5 +52,22 @@
   "metadata": {
     "title": "Lieu Vo",
     "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp."
+  },
+  "admin": {
+    "title": "Quản Trị LieuVo",
+    "navigation": {
+      "dashboard": "Bảng Điều Khiển",
+      "hero": "Trang Chủ",
+      "blog": "Blog",
+      "about": "Giới Thiệu",
+      "testimonials": "Nhận Xét",
+      "media": "Phương Tiện",
+      "faq": "Hỏi Đáp"
+    },
+    "actions": {
+      "signOut": "Đăng Xuất",
+      "closeSidebar": "Đóng Menu",
+      "openMenu": "Mở Menu"
+    }
   }
 }

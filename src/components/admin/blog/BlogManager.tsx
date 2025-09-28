@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
 import type { BlogPostRecord } from '@/types/blog.types'
+import { generateSlug } from '@/lib/slug'
 
 interface BlogFormState {
   id?: string
@@ -100,13 +101,8 @@ const formStateToPayload = (state: BlogFormState) => ({
   isPublished: state.isPublished,
 })
 
-const slugify = (value: string) =>
-  value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+// Use our improved slug generation that handles Vietnamese characters
+const slugify = generateSlug
 
 const isEqual = (a: BlogFormState, b: BlogFormState) => JSON.stringify(a) === JSON.stringify(b)
 
@@ -186,10 +182,20 @@ export default function BlogManager() {
     const value = event.target.type === 'checkbox'
       ? (event.target as HTMLInputElement).checked
       : event.target.value
-    setFormState(prev => ({
-      ...prev,
-      [field]: value
-    }))
+
+    setFormState(prev => {
+      const updated = {
+        ...prev,
+        [field]: value
+      }
+
+      // Auto-generate slug when title changes (only for new posts or if slug is empty)
+      if (field === 'title' && typeof value === 'string' && (!prev.id || !prev.slug)) {
+        updated.slug = slugify(value)
+      }
+
+      return updated
+    })
   }
 
   const handleSetImage = (field: keyof BlogFormState) => (media: MediaLibraryItem | null) => {
@@ -408,6 +414,11 @@ export default function BlogManager() {
                   onChange={handleInputChange('slug')}
                   className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
+                {formState.slug && (
+                  <p className="mt-1 text-xs text-gray-500">
+                    URL Preview: <span className="font-mono">/blog/{formState.slug}</span>
+                  </p>
+                )}
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">

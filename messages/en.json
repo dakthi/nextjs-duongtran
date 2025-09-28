@@ -52,5 +52,22 @@
   "metadata": {
     "title": "Lieu Vo",
     "description": "Helping the Vietnamese community in the UK understand taxes and business finances."
+  },
+  "admin": {
+    "title": "LieuVo Admin",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "hero": "Hero",
+      "blog": "Blog",
+      "about": "About",
+      "testimonials": "Testimonials",
+      "media": "Media",
+      "faq": "FAQ"
+    },
+    "actions": {
+      "signOut": "Sign out",
+      "closeSidebar": "Close sidebar",
+      "openMenu": "Open menu"
+    }
   }
 }

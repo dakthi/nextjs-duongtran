@@ -75,28 +75,43 @@ async function seedAdminUser() {
 }
 
 /**
- * Seed initial hero content
+ * Seed initial hero content for multiple locales
  */
 async function seedHeroContent() {
-  console.log('🦸 Creating initial hero content...')
+  console.log('🦸 Creating initial hero content for EN and VI...')
+
+  const heroContentData = [
+    {
+      locale: 'en',
+      title: 'Welcome to LieuVo',
+      subtitle: 'Tax & Business Finance Consultancy',
+      description: 'Helping the Vietnamese community in the UK understand taxes and business finances with expert guidance and support.',
+      ctaText: 'Get Started',
+      ctaLink: '/contact',
+      isActive: true
+    },
+    {
+      locale: 'vi',
+      title: 'Chào Mừng Đến LieuVo',
+      subtitle: 'Tư Vấn Thuế & Tài Chính Doanh Nghiệp',
+      description: 'Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp với sự hướng dẫn và hỗ trợ chuyên nghiệp.',
+      ctaText: 'Bắt Đầu',
+      ctaLink: '/contact',
+      isActive: true
+    }
+  ]
 
   try {
-    const heroContent = await prisma.heroContent.upsert({
-      where: { id: 'default' },
-      update: {},
-      create: {
-        id: 'default',
-        title: 'Welcome to LieuVo',
-        subtitle: 'Tax & Business Finance Consultancy',
-        description: 'Helping the Vietnamese community in the UK understand taxes and business finances with expert guidance and support.',
-        ctaText: 'Get Started',
-        ctaLink: '/contact',
-        isActive: true
-      }
-    })
+    for (const data of heroContentData) {
+      await prisma.heroContent.upsert({
+        where: { locale: data.locale },
+        update: data,
+        create: data
+      })
+    }
 
-    console.log('✅ Hero content created/updated successfully!')
-    return heroContent
+    console.log('✅ Hero content created/updated for both EN and VI!')
+    return heroContentData
   } catch (error) {
     console.error('❌ Error creating hero content:', error)
     throw error
@@ -135,8 +150,14 @@ async function seedBlogPosts() {
       const expert = data.expert ?? {}
 
       await prisma.blogPost.upsert({
-        where: { slug },
+        where: {
+          locale_slug: {
+            locale: 'en', // Default to English
+            slug
+          }
+        },
         update: {
+          locale: 'en', // Default to English
           title: String(data.title ?? slug),
           excerpt: data.excerpt ? String(data.excerpt) : null,
           content,
@@ -160,6 +181,7 @@ async function seedBlogPosts() {
           isFeatured: data.isFeatured === true,
         },
         create: {
+          locale: 'en', // Default to English
           slug,
           title: String(data.title ?? slug),
           excerpt: data.excerpt ? String(data.excerpt) : null,
@@ -238,14 +260,21 @@ async function seedAboutContent() {
 
   try {
     await prisma.aboutContent.upsert({
-      where: { slug: 'default' },
+      where: {
+        locale_slug: {
+          locale: 'en',
+          slug: 'default'
+        }
+      },
       update: {
+        locale: 'en',
         headline: 'Here to make your numbers human',
         intro: 'A compassionate accountant helping founders and families build stronger businesses with clarity and care.',
         sections: aboutSections,
         isActive: true,
       },
       create: {
+        locale: 'en',
         slug: 'default',
         headline: 'Here to make your numbers human',
         intro: 'A compassionate accountant helping founders and families build stronger businesses with clarity and care.',
@@ -262,14 +291,16 @@ async function seedAboutContent() {
 }
 
 /**
- * Seed testimonials with starter content
+ * Seed testimonials with starter content for multiple locales
  */
 async function seedTestimonials() {
-  console.log('💬 Seeding testimonials...')
+  console.log('💬 Seeding testimonials for EN and VI...')
 
-  const testimonials = [
+  const testimonialsData = [
+    // English testimonials
     {
-      slug: 'james-price',
+      locale: 'en',
+      slug: 'james-price-en',
       name: 'James Price',
       role: 'Creative Industries Accounts Assistant',
       dateLabel: 'June 2025',
@@ -283,7 +314,8 @@ async function seedTestimonials() {
       ]
     },
     {
-      slug: 'duc-nguyen',
+      locale: 'en',
+      slug: 'duc-nguyen-en',
       name: 'Duc Nguyen',
       role: "Accounts Assistant, MSc FinTech '24",
       dateLabel: 'May 2025',
@@ -294,15 +326,46 @@ async function seedTestimonials() {
         `What stands out most is her supportive nature and calm, practical problem-solving. No matter how busy things get, she always takes time to help the team.`,
         `On top of that, she's built automation tools that save us a huge amount of time. Her ability to combine deep expertise with efficiency is rare - she's someone you can learn a lot from, and she's a true asset to any team.`
       ]
+    },
+    // Vietnamese testimonials
+    {
+      locale: 'vi',
+      slug: 'james-price-vi',
+      name: 'James Price',
+      role: 'Trợ Lý Kế Toán Ngành Sáng Tạo',
+      dateLabel: 'Tháng 6 2025',
+      relationship: 'Đã làm việc cùng Lieu trong cùng một đội',
+      image: '/img/testimonials/james-price.jpeg',
+      body: [
+        `Lieu là một người phụ nữ tài năng và có tham vọng với nhiều kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng cô ấy, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của cô - đặc biệt trong việc phát triển kiến thức chuyên môn.`,
+        `Cô ấy tốt bụng, hữu ích và cực kỳ có kỹ năng. Sự chú ý đến chi tiết của cô ấy là đặc biệt, và cô ấy luôn tạo ra công việc có tiêu chuẩn cao nhất. Lieu giao tiếp thông tin phức tạp một cách rõ ràng với cả đội ngũ nội bộ và khách hàng bên ngoài.`,
+        `Cô ấy luôn học hỏi, luôn cải thiện và tích cực thúc đẩy thay đổi tích cực tại nơi làm việc. Tôi đã chứng kiến tận mắt cách kỹ năng lập trình và tự động hóa của cô ấy đã tiết kiệm thời gian và làm cho quy trình của chúng tôi hiệu quả hơn nhiều.`,
+        `Tôi sẽ không ngần ngại giới thiệu cô ấy cho bất kỳ nhà tuyển dụng nào trong tương lai. Cô ấy là một tài sản tuyệt vời cho bất kỳ đội nào.`
+      ]
+    },
+    {
+      locale: 'vi',
+      slug: 'duc-nguyen-vi',
+      name: 'Duc Nguyen',
+      role: "Trợ Lý Kế Toán, Thạc Sĩ FinTech '24",
+      dateLabel: 'Tháng 5 2025',
+      relationship: 'Báo cáo trực tiếp với Lieu',
+      image: '/img/testimonials/duc-nguyen.jpeg',
+      body: [
+        `Tôi đã học được rất nhiều từ việc làm việc với Lieu. Cô ấy có kiến thức kỹ thuật tuyệt vời - đặc biệt về thuế - và công việc của cô ấy luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.`,
+        `Điều nổi bật nhất là bản chất hỗ trợ và giải quyết vấn đề thực tế, bình tĩnh của cô ấy. Dù bận rộn đến đâu, cô ấy luôn dành thời gian để giúp đỡ đội.`,
+        `Hơn thế nữa, cô ấy đã xây dựng các công cụ tự động hóa giúp chúng tôi tiết kiệm rất nhiều thời gian. Khả năng kết hợp chuyên môn sâu với hiệu quả của cô ấy là hiếm có - cô ấy là người mà bạn có thể học hỏi được nhiều điều.`
+      ]
     }
   ]
 
   try {
-    for (let index = 0; index < testimonials.length; index++) {
-      const testimonial = testimonials[index]
+    for (let index = 0; index < testimonialsData.length; index++) {
+      const testimonial = testimonialsData[index]
       await prisma.testimonial.upsert({
         where: { id: testimonial.slug },
         update: {
+          locale: testimonial.locale,
           name: testimonial.name,
           role: testimonial.role,
           relationship: testimonial.relationship,
@@ -314,6 +377,7 @@ async function seedTestimonials() {
         },
         create: {
           id: testimonial.slug,
+          locale: testimonial.locale,
           name: testimonial.name,
           role: testimonial.role,
           relationship: testimonial.relationship,
@@ -326,7 +390,7 @@ async function seedTestimonials() {
       })
     }
 
-    console.log(`✅ Seeded ${testimonials.length} testimonials`)
+    console.log(`✅ Seeded ${testimonialsData.length} testimonials for both EN and VI`)
   } catch (error) {
     console.error('❌ Error seeding testimonials:', error)
     throw error

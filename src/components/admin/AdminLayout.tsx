@@ -4,25 +4,59 @@ import { useEffect, useState } from "react"
 import { useSession, signOut } from "next-auth/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from 'next-intl'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface AdminLayoutProps {
   children: React.ReactNode
 }
 
-const navigation = [
-  { name: "Dashboard", href: "/admin" },
-  { name: "Hero", href: "/admin/hero" },
-  { name: "Blog", href: "/admin/blog" },
-  { name: "About", href: "/admin/about" },
-  { name: "Testimonials", href: "/admin/testimonials" },
-  { name: "Media", href: "/admin/media" },
-  { name: "FAQ", href: "/admin/faq" },
-]
-
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const { data: session } = useSession()
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  // Extract locale from pathname
+  const locale = pathname.split('/')[1] || 'en'
+
+  let t: any, tNav: any, tActions: any;
+  try {
+    t = useTranslations('admin');
+    tNav = useTranslations('admin.navigation');
+    tActions = useTranslations('admin.actions');
+  } catch (error) {
+    t = (key: string) => key;
+    tNav = (key: string) => key;
+    tActions = (key: string) => key;
+  }
+
+  // Fallback translations based on locale
+  const getTitle = () => {
+    const translated = t('title');
+    if (translated === 'title') {
+      return locale === 'vi' ? 'Quản Trị LieuVo' : 'LieuVo Admin';
+    }
+    return translated;
+  };
+
+  // Fallback navigation translations
+  const getNavText = (key: string, fallback: string, viFallback: string) => {
+    const translated = tNav(key);
+    if (translated === key) {
+      return locale === 'vi' ? viFallback : fallback;
+    }
+    return translated;
+  };
+
+  const navigation = [
+    { name: getNavText('dashboard', 'Dashboard', 'Bảng Điều Khiển'), href: `/${locale}/admin` },
+    { name: getNavText('hero', 'Hero', 'Trang Chủ'), href: `/${locale}/admin/hero` },
+    { name: getNavText('blog', 'Blog', 'Blog'), href: `/${locale}/admin/blog` },
+    { name: getNavText('about', 'About', 'Giới Thiệu'), href: `/${locale}/admin/about` },
+    { name: getNavText('testimonials', 'Testimonials', 'Nhận Xét'), href: `/${locale}/admin/testimonials` },
+    { name: getNavText('media', 'Media', 'Phương Tiện'), href: `/${locale}/admin/media` },
+    { name: getNavText('faq', 'FAQ', 'Hỏi Đáp'), href: `/${locale}/admin/faq` },
+  ]
 
   useEffect(() => {
     setSidebarOpen(false)
@@ -58,10 +92,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         </p>
       </div>
       <button
-        onClick={() => signOut({ callbackUrl: "/admin/login" })}
+        onClick={() => signOut({ callbackUrl: `/${locale}/admin/login` })}
         className="text-xs text-gray-300 hover:text-white"
       >
-        Sign out
+        {tActions('signOut') || 'Sign out'}
       </button>
     </div>
   )
@@ -81,7 +115,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 onClick={() => setSidebarOpen(false)}
               >
-                <span className="sr-only">Close sidebar</span>
+                <span className="sr-only">{tActions('closeSidebar') || 'Close sidebar'}</span>
                 <svg
                   className="h-6 w-6 text-white"
                   fill="none"
@@ -113,8 +147,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64 bg-gray-800">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center px-4">
-              <h1 className="text-lg font-bold text-white">LieuVo Admin</h1>
+            <div className="px-4">
+              <h1 className="text-lg font-bold text-white">{getTitle()}</h1>
             </div>
             <nav className="mt-6 flex-1 px-2 space-y-1">{renderNavItems()}</nav>
           </div>
@@ -126,22 +160,28 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
         <div className="md:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-gray-900">LieuVo Admin</h1>
-          <button
+          <h1 className="text-lg font-bold text-gray-900">{getTitle()}</h1>
+          <div className="flex items-center space-x-4">
+            <LanguageSwitcher className="scale-90" />
+            <button
             type="button"
             className="h-10 w-10 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
             onClick={() => setSidebarOpen(true)}
           >
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">{tActions('openMenu') || 'Open menu'}</span>
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-          </button>
+            </button>
+          </div>
         </div>
 
         <main className="flex-1 relative z-0 overflow-y-auto">
+          <div className="absolute top-4 right-4 z-10 hidden md:block">
+            <LanguageSwitcher className="scale-90" />
+          </div>
           <div className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">{children}</div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 md:pr-32">{children}</div>
           </div>
         </main>
       </div>
