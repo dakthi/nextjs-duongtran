@@ -1,26 +1,18 @@
-import React from "react";
+import React from 'react'
 
-interface Post {
-  slug: string;
-  title: string;
-  image?: string;
-  quote?: string;
-  category?: string;
-  readingTime?: string;
-}
+import type { PostSummary } from '@/lib/post'
 
 interface PostGalleryProps {
-  featuredPost: Post; // still accepted but not rendered
-  topPosts: Post[];   // we'll take the first 8 from here
-  chunkedPosts: Post[][]; // ignored now
-  headings?: string[];
+  featuredPost: PostSummary
+  topPosts: PostSummary[]
+  chunkedPosts: PostSummary[][]
+  headings?: string[]
 }
 
 export function PostGallery({
-  featuredPost, // unused
   topPosts,
 }: PostGalleryProps) {
-  const visiblePosts = topPosts.slice(0, 8); // 👈 only show up to 8 cards
+  const visiblePosts = topPosts.slice(0, 8)
 
   return (
     <section className="w px-4 py-10">
@@ -34,7 +26,7 @@ export function PostGallery({
             className="group rounded-xl border bg-white p-5 hover:shadow-sm transition"
           >
             <p className="text-xs uppercase text-gray-500 font-medium mb-1">
-              {post.category || "Post"}
+              {post.category || 'Post'}
             </p>
             <h3 className="text-base font-semibold text-gray-800 group-hover:text-gray-600">
               {post.title}
@@ -42,12 +34,12 @@ export function PostGallery({
             {post.quote && (
               <p className="mt-2 text-gray-600 text-sm font-medium">“{post.quote}”</p>
             )}
-            {post.readingTime && (
+            {post.readingTime != null && (
               <p className="mt-2 text-xs text-gray-500">{post.readingTime} min read</p>
             )}
           </a>
         ))}
       </div>
     </section>
-  );
+  )
 }

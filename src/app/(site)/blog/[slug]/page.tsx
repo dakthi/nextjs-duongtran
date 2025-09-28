@@ -1,27 +1,28 @@
-import { getPostBySlug, getPostSlugs } from '@/lib/post';
-import { notFound } from 'next/navigation';
-import { Container } from "@/components/Container";
-import { SectionTitle } from "@/components/SectionTitle";
-import { Hero } from "@/components/Hero";
-import Image from 'next/image';
-import { isMediaRemoteUrl } from '@/lib/media/media-client';
+import { getPostBySlug, getPostSlugs } from '@/lib/post'
+import { notFound } from 'next/navigation'
+import { Container } from '@/components/Container'
+import { SectionTitle } from '@/components/SectionTitle'
+import Image from 'next/image'
+import { isMediaRemoteUrl } from '@/lib/media/media-client'
 
 type Params = {
   params: { slug: string };
 };
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const slugs = getPostSlugs();
-  return slugs.map((slug) => ({
-    slug: slug.replace(/\.md$/, ''),
-  }));
+  const slugs = await getPostSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export default async function CasePage({ params }: Params) {
-  const post = await getPostBySlug(params.slug);
-  console.log("Fetched post:", post);
+  let post
+  try {
+    post = await getPostBySlug(params.slug)
+  } catch (error) {
+    return notFound()
+  }
 
-  if (!post) return notFound();
+  if (!post) return notFound()
 
   return (
     <div>
@@ -44,7 +45,7 @@ export default async function CasePage({ params }: Params) {
               <span className="text-gray-300">|</span>
             </>
           )}
-          {post.readingTime && (
+          {post.readingTime != null && (
             <span className="whitespace-nowrap">{post.readingTime} min read</span>
           )}
         </div>
@@ -68,19 +69,24 @@ export default async function CasePage({ params }: Params) {
             {/* Client Info */}
             {post.client && (
               <div className="flex items-center gap-4 pl-3">
-                <Image
-                  src={post.client.image}
-                  alt={post.client.name}
-                  width={64}
-                  height={64}
-                  className="rounded-full object-cover"
-                  unoptimized={isMediaRemoteUrl(post.client.image)}
-                />
+                {post.client.image && (
+                  <Image
+                    src={post.client.image}
+                    alt={post.client.name ?? 'Client portrait'}
+                    width={64}
+                    height={64}
+                    className="rounded-full object-cover"
+                    unoptimized={isMediaRemoteUrl(post.client.image)}
+                  />
+                )}
                 <div>
                   <p className="font-semibold text-gray-900">
-                    {post.client.name} {post.client.age && `(${post.client.age})`}
+                    {post.client.name ?? 'Client'}
+                    {post.client.age != null && ` (${post.client.age})`}
                   </p>
-                  <p className="text-gray-600">{post.client.job}</p>
+                  {post.client.job && (
+                    <p className="text-gray-600">{post.client.job}</p>
+                  )}
                 </div>
               </div>
             )}
@@ -90,17 +96,21 @@ export default async function CasePage({ params }: Params) {
               <div className="flex items-center justify-between text-sm text-gray-500">
                 <p>This case was shared by:</p>
                 <div className="flex items-center gap-3">
-                  <Image
-                    src={post.expert.image}
-                    alt={post.expert.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full object-cover"
-                    unoptimized={isMediaRemoteUrl(post.expert.image)}
-                  />
+                  {post.expert.image && (
+                    <Image
+                      src={post.expert.image}
+                      alt={post.expert.name ?? 'Expert portrait'}
+                      width={48}
+                      height={48}
+                      className="rounded-full object-cover"
+                      unoptimized={isMediaRemoteUrl(post.expert.image)}
+                    />
+                  )}
                   <div>
-                    <p className="font-semibold text-gray-800">{post.expert.name}</p>
-                    <p className="text-gray-500 text-xs">{post.expert.title}</p>
+                    <p className="font-semibold text-gray-800">{post.expert.name ?? 'Lieu Vo'}</p>
+                    {post.expert.title && (
+                      <p className="text-gray-500 text-xs">{post.expert.title}</p>
+                    )}
                   </div>
                 </div>
               </div>

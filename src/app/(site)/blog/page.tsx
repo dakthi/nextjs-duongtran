@@ -1,33 +1,47 @@
-import { getPostSlugs, getPostBySlug } from "@/lib/post";
-import Image from "next/image";
-import { Container } from "@/components/Container";
-import { legacyMediaUrl, isMediaRemoteUrl } from "@/lib/media/media-client";
+import Image from 'next/image'
 
-// 🧩 Utility to chunk an array into chunks of `size`
+import { Container } from '@/components/Container'
+import { getPostSummaries } from '@/lib/post'
+import { legacyMediaUrl, isMediaRemoteUrl } from '@/lib/media/media-client'
+
 function chunkArray<T>(array: T[], size: number): T[][] {
-  const result: T[][] = [];
+  const result: T[][] = []
   for (let i = 0; i < array.length; i += size) {
-    result.push(array.slice(i, i + size));
+    result.push(array.slice(i, i + size))
   }
-  return result;
+  return result
 }
 
 const imageStyle = {
-  borderRadius: "2%",
-  border: "1px solid #fff",
-};
+  borderRadius: '2%',
+  border: '1px solid #fff',
+}
 
 export default async function BlogPage() {
-  const slugs = getPostSlugs();
-  const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
+  const posts = await getPostSummaries()
 
-  const fallbackImg = legacyMediaUrl('/img/Portrait_Placeholder.png');
+  if (posts.length === 0) {
+    return (
+      <Container>
+        <div className="text-left">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 px-3">
+            Reflections and thoughts
+          </h2>
+          <p className="text-gray-500 text-base md:text-lg px-3 leading-relaxed">
+            Blog posts will appear here once they are published.
+          </p>
+        </div>
+      </Container>
+    )
+  }
 
-  const [featuredPost, ...rest] = posts;
-  const top5Posts = rest.slice(0, 5);
-  const morePosts = rest.slice(5);
-  const chunked = chunkArray(morePosts, 6);
-  const headings = ["Recent insights", "More articles", "Further reflections", "Latest updates", "New reads"];
+  const fallbackImg = legacyMediaUrl('/img/Portrait_Placeholder.png')
+
+  const [featuredPost, ...rest] = posts
+  const top5Posts = rest.slice(0, 5)
+  const morePosts = rest.slice(5)
+  const chunked = chunkArray(morePosts, 6)
+  const headings = ['Recent insights', 'More articles', 'Further reflections', 'Latest updates', 'New reads']
 
   return (
     <Container>
@@ -36,30 +50,28 @@ export default async function BlogPage() {
           Reflections and thoughts
         </h2>
         <p className="text-gray-500 text-base md:text-lg px-3 leading-relaxed">
-          True expertise is built over time. Beyond qualifications and certifications, it&apos;s the quiet lessons,
+          True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons,
           the real-world challenges, and the continuous improvement that define my journey. Here, you can
           find some reflections, lessons learned, and professional thoughts — captured candidly along the way.
         </p>
       </div>
 
-      {/* Featured + Vertical Stack */}
       <div className="mt-6 grid grid-cols-1 xl:grid-cols-3 gap-5 px-3">
-        {/* Featured */}
         <a
           href={`/blog/${featuredPost.slug}`}
           className="group xl:col-span-2 hover:shadow-md transition-shadow rounded-xl overflow-hidden bg-white border"
         >
-        <div className="relative w-full h-80 bg-white">
-          <Image
-            src={featuredPost.image || fallbackImg}
-            alt={featuredPost.title}
-            fill
-            style={imageStyle}
-            className="object-cover object-top"
-            quality={90}
-            unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
-          />
-        </div>
+          <div className="relative w-full h-80 bg-white">
+            <Image
+              src={featuredPost.image || fallbackImg}
+              alt={featuredPost.title}
+              fill
+              style={imageStyle}
+              className="object-cover object-top"
+              quality={90}
+              unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
+            />
+          </div>
           <div className="p-5 md:p-6">
             <h3 className="text-xl md:text-2xl font-semibold text-gray-800 group-hover:text-gray-600">
               {featuredPost.title}
@@ -70,7 +82,7 @@ export default async function BlogPage() {
                   {featuredPost.category}
                 </span>
               )}
-              {featuredPost.readingTime && <span>{featuredPost.readingTime} min read</span>}
+              {featuredPost.readingTime != null && <span>{featuredPost.readingTime} min read</span>}
             </div>
             {featuredPost.quote && (
               <p className="mt-2 text-gray-500 italic text-sm">“{featuredPost.quote}”</p>
@@ -78,7 +90,6 @@ export default async function BlogPage() {
           </div>
         </a>
 
-        {/* Top 5 Vertical Stack */}
         <div className="flex flex-col gap-4">
           {top5Posts.map((post) => (
             <a
@@ -106,7 +117,7 @@ export default async function BlogPage() {
                       {post.category}
                     </span>
                   )}
-                  {post.readingTime && <span>{post.readingTime} min</span>}
+                  {post.readingTime != null && <span>{post.readingTime} min</span>}
                 </div>
               </div>
             </a>
@@ -114,11 +125,10 @@ export default async function BlogPage() {
         </div>
       </div>
 
-      {/* Chunked Grid Sections */}
       {chunked.map((chunk, index) => (
         <div key={index}>
           <h3 className="mt-14 mb-5 text-xl md:text-2xl font-semibold text-gray-800 px-3">
-            {headings[index] || "More reads"}
+            {headings[index] || 'More reads'}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 px-3">
             {chunk.map((post) => (
@@ -148,7 +158,7 @@ export default async function BlogPage() {
                         {post.category}
                       </span>
                     )}
-                    {post.readingTime && <span>{post.readingTime} min</span>}
+                    {post.readingTime != null && <span>{post.readingTime} min</span>}
                   </div>
                   {post.quote && (
                     <p className="mt-2 text-gray-500 italic text-xs">“{post.quote}”</p>
@@ -160,5 +170,5 @@ export default async function BlogPage() {
         </div>
       ))}
     </Container>
-  );
+  )
 }

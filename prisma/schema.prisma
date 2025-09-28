@@ -74,18 +74,57 @@ model HeroContent {
   @@map("hero_content")
 }
 
-model Testimonial {
+model BlogPost {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  excerpt       String?
+  content       String
+  image         String?
+  category      String?
+  quote         String?
+  readingTime   Int?
+  publishedDate String?
+  clientName    String?
+  clientAge     Int?
+  clientJob     String?
+  clientImage   String?
+  expertName    String?
+  expertTitle   String?
+  expertImage   String?
+  isFeatured    Boolean  @default(false)
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+model AboutContent {
   id        String   @id @default(cuid())
-  name      String
-  content   String
-  image     String?
-  position  String?
-  company   String?
-  rating    Int?
-  order     Int      @default(0)
+  slug      String   @unique
+  headline  String?
+  intro     String?
+  sections  Json
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("about_content")
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  role        String?
+  relationship String?
+  dateLabel   String?
+  content     String
+  image       String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("testimonials")
 }

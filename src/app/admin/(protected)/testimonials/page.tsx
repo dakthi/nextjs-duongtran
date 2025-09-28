@@ -1,11 +1,17 @@
+import TestimonialsManager from '@/components/admin/testimonials/TestimonialsManager'
+
 export default function AdminTestimonialsPage() {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-8">
-      <h1 className="text-2xl font-semibold text-gray-900 mb-4">Testimonials CMS</h1>
-      <p className="text-gray-600">
-        Content editing for testimonials is coming soon. Reach out to the engineering team if you
-        want to prioritise this module.
-      </p>
+    <div className="space-y-6 pb-12">
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900">Testimonials Management</h1>
+        <p className="mt-2 text-gray-600">
+          Curate the voices that appear on the site. Add new testimonials, update content, and control visibility and
+          ordering.
+        </p>
+      </div>
+
+      <TestimonialsManager />
     </div>
   )
 }

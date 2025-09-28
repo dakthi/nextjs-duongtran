@@ -4,8 +4,10 @@ import Link from 'next/link'
 
 const shortcuts = [
   { label: 'Hero Content', href: '/admin/hero' },
-  { label: 'Media Library', href: '/admin/media' },
+  { label: 'Blog Posts', href: '/admin/blog' },
+  { label: 'About Page', href: '/admin/about' },
   { label: 'Testimonials', href: '/admin/testimonials' },
+  { label: 'Media Library', href: '/admin/media' },
   { label: 'FAQ', href: '/admin/faq' },
 ]
 

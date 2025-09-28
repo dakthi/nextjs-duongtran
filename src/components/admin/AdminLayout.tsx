@@ -12,8 +12,10 @@ interface AdminLayoutProps {
 const navigation = [
   { name: "Dashboard", href: "/admin" },
   { name: "Hero", href: "/admin/hero" },
-  { name: "Media", href: "/admin/media" },
+  { name: "Blog", href: "/admin/blog" },
+  { name: "About", href: "/admin/about" },
   { name: "Testimonials", href: "/admin/testimonials" },
+  { name: "Media", href: "/admin/media" },
   { name: "FAQ", href: "/admin/faq" },
 ]
 
