@@ -13,9 +13,15 @@ function chunkArray<T>(array: T[], size: number): T[][] {
   return result
 }
 
-export default async function AboutPage() {
+interface AboutPageProps {
+  params: {
+    locale: string
+  }
+}
+
+export default async function AboutPage({ params }: AboutPageProps) {
   const [aboutContent, posts] = await Promise.all([
-    getActiveAboutContent(),
+    getActiveAboutContent(params.locale),
     getPostSummaries(),
   ])
 

@@ -36,23 +36,37 @@ export class AboutService {
     return Date.now() - cacheTimestamp < CACHE_DURATION
   }
 
-  static async getActiveContent(): Promise<AboutContentRecord | null> {
-    if (aboutCache && this.isCacheFresh()) {
+  static async getActiveContent(locale?: string): Promise<AboutContentRecord | null> {
+    // If no locale specified, use the original behavior for backwards compatibility
+    if (!locale) {
+      if (aboutCache && this.isCacheFresh()) {
+        return aboutCache
+      }
+
+      const record = await prisma.aboutContent.findFirst({
+        where: { isActive: true },
+        orderBy: { updatedAt: 'desc' },
+      })
+
+      if (!record) {
+        return null
+      }
+
+      aboutCache = mapPrismaAbout(record)
+      cacheTimestamp = Date.now()
       return aboutCache
     }
 
+    // If locale is specified, find content for that locale
     const record = await prisma.aboutContent.findFirst({
-      where: { isActive: true },
+      where: {
+        isActive: true,
+        locale: locale
+      },
       orderBy: { updatedAt: 'desc' },
     })
 
-    if (!record) {
-      return null
-    }
-
-    aboutCache = mapPrismaAbout(record)
-    cacheTimestamp = Date.now()
-    return aboutCache
+    return record ? mapPrismaAbout(record) : null
   }
 
   static async getContentById(id: string): Promise<AboutContentRecord | null> {
@@ -133,7 +147,7 @@ export class AboutService {
   }
 }
 
-export const getActiveAboutContent = () => AboutService.getActiveContent()
+export const getActiveAboutContent = (locale?: string) => AboutService.getActiveContent(locale)
 export const getAboutContent = () => AboutService.getActiveContent()
 export const upsertAboutContent = (input: AboutContentInput) => AboutService.upsertContent(input)
 export const validateAboutContent = (input: AboutContentInput) => AboutService.validate(input)
