@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import type { AboutContent as PrismaAboutContent } from '@prisma/client'
+import { isDatabaseAvailable } from '@/lib/build-config'
 
 import type {
   AboutContentInput,
@@ -37,36 +38,51 @@ export class AboutService {
   }
 
   static async getActiveContent(locale?: string): Promise<AboutContentRecord | null> {
+    if (!isDatabaseAvailable()) {
+      console.warn('Database not available during build time, returning null for about content')
+      return null
+    }
+
     // If no locale specified, use the original behavior for backwards compatibility
     if (!locale) {
       if (aboutCache && this.isCacheFresh()) {
         return aboutCache
       }
 
-      const record = await prisma.aboutContent.findFirst({
-        where: { isActive: true },
-        orderBy: { updatedAt: 'desc' },
-      })
+      try {
+        const record = await prisma.aboutContent.findFirst({
+          where: { isActive: true },
+          orderBy: { updatedAt: 'desc' },
+        })
 
-      if (!record) {
+        if (!record) {
+          return null
+        }
+
+        aboutCache = mapPrismaAbout(record)
+        cacheTimestamp = Date.now()
+        return aboutCache
+      } catch (error) {
+        console.warn('Database error, returning null for about content:', error)
         return null
       }
-
-      aboutCache = mapPrismaAbout(record)
-      cacheTimestamp = Date.now()
-      return aboutCache
     }
 
     // If locale is specified, find content for that locale
-    const record = await prisma.aboutContent.findFirst({
-      where: {
-        isActive: true,
-        locale: locale
-      },
-      orderBy: { updatedAt: 'desc' },
-    })
+    try {
+      const record = await prisma.aboutContent.findFirst({
+        where: {
+          isActive: true,
+          locale: locale
+        },
+        orderBy: { updatedAt: 'desc' },
+      })
 
-    return record ? mapPrismaAbout(record) : null
+      return record ? mapPrismaAbout(record) : null
+    } catch (error) {
+      console.warn('Database error, returning null for about content:', error)
+      return null
+    }
   }
 
   static async getContentById(id: string): Promise<AboutContentRecord | null> {
