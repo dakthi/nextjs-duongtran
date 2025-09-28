@@ -4,6 +4,9 @@ import { Container } from '@/components/Container'
 import { getPostSummaries } from '@/lib/post'
 import { legacyMediaUrl, isMediaRemoteUrl } from '@/lib/media/media-client'
 
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = 'force-dynamic'
+
 function chunkArray<T>(array: T[], size: number): T[][] {
   const result: T[][] = []
   for (let i = 0; i < array.length; i += size) {
