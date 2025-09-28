@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
 
       <h2>Your Rights</h2>
       <p>
-        You can request to access, update, or delete your personal data at any time by emailing <a href="mailto:lieu.boa@outlook.com">lieu.boa@outlook.com</a>.
+        You can request to access, update, or delete your personal data at any time by using the <a href="/contact">contact form</a>.
       </p>
 
       <h2>Cookies</h2>

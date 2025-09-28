@@ -49,8 +49,6 @@ export function Footer() {
             <div className="max-w-md text-sm text-gray-500 leading-relaxed">
               {t('description') || 'Helping the Vietnamese community in the UK understand taxes and business finances.'}
               <br />
-              Email: lieu.boa@outlook.com <br />
-              Phone: +44 7309 997990 <br />
               Based in London, UK.
             </div>
           </div>

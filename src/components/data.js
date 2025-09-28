@@ -18,7 +18,7 @@ export const heroData = {
   description1: `I do more than balance books. I help businesses save money, stay compliant, and focus on what truly matters: growth, family, and peace of mind.`,
   description2: `Accounting is not just numbers. it's trust, it's care, it's supporting your journey to live a better and freer life.`,
   image: heroImg,
-  ctaLink: "mailto:lieu.boa@outlook.com",
+  ctaLink: "/contact",
   ctaText: "Talk to me",
 };
 

@@ -35,7 +35,7 @@ export default function TermsOfService() {
 
       <h2>Contact</h2>
       <p>
-        If you have any questions about these terms, feel free to contact me at <a href="mailto:lieu.boa@outlook.com">lieu.boa@outlook.com</a>.
+        If you have any questions about these terms, feel free to <a href="/contact">contact me</a>.
       </p>
     </div>
   );

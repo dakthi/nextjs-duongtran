@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendLieuVoContactEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,63 +27,27 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 2. Define the Google Apps Script Web App URL
-    // THIS IS YOUR GOOGLE APPS SCRIPT WEB APP DEPLOYMENT URL
-    // You'll get this URL when you deploy your Google Apps Script project as a Web App.
-    // It's recommended to store this in an environment variable for security and flexibility.
-    const googleAppsScriptUrl = process.env.GOOGLE_CONTACT_FORM_APPS_SCRIPT_URL;
-
-    if (!googleAppsScriptUrl) {
-        console.error("Missing GOOGLE_CONTACT_FORM_APPS_SCRIPT_URL environment variable.");
-        return NextResponse.json(
-            { error: "Server configuration error: Contact form API endpoint not set." },
-            { status: 500 }
-        );
-    }
-
-    // 3. Prepare the data for forwarding
-    // You can add a timestamp or other server-side data here if needed
-    const dataToForward = {
-        name,
-        email,
-        message,
-        newsletterOptIn: newsletter, // Clarify newsletter status
-        timestamp: new Date().toISOString(),
-        source: 'BlazingStar Contact Form', // Indicate source if you have multiple forms
-    };
-
-    // 4. Forward the data to the Google Apps Script Web App
-    const response = await fetch(googleAppsScriptUrl, {
-      method: "POST",
-      headers: {
-        // Google Apps Script `doPost(e)` often expects 'text/plain' for raw JSON body parsing.
-        // If your Apps Script expects 'application/json', change this.
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-      body: JSON.stringify(dataToForward),
+    // 2. Send email using Resend
+    const result = await sendLieuVoContactEmail({
+      name,
+      email,
+      message,
+      privacyPolicy,
+      newsletter: newsletter || false
     });
 
-    // 5. Read the response from the Google Apps Script
-    // Apps Script typically returns plain text or JSON.
-    const textResponseFromAppsScript = await response.text();
-
-    console.log("Response from Google Apps Script:", textResponseFromAppsScript);
-
-    // 6. Return a response to the frontend
-    // You might want to parse textResponseFromAppsScript if your Apps Script returns JSON
-    // and check its status (e.g., if it returns { status: "OK" }).
-    if (response.ok) { // Check if the Apps Script responded with a 2xx status
-        return NextResponse.json(
-            { message: "Message successfully sent!", appsScriptResponse: textResponseFromAppsScript },
-            { status: 200 }
-        );
+    // 3. Return response based on email sending result
+    if (result.success) {
+      return NextResponse.json(
+        { message: "Message successfully sent!" },
+        { status: 200 }
+      );
     } else {
-        // If Apps Script responded with an error status (e.g., 4xx, 5xx)
-        console.error("Google Apps Script returned an error status:", response.status, textResponseFromAppsScript);
-        return NextResponse.json(
-            { error: `Google Apps Script error: ${textResponseFromAppsScript || 'Unknown error'}`, statusFromAppsScript: response.status },
-            { status: 500 } // Or response.status if you want to relay it directly
-        );
+      console.error("Failed to send email:", result.error);
+      return NextResponse.json(
+        { error: `Failed to send message: ${result.error || 'Unknown error'}` },
+        { status: 500 }
+      );
     }
 
   } catch (error: any) {
