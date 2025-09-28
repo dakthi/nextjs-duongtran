@@ -22,7 +22,7 @@ interface AboutPageProps {
 export default async function AboutPage({ params }: AboutPageProps) {
   const [aboutContent, posts] = await Promise.all([
     getActiveAboutContent(params.locale),
-    getPostSummaries(),
+    getPostSummaries(params.locale),
   ])
 
   const headings = [

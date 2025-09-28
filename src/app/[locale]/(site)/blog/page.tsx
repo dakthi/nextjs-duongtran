@@ -17,8 +17,14 @@ const imageStyle = {
   border: '1px solid #fff',
 }
 
-export default async function BlogPage() {
-  const posts = await getPostSummaries()
+interface BlogPageProps {
+  params: {
+    locale: string
+  }
+}
+
+export default async function BlogPage({ params }: BlogPageProps) {
+  const posts = await getPostSummaries(params.locale)
 
   if (posts.length === 0) {
     return (

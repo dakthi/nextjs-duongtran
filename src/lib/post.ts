@@ -144,10 +144,17 @@ export async function getPostSlugs(): Promise<string[]> {
   return getLocalPostSlugs().map((slug) => slug.replace(/\.md$/, ''))
 }
 
-export async function getPostSummaries(): Promise<PostSummary[]> {
+export async function getPostSummaries(locale?: string): Promise<PostSummary[]> {
   const posts = await listPublishedPosts()
-  if (posts.length > 0) {
-    return posts.map((post) => mapRecordToSummary(post))
+  let filteredPosts = posts
+
+  // Filter by locale if provided
+  if (locale && posts.length > 0) {
+    filteredPosts = posts.filter(post => post.locale === locale)
+  }
+
+  if (filteredPosts.length > 0) {
+    return filteredPosts.map((post) => mapRecordToSummary(post))
   }
 
   const localSlugs = getLocalPostSlugs()
