@@ -1,6 +1,11 @@
 "use client";
 
 import React from "react";
+import { legacyMediaUrl } from "@/lib/media/media-client";
+
+const portraitOne = legacyMediaUrl('/img/lieu/lieu-2.jpeg');
+const portraitTwo = legacyMediaUrl('/img/lieu/lieu-3.jpeg');
+const portraitThree = legacyMediaUrl('/img/lieu/lieu-1.jpeg');
 
 export const AboutBody = () => {
   return (
@@ -9,7 +14,7 @@ export const AboutBody = () => {
       <div className="grid md:grid-cols-2 gap-10 items-start">
         <div>
           <img
-            src="/img/lieu/lieu-2.jpeg"
+            src={portraitOne}
             alt="About Lieu"
             className="w-full h-auto rounded-xl shadow-lg"
           />
@@ -43,7 +48,7 @@ export const AboutBody = () => {
       <div className="grid md:grid-cols-2 gap-10 items-start">
         <div className="md:order-2">
           <img
-            src="/img/lieu/lieu-3.jpeg"
+            src={portraitTwo}
             alt="Lieu working"
             className="w-full h-auto rounded-xl shadow-lg"
           />
@@ -68,7 +73,7 @@ export const AboutBody = () => {
       <div className="grid md:grid-cols-2 gap-10 items-center">
         <div>
           <img
-            src="/img/lieu/lieu-1.jpeg"
+            src={portraitThree}
             alt="Lieu team"
             className="w-full h-auto rounded-xl shadow-lg"
           />

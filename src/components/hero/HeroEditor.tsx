@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { HeroData, HeroFieldGroup, HeroFormData, HeroEditorState } from '@/types/hero.types'
+import FileUpload from '@/components/media/FileUpload'
+import type { MediaLibraryItem } from '@/types/media'
 import { HeroPreview } from './HeroPreview'
 
 const heroDataToFormData = (data: HeroData): HeroFormData => ({
@@ -13,13 +15,15 @@ interface HeroEditorProps {
   onError?: (error: string) => void
   autoSave?: boolean
   autoSaveInterval?: number
+  showPreview?: boolean
 }
 
 export function HeroEditor({
   onSave,
   onError,
   autoSave = false,
-  autoSaveInterval = 30000
+  autoSaveInterval = 30000,
+  showPreview = true
 }: HeroEditorProps) {
   const [formData, setFormData] = useState<HeroFormData>({})
   const [originalData, setOriginalData] = useState<HeroFormData>({})
@@ -266,6 +270,24 @@ export function HeroEditor({
       }`
     }
 
+    if (field.key === 'image') {
+      return (
+        <div className="space-y-3">
+          <FileUpload
+            currentImage={value || null}
+            onFileSelect={(media: MediaLibraryItem | null) => {
+              setFormData(prev => ({ ...prev, image: media?.url || '' }))
+            }}
+          />
+          {value && (
+            <div className="break-all rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600">
+              {value}
+            </div>
+          )}
+        </div>
+      )
+    }
+
     switch (field.type) {
       case 'textarea':
         return (
@@ -281,7 +303,7 @@ export function HeroEditor({
       default:
         return <input type="text" {...commonProps} />
     }
-  }, [formData, editorState.errors, handleFieldChange])
+  }, [formData, editorState.errors, handleFieldChange, setFormData])
 
   if (editorState.isLoading) {
     return (
@@ -294,9 +316,9 @@ export function HeroEditor({
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className={`flex flex-col gap-6 ${showPreview ? 'lg:flex-row' : ''}`}>
         {/* Editor Form */}
-        <div className="lg:w-1/2">
+        <div className={showPreview ? 'lg:w-1/2' : 'w-full'}>
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900">Hero Editor</h2>
@@ -309,12 +331,14 @@ export function HeroEditor({
                     Saved {editorState.lastSaved.toLocaleTimeString()}
                   </span>
                 )}
-                <button
-                  onClick={() => setEditorState(prev => ({ ...prev, previewMode: !prev.previewMode }))}
-                  className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded transition-colors"
-                >
-                  {editorState.previewMode ? 'Hide' : 'Show'} Preview
-                </button>
+                {showPreview && (
+                  <button
+                    onClick={() => setEditorState(prev => ({ ...prev, previewMode: !prev.previewMode }))}
+                    className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded transition-colors"
+                  >
+                    {editorState.previewMode ? 'Hide' : 'Show'} Preview
+                  </button>
+                )}
               </div>
             </div>
 
@@ -378,14 +402,16 @@ export function HeroEditor({
         </div>
 
         {/* Live Preview */}
-        <div className={`lg:w-1/2 ${editorState.previewMode ? 'block' : 'hidden lg:block'}`}>
-          <div className="sticky top-6">
-            <HeroPreview
-              data={formData}
-              className="rounded-lg overflow-hidden shadow-md"
-            />
+        {showPreview && (
+          <div className={`lg:w-1/2 ${editorState.previewMode ? 'block' : 'hidden lg:block'}`}>
+            <div className="sticky top-6">
+              <HeroPreview
+                data={formData}
+                className="rounded-lg overflow-hidden shadow-md"
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

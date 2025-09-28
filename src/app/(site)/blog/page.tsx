@@ -1,7 +1,7 @@
 import { getPostSlugs, getPostBySlug } from "@/lib/post";
 import Image from "next/image";
 import { Container } from "@/components/Container";
-import fallbackImg from "../../../public/img/Portrait_Placeholder.png";
+import { legacyMediaUrl, isMediaRemoteUrl } from "@/lib/media/media-client";
 
 // 🧩 Utility to chunk an array into chunks of `size`
 function chunkArray<T>(array: T[], size: number): T[][] {
@@ -20,6 +20,8 @@ const imageStyle = {
 export default async function BlogPage() {
   const slugs = getPostSlugs();
   const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)));
+
+  const fallbackImg = legacyMediaUrl('/img/Portrait_Placeholder.png');
 
   const [featuredPost, ...rest] = posts;
   const top5Posts = rest.slice(0, 5);
@@ -54,8 +56,8 @@ export default async function BlogPage() {
             fill
             style={imageStyle}
             className="object-cover object-top"
-            placeholder={featuredPost.image ? undefined : "blur"}
             quality={90}
+            unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
           />
         </div>
           <div className="p-5 md:p-6">
@@ -90,8 +92,8 @@ export default async function BlogPage() {
                   alt={post.title}
                   fill
                   className="object-cover"
-                  placeholder={post.image ? undefined : "blur"}
                   quality={80}
+                  unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
                 />
               </div>
               <div className="flex-1">
@@ -132,8 +134,8 @@ export default async function BlogPage() {
                     fill
                     style={imageStyle}
                     className="object-cover"
-                    placeholder={post.image ? undefined : "blur"}
                     quality={90}
+                    unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
                   />
                 </div>
                 <div className="p-4 md:p-5">

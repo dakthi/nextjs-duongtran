@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Container }  from "@/components/Container";
 import { SectionTitle } from "./SectionTitle";
+import { isMediaRemoteUrl } from "@/lib/media/media-client";
 
 interface BenefitsProps {
   imgPos?: "left" | "right";
@@ -27,15 +28,26 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
           }`}>
           <div className={`w-[450px] overflow-hidden rounded-lg items-center ${
             props.size === "small" ? "w-[350px]" : props.size === "large" ? "w-[600px]" : ""}`}>
-            <Image
-              src={data.image}
-              width={521}
-              height={521}
-              alt="Benefits"
-              className={"object-cover"}
-              placeholder="blur"
-              blurDataURL={data.image.src}
-            />
+            {(() => {
+              const isStaticImport = typeof data.image === 'object' && data.image !== null && 'src' in data.image;
+              const srcValue = isStaticImport ? data.image.src : data.image;
+
+              if (!srcValue) return null;
+
+              const imageProps: any = {
+                src: isStaticImport ? data.image : srcValue,
+                width: 521,
+                height: 521,
+                alt: 'Benefits',
+                className: 'object-cover',
+              };
+
+              if (isMediaRemoteUrl(srcValue)) {
+                imageProps.unoptimized = true;
+              }
+
+              return <Image {...imageProps} />;
+            })()}
           </div>
         </div>
 

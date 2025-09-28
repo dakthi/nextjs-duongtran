@@ -3,6 +3,7 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 import { testimonials } from "./testimonialsData";
+import { isMediaRemoteUrl } from "@/lib/media/media-client";
 
 export const Testimonials = () => {
   return (
@@ -45,7 +46,13 @@ function Avatar(props: Readonly<AvatarProps>) {
   return (
     <div className="flex items-center mt-8 space-x-3">
       <div className="items-center overflow-hidden object-cover rounded-full w-14 h-14 shadow-sm shadow-black">
-        <Image src={props.image} width={56} height={56} alt={props.name} />
+        <Image
+          src={props.image}
+          width={56}
+          height={56}
+          alt={props.name}
+          unoptimized={isMediaRemoteUrl(props.image)}
+        />
       </div>
       <div>
         <div className="text-lg font-medium">{props.name}</div>

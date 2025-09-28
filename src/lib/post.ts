@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm'; // <- ADD THIS
+import { optionalLegacyMediaUrl } from '@/lib/media/media-client';
 
 const postsDirectory = path.join(process.cwd(), 'src/content/posts');
 
@@ -56,16 +57,30 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   const contentHtml = processedContent.toString();
 
+  const client = data.client
+    ? {
+        ...data.client,
+        image: optionalLegacyMediaUrl(data.client.image) ?? data.client.image,
+      }
+    : undefined;
+
+  const expert = data.expert
+    ? {
+        ...data.expert,
+        image: optionalLegacyMediaUrl(data.expert.image) ?? data.expert.image,
+      }
+    : undefined;
+
   return {
     slug: realSlug,
     content: contentHtml,
     title: data.title,
-    image: data.image,
+    image: optionalLegacyMediaUrl(data.image) ?? data.image,
     date: data.date,
     readingTime: data.readingTime,
     category: data.category,
     quote: data.quote,
-    client: data.client,
-    expert: data.expert,
+    client,
+    expert,
   };
 }

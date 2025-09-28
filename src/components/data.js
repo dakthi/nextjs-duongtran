@@ -7,9 +7,11 @@ import {
   SunIcon,
 } from "@heroicons/react/24/solid";
 
-import benefitOneImg from "../../public/img/lieu-liv-street.jpg";
-import benefitTwoImg from "../../public/img/lieu-vietnam.jpg";
-import heroImg from "../../public/img/lieu-barbican.jpg";
+import { legacyMediaUrl } from "@/lib/media/media-client";
+
+const heroImg = legacyMediaUrl('/img/lieu-barbican.jpg');
+const benefitOneImg = legacyMediaUrl('/img/lieu-liv-street.jpg');
+const benefitTwoImg = legacyMediaUrl('/img/lieu-vietnam.jpg');
 
 export const heroData = {
   title: "Your business deserves numbers you can trust",

@@ -1,3 +1,5 @@
+import { legacyMediaUrl } from "@/lib/media/media-client";
+
 export interface Testimonial {
   id: string;
   name: string;
@@ -15,7 +17,7 @@ export const testimonials: Testimonial[] = [
     role: "Creative Industries Accounts Assistant",
     date: "June 2025",
     relationship: "Worked with Lieu on the same team",
-    image: "/img/testimonials/james-price.jpeg",
+    image: legacyMediaUrl('/img/testimonials/james-price.jpeg'),
     body: [
       "Lieu is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.",
       "She is kind, helpful, and extremely skilled. Her attention to detail is exceptional, and she consistently produces work of the highest standard. Lieu communicates complex information clearly to both internal teams and external clients - even those with no background in finance.",
@@ -29,7 +31,7 @@ export const testimonials: Testimonial[] = [
     role: "Accounts Assistant, MSc FinTech '24",
     date: "May 2025",
     relationship: "Reported directly to Lieu",
-    image: "/img/testimonials/duc-nguyen.jpeg",
+    image: legacyMediaUrl('/img/testimonials/duc-nguyen.jpeg'),
     body: [
       "I've learned so much from working with Lieu. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.",
       "What stands out most is her supportive nature and calm, practical problem-solving. No matter how busy things get, she always takes time to help the team.",

@@ -4,6 +4,7 @@ import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Hero } from "@/components/Hero";
 import Image from 'next/image';
+import { isMediaRemoteUrl } from '@/lib/media/media-client';
 
 type Params = {
   params: { slug: string };
@@ -73,6 +74,7 @@ export default async function CasePage({ params }: Params) {
                   width={64}
                   height={64}
                   className="rounded-full object-cover"
+                  unoptimized={isMediaRemoteUrl(post.client.image)}
                 />
                 <div>
                   <p className="font-semibold text-gray-900">
@@ -94,6 +96,7 @@ export default async function CasePage({ params }: Params) {
                     width={48}
                     height={48}
                     className="rounded-full object-cover"
+                    unoptimized={isMediaRemoteUrl(post.expert.image)}
                   />
                   <div>
                     <p className="font-semibold text-gray-800">{post.expert.name}</p>

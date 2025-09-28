@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 
 import { testimonials } from "./testimonialsData";
+import { isMediaRemoteUrl } from "@/lib/media/media-client";
 
 export const TestimonialBody = () => {
   return (
@@ -20,6 +21,7 @@ export const TestimonialBody = () => {
               width={80}
               height={80}
               className="rounded-full border"
+              unoptimized={isMediaRemoteUrl(testimonial.image)}
             />
           </div>
           <div>

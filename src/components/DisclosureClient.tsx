@@ -8,6 +8,7 @@ import {
 
 import Link from "next/link";
 import Image from "next/image";
+import { isMediaRemoteUrl } from "@/lib/media/media-client";
 
 interface LinkProps {
   text: string;
@@ -49,6 +50,7 @@ export function DisclosureClient(props: Readonly<DisclosureClientProps>) {
                   width={32}
                   height={32}
                   className="w-8"
+                  unoptimized={isMediaRemoteUrl(logo.image.url)}
                 />
               </span>
               <span>{logo.text}</span>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import { getHeroData } from "@/lib/hero-service";
-import heroImg from "../../public/img/lieu-barbican.jpg";
+import { legacyMediaUrl, isMediaRemoteUrl } from "@/lib/media/media-client";
 
 export const Hero = async () => {
   const heroContent = await getHeroData();
@@ -13,6 +13,9 @@ export const Hero = async () => {
   const ctaText = heroContent?.ctaText || "See how I can help";
   const ctaLink = heroContent?.ctaLink || "/services";
   const image = heroContent?.image || null;
+  const fallbackImage = legacyMediaUrl('/img/lieu-barbican.jpg');
+  const heroImage = image || fallbackImage;
+  const isRemote = isMediaRemoteUrl(heroImage);
 
   return (
     <>
@@ -72,26 +75,14 @@ export const Hero = async () => {
 
         <div className="flex items-center justify-center w-full p-5 xl:p-0 lg:w-1/2">
           <div className="relative w-full h-[550px] overflow-hidden rounded-lg border border-white">
-            {image ? (
-              // Dynamic image from CMS - no blur placeholder
-              <Image
-                src={image}
-                alt="Lieu Vo"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center 70%' }}
-                quality={100}
-              />
-            ) : (
-              // Static fallback image with blur placeholder
-              <Image
-                src={heroImg}
-                alt="Lieu Vo"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center 70%' }}
-                placeholder="blur"
-                quality={100}
-              />
-            )}
+            <Image
+              src={heroImage}
+              alt="Lieu Vo"
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center 70%' }}
+              quality={100}
+              unoptimized={isRemote}
+            />
           </div>
         </div>
       </Container>
