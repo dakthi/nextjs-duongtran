@@ -7,6 +7,9 @@ import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 
 import { benefitOne, benefitTwo } from "@/components/data";
+
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <Container>
