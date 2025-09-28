@@ -16,6 +16,7 @@ interface HeroEditorProps {
   autoSave?: boolean
   autoSaveInterval?: number
   showPreview?: boolean
+  locale?: string
 }
 
 export function HeroEditor({
@@ -23,7 +24,8 @@ export function HeroEditor({
   onError,
   autoSave = false,
   autoSaveInterval = 30000,
-  showPreview = true
+  showPreview = true,
+  locale = 'en'
 }: HeroEditorProps) {
   const [formData, setFormData] = useState<HeroFormData>({})
   const [originalData, setOriginalData] = useState<HeroFormData>({})
@@ -110,7 +112,7 @@ export function HeroEditor({
       try {
         setEditorState(prev => ({ ...prev, isLoading: true }))
 
-        const response = await fetch('/api/hero')
+        const response = await fetch(`/api/hero?locale=${locale}`)
         const result = await response.json()
 
         if (result.success && result.data) {
@@ -132,7 +134,7 @@ export function HeroEditor({
     }
 
     loadHeroData()
-  }, [onError])
+  }, [onError, locale])
 
   // Check for unsaved changes
   useEffect(() => {
@@ -210,7 +212,7 @@ export function HeroEditor({
       const response = await fetch('/api/hero', {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, locale })
       })
 
       const result = await response.json()

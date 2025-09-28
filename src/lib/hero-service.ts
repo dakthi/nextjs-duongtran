@@ -2,6 +2,7 @@
 
 import { prisma } from '@/lib/prisma'
 import { HeroData, HeroPreviewData } from '@/types/hero.types'
+import { isDatabaseAvailable } from '@/lib/build-config'
 
 // Cache for hero data
 let heroCache: HeroData | null = null
@@ -10,9 +11,14 @@ const CACHE_DURATION = 30 * 1000 // 30 seconds
 
 export class HeroService {
   /**
-   * Get active hero content
+   * Get active hero content for a specific locale
    */
-  static async getHeroData(): Promise<HeroData | null> {
+  static async getHeroData(locale: string = 'en'): Promise<HeroData | null> {
+    if (!isDatabaseAvailable()) {
+      console.warn('Database not available during build time, returning null for hero data')
+      return null
+    }
+
     // Check cache first
     const now = Date.now()
     if (heroCache && (now - cacheTimestamp) < CACHE_DURATION) {
@@ -21,7 +27,10 @@ export class HeroService {
 
     try {
       const heroContent = await prisma.heroContent.findFirst({
-        where: { isActive: true },
+        where: {
+          isActive: true,
+          locale: locale
+        },
         orderBy: { updatedAt: 'desc' }
       })
 
@@ -31,16 +40,16 @@ export class HeroService {
 
       return heroContent
     } catch (error) {
-      console.error('Error fetching hero data:', error)
+      console.warn('Database error, returning null for hero data:', error)
       // Return null instead of throwing error when no data exists
       return null
     }
   }
 
   /**
-   * Update hero content
+   * Update hero content for a specific locale
    */
-  static async updateHeroData(data: Partial<HeroData>): Promise<HeroData> {
+  static async updateHeroData(data: Partial<HeroData>, locale: string = 'en'): Promise<HeroData> {
     try {
       let heroContent
 
@@ -54,13 +63,17 @@ export class HeroService {
             description: data.description,
             ctaText: data.ctaText,
             ctaLink: data.ctaLink,
-            image: data.image
+            image: data.image,
+            locale: locale
           }
         })
       } else {
-        // Deactivate existing active content
+        // Deactivate existing active content for this locale
         await prisma.heroContent.updateMany({
-          where: { isActive: true },
+          where: {
+            isActive: true,
+            locale: locale
+          },
           data: { isActive: false }
         })
 
@@ -73,6 +86,7 @@ export class HeroService {
             ctaText: data.ctaText,
             ctaLink: data.ctaLink,
             image: data.image,
+            locale: locale,
             isActive: true
           }
         })
@@ -167,7 +181,7 @@ export class HeroService {
 }
 
 // Export convenience functions
-export const getHeroData = () => HeroService.getHeroData()
-export const updateHeroData = (data: Partial<HeroData>) => HeroService.updateHeroData(data)
+export const getHeroData = (locale?: string) => HeroService.getHeroData(locale)
+export const updateHeroData = (data: Partial<HeroData>, locale?: string) => HeroService.updateHeroData(data, locale)
 export const generatePreviewData = (formData: Partial<HeroData>) => HeroService.generatePreviewData(formData)
 export const clearHeroCache = () => HeroService.clearCache()

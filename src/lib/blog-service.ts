@@ -3,6 +3,7 @@ import { remark } from 'remark'
 import html from 'remark-html'
 import remarkGfm from 'remark-gfm'
 import type { BlogPost as PrismaBlogPost } from '@prisma/client'
+import { isDatabaseAvailable } from '@/lib/build-config'
 
 import type {
   BlogPostInput,
@@ -56,21 +57,31 @@ export class BlogService {
   }
 
   static async listPublishedPosts(): Promise<BlogPostRecord[]> {
+    if (!isDatabaseAvailable()) {
+      console.warn('Database not available during build time, returning empty posts list')
+      return []
+    }
+
     const now = Date.now()
 
     if (publishedCache && this.isCacheFresh(cacheTimestamp)) {
       return publishedCache
     }
 
-    const posts = await prisma.blogPost.findMany({
-      where: { isPublished: true },
-      orderBy: [{ isFeatured: 'desc' }, { publishedDate: 'desc' }, { createdAt: 'desc' }],
-    })
+    try {
+      const posts = await prisma.blogPost.findMany({
+        where: { isPublished: true },
+        orderBy: [{ isFeatured: 'desc' }, { publishedDate: 'desc' }, { createdAt: 'desc' }],
+      })
 
-    publishedCache = posts.map(mapPrismaPost)
-    cacheTimestamp = now
+      publishedCache = posts.map(mapPrismaPost)
+      cacheTimestamp = now
 
-    return publishedCache
+      return publishedCache
+    } catch (error) {
+      console.warn('Database error, returning empty posts list:', error)
+      return []
+    }
   }
 
   static async listAllPosts(): Promise<BlogPostRecord[]> {
@@ -91,24 +102,34 @@ export class BlogService {
   }
 
   static async getPostBySlug(slug: string, includeDraft = false): Promise<BlogPostRecord | null> {
+    if (!isDatabaseAvailable()) {
+      console.warn('Database not available during build time, returning null for post:', slug)
+      return null
+    }
+
     const cacheKey = `slug:${slug}:draft:${includeDraft}`
     const cached = postCache.get(cacheKey)
     if (cached && this.isCacheFresh(cached.timestamp)) {
       return cached.data
     }
 
-    const post = await prisma.blogPost.findFirst({
-      where: {
-        slug,
-        ...(includeDraft ? {} : { isPublished: true })
-      }
-    })
+    try {
+      const post = await prisma.blogPost.findFirst({
+        where: {
+          slug,
+          ...(includeDraft ? {} : { isPublished: true })
+        }
+      })
 
-    if (!post) return null
+      if (!post) return null
 
-    const mapped = mapPrismaPost(post)
-    postCache.set(cacheKey, { data: mapped, timestamp: Date.now() })
-    return mapped
+      const mapped = mapPrismaPost(post)
+      postCache.set(cacheKey, { data: mapped, timestamp: Date.now() })
+      return mapped
+    } catch (error) {
+      console.warn('Database error, returning null for post:', slug, error)
+      return null
+    }
   }
 
   static async getPostById(id: string): Promise<BlogPostRecord | null> {

@@ -4,9 +4,12 @@ import { HeroService } from '@/lib/hero-service'
 import { HeroApiResponse } from '@/types/hero.types'
 
 // GET /api/hero - Get hero content
-export async function GET(): Promise<NextResponse<HeroApiResponse>> {
+export async function GET(request: NextRequest): Promise<NextResponse<HeroApiResponse>> {
   try {
-    const heroData = await HeroService.getHeroData()
+    const { searchParams } = new URL(request.url)
+    const locale = searchParams.get('locale') || 'en'
+
+    const heroData = await HeroService.getHeroData(locale)
 
     return NextResponse.json({
       success: true,
@@ -53,7 +56,8 @@ export async function PUT(request: NextRequest): Promise<NextResponse<HeroApiRes
     }
 
     // Update hero content
-    const updatedHero = await HeroService.updateHeroData(body)
+    const locale = body.locale || 'en'
+    const updatedHero = await HeroService.updateHeroData(body, locale)
 
     return NextResponse.json({
       success: true,
@@ -95,7 +99,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<HeroApiRe
     }
 
     // Create hero content
-    const newHero = await HeroService.updateHeroData(body)
+    const locale = body.locale || 'en'
+    const newHero = await HeroService.updateHeroData(body, locale)
 
     return NextResponse.json({
       success: true,

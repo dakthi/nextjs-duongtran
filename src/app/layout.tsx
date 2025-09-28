@@ -1,26 +1,7 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-import AuthSessionProvider from "@/components/SessionProvider";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Lieu Vo",
-  description: "Helping the Vietnamese community in the UK understand taxes and business finances.",
-};
-
 export default function RootLayout({
-  children,
-}: Readonly<{
+  children
+}: {
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" className="light" suppressHydrationWarning>
-      <body className={`${inter.className} bg-gray-50 text-gray-900 antialiased`}>
-        <AuthSessionProvider>{children}</AuthSessionProvider>
-      </body>
-    </html>
-  );
+}) {
+  return children;
 }

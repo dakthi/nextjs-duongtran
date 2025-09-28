@@ -3,15 +3,37 @@
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { Disclosure } from "@headlessui/react";
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 
 export const Navbar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Extract locale from pathname since useLocale might not work
+  const locale = pathname.split('/')[1] || 'en';
+
+  let t: any;
+  try {
+    t = useTranslations('navigation');
+  } catch (error) {
+    // Fallback if context not available
+    t = (key: string) => key;
+  }
+
   const navigation = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Read", href: "/blog" },
-    { label: "Testimonials", href: "/testimonials" },
-    { label: "FAQ", href: "/faq" },
+    { label: t('about') || 'About', href: `/${locale}/about` },
+    { label: t('services') || 'Services', href: `/${locale}/services` },
+    { label: t('blog') || 'Blog', href: `/${locale}/blog` },
+    { label: t('testimonials') || 'Testimonials', href: `/${locale}/testimonials` },
+    { label: t('faq') || 'FAQ', href: `/${locale}/faq` },
   ];
+
+  const switchLanguage = (newLocale: string) => {
+    const segments = pathname.split('/');
+    segments[1] = newLocale;
+    router.push(segments.join('/'));
+  };
 
   const [scrolled, setScrolled] = useState(false);
   const lastKnownScrollY = useRef(0);
@@ -41,7 +63,7 @@ export const Navbar = () => {
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-4 md:py-6">
         {/* Logo */}
-        <Link href="/" className="flex flex-col space-y-0.5">
+        <Link href={`/${locale}`} className="flex flex-col space-y-0.5">
           <span
             className={`font-semibold text-gray-900 transition-all duration-300 ${
               scrolled ? "text-xl" : "text-2xl"
@@ -70,11 +92,31 @@ export const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href={`/${locale}/contact`}
             className="ml-6 px-4 py-2 rounded-md text-white bg-gray-700 hover:bg-gray-800 text-sm transition"
           >
-            Contact
+{t('contact') || 'Contact'}
           </Link>
+
+          {/* Language Switcher */}
+          <div className="ml-4 flex space-x-2">
+            <button
+              onClick={() => switchLanguage('en')}
+              className={`px-2 py-1 text-xs rounded ${
+                locale === 'en' ? 'bg-gray-700 text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => switchLanguage('vi')}
+              className={`px-2 py-1 text-xs rounded ${
+                locale === 'vi' ? 'bg-gray-700 text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              VI
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -115,11 +157,31 @@ export const Navbar = () => {
                   </Link>
                 ))}
                 <Link
-                  href="/contact"
+                  href={`/${locale}/contact`}
                   className="block mt-2 px-4 py-2 text-center bg-gray-700 text-white rounded-md hover:bg-gray-800 transition"
                 >
-                  Contact
+      {t('contact') || 'Contact'}
                 </Link>
+
+                {/* Mobile Language Switcher */}
+                <div className="flex space-x-2 px-4 py-2">
+                  <button
+                    onClick={() => switchLanguage('en')}
+                    className={`px-3 py-1 text-sm rounded ${
+                      locale === 'en' ? 'bg-gray-700 text-white' : 'text-gray-600 hover:text-gray-900 border'
+                    }`}
+                  >
+                    EN
+                  </button>
+                  <button
+                    onClick={() => switchLanguage('vi')}
+                    className={`px-3 py-1 text-sm rounded ${
+                      locale === 'vi' ? 'bg-gray-700 text-white' : 'text-gray-600 hover:text-gray-900 border'
+                    }`}
+                  >
+                    VI
+                  </button>
+                </div>
               </Disclosure.Panel>
             </>
           )}

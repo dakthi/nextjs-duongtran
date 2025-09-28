@@ -1,19 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/Container";
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Extract locale from pathname since useLocale might not work
+  const locale = pathname.split('/')[1] || 'en';
+
+  let t: any;
+  try {
+    t = useTranslations('footer');
+  } catch (error) {
+    // Fallback if context not available
+    t = (key: string) => key;
+  }
+
   const navigation = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Testimonials", href: "/testimonials" },
-    { label: "FAQ", href: "/faq" },
+    { label: t('links.about') || 'About', href: `/${locale}/about` },
+    { label: "Services", href: `/${locale}/services` },
+    { label: "Testimonials", href: `/${locale}/testimonials` },
+    { label: "FAQ", href: `/${locale}/faq` },
   ];
 
   const legal = [
-    { label: "Terms", href: "/terms" },
-    { label: "Privacy", href: "/privacy" },
-    { label: "Legal", href: "/legal" },
+    { label: t('links.terms') || 'Terms', href: `/${locale}/terms` },
+    { label: t('links.privacy') || 'Privacy', href: `/${locale}/privacy` },
+    { label: "Legal", href: `/${locale}/legal` },
   ];
 
   return (
@@ -22,7 +39,7 @@ export function Footer() {
         <div className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto mt-5 border-t border-gray-100 lg:grid-cols-5 px-4 md:px-0">
           <div className="lg:col-span-2">
             <div className="mb-5">
-              <Link href="/">
+              <Link href={`/${locale}`}>
                 <span className="flex flex-col">
                   <span className="text-2xl font-semibold text-gray-900">Lieu Vo</span>
                   <span className="text-sm text-gray-500 tracking-wide">your helpful accountant</span>
@@ -30,7 +47,7 @@ export function Footer() {
               </Link>
             </div>
             <div className="max-w-md text-sm text-gray-500 leading-relaxed">
-              Lieu Vo offers expert accounting, tax, and payroll services for individuals and SMEs.
+              {t('description') || 'Helping the Vietnamese community in the UK understand taxes and business finances.'}
               <br />
               Email: lieu.boa@outlook.com <br />
               Phone: +44 7309 997990 <br />
@@ -90,7 +107,7 @@ export function Footer() {
         </div>
 
         <div className="my-10 text-xs text-center text-gray-400">
-          &copy; {new Date().getFullYear()} Lieu Vo. All rights reserved.
+          {t('copyright', { year: new Date().getFullYear() }) || `Copyright © ${new Date().getFullYear()}. Made by`}
         </div>
       </Container>
     </div>

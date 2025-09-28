@@ -61,6 +61,7 @@ model User {
 // Portfolio CMS Models
 model HeroContent {
   id          String   @id @default(cuid())
+  locale      String   @default("en")
   title       String
   subtitle    String?
   description String?
@@ -71,12 +72,14 @@ model HeroContent {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  @@unique([locale])
   @@map("hero_content")
 }
 
 model BlogPost {
   id            String   @id @default(cuid())
-  slug          String   @unique
+  locale        String   @default("en")
+  slug          String
   title         String
   excerpt       String?
   content       String
@@ -97,12 +100,14 @@ model BlogPost {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
+  @@unique([locale, slug])
   @@map("blog_posts")
 }
 
 model AboutContent {
   id        String   @id @default(cuid())
-  slug      String   @unique
+  locale    String   @default("en")
+  slug      String
   headline  String?
   intro     String?
   sections  Json
@@ -110,11 +115,13 @@ model AboutContent {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@unique([locale, slug])
   @@map("about_content")
 }
 
 model Testimonial {
   id          String   @id @default(cuid())
+  locale      String   @default("en")
   name        String
   role        String?
   relationship String?
@@ -131,6 +138,7 @@ model Testimonial {
 
 model FaqItem {
   id        String   @id @default(cuid())
+  locale    String   @default("en")
   question  String
   answer    String
   category  String?

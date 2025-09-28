@@ -2,9 +2,11 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { getHeroData } from "@/lib/hero-service";
 import { legacyMediaUrl, isMediaRemoteUrl } from "@/lib/media/media-client";
+import { useLocale } from 'next-intl';
 
-export const Hero = async () => {
-  const heroContent = await getHeroData();
+export const Hero = async ({ params }: { params?: { locale?: string } }) => {
+  const locale = params?.locale || 'en';
+  const heroContent = await getHeroData(locale);
 
   // Fallback to default content if no CMS content found
   const title = heroContent?.title || "I am an accountant.\nHow about you?";

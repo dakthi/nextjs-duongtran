@@ -5,6 +5,7 @@ import { HeroEditor } from '@/components/hero/HeroEditor'
 import { HeroData } from '@/types/hero.types'
 
 export default function AdminHeroPage() {
+  const [selectedLocale, setSelectedLocale] = useState<'en' | 'vi'>('en')
   const [notification, setNotification] = useState<{
     type: 'success' | 'error'
     message: string
@@ -33,10 +34,27 @@ export default function AdminHeroPage() {
   return (
     <div className="space-y-8 pb-12">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Hero Section Management</h1>
-        <p className="mt-2 text-gray-600">
-          Customize your homepage hero section content with live preview
-        </p>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Hero Section Management</h1>
+            <p className="mt-2 text-gray-600">
+              Customize your homepage hero section content with live preview
+            </p>
+          </div>
+
+          {/* Language Selector */}
+          <div className="flex items-center space-x-2">
+            <label className="text-sm font-medium text-gray-700">Language:</label>
+            <select
+              value={selectedLocale}
+              onChange={(e) => setSelectedLocale(e.target.value as 'en' | 'vi')}
+              className="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+            >
+              <option value="en">English</option>
+              <option value="vi">Tiếng Việt</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       {notification && (
@@ -59,7 +77,14 @@ export default function AdminHeroPage() {
         </div>
       )}
 
-      <HeroEditor onSave={handleSave} onError={handleError} autoSave={false} showPreview={false} />
+      <HeroEditor
+        key={selectedLocale}
+        locale={selectedLocale}
+        onSave={handleSave}
+        onError={handleError}
+        autoSave={false}
+        showPreview={false}
+      />
 
       <div className="rounded-lg bg-white p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Tips &amp; Guidelines</h3>
