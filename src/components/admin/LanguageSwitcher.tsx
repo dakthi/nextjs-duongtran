@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 interface LanguageSwitcherProps {
   currentLocale?: string
@@ -15,7 +15,6 @@ export default function LanguageSwitcher({
   className = ""
 }: LanguageSwitcherProps) {
   const pathname = usePathname()
-  const router = useRouter()
 
   // Extract locale from pathname if not provided
   const detectedLocale = currentLocale || pathname.split('/')[1] || 'en'
@@ -36,7 +35,10 @@ export default function LanguageSwitcher({
       // Otherwise, navigate to the new locale (for page switching)
       const segments = pathname.split('/')
       segments[1] = locale
-      router.push(segments.join('/'))
+      const newPath = segments.join('/')
+
+      // Force a hard navigation to avoid caching issues
+      window.location.href = newPath
     }
   }
 
