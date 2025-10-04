@@ -22,16 +22,20 @@ const mapFallbackToView = (): TestimonialView[] =>
     updatedAt: new Date(),
   }))
 
-const resolveTestimonials = async (): Promise<TestimonialView[]> => {
-  const records = await listActiveTestimonials()
+const resolveTestimonials = async (locale?: string): Promise<TestimonialView[]> => {
+  const records = await listActiveTestimonials(locale)
   if (records.length === 0) {
     return mapFallbackToView()
   }
   return records.map((record) => testimonialToView(record))
 }
 
-export const Testimonials = async () => {
-  const testimonials = await resolveTestimonials()
+interface TestimonialsProps {
+  locale?: string
+}
+
+export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
+  const testimonials = await resolveTestimonials(locale)
 
   return (
     <Container>

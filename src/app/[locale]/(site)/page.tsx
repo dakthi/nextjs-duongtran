@@ -15,6 +15,8 @@ interface HomeProps {
 }
 
 export default async function Home({ params }: HomeProps) {
+  const { locale } = params
+
   return (
     <Container>
       <Hero params={params} />
@@ -46,7 +48,7 @@ export default async function Home({ params }: HomeProps) {
         A tailored approach, genuine care, and a strong commitment to each client's success — that's what makes working with Lieu memorable.
       </SectionTitle>
 
-      <Testimonials />
+      <Testimonials locale={locale} />
 
       <SectionTitle preTitle="faq" title="frequently asked questions">
         If these answers spark more questions, feel free to send an email, leave a message, or book a chat — Lieu is always happy to help.

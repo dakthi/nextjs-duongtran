@@ -42,20 +42,27 @@ export class TestimonialService {
     return Date.now() - cacheTimestamp < CACHE_DURATION
   }
 
-  static async listActiveTestimonials(): Promise<TestimonialRecord[]> {
-    if (testimonialsCache && this.isCacheFresh()) {
+  static async listActiveTestimonials(locale?: string): Promise<TestimonialRecord[]> {
+    // Don't use cache when locale is specified, as cache doesn't account for locale
+    if (!locale && testimonialsCache && this.isCacheFresh()) {
       return testimonialsCache
     }
 
     const records = await prisma.testimonial.findMany({
-      where: { isActive: true },
+      where: {
+        isActive: true,
+        ...(locale && { locale })
+      },
       orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
     })
 
-    testimonialsCache = records.map(mapPrismaTestimonial)
-    cacheTimestamp = Date.now()
+    // Only cache when no locale specified (for backward compatibility)
+    if (!locale) {
+      testimonialsCache = records.map(mapPrismaTestimonial)
+      cacheTimestamp = Date.now()
+    }
 
-    return testimonialsCache
+    return records.map(mapPrismaTestimonial)
   }
 
   static async listAllTestimonials(): Promise<TestimonialRecord[]> {
@@ -139,7 +146,7 @@ export class TestimonialService {
   }
 }
 
-export const listActiveTestimonials = () => TestimonialService.listActiveTestimonials()
+export const listActiveTestimonials = (locale?: string) => TestimonialService.listActiveTestimonials(locale)
 export const listAllTestimonials = () => TestimonialService.listAllTestimonials()
 export const getTestimonialById = (id: string) => TestimonialService.getById(id)
 export const upsertTestimonial = (input: TestimonialInput) => TestimonialService.upsertTestimonial(input)
