@@ -46,6 +46,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         sections={aboutContent?.sections}
         contentHtml={aboutContent?.contentHtml}
         contentJson={aboutContent?.contentJson}
+        locale={params.locale}
       />
 
       {hasPosts && featuredPost && (

@@ -1,0 +1,84 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blog": "Blog",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "home": {
+    "preTitle": "Lieu Vo",
+    "title": "Here to make your numbers human",
+    "description": "I am an accountant who cares — not just about your business, but about your family, your time, and your peace of mind. I help streamline your numbers, simplify your processes, and give you back the space to focus on what matters most. Good accounting isn't just about precision — it's about trust, care, and building a better life beyond the spreadsheets.",
+    "hearFromLieuPreTitle": "hear from lieu",
+    "hearFromLieuTitle": "supporting people, supporting businesses",
+    "hearFromLieuDescription": "Lieu believes that accounting is not just about numbers — it is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.",
+    "testimonialsPreTitle": "testimonials",
+    "testimonialsTitle": "what clients and colleagues say",
+    "testimonialsDescription": "A tailored approach, genuine care, and a strong commitment to each client's success — that's what makes working with Lieu memorable.",
+    "faqPreTitle": "faq",
+    "faqTitle": "frequently asked questions",
+    "faqDescription": "If these answers spark more questions, feel free to send an email, leave a message, or book a chat — Lieu is always happy to help."
+  },
+  "footer": {
+    "tagline": "your helpful accountant",
+    "description": "Helping the Vietnamese community in the UK understand taxes and business finances.",
+    "location": "Based in London, UK.",
+    "stayConnected": "Stay connected",
+    "copyright": "Copyright © {{year}}. Made by",
+    "links": {
+      "about": "About",
+      "services": "Services",
+      "testimonials": "Testimonials",
+      "faq": "FAQ",
+      "blog": "Blog",
+      "contact": "Contact",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "legal": "Legal"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Get in touch with Lieu for personalized accounting support.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "metadata": {
+    "title": "Lieu Vo",
+    "description": "Helping the Vietnamese community in the UK understand taxes and business finances."
+  },
+  "admin": {
+    "title": "LieuVo Admin",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "hero": "Hero",
+      "blog": "Blog",
+      "about": "About",
+      "testimonials": "Testimonials",
+      "media": "Media",
+      "faq": "FAQ"
+    },
+    "actions": {
+      "signOut": "Sign out",
+      "closeSidebar": "Close sidebar",
+      "openMenu": "Open menu"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "navigation": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "services": "Dịch vụ",
+    "blog": "Blog",
+    "testimonials": "Nhận xét",
+    "faq": "Hỏi đáp",
+    "contact": "Liên hệ",
+    "legal": "Pháp lý",
+    "privacy": "Bảo mật",
+    "terms": "Điều khoản"
+  },
+  "home": {
+    "preTitle": "Lieu Vo",
+    "title": "Ở đây để làm cho con số của bạn trở nên nhân văn",
+    "description": "Tôi là một kế toán viên quan tâm — không chỉ về doanh nghiệp của bạn, mà còn về gia đình, thời gian và sự yên tâm của bạn. Tôi giúp đơn giản hóa con số, đơn giản hóa quy trình và trả lại cho bạn không gian để tập trung vào những gì quan trọng nhất. Kế toán tốt không chỉ về độ chính xác — mà còn về niềm tin, sự quan tâm và xây dựng cuộc sống tốt hơn ngoài bảng tính.",
+    "hearFromLieuPreTitle": "nghe từ lieu",
+    "hearFromLieuTitle": "hỗ trợ con người, hỗ trợ doanh nghiệp",
+    "hearFromLieuDescription": "Lieu tin rằng kế toán không chỉ về con số — mà là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên phục vụ chúng ta, giúp doanh nghiệp và gia đình phát triển.",
+    "testimonialsPreTitle": "nhận xét",
+    "testimonialsTitle": "khách hàng và đồng nghiệp nói gì",
+    "testimonialsDescription": "Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của từng khách hàng — đó là điều làm cho việc làm việc với Lieu đáng nhớ.",
+    "faqPreTitle": "hỏi đáp",
+    "faqTitle": "câu hỏi thường gặp",
+    "faqDescription": "Nếu những câu trả lời này khơi dậy thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện — Lieu luôn sẵn sàng giúp đỡ."
+  },
+  "footer": {
+    "tagline": "kế toán hỗ trợ tận tâm",
+    "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
+    "location": "Có trụ sở tại London, Anh.",
+    "stayConnected": "Kết nối với chúng tôi",
+    "copyright": "Bản quyền © {{year}}. Được tạo bởi",
+    "links": {
+      "about": "Giới thiệu",
+      "services": "Dịch vụ",
+      "testimonials": "Nhận xét",
+      "faq": "Hỏi đáp",
+      "blog": "Blog",
+      "contact": "Liên hệ",
+      "terms": "Điều khoản dịch vụ",
+      "privacy": "Chính sách bảo mật",
+      "legal": "Pháp lý"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "description": "Liên hệ với Lieu để được hỗ trợ kế toán cá nhân hóa.",
+    "form": {
+      "name": "Tên",
+      "email": "Email",
+      "message": "Tin nhắn",
+      "submit": "Gửi tin nhắn",
+      "sending": "Đang gửi...",
+      "success": "Tin nhắn đã được gửi thành công!",
+      "error": "Không thể gửi tin nhắn. Vui lòng thử lại."
+    }
+  },
+  "metadata": {
+    "title": "Lieu Vo",
+    "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp."
+  },
+  "admin": {
+    "title": "Quản Trị LieuVo",
+    "navigation": {
+      "dashboard": "Bảng Điều Khiển",
+      "hero": "Trang Chủ",
+      "blog": "Blog",
+      "about": "Giới Thiệu",
+      "testimonials": "Nhận Xét",
+      "media": "Phương Tiện",
+      "faq": "Hỏi Đáp"
+    },
+    "actions": {
+      "signOut": "Đăng Xuất",
+      "closeSidebar": "Đóng Menu",
+      "openMenu": "Mở Menu"
+    }
+  }
+}
