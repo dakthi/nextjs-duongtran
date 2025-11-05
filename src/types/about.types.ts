@@ -13,6 +13,8 @@ export interface AboutContentRecord {
   headline: string | null
   intro: string | null
   sections: AboutSection[]
+  contentJson?: any | null
+  contentHtml?: string | null
   isActive: boolean
   createdAt: Date
   updatedAt: Date
@@ -25,6 +27,8 @@ export interface AboutContentInput {
   headline?: string | null
   intro?: string | null
   sections: AboutSection[]
+  contentJson?: any | null
+  contentHtml?: string | null
   isActive?: boolean
 }
 

@@ -1,37 +1,68 @@
 export default function PrivacyPolicy() {
   return (
-    <div className="prose mx-auto max-w-3xl p-6">
-      <h1>Privacy Policy</h1>
-      <p>Last updated: July 2025</p>
+    <>
+      {/* Hero Section */}
+      <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
+        <div className="max-w-5xl mx-auto px-8 xl:px-12">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
+              Privacy Policy
+            </h1>
+          </div>
+        </div>
+      </div>
 
-      <p>
-        Your privacy matters to me. This Privacy Policy explains how I collect, use, and protect your information when you visit my website or work with me.
-      </p>
+      {/* Content Section */}
+      <div className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-8 xl:px-12">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <p className="text-sm text-slate-600">Last updated: July 2025</p>
 
-      <h2>What I Collect</h2>
-      <ul>
-        <li>Your name, email, and message when you fill out my contact form</li>
-        <li>Any additional information you choose to share during our communication</li>
-        <li>Basic usage data (like page views) to help improve the website</li>
-      </ul>
+            <p className="text-lg font-medium text-slate-900 leading-relaxed">
+              Your privacy matters to me. This Privacy Policy explains how I collect, use, and protect your information when you visit my website or work with me.
+            </p>
 
-      <h2>How I Use Your Information</h2>
-      <p>
-        I only use your data to respond to enquiries, provide services, or share relevant updates if you&apos;ve opted in. I do not sell or share your data with third parties.
-      </p>
+            <div className="space-y-6">
+              <section>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4">What I Collect</h2>
+                <ul className="list-disc pl-6 space-y-2 text-base text-slate-700 leading-relaxed">
+                  <li>Your name, email, and message when you fill out my contact form</li>
+                  <li>Any additional information you choose to share during our communication</li>
+                  <li>Basic usage data (like page views) to help improve the website</li>
+                </ul>
+              </section>
 
-      <h2>Your Rights</h2>
-      <p>
-        You can request to access, update, or delete your personal data at any time by using the <a href="/contact">contact form</a>.
-      </p>
+              <section>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4">How I Use Your Information</h2>
+                <p className="text-base text-slate-700 leading-relaxed">
+                  I only use your data to respond to enquiries, provide services, or share relevant updates if you&apos;ve opted in. I do not sell or share your data with third parties.
+                </p>
+              </section>
 
-      <h2>Cookies</h2>
-      <p>
-        This website may use minimal cookies to ensure a smooth experience. No tracking or advertising cookies are used.
-      </p>
+              <section>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4">Your Rights</h2>
+                <p className="text-base text-slate-700 leading-relaxed">
+                  You can request to access, update, or delete your personal data at any time by using the <a href="/contact" className="text-amber-600 underline hover:text-amber-500">contact form</a>.
+                </p>
+              </section>
 
-      <h2>Questions?</h2>
-      <p>If you have any questions about this policy, feel free to get in touch.</p>
-    </div>
+              <section>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4">Cookies</h2>
+                <p className="text-base text-slate-700 leading-relaxed">
+                  This website may use minimal cookies to ensure a smooth experience. No tracking or advertising cookies are used.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4">Questions?</h2>
+                <p className="text-base text-slate-700 leading-relaxed">
+                  If you have any questions about this policy, feel free to get in touch.
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

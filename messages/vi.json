@@ -26,14 +26,25 @@
     "faqDescription": "Nếu những câu trả lời này khơi dậy thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện — Lieu luôn sẵn sàng giúp đỡ."
   },
   "footer": {
+    "tagline": "kế toán hỗ trợ tận tâm",
     "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
+    "location": "Có trụ sở tại London, Anh.",
+    "stayConnected": "Kết nối với chúng tôi",
     "copyright": "Bản quyền © {year}. Được tạo bởi",
     "links": {
       "about": "Giới thiệu",
+      "services": "Dịch vụ",
+      "testimonials": "Nhận xét",
+      "faq": "Hỏi đáp",
       "blog": "Blog",
       "contact": "Liên hệ",
       "terms": "Điều khoản dịch vụ",
-      "privacy": "Chính sách bảo mật"
+      "privacy": "Chính sách bảo mật",
+      "legal": "Pháp lý"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn"
     }
   },
   "contact": {

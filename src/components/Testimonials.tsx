@@ -16,6 +16,9 @@ const mapFallbackToView = (): TestimonialView[] =>
     content: testimonial.body.join('\n\n'),
     paragraphs: testimonial.body,
     image: testimonial.image ?? legacyMediaUrl('/img/Portrait_Placeholder.png'),
+    imagePosition: null,
+    imageZoom: null,
+    imageFit: null,
     order: index,
     isActive: true,
     createdAt: new Date(),
@@ -39,16 +42,19 @@ export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
 
   return (
     <Container>
-      <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-8 lg:grid-cols-2">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
-            className="lg:col-span-2 xl:col-auto pl-5 pr-5 xl:p-0"
+            className="border-2 border-slate-800 bg-amber-50 p-8 shadow-md hover:shadow-xl transition-shadow"
           >
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal">
-                &ldquo;{testimonial.paragraphs[0]}&rdquo;
-              </p>
+            <div className="flex flex-col justify-between w-full h-full">
+              <div className="mb-6">
+                <div className="text-6xl text-amber-500 leading-none mb-3">&ldquo;</div>
+                <p className="text-base leading-relaxed text-slate-700 italic">
+                  {testimonial.paragraphs[0]}
+                </p>
+              </div>
 
               <Avatar
                 image={testimonial.image}
@@ -56,6 +62,9 @@ export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
                 role={testimonial.role}
                 dateLabel={testimonial.dateLabel}
                 relationship={testimonial.relationship}
+                imagePosition={testimonial.imagePosition}
+                imageZoom={testimonial.imageZoom}
+                imageFit={testimonial.imageFit}
               />
             </div>
           </div>
@@ -71,26 +80,34 @@ interface AvatarProps {
   role: string | null
   dateLabel: string | null
   relationship: string | null
+  imagePosition?: string | null
+  imageZoom?: number | null
+  imageFit?: string | null
 }
 
-function Avatar({ image, name, role, dateLabel, relationship }: Readonly<AvatarProps>) {
+function Avatar({ image, name, role, dateLabel, relationship, imagePosition, imageZoom, imageFit }: Readonly<AvatarProps>) {
   const resolvedImage = image ?? legacyMediaUrl('/img/Portrait_Placeholder.png')
   return (
-    <div className="flex items-center mt-8 space-x-3">
-      <div className="items-center overflow-hidden object-cover rounded-full w-14 h-14 shadow-sm shadow-black">
+    <div className="flex items-center space-x-4 pt-5 border-t-2 border-amber-500">
+      <div className="items-center overflow-hidden object-cover w-14 h-14 border-2 border-slate-800">
         <Image
           src={resolvedImage}
           width={56}
           height={56}
           alt={name}
           unoptimized={isMediaRemoteUrl(resolvedImage)}
+          style={{
+            objectFit: (imageFit as 'cover' | 'contain' | 'fill') || 'cover',
+            objectPosition: imagePosition || 'center',
+            transform: `scale(${(imageZoom || 100) / 100})`
+          }}
         />
       </div>
       <div>
-        <div className="text-lg font-medium">{name}</div>
-        {role && <div className="text-gray-600">{role}</div>}
+        <div className="text-base font-bold text-slate-800">{name}</div>
+        {role && <div className="text-sm text-slate-600">{role}</div>}
         {(dateLabel || relationship) && (
-          <div className="text-gray-500 text-sm">
+          <div className="text-xs text-amber-600 font-medium">
             {[dateLabel, relationship].filter(Boolean).join(' · ')}
           </div>
         )}

@@ -64,6 +64,9 @@ export class HeroService {
             ctaText: data.ctaText,
             ctaLink: data.ctaLink,
             image: data.image,
+            imagePosition: data.imagePosition,
+            imageZoom: data.imageZoom,
+            imageFit: data.imageFit,
             locale: locale
           }
         })
@@ -86,6 +89,9 @@ export class HeroService {
             ctaText: data.ctaText,
             ctaLink: data.ctaLink,
             image: data.image,
+            imagePosition: data.imagePosition,
+            imageZoom: data.imageZoom,
+            imageFit: data.imageFit,
             locale: locale,
             isActive: true
           }

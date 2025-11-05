@@ -3,63 +3,95 @@
 import Link from "next/link";
 import React from "react";
 import { Container } from "@/components/Container";
-import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 
 export function Footer() {
   const pathname = usePathname();
-
-  // Extract locale from pathname since useLocale might not work
   const locale = pathname.split('/')[1] || 'en';
 
-  let t: any;
-  try {
-    t = useTranslations('footer');
-  } catch (error) {
-    // Fallback if context not available
-    t = (key: string) => key;
-  }
+  // Simple translation object - no hooks needed
+  const translations: any = {
+    en: {
+      tagline: "Your Helpful Accountant",
+      description: "Helping the Vietnamese community in the UK understand taxes and business finances.",
+      location: "Based in London, UK.",
+      stayConnected: "Stay connected",
+      links: {
+        about: "About",
+        services: "Services",
+        testimonials: "Testimonials",
+        faq: "FAQ",
+        terms: "Terms of Service",
+        privacy: "Privacy Policy",
+        legal: "Legal"
+      },
+      social: {
+        facebook: "Facebook",
+        linkedin: "LinkedIn"
+      }
+    },
+    vi: {
+      tagline: "Kế Toán Hỗ Trợ Tận Tâm",
+      description: "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
+      location: "Có trụ sở tại London, Anh.",
+      stayConnected: "Kết nối với chúng tôi",
+      links: {
+        about: "Giới thiệu",
+        services: "Dịch vụ",
+        testimonials: "Nhận xét",
+        faq: "Hỏi đáp",
+        terms: "Điều khoản dịch vụ",
+        privacy: "Chính sách bảo mật",
+        legal: "Pháp lý"
+      },
+      social: {
+        facebook: "Facebook",
+        linkedin: "LinkedIn"
+      }
+    }
+  };
+
+  const t = translations[locale] || translations.en;
 
   const navigation = [
-    { label: t('links.about') || 'About', href: `/${locale}/about` },
-    { label: "Services", href: `/${locale}/services` },
-    { label: "Testimonials", href: `/${locale}/testimonials` },
-    { label: "FAQ", href: `/${locale}/faq` },
+    { label: t.links.about, href: `/${locale}/about` },
+    { label: t.links.services, href: `/${locale}/services` },
+    { label: 'Blog', href: `/${locale}/blog` },
   ];
 
   const legal = [
-    { label: t('links.terms') || 'Terms', href: `/${locale}/terms` },
-    { label: t('links.privacy') || 'Privacy', href: `/${locale}/privacy` },
-    { label: "Legal", href: `/${locale}/legal` },
+    { label: t.links.terms, href: `/${locale}/terms` },
+    { label: t.links.privacy, href: `/${locale}/privacy` },
+    { label: t.links.legal, href: `/${locale}/legal` },
   ];
 
   return (
-    <div className="relative">
+    <div className="relative bg-slate-900">
       <Container>
-        <div className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto mt-5 border-t border-gray-100 lg:grid-cols-5 px-4 md:px-0">
+        <div className="grid grid-cols-1 gap-10 pt-12 pb-8 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="mb-5">
               <Link href={`/${locale}`}>
                 <span className="flex flex-col">
-                  <span className="text-2xl font-semibold text-gray-900">Lieu Vo</span>
-                  <span className="text-sm text-gray-500 tracking-wide">your helpful accountant</span>
+                  <span className="text-2xl font-serif font-bold text-white">Lieu Vo</span>
+                  <span className="text-sm text-amber-400 tracking-wide">{t.tagline}</span>
                 </span>
               </Link>
             </div>
-            <div className="max-w-md text-sm text-gray-500 leading-relaxed">
-              {t('description') || 'Helping the Vietnamese community in the UK understand taxes and business finances.'}
+            <div className="max-w-md text-sm text-slate-300 leading-relaxed">
+              {t.description}
               <br />
-              Based in London, UK.
+              {t.location}
             </div>
           </div>
 
           <div>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-3">
               {navigation.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                  className="text-sm text-slate-300 hover:text-amber-400 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -68,12 +100,12 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-3">
               {legal.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                  className="text-sm text-slate-300 hover:text-amber-400 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -82,30 +114,32 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm text-gray-500 mb-3">Stay connected</div>
-            <div className="flex space-x-5 text-gray-400">
+            <div className="text-sm text-slate-400 mb-4">{t.stayConnected}</div>
+            <div className="flex space-x-5 text-slate-400">
               <a
-                href="https://www.facebook.com/vtthlieu"
+                href="https://www.facebook.com/lieuvoo"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-amber-400 transition-colors"
               >
-                <span className="sr-only">Facebook</span>
+                <span className="sr-only">{t.social.facebook}</span>
                 <Facebook />
               </a>
               <a
-                href="https://www.linkedin.com/in/lieu-vo-859421209/"
+                href="https://www.linkedin.com/in/lieu-vo-acca-859421209/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:text-amber-400 transition-colors"
               >
-                <span className="sr-only">LinkedIn</span>
+                <span className="sr-only">{t.social.linkedin}</span>
                 <LinkedIn />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="my-10 text-xs text-center text-gray-400">
-          {t('copyright', { year: new Date().getFullYear() }) || `Copyright © ${new Date().getFullYear()}. Made by`}
+        <div className="py-6 border-t border-slate-800 text-xs text-center text-slate-400">
+          Copyright © {new Date().getFullYear()}. All rights reserved.
         </div>
       </Container>
     </div>

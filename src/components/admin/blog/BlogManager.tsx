@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
+import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import type { BlogPostRecord } from '@/types/blog.types'
 import { generateSlug } from '@/lib/slug'
 
@@ -15,6 +16,9 @@ interface BlogFormState {
   excerpt: string
   content: string
   image: string
+  imagePosition?: string
+  imageZoom?: number
+  imageFit?: 'cover' | 'contain' | 'fill'
   category: string
   quote: string
   readingTime: string
@@ -23,9 +27,15 @@ interface BlogFormState {
   clientAge: string
   clientJob: string
   clientImage: string
+  clientImagePosition?: string
+  clientImageZoom?: number
+  clientImageFit?: 'cover' | 'contain' | 'fill'
   expertName: string
   expertTitle: string
   expertImage: string
+  expertImagePosition?: string
+  expertImageZoom?: number
+  expertImageFit?: 'cover' | 'contain' | 'fill'
   isFeatured: boolean
   isPublished: boolean
 }
@@ -43,6 +53,9 @@ const emptyForm: BlogFormState = {
   excerpt: '',
   content: '',
   image: '',
+  imagePosition: 'center',
+  imageZoom: 100,
+  imageFit: 'cover',
   category: '',
   quote: '',
   readingTime: '',
@@ -51,9 +64,15 @@ const emptyForm: BlogFormState = {
   clientAge: '',
   clientJob: '',
   clientImage: '',
+  clientImagePosition: 'center',
+  clientImageZoom: 100,
+  clientImageFit: 'cover',
   expertName: '',
   expertTitle: '',
   expertImage: '',
+  expertImagePosition: 'center',
+  expertImageZoom: 100,
+  expertImageFit: 'cover',
   isFeatured: false,
   isPublished: true,
 }
@@ -65,6 +84,9 @@ const recordToFormState = (record: BlogPostRecord): BlogFormState => ({
   excerpt: record.excerpt ?? '',
   content: record.content,
   image: record.image ?? '',
+  imagePosition: record.imagePosition ?? 'center',
+  imageZoom: record.imageZoom ?? 100,
+  imageFit: (record.imageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
   category: record.category ?? '',
   quote: record.quote ?? '',
   readingTime: record.readingTime != null ? String(record.readingTime) : '',
@@ -73,9 +95,15 @@ const recordToFormState = (record: BlogPostRecord): BlogFormState => ({
   clientAge: record.clientAge != null ? String(record.clientAge) : '',
   clientJob: record.clientJob ?? '',
   clientImage: record.clientImage ?? '',
+  clientImagePosition: record.clientImagePosition ?? 'center',
+  clientImageZoom: record.clientImageZoom ?? 100,
+  clientImageFit: (record.clientImageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
   expertName: record.expertName ?? '',
   expertTitle: record.expertTitle ?? '',
   expertImage: record.expertImage ?? '',
+  expertImagePosition: record.expertImagePosition ?? 'center',
+  expertImageZoom: record.expertImageZoom ?? 100,
+  expertImageFit: (record.expertImageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
   isFeatured: record.isFeatured,
   isPublished: record.isPublished,
 })
@@ -87,6 +115,9 @@ const formStateToPayload = (state: BlogFormState) => ({
   excerpt: state.excerpt || null,
   content: state.content,
   image: state.image || null,
+  imagePosition: state.imagePosition || 'center',
+  imageZoom: state.imageZoom || 100,
+  imageFit: state.imageFit || 'cover',
   category: state.category || null,
   quote: state.quote || null,
   readingTime: state.readingTime ? Number(state.readingTime) || null : null,
@@ -95,9 +126,15 @@ const formStateToPayload = (state: BlogFormState) => ({
   clientAge: state.clientAge ? Number(state.clientAge) || null : null,
   clientJob: state.clientJob || null,
   clientImage: state.clientImage || null,
+  clientImagePosition: state.clientImagePosition || 'center',
+  clientImageZoom: state.clientImageZoom || 100,
+  clientImageFit: state.clientImageFit || 'cover',
   expertName: state.expertName || null,
   expertTitle: state.expertTitle || null,
   expertImage: state.expertImage || null,
+  expertImagePosition: state.expertImagePosition || 'center',
+  expertImageZoom: state.expertImageZoom || 100,
+  expertImageFit: state.expertImageFit || 'cover',
   isFeatured: state.isFeatured,
   isPublished: state.isPublished,
 })
@@ -496,6 +533,19 @@ export default function BlogManager() {
                   label="Featured Image"
                   currentImage={formState.image || null}
                   onFileSelect={handleSetImage('image')}
+                  showImageControls={!!formState.image}
+                  imagePosition={formState.imagePosition || 'center'}
+                  imageZoom={formState.imageZoom || 100}
+                  imageFit={formState.imageFit || 'cover'}
+                  onImageSettingsChange={(settings: ImageControlSettings) => {
+                    setFormState(prev => ({
+                      ...prev,
+                      imagePosition: settings.position,
+                      imageZoom: settings.zoom,
+                      imageFit: settings.fit
+                    }))
+                  }}
+                  containerAspectRatio={16 / 9}
                 />
               </div>
 
@@ -530,6 +580,19 @@ export default function BlogManager() {
                     label="Client Image"
                     currentImage={formState.clientImage || null}
                     onFileSelect={handleSetImage('clientImage')}
+                    showImageControls={!!formState.clientImage}
+                    imagePosition={formState.clientImagePosition || 'center'}
+                    imageZoom={formState.clientImageZoom || 100}
+                    imageFit={formState.clientImageFit || 'cover'}
+                    onImageSettingsChange={(settings: ImageControlSettings) => {
+                      setFormState(prev => ({
+                        ...prev,
+                        clientImagePosition: settings.position,
+                        clientImageZoom: settings.zoom,
+                        clientImageFit: settings.fit
+                      }))
+                    }}
+                    containerAspectRatio={1}
                   />
                 </div>
 
@@ -553,6 +616,19 @@ export default function BlogManager() {
                     label="Expert Image"
                     currentImage={formState.expertImage || null}
                     onFileSelect={handleSetImage('expertImage')}
+                    showImageControls={!!formState.expertImage}
+                    imagePosition={formState.expertImagePosition || 'center'}
+                    imageZoom={formState.expertImageZoom || 100}
+                    imageFit={formState.expertImageFit || 'cover'}
+                    onImageSettingsChange={(settings: ImageControlSettings) => {
+                      setFormState(prev => ({
+                        ...prev,
+                        expertImagePosition: settings.position,
+                        expertImageZoom: settings.zoom,
+                        expertImageFit: settings.fit
+                      }))
+                    }}
+                    containerAspectRatio={1}
                   />
                 </div>
               </div>

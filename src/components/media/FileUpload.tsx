@@ -4,6 +4,8 @@ import { useState, useRef } from "react"
 
 import { formatFileSize, extractImageMetadata, validateImageFile } from "@/lib/media/image-utils"
 import type { MediaLibraryItem } from "@/types/media"
+import { ImagePositionControl, ImageControlSettings } from "./ImagePositionControl"
+import { ImageCropDialog } from "./ImageCropDialog"
 
 interface FileUploadProps {
   onFileSelect: (file: MediaLibraryItem | null) => void
@@ -11,6 +13,16 @@ interface FileUploadProps {
   label?: string
   accept?: string
   showMediaLibrary?: boolean
+  // Image control props
+  showImageControls?: boolean
+  imagePosition?: string
+  imageZoom?: number
+  imageFit?: 'cover' | 'contain' | 'fill'
+  onImageSettingsChange?: (settings: ImageControlSettings) => void
+  containerAspectRatio?: number
+  // Crop functionality
+  enableCrop?: boolean
+  cropAspectRatio?: number
 }
 
 export default function FileUpload({
@@ -18,7 +30,15 @@ export default function FileUpload({
   currentImage,
   label = "Upload Image",
   accept = "image/*",
-  showMediaLibrary = true
+  showMediaLibrary = true,
+  showImageControls = false,
+  imagePosition = 'center',
+  imageZoom = 100,
+  imageFit = 'cover',
+  onImageSettingsChange,
+  containerAspectRatio = 16 / 9,
+  enableCrop = false,
+  cropAspectRatio = 16 / 9,
 }: FileUploadProps) {
   const [uploading, setUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
@@ -26,6 +46,9 @@ export default function FileUpload({
   const [showLibrary, setShowLibrary] = useState(false)
   const [mediaItems, setMediaItems] = useState<MediaLibraryItem[]>([])
   const [loadingLibrary, setLoadingLibrary] = useState(false)
+  const [showCropDialog, setShowCropDialog] = useState(false)
+  const [imageToCrop, setImageToCrop] = useState<string | null>(null)
+  const [originalFileName, setOriginalFileName] = useState<string>("")
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,12 +56,18 @@ export default function FileUpload({
     if (!file) return
 
     const objectUrl = URL.createObjectURL(file)
-    setPreviewUrl(objectUrl)
+    setOriginalFileName(file.name)
 
-    await uploadFile(file)
+    if (enableCrop) {
+      setImageToCrop(objectUrl)
+      setShowCropDialog(true)
+    } else {
+      setPreviewUrl(objectUrl)
+      await uploadFile(file)
+      URL.revokeObjectURL(objectUrl)
+      setPreviewUrl(null)
+    }
 
-    URL.revokeObjectURL(objectUrl)
-    setPreviewUrl(null)
     if (fileInputRef.current) {
       fileInputRef.current.value = ""
     }
@@ -129,12 +158,50 @@ export default function FileUpload({
     if (!file) return
 
     const objectUrl = URL.createObjectURL(file)
-    setPreviewUrl(objectUrl)
+    setOriginalFileName(file.name)
 
-    uploadFile(file).finally(() => {
-      URL.revokeObjectURL(objectUrl)
-      setPreviewUrl(null)
+    if (enableCrop) {
+      setImageToCrop(objectUrl)
+      setShowCropDialog(true)
+    } else {
+      setPreviewUrl(objectUrl)
+      uploadFile(file).finally(() => {
+        URL.revokeObjectURL(objectUrl)
+        setPreviewUrl(null)
+      })
+    }
+  }
+
+  const handleCropComplete = async (croppedBlob: Blob) => {
+    setShowCropDialog(false)
+
+    // Create a File object from the Blob
+    const croppedFile = new File([croppedBlob], originalFileName, {
+      type: "image/jpeg",
+      lastModified: Date.now(),
     })
+
+    // Show preview of cropped image
+    const previewUrl = URL.createObjectURL(croppedBlob)
+    setPreviewUrl(previewUrl)
+
+    await uploadFile(croppedFile)
+
+    // Clean up
+    if (imageToCrop) {
+      URL.revokeObjectURL(imageToCrop)
+      setImageToCrop(null)
+    }
+    URL.revokeObjectURL(previewUrl)
+    setPreviewUrl(null)
+  }
+
+  const handleCropCancel = () => {
+    setShowCropDialog(false)
+    if (imageToCrop) {
+      URL.revokeObjectURL(imageToCrop)
+      setImageToCrop(null)
+    }
   }
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -143,6 +210,12 @@ export default function FileUpload({
 
   const clearImage = () => {
     onFileSelect(null)
+  }
+
+  const handleImageSettingsChange = (settings: ImageControlSettings) => {
+    if (onImageSettingsChange) {
+      onImageSettingsChange(settings)
+    }
   }
 
   return (
@@ -278,6 +351,29 @@ export default function FileUpload({
             )}
           </div>
         </div>
+      )}
+
+      {showImageControls && currentImage && (
+        <ImagePositionControl
+          imageUrl={currentImage}
+          value={{
+            position: imagePosition,
+            zoom: imageZoom,
+            fit: imageFit,
+          }}
+          onChange={handleImageSettingsChange}
+          label="Adjust Image Display"
+          containerAspectRatio={containerAspectRatio}
+        />
+      )}
+
+      {showCropDialog && imageToCrop && (
+        <ImageCropDialog
+          imageUrl={imageToCrop}
+          onComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+          aspectRatio={cropAspectRatio}
+        />
       )}
     </div>
   )

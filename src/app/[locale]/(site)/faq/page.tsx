@@ -1,19 +1,16 @@
 import { Container } from "@/components/Container";
-import { Hero } from "@/components/Hero";
-import { SectionTitle } from "@/components/SectionTitle";
-import { Benefits } from "@/components/Benefits";
-import { VideoSelfHosted } from "@/components/VideoSelfHosted";
-import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
-
-import { benefitOne, benefitTwo } from "@/components/data";
 import { FaqTitle } from "@/components/FaqTitle";
 
 export default function Home() {
   return (
-    <Container>
+    <>
       <FaqTitle />
-      <Faq />
-    </Container>
+      <div className="py-20 bg-white">
+        <Container>
+          <Faq />
+        </Container>
+      </div>
+    </>
   );
 }

@@ -26,14 +26,25 @@
     "faqDescription": "If these answers spark more questions, feel free to send an email, leave a message, or book a chat — Lieu is always happy to help."
   },
   "footer": {
+    "tagline": "your helpful accountant",
     "description": "Helping the Vietnamese community in the UK understand taxes and business finances.",
+    "location": "Based in London, UK.",
+    "stayConnected": "Stay connected",
     "copyright": "Copyright © {year}. Made by",
     "links": {
       "about": "About",
+      "services": "Services",
+      "testimonials": "Testimonials",
+      "faq": "FAQ",
       "blog": "Blog",
       "contact": "Contact",
       "terms": "Terms of Service",
-      "privacy": "Privacy Policy"
+      "privacy": "Privacy Policy",
+      "legal": "Legal"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn"
     }
   },
   "contact": {

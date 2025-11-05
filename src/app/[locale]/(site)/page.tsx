@@ -18,43 +18,62 @@ export default async function Home({ params }: HomeProps) {
   const { locale } = params
 
   return (
-    <Container>
+    <>
       <Hero params={params} />
-      <SectionTitle
-        preTitle="Lieu Vo"
-        title="Here to make your numbers human"
-      >
-        I am an accountant who cares — not just about your business, but about your family, your time, and your peace of mind.
-        I help streamline your numbers, simplify your processes, and give you back the space to focus on what matters most.
-        Good accounting isn&apos;t just about precision — it&apos;s about trust, care, and building a better life beyond the spreadsheets.
-      </SectionTitle>
 
+      <div className="py-20">
+        <SectionTitle
+          preTitle="Lieu Vo"
+          title="Here to make your numbers human"
+        >
+          I am an accountant who cares, not just about your business, but about your family, your time, and your peace of mind.
+          I help streamline your numbers, simplify your processes, and give you back the space to focus on what matters most.
+          Good accounting isn&apos;t just about precision. It&apos;s about trust, care, and building a better life beyond the spreadsheets.
+        </SectionTitle>
+      </div>
 
-      <Benefits imgPos="left" data={benefitOne} />
-      <Benefits imgPos="right" size="large" data={benefitTwo} />
+      <div className="py-20 bg-slate-50">
+        <Benefits imgPos="left" data={benefitOne} />
+      </div>
 
+      <div className="py-20">
+        <Benefits imgPos="right" size="large" data={benefitTwo} />
+      </div>
 
-      <SectionTitle
-        preTitle="hear from lieu"
-        title="supporting people, supporting businesses"
-      >
-        Lieu believes that accounting is not just about numbers — it is about enabling people to focus on what matters. Systems and tools should work <em>for us</em>, helping businesses and families thrive.
-      </SectionTitle>
+      <div className="py-20 bg-slate-50">
+        <SectionTitle
+          preTitle="hear from lieu"
+          title="supporting people, supporting businesses"
+        >
+          Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work <em>for us</em>, helping businesses and families thrive.
+        </SectionTitle>
+      </div>
 
-      <SectionTitle
-        preTitle="testimonials"
-        title="what clients and colleagues say"
-      >
-        A tailored approach, genuine care, and a strong commitment to each client's success — that's what makes working with Lieu memorable.
-      </SectionTitle>
+      <div className="py-20 bg-slate-800">
+        <Container className="text-center">
+          <div className="text-xs font-semibold tracking-widest uppercase mb-3 text-amber-400">
+            testimonials
+          </div>
+          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
+            what clients and colleagues say
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-200 font-medium mb-12">
+            A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.
+          </p>
+        </Container>
 
-      <Testimonials locale={locale} />
+        <Testimonials locale={locale} />
+      </div>
 
-      <SectionTitle preTitle="faq" title="frequently asked questions">
-        If these answers spark more questions, feel free to send an email, leave a message, or book a chat — Lieu is always happy to help.
-      </SectionTitle>
+      <div className="py-20">
+        <SectionTitle preTitle="faq" title="frequently asked questions">
+          If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help.
+        </SectionTitle>
 
-      <Faq />
-    </Container>
+        <div className="mt-12">
+          <Faq />
+        </div>
+      </div>
+    </>
   );
 }

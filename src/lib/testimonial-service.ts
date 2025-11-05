@@ -20,6 +20,9 @@ const mapPrismaTestimonial = (record: PrismaTestimonial): TestimonialRecord => (
   dateLabel: record.dateLabel,
   content: record.content,
   image: record.image,
+  imagePosition: record.imagePosition,
+  imageZoom: record.imageZoom,
+  imageFit: record.imageFit,
   order: record.order,
   isActive: record.isActive,
   createdAt: record.createdAt,
@@ -43,16 +46,18 @@ export class TestimonialService {
   }
 
   static async listActiveTestimonials(locale?: string): Promise<TestimonialRecord[]> {
-    // Don't use cache when locale is specified, as cache doesn't account for locale
+    // If locale is specified, always query fresh data
+    const whereClause = locale
+      ? { isActive: true, locale: locale }
+      : { isActive: true };
+
+    // Check cache only when no locale is specified
     if (!locale && testimonialsCache && this.isCacheFresh()) {
       return testimonialsCache
     }
 
     const records = await prisma.testimonial.findMany({
-      where: {
-        isActive: true,
-        ...(locale && { locale })
-      },
+      where: whereClause,
       orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
     })
 

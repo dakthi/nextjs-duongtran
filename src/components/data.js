@@ -29,7 +29,7 @@ const benefitOne = {
   bullets: [
     {
       title: "Practical and professional",
-      desc: "Over 2 years of experience serving SMEs across London — from VAT returns to full-cycle financial reporting, with the right mix of precision and understanding.",
+      desc: "Over 2 years of experience serving SMEs across London, from VAT returns to full-cycle financial reporting, with the right mix of precision and understanding.",
       icon: <FaceSmileIcon />,
     },
     {
@@ -47,7 +47,7 @@ const benefitOne = {
 
 const benefitTwo = {
   title: "Efficiency that lets you breathe easier",
-  desc: "Work should be smarter, not harder. I constantly optimise workflows so you spend less time worrying about compliance — and more time building your dreams.",
+  desc: "Work should be smarter, not harder. I constantly optimise workflows so you spend less time worrying about compliance and more time building your dreams.",
   image: benefitTwoImg,
   bullets: [
     {
@@ -57,12 +57,12 @@ const benefitTwo = {
     },
     {
       title: "Designed for growth",
-      desc: "I create templates, improve systems, and share best practices — helping businesses become more efficient, agile, and ready for what's next.",
+      desc: "I create templates, improve systems, and share best practices, helping businesses become more efficient, agile, and ready for what's next.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
       title: "Technology that serves people",
-      desc: "Automation and optimisation are powerful — but the heart of business is human. I use tech to make life easier, not to replace personal connection.",
+      desc: "Automation and optimisation are powerful, but the heart of business is human. I use tech to make life easier, not to replace personal connection.",
       icon: <SunIcon />,
     },
   ],

@@ -39,27 +39,27 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const chunked = hasPosts ? chunkArray(rest.slice(5), 6) : []
 
   return (
-    <Container>
+    <>
       <AboutBody
         headline={aboutContent?.headline}
         intro={aboutContent?.intro}
         sections={aboutContent?.sections}
+        contentHtml={aboutContent?.contentHtml}
+        contentJson={aboutContent?.contentJson}
       />
 
       {hasPosts && featuredPost && (
-        <div className="mt-16">
-          <PostGallery
-            featuredPost={featuredPost}
-            topPosts={topPosts}
-            chunkedPosts={chunked}
-            headings={headings}
-          />
+        <div className="pt-12 pb-20 bg-white">
+          <Container>
+            <PostGallery
+              featuredPost={featuredPost}
+              topPosts={topPosts}
+              chunkedPosts={chunked}
+              headings={headings}
+            />
+          </Container>
         </div>
       )}
-
-      <div className="mt-16">
-        <Faq />
-      </div>
-    </Container>
+    </>
   )
 }

@@ -13,7 +13,7 @@ const CACHE_DURATION = 30_000
 let aboutCache: AboutContentRecord | null = null
 let cacheTimestamp = 0
 
-const mapPrismaAbout = (record: PrismaAboutContent): AboutContentRecord => ({
+const mapPrismaAbout = (record: any): AboutContentRecord => ({
   id: record.id,
   locale: record.locale,
   slug: record.slug,
@@ -22,6 +22,8 @@ const mapPrismaAbout = (record: PrismaAboutContent): AboutContentRecord => ({
   sections: Array.isArray(record.sections)
     ? (record.sections as unknown as AboutSection[])
     : [],
+  contentJson: record.contentJson || null,
+  contentHtml: record.contentHtml || null,
   isActive: record.isActive,
   createdAt: record.createdAt,
   updatedAt: record.updatedAt,
@@ -110,6 +112,8 @@ export class AboutService {
             headline: input.headline?.trim() ?? null,
             intro: input.intro?.trim() ?? null,
             sections: input.sections as any,
+            contentJson: input.contentJson as any,
+            contentHtml: input.contentHtml ?? null,
             isActive: input.isActive ?? true,
           }
         })
@@ -124,6 +128,8 @@ export class AboutService {
             headline: input.headline?.trim() ?? null,
             intro: input.intro?.trim() ?? null,
             sections: input.sections as any,
+            contentJson: input.contentJson as any,
+            contentHtml: input.contentHtml ?? null,
             isActive: input.isActive ?? true,
           },
           create: {
@@ -132,6 +138,8 @@ export class AboutService {
             headline: input.headline?.trim() ?? null,
             intro: input.intro?.trim() ?? null,
             sections: input.sections as any,
+            contentJson: input.contentJson as any,
+            contentHtml: input.contentHtml ?? null,
             isActive: input.isActive ?? true,
           }
         })

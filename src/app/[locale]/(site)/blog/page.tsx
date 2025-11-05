@@ -15,11 +15,6 @@ function chunkArray<T>(array: T[], size: number): T[][] {
   return result
 }
 
-const imageStyle = {
-  borderRadius: '2%',
-  border: '1px solid #fff',
-}
-
 interface BlogPageProps {
   params: {
     locale: string
@@ -31,16 +26,24 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   if (posts.length === 0) {
     return (
-      <Container>
-        <div className="text-left">
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 px-3">
-            Reflections and thoughts
-          </h2>
-          <p className="text-gray-500 text-base md:text-lg px-3 leading-relaxed">
-            Blog posts will appear here once they are published.
-          </p>
+      <>
+        {/* Hero Section */}
+        <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
+          <div className="max-w-5xl mx-auto px-8 xl:px-12">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
+                Insights & Reflections
+              </p>
+              <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
+                Blog
+              </h1>
+              <p className="text-lg font-medium text-slate-900 leading-relaxed">
+                Blog posts will appear here once they are published.
+              </p>
+            </div>
+          </div>
         </div>
-      </Container>
+      </>
     )
   }
 
@@ -50,134 +53,185 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const top5Posts = rest.slice(0, 5)
   const morePosts = rest.slice(5)
   const chunked = chunkArray(morePosts, 6)
-  const headings = ['Recent insights', 'More articles', 'Further reflections', 'Latest updates', 'New reads']
+  const headings = ['Recent Insights', 'More Articles', 'Further Reflections', 'Latest Updates', 'New Reads']
 
   return (
-    <Container>
-      <div className="text-left">
-        <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 px-3">
-          Reflections and thoughts
-        </h2>
-        <p className="text-gray-500 text-base md:text-lg px-3 leading-relaxed">
-          True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons,
-          the real-world challenges, and the continuous improvement that define my journey. Here, you can
-          find some reflections, lessons learned, and professional thoughts — captured candidly along the way.
-        </p>
-      </div>
-
-      <div className="mt-6 grid grid-cols-1 xl:grid-cols-3 gap-5 px-3">
-        <a
-          href={`/blog/${featuredPost.slug}`}
-          className="group xl:col-span-2 hover:shadow-md transition-shadow rounded-xl overflow-hidden bg-white border"
-        >
-          <div className="relative w-full h-80 bg-white">
-            <Image
-              src={featuredPost.image || fallbackImg}
-              alt={featuredPost.title}
-              fill
-              style={imageStyle}
-              className="object-cover object-top"
-              quality={90}
-              unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
-            />
+    <>
+      {/* Hero Section */}
+      <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
+        <div className="max-w-5xl mx-auto px-8 xl:px-12">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
+              Insights & Reflections
+            </p>
+            <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
+              Blog
+            </h1>
+            <p className="text-lg font-medium text-slate-900 leading-relaxed">
+              True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons,
+              the real-world challenges, and the continuous improvement that define my journey. Here, you can
+              find some reflections, lessons learned, and professional thoughts, captured candidly along the way.
+            </p>
           </div>
-          <div className="p-5 md:p-6">
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 group-hover:text-gray-600">
-              {featuredPost.title}
-            </h3>
-            <div className="mt-2 flex flex-wrap items-center text-sm text-gray-500 gap-x-3">
-              {featuredPost.category && (
-                <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-medium">
-                  {featuredPost.category}
-                </span>
-              )}
-              {featuredPost.readingTime != null && <span>{featuredPost.readingTime} min read</span>}
-            </div>
-            {featuredPost.quote && (
-              <p className="mt-2 text-gray-500 italic text-sm">“{featuredPost.quote}”</p>
-            )}
-          </div>
-        </a>
-
-        <div className="flex flex-col gap-4">
-          {top5Posts.map((post) => (
-            <a
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="flex items-start gap-4 border-b pb-3 hover:bg-gray-50 transition rounded-md"
-            >
-              <div className="relative w-16 h-16 rounded overflow-hidden">
-                <Image
-                  src={post.image || fallbackImg}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  quality={80}
-                  unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
-                />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-sm font-medium text-gray-800 group-hover:text-gray-600">
-                  {post.title}
-                </h4>
-                <div className="mt-1 flex items-center text-xs text-gray-500 gap-x-2">
-                  {post.category && (
-                    <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full font-medium">
-                      {post.category}
-                    </span>
-                  )}
-                  {post.readingTime != null && <span>{post.readingTime} min</span>}
-                </div>
-              </div>
-            </a>
-          ))}
         </div>
       </div>
 
-      {chunked.map((chunk, index) => (
-        <div key={index}>
-          <h3 className="mt-14 mb-5 text-xl md:text-2xl font-semibold text-gray-800 px-3">
-            {headings[index] || 'More reads'}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 px-3">
-            {chunk.map((post) => (
-              <a
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group hover:shadow-md transition-shadow rounded-xl overflow-hidden bg-white border"
-              >
-                <div className="relative w-full h-56 md:h-64">
-                  <Image
-                    src={post.image || fallbackImg}
-                    alt={post.title}
-                    fill
-                    style={imageStyle}
-                    className="object-cover"
-                    quality={90}
-                    unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
-                  />
-                </div>
-                <div className="p-4 md:p-5">
-                  <h3 className="text-lg font-semibold text-gray-800 group-hover:text-gray-600">
-                    {post.title}
-                  </h3>
-                  <div className="mt-2 flex flex-wrap items-center text-xs text-gray-500 gap-x-2">
-                    {post.category && (
-                      <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full font-medium">
-                        {post.category}
-                      </span>
-                    )}
-                    {post.readingTime != null && <span>{post.readingTime} min</span>}
+      {/* Featured Post Section */}
+      <div className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-8 xl:px-12">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-6">
+            Featured Article
+          </p>
+          <a
+            href={`/blog/${featuredPost.slug}`}
+            className="group block bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow"
+          >
+            <div className="flex flex-col lg:flex-row">
+              <div className="relative w-full lg:w-1/2 h-80 lg:h-96">
+                <Image
+                  src={featuredPost.image || fallbackImg}
+                  alt={featuredPost.title}
+                  fill
+                  style={{
+                    objectFit: (featuredPost.imageFit as 'cover' | 'contain' | 'fill') || 'cover',
+                    objectPosition: featuredPost.imagePosition || 'center',
+                    transform: `scale(${(featuredPost.imageZoom || 100) / 100})`
+                  }}
+                  className="border-4 border-slate-800"
+                  quality={90}
+                  unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
+                />
+              </div>
+              <div className="flex-1 p-8 flex flex-col justify-center">
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+                  {featuredPost.category || 'Article'}
+                </p>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4 leading-tight group-hover:text-amber-600 transition-colors">
+                  {featuredPost.title}
+                </h2>
+                {featuredPost.quote && (
+                  <p className="text-base text-slate-700 leading-relaxed italic mb-4">
+                    "{featuredPost.quote}"
+                  </p>
+                )}
+                {featuredPost.readingTime != null && (
+                  <p className="text-sm text-slate-600">
+                    {featuredPost.readingTime} min read
+                  </p>
+                )}
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Recent Posts Section */}
+      {top5Posts.length > 0 && (
+        <div className="py-20 bg-slate-50">
+          <div className="max-w-5xl mx-auto px-8 xl:px-12">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
+                Recent Posts
+              </p>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                Latest Articles
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {top5Posts.map((post) => (
+                <a
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow flex flex-col"
+                >
+                  <div className="relative w-full h-56">
+                    <Image
+                      src={post.image || fallbackImg}
+                      alt={post.title}
+                      fill
+                      style={{
+                        objectFit: 'cover'
+                      }}
+                      className="border-4 border-slate-800"
+                      quality={85}
+                      unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
+                    />
                   </div>
-                  {post.quote && (
-                    <p className="mt-2 text-gray-500 italic text-xs">“{post.quote}”</p>
-                  )}
-                </div>
-              </a>
-            ))}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+                      {post.category || 'Article'}
+                    </p>
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-600 transition-colors">
+                      {post.title}
+                    </h3>
+                    {post.readingTime != null && (
+                      <p className="mt-auto text-xs text-slate-600">
+                        {post.readingTime} min read
+                      </p>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* More Posts Sections */}
+      {chunked.map((chunk, index) => (
+        <div key={index} className={`py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+          <div className="max-w-5xl mx-auto px-8 xl:px-12">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                {headings[index] || 'More Articles'}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {chunk.map((post) => (
+                <a
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow flex flex-col"
+                >
+                  <div className="relative w-full h-56">
+                    <Image
+                      src={post.image || fallbackImg}
+                      alt={post.title}
+                      fill
+                      style={{
+                        objectFit: 'cover'
+                      }}
+                      className="border-4 border-slate-800"
+                      quality={85}
+                      unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+                      {post.category || 'Article'}
+                    </p>
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-600 transition-colors">
+                      {post.title}
+                    </h3>
+                    {post.quote && (
+                      <p className="text-sm text-slate-700 leading-relaxed italic mb-4">
+                        "{post.quote}"
+                      </p>
+                    )}
+                    {post.readingTime != null && (
+                      <p className="mt-auto text-xs text-slate-600">
+                        {post.readingTime} min read
+                      </p>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       ))}
-    </Container>
+    </>
   )
 }

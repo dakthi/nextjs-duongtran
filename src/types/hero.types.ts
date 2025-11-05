@@ -8,6 +8,9 @@ export interface HeroData {
   ctaText?: string | null
   ctaLink?: string | null
   image?: string | null
+  imagePosition?: string | null
+  imageZoom?: number | null
+  imageFit?: string | null
   isActive?: boolean
   createdAt?: Date
   updatedAt?: Date

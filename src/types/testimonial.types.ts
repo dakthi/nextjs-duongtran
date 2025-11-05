@@ -6,6 +6,9 @@ export interface TestimonialRecord {
   dateLabel: string | null
   content: string
   image: string | null
+  imagePosition: string | null
+  imageZoom: number | null
+  imageFit: string | null
   order: number
   isActive: boolean
   createdAt: Date
@@ -20,6 +23,9 @@ export interface TestimonialInput {
   dateLabel?: string | null
   content: string
   image?: string | null
+  imagePosition?: string | null
+  imageZoom?: number | null
+  imageFit?: string | null
   order?: number
   isActive?: boolean
 }

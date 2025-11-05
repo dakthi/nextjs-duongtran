@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { HeroData, HeroFieldGroup, HeroFormData, HeroEditorState } from '@/types/hero.types'
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
+import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import { HeroPreview } from './HeroPreview'
 
 const heroDataToFormData = (data: HeroData): HeroFormData => ({
@@ -280,6 +281,21 @@ export function HeroEditor({
             onFileSelect={(media: MediaLibraryItem | null) => {
               setFormData(prev => ({ ...prev, image: media?.url || '' }))
             }}
+            showImageControls={!!value}
+            imagePosition={(formData.imagePosition as string) || 'center'}
+            imageZoom={(formData.imageZoom as number) || 100}
+            imageFit={(formData.imageFit as 'cover' | 'contain' | 'fill') || 'cover'}
+            onImageSettingsChange={(settings: ImageControlSettings) => {
+              setFormData(prev => ({
+                ...prev,
+                imagePosition: settings.position,
+                imageZoom: settings.zoom,
+                imageFit: settings.fit
+              }))
+            }}
+            containerAspectRatio={16 / 9}
+            enableCrop={true}
+            cropAspectRatio={16 / 9}
           />
           {value && (
             <div className="break-all rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600">

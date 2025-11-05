@@ -11,23 +11,23 @@ interface SectionTitleProps {
 export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
   return (
     <Container
-      className={` flex w-full flex-col xl:mt-12 p-5 ${
+      className={`flex w-full flex-col ${
         props.align === "left" ? "" : "items-center justify-center text-center"
       }`}>
       {props.preTitle && (
-        <div className="text-sm font-bold tracking-wider text-gray-700 uppercase">
+        <div className="text-xs font-semibold tracking-widest uppercase mb-3 letter-spacing-wider text-slate-600">
           {props.preTitle}
         </div>
       )}
 
       {props.title && (
-        <h2 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl">
+        <h2 className="max-w-3xl text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-slate-900">
           {props.title}
         </h2>
       )}
 
       {props.children && (
-        <p className="max-w-2xl py-4 text-lg leading-normal text-gray-500 lg:text-md xl:text-md">
+        <p className="max-w-3xl text-lg leading-relaxed text-slate-900 font-medium">
           {props.children}
         </p>
       )}

@@ -19,6 +19,9 @@ export interface PostSummary {
   slug: string
   title: string
   image?: string | null
+  imagePosition?: string | null
+  imageZoom?: number | null
+  imageFit?: string | null
   date?: string | null
   readingTime?: number | null
   category?: string | null
@@ -32,11 +35,17 @@ export interface Post extends PostSummary {
     age: number | null
     job: string | null
     image: string | null
+    imagePosition?: string | null
+    imageZoom?: number | null
+    imageFit?: string | null
   }
   expert?: {
     name: string | null
     title: string | null
     image: string | null
+    imagePosition?: string | null
+    imageZoom?: number | null
+    imageFit?: string | null
   }
 }
 
@@ -44,6 +53,9 @@ const mapViewToPost = (view: BlogPostView): Post => ({
   slug: view.slug,
   title: view.title,
   image: optionalLegacyMediaUrl(view.image ?? undefined) ?? view.image,
+  imagePosition: view.imagePosition,
+  imageZoom: view.imageZoom,
+  imageFit: view.imageFit,
   date: view.publishedDate,
   readingTime: view.readingTime,
   category: view.category,
@@ -55,6 +67,9 @@ const mapViewToPost = (view: BlogPostView): Post => ({
         age: view.client.age,
         job: view.client.job,
         image: optionalLegacyMediaUrl(view.client.image ?? undefined) ?? view.client.image,
+        imagePosition: view.client.imagePosition,
+        imageZoom: view.client.imageZoom,
+        imageFit: view.client.imageFit,
       }
     : undefined,
   expert: view.expert
@@ -62,6 +77,9 @@ const mapViewToPost = (view: BlogPostView): Post => ({
         name: view.expert.name,
         title: view.expert.title,
         image: optionalLegacyMediaUrl(view.expert.image ?? undefined) ?? view.expert.image,
+        imagePosition: view.expert.imagePosition,
+        imageZoom: view.expert.imageZoom,
+        imageFit: view.expert.imageFit,
       }
     : undefined,
 })
@@ -70,6 +88,9 @@ const mapRecordToSummary = (record: BlogPostRecord): PostSummary => ({
   slug: record.slug,
   title: record.title,
   image: optionalLegacyMediaUrl(record.image ?? undefined) ?? record.image,
+  imagePosition: record.imagePosition,
+  imageZoom: record.imageZoom,
+  imageFit: record.imageFit,
   date: record.publishedDate,
   readingTime: record.readingTime,
   category: record.category,

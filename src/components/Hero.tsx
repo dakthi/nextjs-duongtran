@@ -19,12 +19,18 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
   const heroImage = image || fallbackImage;
   const isRemote = isMediaRemoteUrl(heroImage);
 
+  // Image control settings
+  const imagePosition = heroContent?.imagePosition || 'center 70%';
+  const imageZoom = heroContent?.imageZoom || 100;
+  const imageFit = (heroContent?.imageFit as 'cover' | 'contain' | 'fill') || 'cover';
+
   return (
-    <>
-      <Container className="flex flex-wrap items-center">
-        <div className="order-last xl:order-first flex items-start w-full lg:w-1/2 pl-5 pr-5 xl:pl-0 xl:pr-0">
-          <div className="max-w-xl">
-            <h1 className="text-lg font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight">
+    <div className="bg-amber-50 py-20 border-b-4 border-amber-500">
+      <Container>
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* Text Content */}
+          <div className="flex-1">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold leading-tight text-slate-800 mb-6">
               {title.split('\n').map((line, index) => (
                 <span key={index}>
                   {line}
@@ -33,12 +39,12 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               ))}
             </h1>
             {subtitle && (
-              <p className="text-md leading-normal text-gray-500 lg:text-xl xl:text-xl xl:mt-5 xl:mb-5 xl:pr-0">
+              <p className="text-lg leading-relaxed text-slate-700 mb-4">
                 {subtitle.split('\n').map((line, index) => (
                   <span key={index}>
                     {line.split(/(<em>.*?<\/em>)/g).map((part, partIndex) => {
                       if (part.startsWith('<em>') && part.endsWith('</em>')) {
-                        return <em key={partIndex}>{part.slice(4, -5)}</em>;
+                        return <em key={partIndex} className="text-amber-600 font-semibold">{part.slice(4, -5)}</em>;
                       }
                       return part;
                     })}
@@ -48,12 +54,12 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               </p>
             )}
             {description && (
-              <p className="mb-2 text-md leading-normal text-gray-500 lg:text-xl xl:text-xl xl:mt-5 xl:mb-5 pr-5 xl:pr-0">
+              <p className="text-base leading-relaxed text-slate-600 mb-8">
                 {description.split('\n').map((line, index) => (
                   <span key={index}>
                     {line.split(/(<em>.*?<\/em>)/g).map((part, partIndex) => {
                       if (part.startsWith('<em>') && part.endsWith('</em>')) {
-                        return <em key={partIndex}>{part.slice(4, -5)}</em>;
+                        return <em key={partIndex} className="text-amber-600 font-semibold">{part.slice(4, -5)}</em>;
                       }
                       return part;
                     })}
@@ -63,31 +69,36 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               </p>
             )}
 
-            <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
+            <div>
               <a
                 href={ctaLink}
                 rel="noopener"
-                className="mt-2 px-8 py-4 text-sm font-medium text-center text-white bg-gray-600 rounded-md"
+                className="inline-block px-8 py-3 text-base font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors"
               >
                 {ctaText}
               </a>
             </div>
           </div>
-        </div>
 
-        <div className="flex items-center justify-center w-full p-5 xl:p-0 lg:w-1/2">
-          <div className="relative w-full h-[550px] overflow-hidden rounded-lg border border-white">
-            <Image
-              src={heroImage}
-              alt="Lieu Vo"
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center 70%' }}
-              quality={100}
-              unoptimized={isRemote}
-            />
+          {/* Image */}
+          <div className="flex-1 w-full">
+            <div className="relative w-full aspect-[4/5] overflow-hidden border-4 border-slate-800">
+              <Image
+                src={heroImage}
+                alt="Lieu Vo"
+                fill
+                style={{
+                  objectFit: imageFit,
+                  objectPosition: imagePosition,
+                  transform: `scale(${imageZoom / 100})`
+                }}
+                quality={100}
+                unoptimized={isRemote}
+              />
+            </div>
           </div>
         </div>
       </Container>
-    </>
+    </div>
   );
 }

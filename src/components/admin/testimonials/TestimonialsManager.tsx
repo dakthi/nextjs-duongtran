@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
+import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import type { TestimonialRecord } from '@/types/testimonial.types'
 
 interface TestimonialFormState {
@@ -14,6 +15,9 @@ interface TestimonialFormState {
   dateLabel: string
   content: string
   image: string
+  imagePosition?: string
+  imageZoom?: number
+  imageFit?: 'cover' | 'contain' | 'fill'
   order: string
   isActive: boolean
 }
@@ -32,6 +36,9 @@ const emptyForm: TestimonialFormState = {
   dateLabel: '',
   content: '',
   image: '',
+  imagePosition: 'center',
+  imageZoom: 100,
+  imageFit: 'cover',
   order: '0',
   isActive: true,
 }
@@ -44,6 +51,9 @@ const recordToFormState = (record: TestimonialRecord): TestimonialFormState => (
   dateLabel: record.dateLabel ?? '',
   content: record.content,
   image: record.image ?? '',
+  imagePosition: record.imagePosition ?? 'center',
+  imageZoom: record.imageZoom ?? 100,
+  imageFit: (record.imageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
   order: String(record.order ?? 0),
   isActive: record.isActive,
 })
@@ -56,6 +66,9 @@ const formStateToPayload = (state: TestimonialFormState) => ({
   dateLabel: state.dateLabel || null,
   content: state.content,
   image: state.image || null,
+  imagePosition: state.imagePosition || 'center',
+  imageZoom: state.imageZoom || 100,
+  imageFit: state.imageFit || 'cover',
   order: state.order ? Number(state.order) || 0 : 0,
   isActive: state.isActive,
 })
@@ -379,6 +392,19 @@ export default function TestimonialsManager() {
                   label="Portrait Image"
                   currentImage={formState.image || null}
                   onFileSelect={handleImageSelect}
+                  showImageControls={!!formState.image}
+                  imagePosition={formState.imagePosition || 'center'}
+                  imageZoom={formState.imageZoom || 100}
+                  imageFit={formState.imageFit || 'cover'}
+                  onImageSettingsChange={(settings: ImageControlSettings) => {
+                    setFormState(prev => ({
+                      ...prev,
+                      imagePosition: settings.position,
+                      imageZoom: settings.zoom,
+                      imageFit: settings.fit
+                    }))
+                  }}
+                  containerAspectRatio={1}
                 />
               </div>
 

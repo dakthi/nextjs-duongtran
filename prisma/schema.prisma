@@ -60,78 +60,95 @@ model User {
 
 // Portfolio CMS Models
 model HeroContent {
-  id          String   @id @default(cuid())
-  locale      String   @default("en")
-  title       String
-  subtitle    String?
-  description String?
-  ctaText     String?
-  ctaLink     String?
-  image       String?
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id @default(cuid())
+  locale        String   @default("en")
+  title         String
+  subtitle      String?
+  description   String?
+  ctaText       String?
+  ctaLink       String?
+  image         String?
+  imagePosition String?  @default("center") // CSS object-position value (e.g., "center", "top", "bottom", "left", "right", "center 70%")
+  imageZoom     Float?   @default(100) // Zoom percentage (100 = original size, 150 = 1.5x zoom)
+  imageFit      String?  @default("cover") // Display mode: "cover" (crop to fill), "contain" (show full image), "fill" (stretch)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   @@unique([locale])
   @@map("hero_content")
 }
 
 model BlogPost {
-  id            String   @id @default(cuid())
-  locale        String   @default("en")
-  slug          String
-  title         String
-  excerpt       String?
-  content       String
-  image         String?
-  category      String?
-  quote         String?
-  readingTime   Int?
-  publishedDate String?
-  clientName    String?
-  clientAge     Int?
-  clientJob     String?
-  clientImage   String?
-  expertName    String?
-  expertTitle   String?
-  expertImage   String?
-  isFeatured    Boolean  @default(false)
-  isPublished   Boolean  @default(true)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                  String   @id @default(cuid())
+  locale              String   @default("en")
+  slug                String
+  title               String
+  excerpt             String?
+  content             String
+  image               String?
+  imagePosition       String?  @default("center") // CSS object-position for featured image
+  imageZoom           Float?   @default(100) // Zoom percentage for featured image
+  imageFit            String?  @default("cover") // Display mode for featured image: "cover", "contain", "fill"
+  category            String?
+  quote               String?
+  readingTime         Int?
+  publishedDate       String?
+  clientName          String?
+  clientAge           Int?
+  clientJob           String?
+  clientImage         String?
+  clientImagePosition String?  @default("center") // CSS object-position for client image
+  clientImageZoom     Float?   @default(100) // Zoom percentage for client image
+  clientImageFit      String?  @default("cover") // Display mode for client image
+  expertName          String?
+  expertTitle         String?
+  expertImage         String?
+  expertImagePosition String?  @default("center") // CSS object-position for expert image
+  expertImageZoom     Float?   @default(100) // Zoom percentage for expert image
+  expertImageFit      String?  @default("cover") // Display mode for expert image
+  isFeatured          Boolean  @default(false)
+  isPublished         Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
   @@unique([locale, slug])
   @@map("blog_posts")
 }
 
 model AboutContent {
-  id        String   @id @default(cuid())
-  locale    String   @default("en")
-  slug      String
-  headline  String?
-  intro     String?
-  sections  Json
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(cuid())
+  locale      String   @default("en")
+  slug        String
+  headline    String?
+  intro       String?
+  sections    Json?    // Legacy sections format (will be deprecated)
+  contentJson Json?    // TipTap JSON format for editing
+  contentHtml String?  @db.Text // Generated HTML for fast display
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@unique([locale, slug])
   @@map("about_content")
 }
 
 model Testimonial {
-  id          String   @id @default(cuid())
-  locale      String   @default("en")
-  name        String
-  role        String?
-  relationship String?
-  dateLabel   String?
-  content     String
-  image       String?
-  order       Int      @default(0)
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String   @id @default(cuid())
+  locale        String   @default("en")
+  name          String
+  role          String?
+  relationship  String?
+  dateLabel     String?
+  content       String
+  image         String?
+  imagePosition String?  @default("center") // CSS object-position for avatar
+  imageZoom     Float?   @default(100) // Zoom percentage for avatar
+  imageFit      String?  @default("cover") // Display mode for avatar: "cover", "contain", "fill"
+  order         Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   @@map("testimonials")
 }
