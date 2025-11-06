@@ -13,7 +13,7 @@ export const Faq = () => {
 
   return (
     <Container>
-      <div className="w-full max-w-3xl mx-auto">
+      <div className="w-full">
         {faqData.map((item, index) => {
           const isOpen = openIndex === index;
           return (

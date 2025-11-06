@@ -5,7 +5,7 @@
 
   export const FaqPage = () => {
     return (
-      <Container className="prose prose-gray max-w-2xl mx-auto py-12">
+      <Container className="prose prose-gray py-12">
         <h1 className="text-3xl font-bold mb-8">Frequently Asked Questions</h1>
         {faqData.map((item) => (
           <div key={item.question} className="mb-8">

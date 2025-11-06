@@ -91,7 +91,7 @@ export function HeroEditor({
           label: 'Button Link',
           type: 'text',
           placeholder: '/services',
-          description: 'URL or path for the button (e.g., /services, /contact, or https://...)'
+          description: 'URL or path for the button. Relative paths like /services will automatically include the locale (e.g., /en/services). Use full URLs for external links (e.g., https://example.com)'
         }
       ]
     },

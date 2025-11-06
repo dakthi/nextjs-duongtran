@@ -12,8 +12,8 @@ export function Video({ videoId }: Readonly<VideoProps>) {
   if (!videoId) return null;
 
   return (
-    <Container className="pr-5 pl-5">
-      <div className="relative w-full h-[500px] max-w-4xl mx-auto overflow-hidden lg:mb-20 rounded-2xl bg-red-700 cursor-pointer bg-gradient-to-tr from-black to-white ">
+    <Container>
+      <div className="relative w-full h-[500px] overflow-hidden lg:mb-20 rounded-2xl bg-red-700 cursor-pointer bg-gradient-to-tr from-black to-white ">
         {!playVideo && (
           <button
             onClick={() => setPlayVideo(!playVideo)}

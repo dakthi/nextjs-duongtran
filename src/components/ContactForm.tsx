@@ -47,23 +47,21 @@ export const ContactForm = () => {
     <>
       {/* Hero Section */}
       <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
-        <div className="max-w-5xl mx-auto px-8 xl:px-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-tight mb-6">
-              Get in Touch
-            </h1>
-            <p className="text-lg font-medium text-slate-900 leading-relaxed">
-              If you&apos;re a founder or small business owner and you&apos;d like to connect, I&apos;d love to hear from you.
-              Whether it&apos;s a specific question, a collaboration idea, or just something you&apos;d like to share,
-              feel free to reach out.
-            </p>
-          </div>
-        </div>
+        <Container className="text-center">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-tight mb-6">
+            Get in Touch
+          </h1>
+          <p className="text-lg font-medium text-slate-900 leading-relaxed">
+            If you&apos;re a founder or small business owner and you&apos;d like to connect, I&apos;d love to hear from you.
+            Whether it&apos;s a specific question, a collaboration idea, or just something you&apos;d like to share,
+            feel free to reach out.
+          </p>
+        </Container>
       </div>
 
       {/* Contact Content */}
       <div className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-8 xl:px-12">
+        <Container>
           {/* Introduction Section */}
           <div className="mb-12 space-y-4 text-lg text-slate-700 leading-relaxed">
             <p>
@@ -177,7 +175,7 @@ export const ContactForm = () => {
                 )}
               </form>
           </div>
-        </div>
+        </Container>
       </div>
     </>
   );

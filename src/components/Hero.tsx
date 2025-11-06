@@ -13,7 +13,13 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
   const subtitle = heroContent?.subtitle || "I would love you hear more about you, and how I can help you protect your business, support your family, and enjoy the life you are building.";
   const description = heroContent?.description || "Leave the boring parts to me\nYou take care of what is fun!";
   const ctaText = heroContent?.ctaText || "See how I can help";
-  const ctaLink = heroContent?.ctaLink || "/services";
+  const ctaLinkRaw = heroContent?.ctaLink || "/services";
+
+  // Add locale prefix to relative paths (not external URLs or anchors)
+  const ctaLink = ctaLinkRaw.startsWith('/') && !ctaLinkRaw.startsWith('//')
+    ? `/${locale}${ctaLinkRaw}`
+    : ctaLinkRaw;
+
   const image = heroContent?.image || null;
   const fallbackImage = legacyMediaUrl('/img/lieu-barbican.jpg');
   const heroImage = image || fallbackImage;
