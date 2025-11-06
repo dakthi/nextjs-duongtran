@@ -2,12 +2,16 @@ import TestimonialsManager from '@/components/admin/testimonials/TestimonialsMan
 
 export default function AdminTestimonialsPage() {
   return (
-    <div className="space-y-6 pb-12">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Testimonials Management</h1>
-        <p className="mt-2 text-gray-600">
-          Curate the voices that appear on the site. Add new testimonials, update content, and control visibility and
-          ordering.
+    <div className="pb-12">
+      <div className="mb-8">
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+          Content Management
+        </p>
+        <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
+          Testimonials
+        </h1>
+        <p className="text-lg font-medium text-slate-700 leading-relaxed max-w-3xl">
+          Curate the voices that appear on the site. Add new testimonials, update content, and control visibility and ordering.
         </p>
       </div>
 

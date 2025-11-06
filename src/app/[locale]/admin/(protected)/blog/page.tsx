@@ -2,11 +2,16 @@ import BlogManager from '@/components/admin/blog/BlogManager'
 
 export default function AdminBlogPage() {
   return (
-    <div className="space-y-6 pb-12">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Blog Content Management</h1>
-        <p className="mt-2 text-gray-600">
-          Create and edit blog posts that appear across the site. Posts support markdown content, feature images,
+    <div className="pb-12">
+      <div className="mb-8">
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+          Content Management
+        </p>
+        <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
+          Blog Posts
+        </h1>
+        <p className="text-lg font-medium text-slate-700 leading-relaxed max-w-3xl">
+          Create and edit blog posts that appear across the site. Posts support rich text content, feature images,
           and optional client or expert highlights.
         </p>
       </div>

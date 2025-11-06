@@ -226,6 +226,37 @@ export default function BlogManager() {
     setOriginalState(nextState)
   }
 
+  const handleExportBackup = () => {
+    try {
+      // Create backup object with timestamp
+      const backup = {
+        exportDate: new Date().toISOString(),
+        locale: locale,
+        totalPosts: posts.length,
+        posts: posts,
+      }
+
+      // Convert to JSON string with formatting
+      const jsonString = JSON.stringify(backup, null, 2)
+
+      // Create blob and download
+      const blob = new Blob([jsonString], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `blog-backup-${locale}-${new Date().toISOString().split('T')[0]}.json`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+
+      showStatus('success', `Exported ${posts.length} blog posts successfully`)
+    } catch (error) {
+      console.error('Export failed:', error)
+      showStatus('error', 'Failed to export blog posts')
+    }
+  }
+
   const handleInputChange = (field: keyof BlogFormState) => (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -364,15 +395,26 @@ export default function BlogManager() {
 
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="lg:w-1/3 space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <h2 className="text-lg font-semibold text-gray-900">Posts</h2>
-            <button
-              type="button"
-              onClick={handleNewPost}
-              className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white transition hover:bg-blue-700"
-            >
-              New Post
-            </button>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleExportBackup}
+                disabled={posts.length === 0}
+                className="rounded-md bg-green-600 px-3 py-1 text-sm font-medium text-white transition hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Export all blog posts as JSON backup"
+              >
+                Export
+              </button>
+              <button
+                type="button"
+                onClick={handleNewPost}
+                className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white transition hover:bg-blue-700"
+              >
+                New Post
+              </button>
+            </div>
           </div>
 
           <div className="rounded-lg border border-gray-200 bg-white">
