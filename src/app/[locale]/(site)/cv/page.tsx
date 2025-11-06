@@ -51,7 +51,7 @@ export default function CVPage() {
             For Employers & Recruiters
           </h1>
           <p className="text-lg font-medium text-slate-900 leading-relaxed max-w-3xl">
-            I'm currently open to new opportunities, including full-time roles, where I can leverage my technical expertise,
+            I'm always interested in meaningful conversations about opportunities where I can leverage my technical expertise,
             automation skills, and client-focused approach to drive financial clarity, operational efficiency, and strategic growth.
           </p>
         </Container>
@@ -83,154 +83,144 @@ export default function CVPage() {
             title="Core Expertise & Experience"
           />
 
-          <div className="mt-12 space-y-8">
+          <div className="mt-12 space-y-0">
             {/* Core Accounting Expertise */}
-            <div className="border-l-4 border-amber-500 pl-4">
+            <div className="border-l-4 border-amber-500 border-t-2 border-b-2 border-slate-200 pl-4 py-6">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Core Accounting Expertise</h3>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
                 My core expertise spans the full spectrum of UK accounting and tax services for SMEs:
               </p>
-              <ul className="space-y-2 text-lg text-slate-700 leading-relaxed">
+              <ul className="space-y-0.5 text-lg text-slate-700 leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Year-end accounts preparation and corporation tax</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Self-assessments with 100% on-time filing rates for hundreds of clients</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>VAT returns and payroll management with strict HMRC compliance</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Large client portfolio management with proven track record</span>
                 </li>
               </ul>
             </div>
 
-            <div className="border-t-2 border-slate-300"></div>
-
             {/* Process Automation */}
-            <div className="border-l-4 border-amber-500 pl-4">
+            <div className="border-l-4 border-amber-500 border-b-2 border-slate-200 pl-4 py-6">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Process Automation & Workflow Optimization</h3>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
                 One of my key strengths is leveraging technology to improve efficiency and accuracy:
               </p>
-              <ul className="space-y-2 text-lg text-slate-700 leading-relaxed">
+              <ul className="space-y-0.5 text-lg text-slate-700 leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Python scripting and Excel automation for streamlined workflows</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Custom solutions that reduce manual workload and improve accuracy</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Saved hundreds of hours while increasing quality and reliability</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Freed up time for higher-value advisory work</span>
                 </li>
               </ul>
             </div>
 
-            <div className="border-t-2 border-slate-300"></div>
-
             {/* Tax Planning */}
-            <div className="border-l-4 border-amber-500 pl-4">
+            <div className="border-l-4 border-amber-500 border-b-2 border-slate-200 pl-4 py-6">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Strategic Tax Planning & Advisory</h3>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
                 Beyond compliance work, I provide strategic advisory services that deliver tangible results:
               </p>
-              <ul className="space-y-2 text-lg text-slate-700 leading-relaxed">
+              <ul className="space-y-0.5 text-lg text-slate-700 leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Careful planning around income structure, dividends, and VAT strategies</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Significantly reduced tax liabilities for clients</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Enabled businesses to reinvest savings into growth</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Clients have seen substantial revenue increases from recommendations</span>
                 </li>
               </ul>
             </div>
 
-            <div className="border-t-2 border-slate-300"></div>
-
             {/* Technical Skills */}
-            <div className="border-l-4 border-amber-500 pl-4">
+            <div className="border-l-4 border-amber-500 border-b-2 border-slate-200 pl-4 py-6">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Technical Skills & Platforms</h3>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
                 Proficient in industry-standard platforms and modern technologies:
               </p>
-              <ul className="space-y-2 text-lg text-slate-700 leading-relaxed">
+              <ul className="space-y-0.5 text-lg text-slate-700 leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>CCH, Sage 50, BrightPay, IRIS</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Companies House and HMRC services</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Python, Google Apps Script, AI tools</span>
                 </li>
               </ul>
             </div>
 
-            <div className="border-t-2 border-slate-300"></div>
-
             {/* Leadership */}
-            <div className="border-l-4 border-amber-500 pl-4">
+            <div className="border-l-4 border-amber-500 border-b-2 border-slate-200 pl-4 py-6">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Leadership & Team Development</h3>
-              <ul className="space-y-2 text-lg text-slate-700 leading-relaxed">
+              <ul className="space-y-0.5 text-lg text-slate-700 leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Trained and mentored junior staff, cutting onboarding time significantly</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Built more capable, self-sufficient teams</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Maintained high client satisfaction and strong retention rates</span>
                 </li>
               </ul>
             </div>
 
-            <div className="border-t-2 border-slate-300"></div>
-
             {/* Community Impact */}
-            <div className="border-l-4 border-amber-500 pl-4">
+            <div className="border-l-4 border-amber-500 border-b-2 border-slate-200 pl-4 py-6">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Community Education Impact</h3>
-              <ul className="space-y-2 text-lg text-slate-700 leading-relaxed">
+              <ul className="space-y-0.5 text-lg text-slate-700 leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Founded UK tax education initiative for Vietnamese community</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Grown engaged audience of thousands</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Clear, actionable content simplifying complex HMRC rules</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-500 mr-3 mt-1.5">•</span>
+                  <span className="text-amber-500 mr-3 mt-1">•</span>
                   <span>Helped reduce penalties and improve financial decisions</span>
                 </li>
               </ul>
@@ -279,15 +269,16 @@ export default function CVPage() {
               Let's Connect
             </h2>
             <p className="text-lg text-slate-900 font-medium leading-relaxed mb-4">
-              Whether you're looking for an accountant who can streamline operations, provide strategic tax guidance,
-              or build automation solutions that save time and reduce errors, I'd love to hear from you.
+              I'm always open to meaningful conversations with professionals in the accounting and finance space.
+              Whether you're exploring ways to streamline operations, enhance strategic tax guidance, or leverage automation
+              to drive efficiency, I'd welcome the opportunity to connect.
             </p>
             <p className="text-lg text-slate-900 font-medium leading-relaxed mb-6">
-              If you're interested in discussing opportunities, please feel free to{' '}
+              For networking, collaboration discussions, or to explore potential opportunities, please feel free to{' '}
               <Link href={`/${locale}/contact`} className="text-amber-600 font-bold underline hover:text-amber-500 transition-colors">
                 reach out via the contact form
-              </Link>{' '}
-              to request an access code for my full CV.
+              </Link>
+              . I'm happy to share my full CV for those interested in learning more about my background and experience.
             </p>
           </div>
         </Container>
