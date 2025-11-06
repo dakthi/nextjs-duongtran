@@ -255,10 +255,10 @@ export default function TestimonialsManager() {
     <div className="space-y-6">
       {status.type && (
         <div
-          className={`rounded-md border p-3 ${
+          className={`border-2 p-4 font-medium ${
             status.type === 'success'
-              ? 'border-green-200 bg-green-50 text-green-700'
-              : 'border-red-200 bg-red-50 text-red-700'
+              ? 'border-green-700 bg-green-50 text-green-800'
+              : 'border-red-700 bg-red-50 text-red-800'
           }`}
         >
           {status.message}
@@ -268,23 +268,23 @@ export default function TestimonialsManager() {
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="lg:w-1/3 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">Testimonials</h2>
+            <h2 className="text-xl font-serif font-bold text-slate-900">Testimonials</h2>
             <button
               type="button"
               onClick={handleNew}
-              className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white transition hover:bg-blue-700"
+              className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-4 py-2 text-sm font-semibold transition-colors"
             >
               New
             </button>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white">
+          <div className="border-2 border-slate-800 bg-white shadow-md">
             {loading ? (
-              <div className="p-4 text-sm text-gray-500">Loading testimonials…</div>
+              <div className="p-4 text-sm text-slate-600">Loading testimonials…</div>
             ) : testimonials.length === 0 ? (
-              <div className="p-4 text-sm text-gray-500">No testimonials yet.</div>
+              <div className="p-4 text-sm text-slate-600">No testimonials yet.</div>
             ) : (
-              <ul className="divide-y divide-gray-200">
+              <ul className="divide-y divide-slate-200">
                 {testimonials.map(testimonial => {
                   const isActive = testimonial.id === selectedId
                   return (
@@ -293,12 +293,12 @@ export default function TestimonialsManager() {
                         type="button"
                         onClick={() => handleSelect(testimonial)}
                         className={`flex w-full flex-col items-start gap-1 px-4 py-3 text-left transition ${
-                          isActive ? 'bg-blue-50 text-blue-900' : 'hover:bg-gray-50'
+                          isActive ? 'bg-amber-50 border-l-4 border-l-amber-500' : 'hover:bg-slate-50'
                         }`}
                       >
-                        <span className="text-sm font-semibold">{testimonial.name}</span>
-                        <span className="text-xs text-gray-500">Order: {testimonial.order}</span>
-                        <span className={`text-xs font-medium ${testimonial.isActive ? 'text-green-600' : 'text-amber-600'}`}>
+                        <span className="text-sm font-bold text-slate-900">{testimonial.name}</span>
+                        <span className="text-xs text-slate-600">Order: {testimonial.order}</span>
+                        <span className={`text-xs font-medium ${testimonial.isActive ? 'text-green-700' : 'text-amber-600'}`}>
                           {testimonial.isActive ? 'Visible' : 'Hidden'}
                         </span>
                       </button>
@@ -311,19 +311,20 @@ export default function TestimonialsManager() {
         </div>
 
         <div className="lg:w-2/3">
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="mb-4 flex items-center justify-between">
+          <div className="border-l-4 border-amber-500 bg-white p-8 shadow-md">
+            <div className="mb-6 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-semibold text-gray-900">Testimonial Editor</h2>
+                <h2 className="text-2xl font-serif font-bold text-slate-900">Testimonial Editor</h2>
                 {selectedId && (
-                  <p className="text-xs text-gray-500">Editing testimonial #{selectedId.slice(0, 6)}…</p>
+                  <p className="text-xs text-slate-600">Editing testimonial #{selectedId.slice(0, 6)}…</p>
                 )}
               </div>
-              <label className="flex items-center gap-2 text-sm text-gray-600">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-900">
                 <input
                   type="checkbox"
                   checked={formState.isActive}
                   onChange={handleInputChange('isActive')}
+                  className="h-4 w-4 border-2 border-slate-800 focus:ring-2 focus:ring-amber-500"
                 />
                 Visible
               </label>
@@ -331,59 +332,59 @@ export default function TestimonialsManager() {
 
             <div className="space-y-4">
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Name</label>
+                <label className="mb-2 block text-sm font-bold text-slate-900">Name</label>
                 <input
                   type="text"
                   value={formState.name}
                   onChange={handleInputChange('name')}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2"
+                  className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Role</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Role</label>
                   <input
                     type="text"
                     value={formState.role}
                     onChange={handleInputChange('role')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Relationship</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Relationship</label>
                   <input
                     type="text"
                     value={formState.relationship}
                     onChange={handleInputChange('relationship')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Date Label</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Date Label</label>
                   <input
                     type="text"
                     value={formState.dateLabel}
                     onChange={handleInputChange('dateLabel')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Display Order</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Display Order</label>
                   <input
                     type="number"
                     value={formState.order}
                     onChange={handleInputChange('order')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">Content</label>
+                <label className="mb-2 block text-sm font-bold text-slate-900">Content</label>
                 <TipTapEditor
                   content={formState.contentJson}
                   onChange={(json, html) => {
@@ -409,12 +410,12 @@ export default function TestimonialsManager() {
                 />
               </div>
 
-              <div className="flex flex-wrap gap-3 pt-4">
+              <div className="flex flex-wrap gap-3 pt-6 border-t-2 border-slate-800">
                 <button
                   type="button"
                   onClick={handleSave}
                   disabled={saving || !hasChanges}
-                  className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-8 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {saving ? 'Saving…' : 'Save Changes'}
                 </button>
@@ -422,7 +423,7 @@ export default function TestimonialsManager() {
                   type="button"
                   onClick={resetForm}
                   disabled={!hasChanges}
-                  className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Reset
                 </button>
@@ -430,7 +431,7 @@ export default function TestimonialsManager() {
                   <button
                     type="button"
                     onClick={handleDelete}
-                    className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-700"
+                    className="bg-red-700 hover:bg-red-600 text-white px-6 py-3 font-semibold transition-colors"
                   >
                     Delete
                   </button>

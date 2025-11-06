@@ -2,63 +2,66 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 const sections = [
   {
     label: 'Hero Content',
-    href: '/admin/hero',
+    href: 'hero',
     description: 'Manage homepage hero section and featured image'
   },
   {
     label: 'Blog Posts',
-    href: '/admin/blog',
+    href: 'blog',
     description: 'Create and edit blog articles with rich text editor'
   },
   {
     label: 'About Page',
-    href: '/admin/about',
+    href: 'about',
     description: 'Update about page content and sections'
   },
   {
     label: 'Testimonials',
-    href: '/admin/testimonials',
+    href: 'testimonials',
     description: 'Curate client testimonials and reviews'
   },
   {
     label: 'Media Library',
-    href: '/admin/media',
+    href: 'media',
     description: 'Upload and manage images and media files'
   },
   {
     label: 'FAQ',
-    href: '/admin/faq',
+    href: 'faq',
     description: 'Manage frequently asked questions'
   },
 ]
 
 export default function AdminDashboard() {
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'en'
   const [exporting, setExporting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
 
-  const handleExportDatabase = async () => {
+  const handleExportDatabase = async (format: 'json' | 'csv' | 'txt') => {
     setExporting(true)
     setMessage(null)
 
     try {
-      const response = await fetch('/api/admin/export-db')
+      const response = await fetch(`/api/admin/export-db?format=${format}`)
 
       if (!response.ok) {
         const error = await response.json()
         throw new Error(error.error || 'Export failed')
       }
 
-      // Get the SQL dump as blob
+      // Get the export as blob
       const blob = await response.blob()
 
       // Extract filename from Content-Disposition header
       const contentDisposition = response.headers.get('Content-Disposition')
       const filenameMatch = contentDisposition?.match(/filename="(.+)"/)
-      const filename = filenameMatch ? filenameMatch[1] : `database-backup-${new Date().toISOString().split('T')[0]}.sql`
+      const filename = filenameMatch ? filenameMatch[1] : `database-backup-${new Date().toISOString().split('T')[0]}.${format}`
 
       // Create download link
       const url = URL.createObjectURL(blob)
@@ -70,7 +73,7 @@ export default function AdminDashboard() {
       document.body.removeChild(link)
       URL.revokeObjectURL(url)
 
-      setMessage({ type: 'success', text: 'Database exported successfully!' })
+      setMessage({ type: 'success', text: `Database exported as ${format.toUpperCase()} successfully!` })
     } catch (error) {
       console.error('Export error:', error)
       setMessage({
@@ -87,13 +90,13 @@ export default function AdminDashboard() {
     <div className="max-w-5xl mx-auto px-8 xl:px-12 py-12">
       {/* Header */}
       <div className="mb-12">
-        <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
           Admin Dashboard
         </p>
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
+        <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
           Content Management
         </h1>
-        <p className="text-lg font-medium text-slate-700 leading-relaxed max-w-3xl">
+        <p className="text-lg font-medium text-slate-900 leading-relaxed max-w-3xl">
           Manage your website content, media, and settings. Select a section below to get started.
         </p>
       </div>
@@ -103,7 +106,7 @@ export default function AdminDashboard() {
         {sections.map((section) => (
           <Link
             key={section.href}
-            href={section.href}
+            href={`/${locale}/admin/${section.href}`}
             className="bg-white border-2 border-slate-800 p-6 shadow-md hover:shadow-xl transition-shadow border-l-4 border-l-amber-500"
           >
             <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -117,22 +120,46 @@ export default function AdminDashboard() {
       </div>
 
       {/* Export Section */}
-      <div className="bg-amber-50 border-2 border-slate-800 p-8 shadow-md">
-        <div className="max-w-2xl mx-auto text-center space-y-4">
+      <div className="bg-amber-50 border-l-4 border-amber-500 shadow-md p-8">
+        <div className="max-w-2xl mx-auto text-center space-y-6">
           <h2 className="text-2xl font-serif font-bold text-slate-900 leading-tight">
             Database Backup
           </h2>
           <p className="text-base text-slate-700 leading-relaxed">
-            Export a complete SQL dump of your database for backup or migration purposes.
+            Export your complete database in multiple formats for backup or migration purposes.
           </p>
 
-          <button
-            onClick={handleExportDatabase}
-            disabled={exporting}
-            className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-8 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {exporting ? 'Exporting Database...' : 'Export Full Database (SQL)'}
-          </button>
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => handleExportDatabase('json')}
+              disabled={exporting}
+              className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {exporting ? 'Exporting...' : 'Export as JSON'}
+            </button>
+
+            <button
+              onClick={() => handleExportDatabase('txt')}
+              disabled={exporting}
+              className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {exporting ? 'Exporting...' : 'Export as Text'}
+            </button>
+
+            <button
+              onClick={() => handleExportDatabase('csv')}
+              disabled={exporting}
+              className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {exporting ? 'Exporting...' : 'Export as CSV'}
+            </button>
+          </div>
+
+          <div className="text-xs text-slate-600 space-y-1">
+            <p><strong>JSON</strong>: Complete structured data, easy to import</p>
+            <p><strong>Text</strong>: Human-readable format for review</p>
+            <p><strong>CSV</strong>: Summary view with table counts</p>
+          </div>
 
           {message && (
             <p className={`text-sm font-medium ${message.type === 'success' ? 'text-green-700' : 'text-red-700'}`}>

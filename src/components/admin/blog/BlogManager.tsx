@@ -559,17 +559,17 @@ export default function BlogManager() {
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Excerpt</label>
+                <label className="mb-2 block text-sm font-bold text-slate-900">Excerpt</label>
                 <textarea
                   rows={3}
                   value={formState.excerpt}
                   onChange={handleInputChange('excerpt')}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2"
+                  className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">Content</label>
+                <label className="mb-2 block text-sm font-bold text-slate-900">Content</label>
                 <TipTapEditor
                   content={formState.contentJson}
                   onChange={(json, html) => {
@@ -597,7 +597,7 @@ export default function BlogManager() {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-3">
-                  <h3 className="text-sm font-semibold text-gray-800">Client Details</h3>
+                  <h3 className="text-lg font-bold text-slate-900">Client Details</h3>
                   <input
                     type="text"
                     value={formState.clientName}
@@ -633,7 +633,7 @@ export default function BlogManager() {
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="text-sm font-semibold text-gray-800">Expert Details</h3>
+                  <h3 className="text-lg font-bold text-slate-900">Expert Details</h3>
                   <input
                     type="text"
                     value={formState.expertName}
