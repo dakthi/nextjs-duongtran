@@ -22,7 +22,8 @@ export function Footer() {
         testimonials: "Testimonials",
         faq: "FAQ",
         terms: "Terms of Service",
-        privacy: "Privacy Policy"
+        privacy: "Privacy Policy",
+        forEmployers: "For Employers"
       },
       social: {
         facebook: "Facebook",
@@ -40,7 +41,8 @@ export function Footer() {
         testimonials: "Nhận xét",
         faq: "Hỏi đáp",
         terms: "Điều khoản dịch vụ",
-        privacy: "Chính sách bảo mật"
+        privacy: "Chính sách bảo mật",
+        forEmployers: "Dành cho Nhà Tuyển Dụng"
       },
       social: {
         facebook: "Facebook",
@@ -60,6 +62,7 @@ export function Footer() {
   const legal = [
     { label: t.links.terms, href: `/${locale}/terms` },
     { label: t.links.privacy, href: `/${locale}/privacy` },
+    { label: t.links.forEmployers, href: `/${locale}/cv` },
   ];
 
   return (

@@ -196,3 +196,12 @@ model MediaItem {
 
   @@map("media_items")
 }
+
+model ReferralCode {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique
+  description String?
+  createdAt   DateTime @default(now()) @map("createdAt")
+
+  @@map("referral_codes")
+}
