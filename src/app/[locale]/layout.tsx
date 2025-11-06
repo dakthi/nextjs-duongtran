@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "../globals.css";
 
 import AuthSessionProvider from "@/components/SessionProvider";
 import { generateMetadata as genMeta, organizationSchema } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  variable: '--font-montserrat'
+});
 
 export const metadata: Metadata = genMeta({});
 
@@ -32,7 +37,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-gray-50 text-gray-900 antialiased`}>
+      <body className={`${inter.className} ${montserrat.variable} bg-gray-50 text-gray-900 antialiased`}>
         <AuthSessionProvider>{children}</AuthSessionProvider>
       </body>
     </html>

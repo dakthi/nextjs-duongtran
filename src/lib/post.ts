@@ -18,6 +18,7 @@ const postsDirectory = path.join(process.cwd(), 'src/content/posts')
 export interface PostSummary {
   slug: string
   title: string
+  excerpt?: string | null
   image?: string | null
   imagePosition?: string | null
   imageZoom?: number | null
@@ -52,6 +53,7 @@ export interface Post extends PostSummary {
 const mapViewToPost = (view: BlogPostView): Post => ({
   slug: view.slug,
   title: view.title,
+  excerpt: view.excerpt,
   image: optionalLegacyMediaUrl(view.image ?? undefined) ?? view.image,
   imagePosition: view.imagePosition,
   imageZoom: view.imageZoom,
@@ -87,6 +89,7 @@ const mapViewToPost = (view: BlogPostView): Post => ({
 const mapRecordToSummary = (record: BlogPostRecord): PostSummary => ({
   slug: record.slug,
   title: record.title,
+  excerpt: record.excerpt,
   image: optionalLegacyMediaUrl(record.image ?? undefined) ?? record.image,
   imagePosition: record.imagePosition,
   imageZoom: record.imageZoom,
@@ -145,6 +148,7 @@ const getLocalPostBySlug = async (slug: string): Promise<Post | null> => {
   return {
     slug: realSlug,
     title: data.title,
+    excerpt: data.excerpt ?? null,
     content: contentHtml,
     image: optionalLegacyMediaUrl(data.image) ?? data.image ?? null,
     date: data.date ?? null,
@@ -183,6 +187,7 @@ export async function getPostSummaries(locale?: string): Promise<PostSummary[]> 
   return fallbackPosts.filter(Boolean).map((post) => ({
     slug: post!.slug,
     title: post!.title,
+    excerpt: post!.excerpt,
     image: post!.image,
     date: post!.date,
     readingTime: post!.readingTime != null ? Number(post!.readingTime) || null : null,
@@ -191,8 +196,8 @@ export async function getPostSummaries(locale?: string): Promise<PostSummary[]> 
   }))
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-  const record = await getBlogPostBySlug(slug)
+export async function getPostBySlug(slug: string, locale: string = 'en'): Promise<Post> {
+  const record = await getBlogPostBySlug(slug, false, locale)
 
   if (record) {
     const view = await renderBlogPost(record)

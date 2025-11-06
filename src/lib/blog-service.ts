@@ -117,13 +117,13 @@ export class BlogService {
     return mappedPosts
   }
 
-  static async getPostBySlug(slug: string, includeDraft = false): Promise<BlogPostRecord | null> {
+  static async getPostBySlug(slug: string, includeDraft = false, locale = 'en'): Promise<BlogPostRecord | null> {
     if (!isDatabaseAvailable()) {
       console.warn('Database not available during build time, returning null for post:', slug)
       return null
     }
 
-    const cacheKey = `slug:${slug}:draft:${includeDraft}`
+    const cacheKey = `slug:${slug}:draft:${includeDraft}:locale:${locale}`
     const cached = postCache.get(cacheKey)
     if (cached && this.isCacheFresh(cached.timestamp)) {
       return cached.data
@@ -133,6 +133,7 @@ export class BlogService {
       const post = await prisma.blogPost.findFirst({
         where: {
           slug,
+          locale,
           ...(includeDraft ? {} : { isPublished: true })
         }
       })
@@ -301,7 +302,7 @@ export class BlogService {
 
 export const listPublishedPosts = () => BlogService.listPublishedPosts()
 export const listAllPosts = (locale?: string) => BlogService.listAllPosts(locale)
-export const getBlogPostBySlug = (slug: string, includeDraft = false) => BlogService.getPostBySlug(slug, includeDraft)
+export const getBlogPostBySlug = (slug: string, includeDraft = false, locale = 'en') => BlogService.getPostBySlug(slug, includeDraft, locale)
 export const getBlogPostById = (id: string) => BlogService.getPostById(id)
 export const upsertBlogPost = (input: BlogPostInput) => BlogService.upsertPost(input)
 export const deleteBlogPost = (id: string) => BlogService.deletePost(id)

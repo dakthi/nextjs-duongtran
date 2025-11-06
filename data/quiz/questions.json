@@ -1,0 +1,347 @@
+{
+  "categories": [
+    {
+      "id": "mtd-readiness",
+      "name": "Making Tax Digital Readiness",
+      "questions": [
+        {
+          "id": "q1",
+          "category": "mtd-readiness",
+          "question": "quiz.questions.q1.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q1.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q1.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q1.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "category": "mtd-readiness",
+          "question": "quiz.questions.q2.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q2.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q2.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q2.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "category": "mtd-readiness",
+          "question": "quiz.questions.q3.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q3.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q3.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q3.options.c",
+              "points": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tax-allowances",
+      "name": "Tax Allowances & Reliefs",
+      "questions": [
+        {
+          "id": "q4",
+          "category": "tax-allowances",
+          "question": "quiz.questions.q4.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q4.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q4.options.b",
+              "points": 2
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q4.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "category": "tax-allowances",
+          "question": "quiz.questions.q5.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q5.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q5.options.b",
+              "points": 2
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q5.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q6",
+          "category": "tax-allowances",
+          "question": "quiz.questions.q6.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q6.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q6.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q6.options.c",
+              "points": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure-optimization",
+      "name": "Structure Optimization",
+      "questions": [
+        {
+          "id": "q7",
+          "category": "structure-optimization",
+          "question": "quiz.questions.q7.question",
+          "conditionalOn": {
+            "businessType": "limited"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q7.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q7.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q7.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q8",
+          "category": "structure-optimization",
+          "question": "quiz.questions.q8.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q8.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q8.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q8.options.c",
+              "points": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compliance-thresholds",
+      "name": "Compliance & Thresholds",
+      "questions": [
+        {
+          "id": "q9",
+          "category": "compliance-thresholds",
+          "question": "quiz.questions.q9.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q9.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q9.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q9.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "category": "compliance-thresholds",
+          "question": "quiz.questions.q10.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q10.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q10.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q10.options.c",
+              "points": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tax-rate-changes",
+      "name": "2026 Tax Rate Changes",
+      "questions": [
+        {
+          "id": "q11",
+          "category": "tax-rate-changes",
+          "question": "quiz.questions.q11.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q11.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q11.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q11.options.c",
+              "points": 5
+            }
+          ]
+        },
+        {
+          "id": "q12",
+          "category": "tax-rate-changes",
+          "question": "quiz.questions.q12.question",
+          "options": [
+            {
+              "id": "a",
+              "text": "quiz.questions.q12.options.a",
+              "points": 0
+            },
+            {
+              "id": "b",
+              "text": "quiz.questions.q12.options.b",
+              "points": 3
+            },
+            {
+              "id": "c",
+              "text": "quiz.questions.q12.options.c",
+              "points": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scoringTiers": [
+    {
+      "id": "fully-prepared",
+      "name": "Fully Prepared",
+      "minScore": 0,
+      "maxScore": 10,
+      "lossRange": {
+        "min": 0,
+        "max": 1000
+      },
+      "severity": "low"
+    },
+    {
+      "id": "minor-gaps",
+      "name": "Minor Gaps",
+      "minScore": 11,
+      "maxScore": 20,
+      "lossRange": {
+        "min": 1000,
+        "max": 5000
+      },
+      "severity": "medium"
+    },
+    {
+      "id": "at-risk",
+      "name": "At Risk",
+      "minScore": 21,
+      "maxScore": 35,
+      "lossRange": {
+        "min": 5000,
+        "max": 15000
+      },
+      "severity": "high"
+    },
+    {
+      "id": "critical-exposure",
+      "name": "Critical Exposure",
+      "minScore": 36,
+      "maxScore": 60,
+      "lossRange": {
+        "min": 15000,
+        "max": 50000
+      },
+      "severity": "critical"
+    }
+  ]
+}

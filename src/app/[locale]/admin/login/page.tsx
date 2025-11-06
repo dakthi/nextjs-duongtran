@@ -1,12 +1,16 @@
 "use client"
 
 import LoginForm from '@/components/LoginForm'
+import { useParams } from 'next/navigation'
 
 export default function LoginPage() {
+  const params = useParams()
+  const locale = params.locale as string
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <LoginForm redirectTo="/admin" />
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full">
+        <LoginForm redirectTo={`/${locale}/admin`} />
       </div>
     </div>
   )

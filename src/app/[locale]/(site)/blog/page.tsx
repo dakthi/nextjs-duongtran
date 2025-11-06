@@ -69,7 +69,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             Featured Article
           </p>
           <a
-            href={`/blog/${featuredPost.slug}`}
+            href={`/${params.locale}/blog/${featuredPost.slug}`}
             className="group block bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow"
           >
             <div className="flex flex-col lg:flex-row">
@@ -128,7 +128,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               {top5Posts.map((post) => (
                 <a
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/${params.locale}/blog/${post.slug}`}
                   className="group bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow flex flex-col"
                 >
                   <div className="relative w-full h-56">
@@ -178,7 +178,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               {chunk.map((post) => (
                 <a
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/${params.locale}/blog/${post.slug}`}
                   className="group bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow flex flex-col"
                 >
                   <div className="relative w-full h-56">

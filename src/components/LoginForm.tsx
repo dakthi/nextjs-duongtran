@@ -63,27 +63,27 @@ export default function LoginForm({
 
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white border-2 border-slate-800 shadow-xl p-8">
         {/* Header */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
             LieuVo Admin
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-base text-slate-700">
             Enter your credentials to access the admin panel
           </p>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+          <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 mb-6 text-sm">
             {error}
           </div>
         )}
 
         {/* Email Field */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+        <div className="mb-6">
+          <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
             Email address
           </label>
           <input
@@ -94,15 +94,15 @@ export default function LoginForm({
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full px-4 py-3 border-2 border-slate-800 shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
             placeholder="admin@lieuvo.com"
             disabled={isLoading}
           />
         </div>
 
         {/* Password Field */}
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+        <div className="mb-8">
+          <label htmlFor="password" className="block text-sm font-semibold text-slate-900 mb-2">
             Password
           </label>
           <input
@@ -113,22 +113,22 @@ export default function LoginForm({
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full px-4 py-3 border-2 border-slate-800 shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
             placeholder="Enter your password"
             disabled={isLoading}
           />
         </div>
 
         {/* Submit Button */}
-        <div>
+        <div className="mb-6">
           <button
             type="submit"
             disabled={isLoading || !email || !password}
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full flex justify-center py-3 px-8 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isLoading ? (
               <div className="flex items-center">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-slate-900 mr-2"></div>
                 Signing in...
               </div>
             ) : (
@@ -139,9 +139,9 @@ export default function LoginForm({
 
         {/* Development Info */}
         {process.env.NODE_ENV === 'development' && (
-          <div className="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm">
-            <p className="font-medium">Development Mode</p>
-            <p className="mt-1">
+          <div className="bg-amber-50 border-l-4 border-amber-500 text-slate-900 px-4 py-3 text-sm">
+            <p className="font-semibold">Development Mode</p>
+            <p className="mt-1 text-slate-700">
               Default admin: admin@lieuvo.com / LieuVoAdmin123!
             </p>
           </div>

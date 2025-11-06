@@ -90,6 +90,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
               topPosts={topPosts}
               chunkedPosts={chunked}
               headings={headings}
+              locale={params.locale}
             />
           </Container>
         </div>

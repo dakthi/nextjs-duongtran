@@ -7,10 +7,12 @@ interface PostGalleryProps {
   topPosts: PostSummary[]
   chunkedPosts: PostSummary[][]
   headings?: string[]
+  locale: string
 }
 
 export function PostGallery({
   topPosts,
+  locale,
 }: PostGalleryProps) {
   const visiblePosts = topPosts.slice(0, 8)
 
@@ -29,7 +31,7 @@ export function PostGallery({
         {visiblePosts.map((post) => (
           <a
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/${locale}/blog/${post.slug}`}
             className="group bg-white border-2 border-slate-800 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(245,158,11,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all flex flex-col"
           >
             <div className="p-6 flex flex-col h-full border-l-4 border-amber-500">
