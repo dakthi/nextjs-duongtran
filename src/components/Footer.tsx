@@ -12,8 +12,8 @@ export function Footer() {
   // Simple translation object - no hooks needed
   const translations: any = {
     en: {
-      tagline: "Your Helpful Accountant",
-      description: "Helping the Vietnamese community in the UK understand taxes and business finances.",
+      tagline: "Help SMEs owners and independent professionals to make sense and be on top of their tax",
+      description: "Help SMEs owners and independent professionals to make sense and be on top of their tax.",
       location: "Based in London, UK.",
       stayConnected: "Stay connected",
       links: {
@@ -22,8 +22,7 @@ export function Footer() {
         testimonials: "Testimonials",
         faq: "FAQ",
         terms: "Terms of Service",
-        privacy: "Privacy Policy",
-        legal: "Legal"
+        privacy: "Privacy Policy"
       },
       social: {
         facebook: "Facebook",
@@ -41,8 +40,7 @@ export function Footer() {
         testimonials: "Nhận xét",
         faq: "Hỏi đáp",
         terms: "Điều khoản dịch vụ",
-        privacy: "Chính sách bảo mật",
-        legal: "Pháp lý"
+        privacy: "Chính sách bảo mật"
       },
       social: {
         facebook: "Facebook",
@@ -62,7 +60,6 @@ export function Footer() {
   const legal = [
     { label: t.links.terms, href: `/${locale}/terms` },
     { label: t.links.privacy, href: `/${locale}/privacy` },
-    { label: t.links.legal, href: `/${locale}/legal` },
   ];
 
   return (

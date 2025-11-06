@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lieu Vo",
-  description: "Helping the Vietnamese community in the UK understand taxes and business finances.",
+  description: "Help SMEs owners and independent professionals to make sense and be on top of their tax",
 };
 
 export function generateStaticParams() {
