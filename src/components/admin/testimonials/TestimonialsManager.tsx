@@ -6,6 +6,7 @@ import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
 import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import type { TestimonialRecord } from '@/types/testimonial.types'
+import { TipTapEditor } from '@/components/editor/TipTapEditor'
 
 interface TestimonialFormState {
   id?: string
@@ -14,6 +15,8 @@ interface TestimonialFormState {
   relationship: string
   dateLabel: string
   content: string
+  contentJson?: any
+  contentHtml?: string
   image: string
   imagePosition?: string
   imageZoom?: number
@@ -50,6 +53,8 @@ const recordToFormState = (record: TestimonialRecord): TestimonialFormState => (
   relationship: record.relationship ?? '',
   dateLabel: record.dateLabel ?? '',
   content: record.content,
+  contentJson: (record as any).contentJson,
+  contentHtml: (record as any).contentHtml,
   image: record.image ?? '',
   imagePosition: record.imagePosition ?? 'center',
   imageZoom: record.imageZoom ?? 100,
@@ -65,6 +70,8 @@ const formStateToPayload = (state: TestimonialFormState) => ({
   relationship: state.relationship || null,
   dateLabel: state.dateLabel || null,
   content: state.content,
+  contentJson: state.contentJson,
+  contentHtml: state.contentHtml,
   image: state.image || null,
   imagePosition: state.imagePosition || 'center',
   imageZoom: state.imageZoom || 100,
@@ -377,13 +384,18 @@ export default function TestimonialsManager() {
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Content</label>
-                <textarea
-                  rows={8}
-                  value={formState.content}
-                  onChange={handleInputChange('content')}
-                  placeholder={'Write the testimonial content. Use blank lines to separate paragraphs.'}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2"
+                <label className="mb-2 block text-sm font-medium text-gray-700">Content</label>
+                <TipTapEditor
+                  content={formState.contentJson}
+                  onChange={(json, html) => {
+                    setFormState(prev => ({
+                      ...prev,
+                      contentJson: json,
+                      contentHtml: html,
+                      content: html // Keep legacy field for backward compatibility
+                    }))
+                  }}
+                  placeholder="Write the testimonial content..."
                 />
               </div>
 

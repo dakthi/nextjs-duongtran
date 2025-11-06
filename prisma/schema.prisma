@@ -85,7 +85,9 @@ model BlogPost {
   slug                String
   title               String
   excerpt             String?
-  content             String
+  content             String   @db.Text // Legacy markdown/text content (will be deprecated)
+  contentJson         Json?    // TipTap JSON format for editing
+  contentHtml         String?  @db.Text // Generated HTML for fast display
   image               String?
   imagePosition       String?  @default("center") // CSS object-position for featured image
   imageZoom           Float?   @default(100) // Zoom percentage for featured image
@@ -140,7 +142,9 @@ model Testimonial {
   role          String?
   relationship  String?
   dateLabel     String?
-  content       String
+  content       String   @db.Text // Legacy text content (will be deprecated)
+  contentJson   Json?    // TipTap JSON format for editing
+  contentHtml   String?  @db.Text // Generated HTML for fast display
   image         String?
   imagePosition String?  @default("center") // CSS object-position for avatar
   imageZoom     Float?   @default(100) // Zoom percentage for avatar

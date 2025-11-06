@@ -46,28 +46,34 @@ export class TestimonialService {
   }
 
   static async listActiveTestimonials(locale?: string): Promise<TestimonialRecord[]> {
-    // If locale is specified, always query fresh data
-    const whereClause = locale
-      ? { isActive: true, locale: locale }
-      : { isActive: true };
+    try {
+      // If locale is specified, always query fresh data
+      const whereClause = locale
+        ? { isActive: true, locale: locale }
+        : { isActive: true };
 
-    // Check cache only when no locale is specified
-    if (!locale && testimonialsCache && this.isCacheFresh()) {
-      return testimonialsCache
+      // Check cache only when no locale is specified
+      if (!locale && testimonialsCache && this.isCacheFresh()) {
+        return testimonialsCache
+      }
+
+      const records = await prisma.testimonial.findMany({
+        where: whereClause,
+        orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
+      })
+
+      // Only cache when no locale specified (for backward compatibility)
+      if (!locale) {
+        testimonialsCache = records.map(mapPrismaTestimonial)
+        cacheTimestamp = Date.now()
+      }
+
+      return records.map(mapPrismaTestimonial)
+    } catch (error) {
+      // Return empty array if database is not available (e.g., during build)
+      console.log('Database not available for testimonials, returning empty array')
+      return []
     }
-
-    const records = await prisma.testimonial.findMany({
-      where: whereClause,
-      orderBy: [{ order: 'asc' }, { createdAt: 'desc' }],
-    })
-
-    // Only cache when no locale specified (for backward compatibility)
-    if (!locale) {
-      testimonialsCache = records.map(mapPrismaTestimonial)
-      cacheTimestamp = Date.now()
-    }
-
-    return records.map(mapPrismaTestimonial)
   }
 
   static async listAllTestimonials(): Promise<TestimonialRecord[]> {

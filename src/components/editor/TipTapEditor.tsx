@@ -68,7 +68,7 @@ export function TipTapEditor({
   }
 
   return (
-    <div className="border-2 border-slate-800">
+    <div className="border-2 border-slate-800 [&_em]:italic [&_em]:font-normal">
       {/* Toolbar */}
       {editable && (
         <div className="border-b-2 border-slate-800 bg-slate-50 p-3 flex flex-wrap gap-2">
