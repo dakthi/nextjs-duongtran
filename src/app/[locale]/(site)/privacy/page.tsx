@@ -1,16 +1,9 @@
+import { PageHeader } from '@/components/PageHeader'
+
 export default function PrivacyPolicy() {
   return (
     <>
-      {/* Hero Section */}
-      <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
-        <div className="max-w-5xl mx-auto px-8 xl:px-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
-              Privacy Policy
-            </h1>
-          </div>
-        </div>
-      </div>
+      <PageHeader title="Privacy Policy" />
 
       {/* Content Section */}
       <div className="py-20 bg-white">

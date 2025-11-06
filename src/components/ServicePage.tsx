@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "@/components/Container";
+import { PageHeader } from "@/components/PageHeader";
 import { Testimonials } from "@/components/Testimonials";
 import { ServiceContactForm } from "@/components/ServiceContactForm";
 
@@ -29,22 +30,11 @@ interface ServicePageProps {
 export const ServicePage = ({ locale }: ServicePageProps) => {
   return (
     <>
-      {/* Hero Section */}
-      <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
-        <div className="max-w-5xl mx-auto px-8 xl:px-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
-              What I Offer
-            </p>
-            <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
-              Services
-            </h1>
-            <p className="text-lg font-medium text-slate-900 leading-relaxed">
-              I offer practical, hands-on support to small business owners and founders who want clarity, not confusion. Whether it's managing your books, planning for tax, or automating workflows, I'm here to help you move forward with confidence.
-            </p>
-          </div>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="What I Offer"
+        title="Services"
+        description="I offer practical, hands-on support to small business owners and founders who want clarity, not confusion. Whether it's managing your books, planning for tax, or automating workflows, I'm here to help you move forward with confidence."
+      />
 
       {/* Services - Horizontal Cards */}
       <div className="py-20 bg-white">

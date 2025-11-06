@@ -2,8 +2,6 @@ import { legacyMediaUrl } from '@/lib/media/media-client'
 import type { AboutSection } from '@/types/about.types'
 
 interface AboutBodyProps {
-  headline?: string | null
-  intro?: string | null
   sections?: AboutSection[]
   contentHtml?: string | null
   contentJson?: any | null
@@ -99,33 +97,13 @@ const resolveImagePosition = (section: AboutSection, index: number): 'left' | 'r
   return index % 2 === 0 ? 'left' : 'right'
 }
 
-export const AboutBody = ({ headline, intro, sections, contentHtml, contentJson, locale = 'en' }: AboutBodyProps) => {
+export const AboutBody = ({ sections, contentHtml, contentJson, locale = 'en' }: AboutBodyProps) => {
   // Use TipTap content if available, otherwise fall back to legacy sections
   const useTipTap = contentHtml || contentJson
   const content = sections && sections.length > 0 ? sections : getFallbackSections(locale)
 
   return (
     <>
-      {/* Header Section with amber background */}
-      {(headline || intro) && (
-        <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
-          <div className="container max-w-5xl mx-auto px-8 xl:px-12">
-            <div className="text-center space-y-6">
-              {headline && (
-                <h1 className="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
-                  {headline}
-                </h1>
-              )}
-              {intro && (
-                <p className="text-lg font-medium text-slate-900 leading-relaxed">
-                  {intro}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Content - TipTap HTML or Legacy Sections */}
       <div className="pt-20 pb-12 bg-white">
         <div className="container max-w-5xl mx-auto px-8 xl:px-12">

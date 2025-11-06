@@ -1,11 +1,23 @@
 import Image from 'next/image'
 
 import { Container } from '@/components/Container'
+import { PageHeader } from '@/components/PageHeader'
 import { getPostSummaries } from '@/lib/post'
 import { legacyMediaUrl, isMediaRemoteUrl } from '@/lib/media/media-client'
+import { generateMetadata as genMeta } from '@/lib/seo'
+import { Metadata } from 'next'
 
 // Force dynamic rendering to always fetch fresh data
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  return genMeta({
+    title: 'Blog',
+    description: 'Insights, reflections, and professional thoughts on accounting, tax, and small business finance from Lieu Vo, ACCA Affiliate accountant.',
+    locale: params.locale,
+    path: '/blog',
+  })
+}
 
 function chunkArray<T>(array: T[], size: number): T[][] {
   const result: T[][] = []
@@ -26,24 +38,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   if (posts.length === 0) {
     return (
-      <>
-        {/* Hero Section */}
-        <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
-          <div className="max-w-5xl mx-auto px-8 xl:px-12">
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
-                Insights & Reflections
-              </p>
-              <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
-                Blog
-              </h1>
-              <p className="text-lg font-medium text-slate-900 leading-relaxed">
-                Blog posts will appear here once they are published.
-              </p>
-            </div>
-          </div>
-        </div>
-      </>
+      <PageHeader
+        eyebrow="Insights & Reflections"
+        title="Blog"
+        description="Blog posts will appear here once they are published."
+      />
     )
   }
 
@@ -57,24 +56,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <>
-      {/* Hero Section */}
-      <div className="py-20 bg-amber-50 border-b-4 border-amber-500">
-        <div className="max-w-5xl mx-auto px-8 xl:px-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
-              Insights & Reflections
-            </p>
-            <h1 className="text-2xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
-              Blog
-            </h1>
-            <p className="text-lg font-medium text-slate-900 leading-relaxed">
-              True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons,
-              the real-world challenges, and the continuous improvement that define my journey. Here, you can
-              find some reflections, lessons learned, and professional thoughts, captured candidly along the way.
-            </p>
-          </div>
-        </div>
-      </div>
+      <PageHeader
+        eyebrow="Insights & Reflections"
+        title="Blog"
+        description="True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons, the real-world challenges, and the continuous improvement that define my journey. Here, you can find some reflections, lessons learned, and professional thoughts, captured candidly along the way."
+      />
 
       {/* Featured Post Section */}
       <div className="py-20 bg-white">
