@@ -4,8 +4,8 @@ import { useState, useRef } from "react"
 
 import { formatFileSize, extractImageMetadata, validateImageFile } from "@/lib/media/image-utils"
 import type { MediaLibraryItem } from "@/types/media"
-import { ImagePositionControl, ImageControlSettings } from "./ImagePositionControl"
 import { ImageCropDialog } from "./ImageCropDialog"
+import { FilerobotImageEditorDialog } from "./FilerobotImageEditor"
 
 interface FileUploadProps {
   onFileSelect: (file: MediaLibraryItem | null) => void
@@ -13,16 +13,11 @@ interface FileUploadProps {
   label?: string
   accept?: string
   showMediaLibrary?: boolean
-  // Image control props
-  showImageControls?: boolean
-  imagePosition?: string
-  imageZoom?: number
-  imageFit?: 'cover' | 'contain' | 'fill'
-  onImageSettingsChange?: (settings: ImageControlSettings) => void
-  containerAspectRatio?: number
-  // Crop functionality
+  // Image editor functionality
   enableCrop?: boolean
   cropAspectRatio?: number
+  showAspectRatioSelector?: boolean
+  useFilerobot?: boolean // Use Filerobot editor instead of simple crop
 }
 
 export default function FileUpload({
@@ -31,14 +26,10 @@ export default function FileUpload({
   label = "Upload Image",
   accept = "image/*",
   showMediaLibrary = true,
-  showImageControls = false,
-  imagePosition = 'center',
-  imageZoom = 100,
-  imageFit = 'cover',
-  onImageSettingsChange,
-  containerAspectRatio = 16 / 9,
-  enableCrop = false,
+  enableCrop = true,
   cropAspectRatio = 16 / 9,
+  showAspectRatioSelector = true,
+  useFilerobot = false,
 }: FileUploadProps) {
   const [uploading, setUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
@@ -212,12 +203,6 @@ export default function FileUpload({
     onFileSelect(null)
   }
 
-  const handleImageSettingsChange = (settings: ImageControlSettings) => {
-    if (onImageSettingsChange) {
-      onImageSettingsChange(settings)
-    }
-  }
-
   return (
     <div className="space-y-4">
       <label className="block text-sm font-medium text-gray-700">{label}</label>
@@ -353,22 +338,18 @@ export default function FileUpload({
         </div>
       )}
 
-      {showImageControls && currentImage && (
-        <ImagePositionControl
-          imageUrl={currentImage}
-          value={{
-            position: imagePosition,
-            zoom: imageZoom,
-            fit: imageFit,
-          }}
-          onChange={handleImageSettingsChange}
-          label="Adjust Image Display"
-          containerAspectRatio={containerAspectRatio}
+      {showCropDialog && imageToCrop && !useFilerobot && (
+        <ImageCropDialog
+          imageUrl={imageToCrop}
+          onComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+          aspectRatio={cropAspectRatio}
+          showAspectRatioSelector={showAspectRatioSelector}
         />
       )}
 
-      {showCropDialog && imageToCrop && (
-        <ImageCropDialog
+      {showCropDialog && imageToCrop && useFilerobot && (
+        <FilerobotImageEditorDialog
           imageUrl={imageToCrop}
           onComplete={handleCropComplete}
           onCancel={handleCropCancel}

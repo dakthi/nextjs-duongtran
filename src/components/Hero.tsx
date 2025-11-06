@@ -82,15 +82,19 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
 
           {/* Image */}
           <div className="flex-1 w-full">
-            <div className="relative w-full aspect-[4/5] overflow-hidden border-4 border-slate-800">
+            <div className="relative w-full overflow-hidden border-4 border-slate-800">
               <Image
                 src={heroImage}
                 alt="Lieu Vo"
-                fill
+                width={800}
+                height={800}
                 style={{
+                  width: '100%',
+                  height: 'auto',
                   objectFit: imageFit,
                   objectPosition: imagePosition,
-                  transform: `scale(${imageZoom / 100})`
+                  transform: `scale(${imageZoom / 100})`,
+                  transformOrigin: imagePosition
                 }}
                 quality={100}
                 unoptimized={isRemote}

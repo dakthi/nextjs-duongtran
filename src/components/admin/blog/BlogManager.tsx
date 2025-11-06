@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
-import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import type { BlogPostRecord } from '@/types/blog.types'
 import { generateSlug } from '@/lib/slug'
 import { TipTapEditor } from '@/components/editor/TipTapEditor'
@@ -383,26 +382,26 @@ export default function BlogManager() {
     <div className="space-y-6">
       {status.type && (
         <div
-          className={`rounded-md border p-3 ${
+          className={`border-2 p-4 ${
             status.type === 'success'
-              ? 'border-green-200 bg-green-50 text-green-700'
-              : 'border-red-200 bg-red-50 text-red-700'
+              ? 'border-green-700 bg-green-50 text-green-800'
+              : 'border-red-700 bg-red-50 text-red-800'
           }`}
         >
-          {status.message}
+          <span className="font-medium">{status.message}</span>
         </div>
       )}
 
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="lg:w-1/3 space-y-4">
           <div className="flex items-center justify-between gap-2">
-            <h2 className="text-lg font-semibold text-gray-900">Posts</h2>
+            <h2 className="text-xl font-serif font-bold text-slate-900">Posts</h2>
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={handleExportBackup}
                 disabled={posts.length === 0}
-                className="rounded-md bg-green-600 px-3 py-1 text-sm font-medium text-white transition hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-4 py-2 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 title="Export all blog posts as JSON backup"
               >
                 Export
@@ -410,20 +409,20 @@ export default function BlogManager() {
               <button
                 type="button"
                 onClick={handleNewPost}
-                className="rounded-md bg-blue-600 px-3 py-1 text-sm font-medium text-white transition hover:bg-blue-700"
+                className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 text-sm font-semibold transition-colors"
               >
                 New Post
               </button>
             </div>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white">
+          <div className="border-2 border-slate-800 bg-white shadow-md">
             {loading ? (
-              <div className="p-4 text-sm text-gray-500">Loading posts…</div>
+              <div className="p-4 text-sm text-slate-600">Loading posts…</div>
             ) : posts.length === 0 ? (
-              <div className="p-4 text-sm text-gray-500">No posts yet. Create your first article.</div>
+              <div className="p-4 text-sm text-slate-600">No posts yet. Create your first article.</div>
             ) : (
-              <ul className="divide-y divide-gray-200">
+              <ul className="divide-y-2 divide-slate-200">
                 {posts.map((post) => {
                   const isActive = post.id === selectedId
                   return (
@@ -432,12 +431,12 @@ export default function BlogManager() {
                         type="button"
                         onClick={() => handleSelectPost(post)}
                         className={`flex w-full flex-col items-start gap-1 px-4 py-3 text-left transition ${
-                          isActive ? 'bg-blue-50 text-blue-900' : 'hover:bg-gray-50'
+                          isActive ? 'bg-amber-50 border-l-4 border-l-amber-500' : 'hover:bg-slate-50'
                         }`}
                       >
-                        <span className="text-sm font-semibold">{post.title || '(Untitled)'}</span>
-                        <span className="text-xs text-gray-500">/{post.slug}</span>
-                        <span className={`text-xs font-medium ${post.isPublished ? 'text-green-600' : 'text-amber-600'}`}>
+                        <span className="text-sm font-bold text-slate-900">{post.title || '(Untitled)'}</span>
+                        <span className="text-xs text-slate-600">/{post.slug}</span>
+                        <span className={`text-xs font-bold ${post.isPublished ? 'text-green-700' : 'text-amber-600'}`}>
                           {post.isPublished ? 'Published' : 'Draft'}
                         </span>
                       </button>
@@ -450,28 +449,30 @@ export default function BlogManager() {
         </div>
 
         <div className="lg:w-2/3">
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="mb-4 flex items-center justify-between">
+          <div className="border-2 border-slate-800 bg-white p-6 shadow-md">
+            <div className="mb-6 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-semibold text-gray-900">Blog Post Editor</h2>
+                <h2 className="text-2xl font-serif font-bold text-slate-900">Blog Post Editor</h2>
                 {selectedId && (
-                  <p className="text-xs text-gray-500">Editing post #{selectedId.slice(0, 6)}…</p>
+                  <p className="text-xs text-slate-600">Editing post #{selectedId.slice(0, 6)}…</p>
                 )}
               </div>
-              <div className="flex items-center gap-2">
-                <label className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-3">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <input
                     type="checkbox"
                     checked={formState.isFeatured}
                     onChange={handleInputChange('isFeatured')}
+                    className="w-4 h-4"
                   />
                   Featured
                 </label>
-                <label className="flex items-center gap-2 text-sm text-gray-600">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <input
                     type="checkbox"
                     checked={formState.isPublished}
                     onChange={handleInputChange('isPublished')}
+                    className="w-4 h-4"
                   />
                   Published
                 </label>
@@ -480,22 +481,22 @@ export default function BlogManager() {
 
             <div className="space-y-4">
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Title</label>
+                <label className="mb-2 block text-sm font-bold text-slate-900">Title</label>
                 <input
                   type="text"
                   value={formState.title}
                   onChange={handleInputChange('title')}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
 
               <div>
-                <div className="flex items-center justify-between">
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Slug</label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-bold text-slate-900">Slug</label>
                   <button
                     type="button"
                     onClick={handleGenerateSlug}
-                    className="text-xs text-blue-600 hover:underline"
+                    className="text-xs font-semibold text-amber-600 hover:text-amber-500"
                   >
                     Generate from title
                   </button>
@@ -504,55 +505,55 @@ export default function BlogManager() {
                   type="text"
                   value={formState.slug}
                   onChange={handleInputChange('slug')}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
                 {formState.slug && (
-                  <p className="mt-1 text-xs text-gray-500">
-                    URL Preview: <span className="font-mono">/blog/{formState.slug}</span>
+                  <p className="mt-2 text-xs text-slate-600">
+                    URL Preview: <span className="font-mono font-bold">/blog/{formState.slug}</span>
                   </p>
                 )}
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Category</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Category</label>
                   <input
                     type="text"
                     value={formState.category}
                     onChange={handleInputChange('category')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Reading Time (minutes)</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Reading Time (minutes)</label>
                   <input
                     type="number"
                     min={0}
                     value={formState.readingTime}
                     onChange={handleInputChange('readingTime')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Published Date</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Published Date</label>
                   <input
                     type="text"
                     placeholder="YYYY-MM-DD"
                     value={formState.publishedDate}
                     onChange={handleInputChange('publishedDate')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Quote</label>
+                  <label className="mb-2 block text-sm font-bold text-slate-900">Quote</label>
                   <input
                     type="text"
                     value={formState.quote}
                     onChange={handleInputChange('quote')}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
               </div>
@@ -588,19 +589,9 @@ export default function BlogManager() {
                   label="Featured Image"
                   currentImage={formState.image || null}
                   onFileSelect={handleSetImage('image')}
-                  showImageControls={!!formState.image}
-                  imagePosition={formState.imagePosition || 'center'}
-                  imageZoom={formState.imageZoom || 100}
-                  imageFit={formState.imageFit || 'cover'}
-                  onImageSettingsChange={(settings: ImageControlSettings) => {
-                    setFormState(prev => ({
-                      ...prev,
-                      imagePosition: settings.position,
-                      imageZoom: settings.zoom,
-                      imageFit: settings.fit
-                    }))
-                  }}
-                  containerAspectRatio={16 / 9}
+                  enableCrop={true}
+                  cropAspectRatio={16 / 9}
+                  showAspectRatioSelector={true}
                 />
               </div>
 
@@ -612,7 +603,7 @@ export default function BlogManager() {
                     value={formState.clientName}
                     onChange={handleInputChange('clientName')}
                     placeholder="Client name"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                   <div className="grid grid-cols-2 gap-3">
                     <input
@@ -621,33 +612,23 @@ export default function BlogManager() {
                       value={formState.clientAge}
                       onChange={handleInputChange('clientAge')}
                       placeholder="Age"
-                      className="w-full rounded-md border border-gray-300 px-3 py-2"
+                      className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     />
                     <input
                       type="text"
                       value={formState.clientJob}
                       onChange={handleInputChange('clientJob')}
                       placeholder="Role"
-                      className="w-full rounded-md border border-gray-300 px-3 py-2"
+                      className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     />
                   </div>
                   <FileUpload
                     label="Client Image"
                     currentImage={formState.clientImage || null}
                     onFileSelect={handleSetImage('clientImage')}
-                    showImageControls={!!formState.clientImage}
-                    imagePosition={formState.clientImagePosition || 'center'}
-                    imageZoom={formState.clientImageZoom || 100}
-                    imageFit={formState.clientImageFit || 'cover'}
-                    onImageSettingsChange={(settings: ImageControlSettings) => {
-                      setFormState(prev => ({
-                        ...prev,
-                        clientImagePosition: settings.position,
-                        clientImageZoom: settings.zoom,
-                        clientImageFit: settings.fit
-                      }))
-                    }}
-                    containerAspectRatio={1}
+                    enableCrop={true}
+                    cropAspectRatio={1}
+                    showAspectRatioSelector={true}
                   />
                 </div>
 
@@ -658,42 +639,32 @@ export default function BlogManager() {
                     value={formState.expertName}
                     onChange={handleInputChange('expertName')}
                     placeholder="Expert name"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                   <input
                     type="text"
                     value={formState.expertTitle}
                     onChange={handleInputChange('expertTitle')}
                     placeholder="Expert title"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2"
+                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                   <FileUpload
                     label="Expert Image"
                     currentImage={formState.expertImage || null}
                     onFileSelect={handleSetImage('expertImage')}
-                    showImageControls={!!formState.expertImage}
-                    imagePosition={formState.expertImagePosition || 'center'}
-                    imageZoom={formState.expertImageZoom || 100}
-                    imageFit={formState.expertImageFit || 'cover'}
-                    onImageSettingsChange={(settings: ImageControlSettings) => {
-                      setFormState(prev => ({
-                        ...prev,
-                        expertImagePosition: settings.position,
-                        expertImageZoom: settings.zoom,
-                        expertImageFit: settings.fit
-                      }))
-                    }}
-                    containerAspectRatio={1}
+                    enableCrop={true}
+                    cropAspectRatio={1}
+                    showAspectRatioSelector={true}
                   />
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3 pt-4">
+              <div className="flex flex-wrap gap-3 pt-6 border-t-2 border-slate-200">
                 <button
                   type="button"
                   onClick={handleSave}
                   disabled={saving || !hasChanges}
-                  className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-8 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {saving ? 'Saving…' : 'Save Changes'}
                 </button>
@@ -701,7 +672,7 @@ export default function BlogManager() {
                   type="button"
                   onClick={resetForm}
                   disabled={!hasChanges}
-                  className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-slate-200 hover:bg-slate-300 text-slate-900 px-6 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Reset
                 </button>
@@ -709,7 +680,7 @@ export default function BlogManager() {
                   <button
                     type="button"
                     onClick={handleDelete}
-                    className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-700"
+                    className="bg-red-700 hover:bg-red-600 text-white px-6 py-3 font-semibold transition-colors"
                   >
                     Delete
                   </button>

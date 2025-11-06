@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from 'react'
 import { HeroData, HeroFieldGroup, HeroFormData, HeroEditorState } from '@/types/hero.types'
 import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
-import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import { HeroPreview } from './HeroPreview'
+import { ImagePositionControl, ImageControlSettings } from '@/components/media/ImagePositionControl'
+import { FilerobotImageEditorDialog } from '@/components/media/FilerobotImageEditor'
 
 const heroDataToFormData = (data: HeroData): HeroFormData => ({
   ...data
@@ -37,6 +38,8 @@ export function HeroEditor({
     errors: {},
     previewMode: false
   })
+  const [showImageEditor, setShowImageEditor] = useState(false)
+  const [imageToEdit, setImageToEdit] = useState<string | null>(null)
 
   // Field configuration adapted for HeroContent model
   const fieldGroups: HeroFieldGroup[] = [
@@ -257,6 +260,50 @@ export function HeroEditor({
     }
   }
 
+  // Handle opening image editor for existing image
+  const handleEditImage = (imageUrl: string) => {
+    setImageToEdit(imageUrl)
+    setShowImageEditor(true)
+  }
+
+  // Handle image editor save
+  const handleImageEditorSave = async (croppedBlob: Blob, imageBase64: string) => {
+    setShowImageEditor(false)
+
+    // Upload the edited image
+    const formData = new FormData()
+    const fileName = `hero-edited-${Date.now()}.jpg`
+    const file = new File([croppedBlob], fileName, { type: 'image/jpeg' })
+
+    formData.append('file', file)
+    formData.append('altText', 'Hero image')
+
+    try {
+      const response = await fetch('/api/media', {
+        method: 'POST',
+        body: formData
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to upload edited image')
+      }
+
+      const mediaItem = await response.json()
+      setFormData(prev => ({ ...prev, image: mediaItem.url }))
+    } catch (error) {
+      console.error('Error uploading edited image:', error)
+      onError?.('Failed to upload edited image')
+    } finally {
+      setImageToEdit(null)
+    }
+  }
+
+  // Handle image editor cancel
+  const handleImageEditorCancel = () => {
+    setShowImageEditor(false)
+    setImageToEdit(null)
+  }
+
   // Render field input based on type
   const renderField = useCallback((field: any) => {
     const value = formData[field.key] as string || ''
@@ -281,26 +328,43 @@ export function HeroEditor({
             onFileSelect={(media: MediaLibraryItem | null) => {
               setFormData(prev => ({ ...prev, image: media?.url || '' }))
             }}
-            showImageControls={!!value}
-            imagePosition={(formData.imagePosition as string) || 'center'}
-            imageZoom={(formData.imageZoom as number) || 100}
-            imageFit={(formData.imageFit as 'cover' | 'contain' | 'fill') || 'cover'}
-            onImageSettingsChange={(settings: ImageControlSettings) => {
-              setFormData(prev => ({
-                ...prev,
-                imagePosition: settings.position,
-                imageZoom: settings.zoom,
-                imageFit: settings.fit
-              }))
-            }}
-            containerAspectRatio={16 / 9}
             enableCrop={true}
-            cropAspectRatio={16 / 9}
+            useFilerobot={true}
+            showMediaLibrary={true}
           />
           {value && (
-            <div className="break-all rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600">
-              {value}
-            </div>
+            <>
+              <div className="flex items-center gap-2">
+                <div className="flex-1 break-all rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600">
+                  {value}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleEditImage(value)}
+                  className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-colors whitespace-nowrap"
+                >
+                  ✏️ Edit Image
+                </button>
+              </div>
+              <ImagePositionControl
+                imageUrl={value}
+                value={{
+                  position: (formData.imagePosition as string) || 'center',
+                  zoom: (formData.imageZoom as number) || 100,
+                  fit: ((formData.imageFit as string) || 'cover') as 'cover' | 'contain' | 'fill',
+                }}
+                onChange={(settings: ImageControlSettings) => {
+                  setFormData(prev => ({
+                    ...prev,
+                    imagePosition: settings.position,
+                    imageZoom: settings.zoom,
+                    imageFit: settings.fit,
+                  }))
+                }}
+                label="Image Display Settings"
+                showAspectRatioSelector={false}
+              />
+            </>
           )}
         </div>
       )
@@ -337,9 +401,9 @@ export function HeroEditor({
       <div className={`flex flex-col gap-6 ${showPreview ? 'lg:flex-row' : ''}`}>
         {/* Editor Form */}
         <div className={showPreview ? 'lg:w-1/2' : 'w-full'}>
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-white border-2 border-slate-800 shadow-md p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Hero Editor</h2>
+              <h2 className="text-2xl font-serif font-bold text-slate-900">Hero Editor</h2>
               <div className="flex items-center gap-3">
                 {editorState.hasUnsavedChanges && (
                   <span className="text-amber-600 text-sm">• Unsaved changes</span>
@@ -431,6 +495,15 @@ export function HeroEditor({
           </div>
         )}
       </div>
+
+      {/* Image Editor Dialog */}
+      {showImageEditor && imageToEdit && (
+        <FilerobotImageEditorDialog
+          imageUrl={imageToEdit}
+          onComplete={handleImageEditorSave}
+          onCancel={handleImageEditorCancel}
+        />
+      )}
     </div>
   )
 }

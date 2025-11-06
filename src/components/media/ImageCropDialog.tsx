@@ -9,16 +9,19 @@ interface ImageCropDialogProps {
   onComplete: (croppedImageBlob: Blob) => void
   onCancel: () => void
   aspectRatio?: number
+  showAspectRatioSelector?: boolean
 }
 
 export function ImageCropDialog({
   imageUrl,
   onComplete,
   onCancel,
-  aspectRatio = 16 / 9
+  aspectRatio: initialAspectRatio = 16 / 9,
+  showAspectRatioSelector = true
 }: ImageCropDialogProps) {
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
+  const [aspectRatio, setAspectRatio] = useState(initialAspectRatio)
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
 
@@ -42,14 +45,20 @@ export function ImageCropDialog({
     }
   }
 
+  const aspectRatioPresets = [
+    { label: '16:9', value: 16 / 9, icon: '▭', description: 'Landscape' },
+    { label: '1:1', value: 1, icon: '▢', description: 'Square' },
+    { label: '9:16', value: 9 / 16, icon: '▯', description: 'Portrait' },
+  ]
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="relative w-full max-w-4xl rounded-lg bg-white p-6 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4">
+      <div className="relative w-full max-w-4xl bg-white border-4 border-slate-800 p-6 shadow-xl">
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-gray-900">Crop Image</h3>
+          <h3 className="text-2xl font-serif font-bold text-slate-900">Crop & Adjust Image</h3>
           <button
             onClick={onCancel}
-            className="text-gray-400 transition hover:text-gray-600"
+            className="text-slate-600 transition hover:text-slate-900"
             disabled={isProcessing}
           >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +67,35 @@ export function ImageCropDialog({
           </button>
         </div>
 
-        <div className="relative h-96 w-full bg-gray-100">
+        {/* Aspect Ratio Selector */}
+        {showAspectRatioSelector && (
+          <div className="mb-4">
+            <label className="mb-2 block text-sm font-bold text-slate-900">Aspect Ratio</label>
+            <div className="flex gap-2">
+              {aspectRatioPresets.map((preset) => (
+                <button
+                  key={preset.label}
+                  type="button"
+                  onClick={() => setAspectRatio(preset.value)}
+                  className={`flex-1 px-4 py-3 font-semibold text-sm transition-colors ${
+                    Math.abs(aspectRatio - preset.value) < 0.01
+                      ? 'bg-amber-500 text-slate-900'
+                      : 'bg-slate-800 text-white hover:bg-slate-700'
+                  }`}
+                  disabled={isProcessing}
+                >
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="text-2xl">{preset.icon}</span>
+                    <span>{preset.label}</span>
+                    <span className="text-xs opacity-75">{preset.description}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="relative h-96 w-full bg-slate-900 border-2 border-slate-800">
           <Cropper
             image={imageUrl}
             crop={crop}
@@ -72,9 +109,12 @@ export function ImageCropDialog({
 
         <div className="mt-4 space-y-4">
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">
-              Zoom
-            </label>
+            <div className="flex justify-between items-center mb-2">
+              <label className="block text-sm font-bold text-slate-900">
+                Zoom
+              </label>
+              <span className="text-sm font-bold text-amber-600">{Math.round(zoom * 100)}%</span>
+            </div>
             <input
               type="range"
               min={1}
@@ -82,22 +122,23 @@ export function ImageCropDialog({
               step={0.1}
               value={zoom}
               onChange={(e) => setZoom(Number(e.target.value))}
-              className="w-full"
+              className="w-full h-2 bg-slate-200 appearance-none cursor-pointer accent-amber-500"
+              disabled={isProcessing}
             />
           </div>
 
-          <div className="flex justify-end gap-3">
+          <div className="flex justify-end gap-3 pt-4 border-t-2 border-slate-200">
             <button
               onClick={onCancel}
               disabled={isProcessing}
-              className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+              className="bg-slate-200 hover:bg-slate-300 text-slate-900 px-6 py-3 font-semibold transition-colors disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               onClick={createCroppedImage}
               disabled={isProcessing}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-8 py-3 font-semibold transition-colors disabled:opacity-50"
             >
               {isProcessing ? "Processing..." : "Apply Crop"}
             </button>

@@ -31,6 +31,11 @@ export function HeroPreview({ data, className = "" }: HeroPreviewProps) {
     ctaLink: (data.ctaLink as string | null) ?? "#"
   }), [data])
 
+  // Image display settings
+  const imagePosition = (data.imagePosition as string) || 'center'
+  const imageZoom = (data.imageZoom as number) || 100
+  const imageFit = (data.imageFit as string) || 'cover'
+
   return (
     <div className={`relative bg-white ${className}`}>
       {/* Preview Header */}
@@ -76,18 +81,26 @@ export function HeroPreview({ data, className = "" }: HeroPreviewProps) {
           </div>
 
           <div className="flex items-center justify-center w-full p-5 xl:p-0 lg:w-1/2">
-            <div className="relative w-full h-[400px] overflow-hidden rounded-lg border border-white">
+            <div className="relative w-full overflow-hidden rounded-lg border border-white">
               {previewData.image ? (
                 <Image
                   src={previewData.image}
                   alt={previewData.title}
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  width={800}
+                  height={800}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: imageFit as any,
+                    objectPosition: imagePosition,
+                    transform: `scale(${imageZoom / 100})`,
+                    transformOrigin: imagePosition
+                  }}
                   className="rounded-lg"
                   unoptimized={true} // For preview, don't optimize
                 />
               ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                <div className="w-full bg-gray-200 flex items-center justify-center" style={{ minHeight: '400px' }}>
                   <div className="text-gray-500 text-center">
                     <div className="text-4xl mb-2">📸</div>
                     <p className="text-sm">No image selected</p>
@@ -125,6 +138,10 @@ export function HeroPreviewWithFrames({ data, className = "" }: HeroPreviewProps
     ctaText: (data.ctaText as string | null) ?? undefined,
     ctaLink: (data.ctaLink as string | null) ?? "#"
   }), [data])
+
+  const imagePosition = (data.imagePosition as string) || 'center'
+  const imageZoom = (data.imageZoom as number) || 100
+  const imageFit = (data.imageFit as string) || 'cover'
 
   return (
     <div className={`space-y-6 ${className}`}>

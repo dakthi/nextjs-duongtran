@@ -42,6 +42,9 @@ export interface HeroPreviewData {
   subtitle?: string
   description?: string
   image?: string
+  imagePosition?: string
+  imageZoom?: number
+  imageFit?: string
   ctaText?: string
   ctaLink?: string
 }
