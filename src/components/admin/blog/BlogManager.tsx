@@ -8,6 +8,7 @@ import type { MediaLibraryItem } from '@/types/media'
 import { ImageControlSettings } from '@/components/media/ImagePositionControl'
 import type { BlogPostRecord } from '@/types/blog.types'
 import { generateSlug } from '@/lib/slug'
+import { TipTapEditor } from '@/components/editor/TipTapEditor'
 
 interface BlogFormState {
   id?: string
@@ -15,6 +16,8 @@ interface BlogFormState {
   title: string
   excerpt: string
   content: string
+  contentJson?: any
+  contentHtml?: string
   image: string
   imagePosition?: string
   imageZoom?: number
@@ -83,6 +86,8 @@ const recordToFormState = (record: BlogPostRecord): BlogFormState => ({
   title: record.title,
   excerpt: record.excerpt ?? '',
   content: record.content,
+  contentJson: (record as any).contentJson,
+  contentHtml: (record as any).contentHtml,
   image: record.image ?? '',
   imagePosition: record.imagePosition ?? 'center',
   imageZoom: record.imageZoom ?? 100,
@@ -114,6 +119,8 @@ const formStateToPayload = (state: BlogFormState) => ({
   title: state.title,
   excerpt: state.excerpt || null,
   content: state.content,
+  contentJson: state.contentJson,
+  contentHtml: state.contentHtml,
   image: state.image || null,
   imagePosition: state.imagePosition || 'center',
   imageZoom: state.imageZoom || 100,
@@ -519,12 +526,18 @@ export default function BlogManager() {
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Content (Markdown)</label>
-                <textarea
-                  rows={12}
-                  value={formState.content}
-                  onChange={handleInputChange('content')}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 font-mono text-sm"
+                <label className="mb-2 block text-sm font-medium text-gray-700">Content</label>
+                <TipTapEditor
+                  content={formState.contentJson}
+                  onChange={(json, html) => {
+                    setFormState(prev => ({
+                      ...prev,
+                      contentJson: json,
+                      contentHtml: html,
+                      content: html // Keep legacy field for backward compatibility
+                    }))
+                  }}
+                  placeholder="Write your blog post content..."
                 />
               </div>
 
