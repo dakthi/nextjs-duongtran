@@ -4,9 +4,8 @@ import { prisma } from '@/lib/prisma'
 import { HeroData, HeroPreviewData } from '@/types/hero.types'
 import { isDatabaseAvailable } from '@/lib/build-config'
 
-// Cache for hero data
-let heroCache: HeroData | null = null
-let cacheTimestamp: number = 0
+// Cache for hero data - now locale-specific
+const heroCache: Map<string, { data: HeroData | null; timestamp: number }> = new Map()
 const CACHE_DURATION = 30 * 1000 // 30 seconds
 
 export class HeroService {
@@ -19,10 +18,11 @@ export class HeroService {
       return null
     }
 
-    // Check cache first
+    // Check cache first (locale-specific)
     const now = Date.now()
-    if (heroCache && (now - cacheTimestamp) < CACHE_DURATION) {
-      return heroCache
+    const cached = heroCache.get(locale)
+    if (cached && (now - cached.timestamp) < CACHE_DURATION) {
+      return cached.data
     }
 
     try {
@@ -34,9 +34,8 @@ export class HeroService {
         orderBy: { updatedAt: 'desc' }
       })
 
-      // Update cache
-      heroCache = heroContent
-      cacheTimestamp = now
+      // Update cache for this locale
+      heroCache.set(locale, { data: heroContent, timestamp: now })
 
       return heroContent
     } catch (error) {
@@ -98,8 +97,8 @@ export class HeroService {
         })
       }
 
-      // Clear cache
-      this.clearCache()
+      // Clear cache for this locale
+      this.clearCache(locale)
 
       return heroContent
     } catch (error) {
@@ -123,11 +122,14 @@ export class HeroService {
   }
 
   /**
-   * Clear hero data cache
+   * Clear hero data cache (optionally for a specific locale)
    */
-  static clearCache(): void {
-    heroCache = null
-    cacheTimestamp = 0
+  static clearCache(locale?: string): void {
+    if (locale) {
+      heroCache.delete(locale)
+    } else {
+      heroCache.clear()
+    }
   }
 
   /**
