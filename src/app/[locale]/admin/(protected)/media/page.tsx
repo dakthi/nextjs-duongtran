@@ -6,6 +6,8 @@ import FileUpload from '@/components/media/FileUpload'
 import type { MediaLibraryItem } from '@/types/media'
 import { formatFileSize } from '@/lib/media/image-utils'
 
+export const dynamic = 'force-dynamic'
+
 export default function AdminMediaPage() {
   const [mediaItems, setMediaItems] = useState<MediaLibraryItem[]>([])
   const [loading, setLoading] = useState(true)

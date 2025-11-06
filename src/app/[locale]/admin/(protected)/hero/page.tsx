@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { HeroEditor } from '@/components/hero/HeroEditor'
 import { HeroData } from '@/types/hero.types'
 
+export const dynamic = 'force-dynamic'
+
 export default function AdminHeroPage() {
   const [selectedLocale, setSelectedLocale] = useState<'en' | 'vi'>('en')
   const [notification, setNotification] = useState<{
