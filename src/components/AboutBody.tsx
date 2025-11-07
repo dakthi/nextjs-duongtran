@@ -1,5 +1,6 @@
 import { legacyMediaUrl } from '@/lib/media/media-client'
 import type { AboutSection } from '@/types/about.types'
+import { Container } from '@/components/Container'
 
 interface AboutBodyProps {
   sections?: AboutSection[]
@@ -106,7 +107,7 @@ export const AboutBody = ({ sections, contentHtml, contentJson, locale = 'en' }:
     <>
       {/* Content - TipTap HTML or Legacy Sections */}
       <div className="pt-20 pb-12 bg-white">
-        <div className="container max-w-5xl mx-auto px-8 xl:px-12">
+        <Container>
           {useTipTap ? (
             /* TipTap HTML Content */
             <div
@@ -167,7 +168,7 @@ export const AboutBody = ({ sections, contentHtml, contentJson, locale = 'en' }:
               })}
             </div>
           )}
-        </div>
+        </Container>
       </div>
     </>
   )

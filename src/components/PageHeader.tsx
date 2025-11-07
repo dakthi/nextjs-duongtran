@@ -1,3 +1,5 @@
+import { Container } from '@/components/Container'
+
 interface PageHeaderProps {
   eyebrow?: string
   title: string
@@ -7,7 +9,7 @@ interface PageHeaderProps {
 export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => {
   return (
     <div className="py-8 bg-amber-50 border-b-4 border-amber-500">
-      <div className="max-w-5xl mx-auto px-8 xl:px-12">
+      <Container>
         <div className="max-w-3xl mx-auto text-center">
           {eyebrow && (
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
@@ -23,7 +25,7 @@ export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => 
             </p>
           )}
         </div>
-      </div>
+      </Container>
     </div>
   )
 }

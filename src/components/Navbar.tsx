@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import { Container } from "@/components/Container";
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -61,7 +62,8 @@ export const Navbar = () => {
         scrolled ? "shadow-lg" : ""
       }`}
     >
-      <nav className="container max-w-5xl mx-auto flex items-center justify-between px-8 xl:px-12 py-4 md:py-5">
+      <Container>
+      <nav className="flex items-center justify-between py-4 md:py-5">
         {/* Logo */}
         <Link href={`/${locale}`} className="flex flex-col space-y-0.5">
           <span
@@ -76,7 +78,7 @@ export const Navbar = () => {
               scrolled ? "text-xs hidden md:block" : "text-sm"
             }`}
           >
-            Chartered Accountant
+            ACCA Chartered Accountant
           </span>
         </Link>
 
@@ -146,13 +148,15 @@ export const Navbar = () => {
           </button>
 
           {mobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 space-y-2 bg-slate-700 p-4 shadow-lg">
+            <div className="absolute top-full left-0 right-0 bg-slate-700 border-t-2 border-slate-600 shadow-lg">
+              <Container>
+              <div className="space-y-1 py-4">
               {navigation.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-2 text-slate-200 hover:text-amber-400 transition capitalize"
+                  className="block px-4 py-3 text-slate-200 hover:bg-slate-600 hover:text-amber-400 transition capitalize rounded"
                 >
                   {item.label}
                 </Link>
@@ -160,20 +164,20 @@ export const Navbar = () => {
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block mt-2 px-4 py-2 text-center bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition capitalize"
+                className="block mx-4 mt-3 px-4 py-3 text-center bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition capitalize rounded"
               >
                 {t('contact') || 'Contact'}
               </Link>
 
               {/* Mobile Language Switcher */}
-              <div className="flex space-x-2 px-4 py-2">
+              <div className="flex gap-2 px-4 pt-3 pb-1">
                 <button
                   onClick={() => {
                     switchLanguage('en');
                     setMobileMenuOpen(false);
                   }}
-                  className={`px-3 py-1 text-sm font-semibold ${
-                    locale === 'en' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400 border border-slate-500'
+                  className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
+                    locale === 'en' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
                   }`}
                 >
                   EN
@@ -183,17 +187,20 @@ export const Navbar = () => {
                     switchLanguage('vi');
                     setMobileMenuOpen(false);
                   }}
-                  className={`px-3 py-1 text-sm font-semibold ${
-                    locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400 border border-slate-500'
+                  className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
+                    locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
                   }`}
                 >
                   VI
                 </button>
               </div>
+              </div>
+              </Container>
             </div>
           )}
         </div>
       </nav>
+      </Container>
     </div>
   );
 };

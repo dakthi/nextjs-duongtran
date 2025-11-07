@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { Container } from "@/components/Container";
 
 export const ServiceContactForm = () => {
   const [status, setStatus] = useState<string | null>(null);
@@ -43,7 +44,8 @@ export const ServiceContactForm = () => {
 
   return (
     <div className="pt-20 pb-12 bg-white">
-      <div className="max-w-3xl mx-auto px-8 xl:px-12">
+      <Container>
+        <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
             Get Started
@@ -150,7 +152,8 @@ export const ServiceContactForm = () => {
             )}
           </form>
         </div>
-      </div>
+        </div>
+      </Container>
     </div>
   );
 };

@@ -28,7 +28,7 @@ export default async function LocaleLayout({
   params: { locale }
 }: Props) {
   return (
-    <html lang={locale} className="light" suppressHydrationWarning>
+    <html lang={locale} className="light overflow-x-hidden" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -37,7 +37,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} ${montserrat.variable} bg-gray-50 text-gray-900 antialiased`}>
+      <body className={`${inter.className} ${montserrat.variable} bg-gray-50 text-gray-900 antialiased overflow-x-hidden`}>
         <AuthSessionProvider>{children}</AuthSessionProvider>
       </body>
     </html>

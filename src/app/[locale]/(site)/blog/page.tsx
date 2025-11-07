@@ -64,7 +64,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       {/* Featured Post Section */}
       <div className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-8 xl:px-12">
+        <Container>
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-6">
             Featured Article
           </p>
@@ -108,13 +108,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </div>
             </div>
           </a>
-        </div>
+        </Container>
       </div>
 
       {/* Recent Posts Section */}
       {top5Posts.length > 0 && (
         <div className="py-20 bg-slate-50">
-          <div className="max-w-5xl mx-auto px-8 xl:px-12">
+          <Container>
             <div className="text-center max-w-3xl mx-auto mb-12">
               <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
                 Recent Posts
@@ -160,14 +160,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </a>
               ))}
             </div>
-          </div>
+          </Container>
         </div>
       )}
 
       {/* More Posts Sections */}
       {chunked.map((chunk, index) => (
         <div key={index} className={`py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
-          <div className="max-w-5xl mx-auto px-8 xl:px-12">
+          <Container>
             <div className="text-center max-w-3xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
                 {headings[index] || 'More Articles'}
@@ -215,7 +215,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </a>
               ))}
             </div>
-          </div>
+          </Container>
         </div>
       ))}
     </>
