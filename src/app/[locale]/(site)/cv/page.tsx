@@ -4,6 +4,7 @@ import { Container } from '@/components/Container'
 import { SectionTitle } from '@/components/SectionTitle'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { EmployerCompatibilityTest } from '@/components/employer/EmployerCompatibilityTest'
 
 export default function CVPage() {
   const pathname = usePathname()
@@ -13,6 +14,8 @@ export default function CVPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [cvUrl, setCvUrl] = useState('')
+  const [showTest, setShowTest] = useState(false)
+  const [testSuccess, setTestSuccess] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,6 +40,32 @@ export default function CVPage() {
       setCvUrl(data.url)
     } catch (err) {
       setError('Something went wrong')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleTestComplete = async (answers: any) => {
+    setLoading(true)
+    setError('')
+
+    try {
+      const res = await fetch('/api/employer-test', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(answers)
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong')
+        return
+      }
+
+      setTestSuccess(true)
+    } catch (err) {
+      setError('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -292,38 +321,106 @@ export default function CVPage() {
               Access Full CV
             </h2>
 
-            {!cvUrl ? (
+            {testSuccess ? (
+              <div className="text-center bg-white border-2 border-amber-500 shadow-lg p-8">
+                <div className="mb-6 p-6 bg-amber-50 border-2 border-amber-500">
+                  <svg className="w-16 h-16 text-amber-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-slate-900 font-bold text-lg mb-2">Thank You for Your Interest!</p>
+                  <p className="text-slate-700 mb-4">
+                    I appreciate you taking the time to complete the compatibility assessment.
+                  </p>
+                  <div className="bg-white border-l-4 border-amber-500 p-4 text-left">
+                    <p className="text-slate-700 mb-2">
+                      <strong>What happens next:</strong>
+                    </p>
+                    <ul className="space-y-2 text-slate-600 text-sm">
+                      <li className="flex items-start">
+                        <span className="text-amber-500 mr-2">✓</span>
+                        <span>You'll receive a confirmation email shortly</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-amber-500 mr-2">✓</span>
+                        <span>I'll personally review your submission</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-amber-500 mr-2">✓</span>
+                        <span>I'll be in touch within 2-3 business days to discuss next steps</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ) : !cvUrl ? (
               <>
                 <p className="text-slate-200 mb-8 text-center text-lg">
-                  If you have an access code, enter it below to view my complete CV with detailed information.
+                  {showTest
+                    ? 'Complete this brief compatibility assessment to receive instant CV access via email.'
+                    : 'If you have an access code, enter it below to view my complete CV with detailed information.'}
                 </p>
-                <form onSubmit={handleSubmit} className="bg-white border-2 border-amber-500 shadow-lg p-8">
-                  <input
-                    type="text"
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    placeholder="Enter access code"
-                    className="w-full px-4 py-3 border-2 border-slate-800 mb-4 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900"
-                  />
-                  {error && (
-                    <p className="text-red-600 font-semibold text-sm mb-4 bg-red-50 border-l-4 border-red-600 p-3">
-                      {error}
-                    </p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={loading || !code.trim()}
-                    className="w-full px-8 py-3 bg-amber-500 text-slate-900 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-base"
-                  >
-                    {loading ? 'Verifying...' : 'Access CV'}
-                  </button>
-                  <p className="text-sm text-slate-600 mt-6 text-center">
-                    Don't have a code?{' '}
-                    <Link href={`/${locale}/contact`} className="text-slate-900 font-semibold hover:text-amber-600 underline transition-colors">
-                      Contact me to request one
-                    </Link>
-                  </p>
-                </form>
+
+                {showTest ? (
+                  <>
+                    <EmployerCompatibilityTest
+                      onComplete={handleTestComplete}
+                      loading={loading}
+                      error={error}
+                    />
+                    <div className="text-center mt-6">
+                      <button
+                        onClick={() => setShowTest(false)}
+                        className="text-amber-400 hover:text-amber-300 underline transition-colors"
+                      >
+                        Or enter an access code instead
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <form onSubmit={handleSubmit} className="bg-white border-2 border-amber-500 shadow-lg p-8">
+                      <input
+                        type="text"
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                        placeholder="Enter access code"
+                        className="w-full px-4 py-3 border-2 border-slate-800 mb-4 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900"
+                      />
+                      {error && (
+                        <p className="text-red-600 font-semibold text-sm mb-4 bg-red-50 border-l-4 border-red-600 p-3">
+                          {error}
+                        </p>
+                      )}
+                      <button
+                        type="submit"
+                        disabled={loading || !code.trim()}
+                        className="w-full px-8 py-3 bg-amber-500 text-slate-900 hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-base"
+                      >
+                        {loading ? 'Verifying...' : 'Access CV'}
+                      </button>
+                      <div className="mt-6 pt-6 border-t-2 border-slate-200">
+                        <p className="text-sm text-slate-600 text-center mb-3">
+                          Don't have a code?
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                          <button
+                            type="button"
+                            onClick={() => setShowTest(true)}
+                            className="px-6 py-2 bg-slate-900 text-white hover:bg-slate-700 transition-colors font-semibold text-sm"
+                          >
+                            Take Compatibility Test
+                          </button>
+                          <Link
+                            href={`/${locale}/contact`}
+                            className="px-6 py-2 bg-white border-2 border-slate-900 text-slate-900 hover:bg-slate-50 transition-colors font-semibold text-sm text-center"
+                          >
+                            Contact Me
+                          </Link>
+                        </div>
+                      </div>
+                    </form>
+                  </>
+                )}
               </>
             ) : (
               <div className="text-center bg-white border-2 border-amber-500 shadow-lg p-8">

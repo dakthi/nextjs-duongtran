@@ -205,3 +205,18 @@ model ReferralCode {
 
   @@map("referral_codes")
 }
+
+model EmployerTestSubmission {
+  id               String   @id @default(cuid())
+  email            String
+  companyName      String
+  companySize      String?
+  role             String?
+  testAnswers      Json     // Store all the test answers
+  passedTest       Boolean  @default(false)
+  accessCodeSent   Boolean  @default(false)
+  accessCode       String?  // Generated access code if passed
+  submittedAt      DateTime @default(now())
+
+  @@map("employer_test_submissions")
+}
