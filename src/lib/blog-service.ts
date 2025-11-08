@@ -254,16 +254,18 @@ export class BlogService {
   }
 
   static async toView(post: BlogPostRecord): Promise<BlogPostView> {
-    // Check if content is already HTML (from TipTap editor)
-    // HTML content typically starts with tags like <p>, <h1>, etc.
-    const isHtml = post.content.trim().startsWith('<')
-
     let contentHtml: string
-    if (isHtml) {
-      // Content is already HTML from TipTap, use it directly
+
+    // Priority 1: Use pre-rendered contentHtml from database if it exists
+    if ((post as any).contentHtml && (post as any).contentHtml.trim()) {
+      contentHtml = (post as any).contentHtml
+    }
+    // Priority 2: Check if content is already HTML (from TipTap editor)
+    else if (post.content.trim().startsWith('<')) {
       contentHtml = post.content
-    } else {
-      // Content is markdown, process it
+    }
+    // Priority 3: Content is markdown, process it
+    else {
       const processed = await remark()
         .use(remarkGfm)
         .use(html)
