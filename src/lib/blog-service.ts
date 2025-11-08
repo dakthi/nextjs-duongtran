@@ -95,26 +95,36 @@ export class BlogService {
   }
 
   static async listAllPosts(locale?: string): Promise<BlogPostRecord[]> {
+    if (!isDatabaseAvailable()) {
+      console.warn('Database not available during build time, returning empty posts list')
+      return []
+    }
+
     const now = Date.now()
 
     if (allPostsCache && this.isCacheFresh(cacheTimestamp) && !locale) {
       return allPostsCache
     }
 
-    const posts = await prisma.blogPost.findMany({
-      where: locale ? { locale } : undefined,
-      orderBy: [{ createdAt: 'desc' }],
-    })
+    try {
+      const posts = await prisma.blogPost.findMany({
+        where: locale ? { locale } : undefined,
+        orderBy: [{ createdAt: 'desc' }],
+      })
 
-    const mappedPosts = posts.map(mapPrismaPost)
+      const mappedPosts = posts.map(mapPrismaPost)
 
-    // Only cache if no locale filter (for backwards compatibility)
-    if (!locale) {
-      allPostsCache = mappedPosts
-      cacheTimestamp = now
+      // Only cache if no locale filter (for backwards compatibility)
+      if (!locale) {
+        allPostsCache = mappedPosts
+        cacheTimestamp = now
+      }
+
+      return mappedPosts
+    } catch (error) {
+      console.warn('Database error, returning empty posts list:', error)
+      return []
     }
-
-    return mappedPosts
   }
 
   static async getPostBySlug(slug: string, includeDraft = false, locale = 'en'): Promise<BlogPostRecord | null> {

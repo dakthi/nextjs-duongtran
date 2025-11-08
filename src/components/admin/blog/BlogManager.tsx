@@ -11,6 +11,7 @@ import { TipTapEditor } from '@/components/editor/TipTapEditor'
 
 interface BlogFormState {
   id?: string
+  locale: string
   slug: string
   title: string
   excerpt: string
@@ -50,6 +51,7 @@ interface ApiResponse<T> {
 }
 
 const emptyForm: BlogFormState = {
+  locale: 'vi',
   slug: '',
   title: '',
   excerpt: '',
@@ -81,6 +83,7 @@ const emptyForm: BlogFormState = {
 
 const recordToFormState = (record: BlogPostRecord): BlogFormState => ({
   id: record.id,
+  locale: record.locale || 'vi',
   slug: record.slug,
   title: record.title,
   excerpt: record.excerpt ?? '',
@@ -114,6 +117,7 @@ const recordToFormState = (record: BlogPostRecord): BlogFormState => ({
 
 const formStateToPayload = (state: BlogFormState) => ({
   id: state.id,
+  locale: state.locale,
   slug: state.slug,
   title: state.title,
   excerpt: state.excerpt || null,
@@ -176,6 +180,7 @@ export default function BlogManager() {
   const fetchPosts = useCallback(async () => {
     setLoading(true)
     try {
+      // Fetch posts for current locale
       const url = `/api/blog?locale=${locale}`
       const response = await fetch(url, { cache: 'no-store' })
       if (!response.ok) {
@@ -190,15 +195,15 @@ export default function BlogManager() {
         setFormState(first)
         setOriginalState(first)
       } else {
-        setFormState({ ...emptyForm })
-        setOriginalState({ ...emptyForm })
+        setFormState({ ...emptyForm, locale })
+        setOriginalState({ ...emptyForm, locale })
       }
     } catch (error) {
       console.error('Failed to fetch posts', error)
       showStatus('error', error instanceof Error ? error.message : 'Failed to load posts')
       setPosts([])
-      setFormState({ ...emptyForm })
-      setOriginalState({ ...emptyForm })
+      setFormState({ ...emptyForm, locale })
+      setOriginalState({ ...emptyForm, locale })
     } finally {
       setLoading(false)
     }
@@ -289,7 +294,8 @@ export default function BlogManager() {
     setSaving(true)
     try {
       const payload = formStateToPayload(formState)
-      const endpoint = selectedId ? `/api/blog/${selectedId}?locale=${locale}` : `/api/blog?locale=${locale}`
+      // Don't pass locale in query param - it's in the payload now
+      const endpoint = selectedId ? `/api/blog/${selectedId}` : `/api/blog`
       const method = selectedId ? 'PUT' : 'POST'
       const response = await fetch(endpoint, {
         method,
@@ -395,8 +401,15 @@ export default function BlogManager() {
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="lg:w-1/3 space-y-4">
           <div className="flex items-center justify-between gap-2">
-            <h2 className="text-xl font-serif font-bold text-slate-900">Posts</h2>
+            <h2 className="text-xl font-serif font-bold text-slate-900">Posts ({locale.toUpperCase()})</h2>
             <div className="flex gap-2">
+              <a
+                href={`/${locale === 'en' ? 'vi' : 'en'}/admin/blog`}
+                className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 text-sm font-semibold transition-colors"
+                title={`Switch to ${locale === 'en' ? 'Vietnamese' : 'English'}`}
+              >
+                {locale === 'en' ? 'VI' : 'EN'}
+              </a>
               <button
                 type="button"
                 onClick={handleExportBackup}

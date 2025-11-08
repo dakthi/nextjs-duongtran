@@ -35,9 +35,10 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
+          suppressHydrationWarning
         />
       </head>
-      <body className={`${inter.className} ${montserrat.variable} bg-gray-50 text-gray-900 antialiased overflow-x-hidden`}>
+      <body className={`${inter.className} ${montserrat.variable} bg-gray-50 text-gray-900 antialiased overflow-x-hidden`} suppressHydrationWarning>
         <AuthSessionProvider>{children}</AuthSessionProvider>
       </body>
     </html>

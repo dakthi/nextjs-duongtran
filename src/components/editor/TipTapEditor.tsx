@@ -3,7 +3,6 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
-import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import { useEffect } from 'react'
 
@@ -22,21 +21,12 @@ export function TipTapEditor({
 }: TipTapEditorProps) {
   const editor = useEditor({
     immediatelyRender: false,
+    shouldRerenderOnTransaction: false,
     extensions: [
-      StarterKit.configure({
-        heading: {
-          levels: [2, 3, 4],
-        },
-      }),
+      StarterKit,
       Image.configure({
         HTMLAttributes: {
           class: 'w-full h-auto border-4 border-slate-800 shadow-lg my-8',
-        },
-      }),
-      Link.configure({
-        openOnClick: false,
-        HTMLAttributes: {
-          class: 'text-amber-600 underline hover:text-amber-500',
         },
       }),
       Placeholder.configure({

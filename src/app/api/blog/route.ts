@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const url = new URL(request.url)
-    const locale = url.searchParams.get('locale') || 'en'
+    const locale = url.searchParams.get('locale') || undefined
     const posts = await listAllPosts(locale)
     return NextResponse.json({ success: true, data: posts }, {
       headers: {
@@ -70,21 +70,22 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const url = new URL(request.url)
-    const locale = url.searchParams.get('locale') || 'en'
-
-    const payload = parseBlogInput(await request.json())
-    // Ensure the locale is set based on the current admin locale
-    const postWithLocale = { ...payload, locale }
-
-    const post = await upsertBlogPost(postWithLocale)
+    const rawPayload = await request.json()
+    console.log('[api/blog] POST request payload:', JSON.stringify(rawPayload, null, 2))
+    const payload = parseBlogInput(rawPayload)
+    console.log('[api/blog] Parsed payload:', JSON.stringify(payload, null, 2))
+    // Use the locale from the payload, don't override it
+    const post = await upsertBlogPost(payload)
+    console.log('[api/blog] Created post:', post.id)
     return NextResponse.json({ success: true, data: post }, { status: 201 })
   } catch (error) {
     console.error('[api/blog] Failed to create post', error)
     const validationErrors = (error as any)?.validationErrors
     if (validationErrors) {
+      console.error('[api/blog] Validation errors:', validationErrors)
       return NextResponse.json({ success: false, error: 'Validation failed', errors: validationErrors }, { status: 400 })
     }
-    return NextResponse.json({ success: false, error: 'Failed to create post' }, { status: 500 })
+    const errorMessage = error instanceof Error ? error.message : 'Failed to create post'
+    return NextResponse.json({ success: false, error: errorMessage }, { status: 500 })
   }
 }
