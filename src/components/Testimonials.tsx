@@ -51,9 +51,10 @@ export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
             <div className="flex flex-col justify-between w-full h-full">
               <div className="mb-6">
                 <div className="text-6xl text-amber-500 leading-none mb-3">&ldquo;</div>
-                <p className="text-base leading-relaxed text-slate-700 italic">
-                  {testimonial.paragraphs[0]}
-                </p>
+                <div
+                  className="text-base leading-relaxed text-slate-700 italic prose prose-slate max-w-none"
+                  dangerouslySetInnerHTML={{ __html: testimonial.content }}
+                />
               </div>
 
               <Avatar
