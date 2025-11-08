@@ -9,11 +9,11 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
   const heroContent = await getHeroData(locale);
 
   // Fallback to default content if no CMS content found
-  const title = heroContent?.title || "I am an accountant.\nHow about you?";
-  const subtitle = heroContent?.subtitle || "I would love you hear more about you, and how I can help you protect your business, support your family, and enjoy the life you are building.";
-  const description = heroContent?.description || "Leave the boring parts to me\nYou take care of what is fun!";
-  const ctaText = heroContent?.ctaText || "See how I can help";
-  const ctaLinkRaw = heroContent?.ctaLink || "/services";
+  const title = heroContent?.title || "SMEs owners and independent professionals";
+  const subtitle = heroContent?.subtitle || "can make sense and be on top of their tax";
+  const description = heroContent?.description || "Access the benefits and reliefs you're entitled to, and keep more of what you work hard for.";
+  const ctaText = heroContent?.ctaText || "Get in touch";
+  const ctaLinkRaw = heroContent?.ctaLink || "/contact";
 
   // Add locale prefix to relative paths (not external URLs or anchors)
   const ctaLink = ctaLinkRaw.startsWith('/') && !ctaLinkRaw.startsWith('//')
@@ -36,7 +36,7 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Text Content */}
           <div className="flex-1">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold leading-tight text-slate-800 mb-6">
+            <h1 className="text-3xl md:text-4xl font-serif font-bold leading-tight text-slate-800 mb-6">
               {title.split('\n').map((line, index) => (
                 <span key={index}>
                   {line}

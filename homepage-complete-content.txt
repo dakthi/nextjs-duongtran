@@ -1,0 +1,432 @@
+================================================================================
+                   COMPLETE HOMEPAGE CONTENT - ENGLISH & VIETNAMESE
+================================================================================
+
+================================================================================
+1. NAVBAR / NAVIGATION BAR
+================================================================================
+
+ENGLISH:
+--------
+Logo:
+  Lieu Vo
+  ACCA Chartered Accountant
+
+Navigation Links:
+  - About
+  - Services
+  - Blog
+  - Contact (Button)
+
+Language Switcher:
+  - EN
+  - VI
+
+VIETNAMESE:
+-----------
+Logo:
+  Lieu Vo
+  ACCA Chartered Accountant
+
+Navigation Links:
+  - Giới thiệu (About)
+  - Dịch vụ (Services)
+  - Blog
+  - Liên hệ (Contact - Button)
+
+Language Switcher:
+  - EN
+  - VI
+
+
+================================================================================
+2. HERO SECTION
+================================================================================
+
+ENGLISH:
+--------
+Title:
+  SMEs owners and independent professionals
+
+Subtitle:
+  can make sense and be on top of their tax
+
+Description:
+  Access the benefits and reliefs you're entitled to, and keep more of what you work hard for.
+
+CTA Button:
+  Get in touch
+
+VIETNAMESE:
+-----------
+Title:
+  Chủ doanh nghiệp vừa và nhỏ cùng chuyên gia độc lập
+
+Subtitle:
+  có thể hiểu rõ và nắm bắt tình hình thuế của mình
+
+Description:
+  Tiếp cận các quyền lợi và ưu đãi mà bạn được hưởng, và giữ lại nhiều hơn những gì bạn đã làm việc chăm chỉ để có được.
+
+CTA Button:
+  Liên hệ
+
+
+================================================================================
+3. SECTION 1: MAIN MESSAGE
+================================================================================
+
+ENGLISH:
+--------
+Pre-title:
+  Lieu Vo
+
+Title:
+  It's okay not to know where to start
+
+Description:
+  If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because not wanting to bother them, and finger cross that they do things right, blindly. That's the usual way things go, but it doesn't have to be.
+
+VIETNAMESE:
+-----------
+Pre-title:
+  Lieu Vo
+
+Title:
+  Không sao nếu bạn không biết bắt đầu từ đâu
+
+Description:
+  Nếu bạn là chủ doanh nghiệp nhỏ hoặc chuyên gia độc lập, tôi hiểu việc hiểu rõ các con số có thể khó khăn như thế nào. Hầu hết kế toán luôn vội vã từ tờ khai thuế này sang tờ khai thuế khác, có nghĩa là ít thời gian giải thích mọi thứ đúng cách. Kết quả là, bạn ngại hỏi vì không muốn làm phiền họ, và chỉ có thể hy vọng họ làm đúng một cách mù quáng. Đó là cách thông thường mọi thứ diễn ra, nhưng không nhất thiết phải như vậy.
+
+
+================================================================================
+4. SECTION 2: BENEFIT ONE
+================================================================================
+
+ENGLISH:
+--------
+Title:
+  I streamline and automate, so there is more time to listen to you
+
+Description:
+  AI, contrary to what some may think, might be the secret sauce that accounting industry have been waiting for so long. It saves my time, so I can focus on what matters the most, you, your business and your story.
+
+Bullet Points:
+
+1. Streamlined process means higher accuracy
+   By standardising the team finely and intricately honed procedures over the years, it helps us see the bigger picture and fix bottleneck and improve accuracy among all phases.
+
+2. Automation means less human errors in mundane tasks
+   Instead of spending 3 hours typing VAT invoices into spreadsheets, AI agents now do that in 3 minutes, and our team spend the rest of the 3 hours checking it, spotting more anomalies and accounting risks.
+
+3. Innovation means you benefit more everyday
+   Every single day, we look at our playbook and think "is there a better way to do this?", "can it be easier for the clients?". As a result, working with accountants become more and more pleasant and strategic, instead of pedantic.
+
+VIETNAMESE:
+-----------
+Title:
+  Tôi tối ưu hóa và tự động hóa, để có nhiều thời gian lắng nghe bạn hơn
+
+Description:
+  AI, trái ngược với những gì một số người có thể nghĩ, có thể là công thức bí mật mà ngành kế toán đã chờ đợi từ lâu. Nó tiết kiệm thời gian của tôi, vì vậy tôi có thể tập trung vào điều quan trọng nhất, đó là bạn, doanh nghiệp của bạn và câu chuyện của bạn.
+
+Bullet Points:
+
+1. Quy trình được tối ưu hóa có nghĩa là độ chính xác cao hơn
+   Bằng cách chuẩn hóa các quy trình được nhóm tinh chỉnh và hoàn thiện tỉ mỉ qua nhiều năm, nó giúp chúng tôi nhìn thấy bức tranh toàn cảnh và khắc phục điểm nghẽn cũng như cải thiện độ chính xác trong tất cả các giai đoạn.
+
+2. Tự động hóa có nghĩa là ít lỗi do con người hơn trong các công việc đơn điệu
+   Thay vì dành 3 giờ để nhập hóa đơn VAT vào bảng tính, các tác nhân AI hiện thực hiện điều đó trong 3 phút, và nhóm của chúng tôi dành phần còn lại của 3 giờ để kiểm tra, phát hiện thêm các bất thường và rủi ro kế toán.
+
+3. Đổi mới có nghĩa là bạn được hưởng lợi nhiều hơn mỗi ngày
+   Mỗi ngày, chúng tôi xem xét sổ tay hướng dẫn của mình và suy nghĩ "có cách nào tốt hơn để làm điều này không?", "có thể dễ dàng hơn cho khách hàng không?". Kết quả là, làm việc với kế toán trở nên dễ chịu và mang tính chiến lược hơn, thay vì rườm rà.
+
+
+================================================================================
+5. SECTION 3: BENEFIT TWO
+================================================================================
+
+ENGLISH:
+--------
+Title:
+  Efficiency that lets you breathe easier
+
+Description:
+  Work should be smarter, not harder. I constantly optimise workflows so you spend less time worrying about compliance and more time building your dreams.
+
+Bullet Points:
+
+1. Cutting through complexity
+   From payroll for 200+ clients to monthly VAT for 13+ companies, I streamline the numbers so you can focus on your real priorities.
+
+2. Designed for growth
+   I create templates, improve systems, and share best practices, helping businesses become more efficient, agile, and ready for what's next.
+
+3. Technology that serves people
+   Automation and optimisation are powerful, but the heart of business is human. I use tech to make life easier, not to replace personal connection.
+
+VIETNAMESE:
+-----------
+Title:
+  Hiệu quả giúp bạn thở phào nhẹ nhõm hơn
+
+Description:
+  Công việc nên thông minh hơn, không phải khó khăn hơn. Tôi liên tục tối ưu hóa quy trình công việc để bạn dành ít thời gian lo lắng về tuân thủ và nhiều thời gian hơn để xây dựng ước mơ của mình.
+
+Bullet Points:
+
+1. Vượt qua sự phức tạp
+   Từ bảng lương cho hơn 200 khách hàng đến VAT hàng tháng cho hơn 13 công ty, tôi tối ưu hóa các con số để bạn có thể tập trung vào những ưu tiên thực sự của mình.
+
+2. Được thiết kế để phát triển
+   Tôi tạo mẫu, cải thiện hệ thống và chia sẻ các phương pháp hay nhất, giúp doanh nghiệp trở nên hiệu quả hơn, linh hoạt hơn và sẵn sàng cho những gì tiếp theo.
+
+3. Công nghệ phục vụ con người
+   Tự động hóa và tối ưu hóa rất mạnh mẽ, nhưng trái tim của doanh nghiệp là con người. Tôi sử dụng công nghệ để làm cho cuộc sống dễ dàng hơn, không phải để thay thế kết nối cá nhân.
+
+
+================================================================================
+6. SECTION 4: HEAR FROM LIEU
+================================================================================
+
+ENGLISH:
+--------
+Pre-title:
+  hear from lieu
+
+Title:
+  supporting people, supporting businesses
+
+Description:
+  Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.
+
+VIETNAMESE:
+-----------
+Pre-title:
+  nghe từ lieu
+
+Title:
+  hỗ trợ con người, hỗ trợ doanh nghiệp
+
+Description:
+  Lieu tin rằng kế toán không chỉ là về con số. Đó là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên làm việc cho chúng ta, giúp doanh nghiệp và gia đình phát triển.
+
+
+================================================================================
+7. SECTION 5: TESTIMONIALS
+================================================================================
+
+ENGLISH:
+--------
+Pre-title:
+  testimonials
+
+Title:
+  what clients and colleagues say
+
+Description:
+  A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.
+
+Testimonial 1:
+--------------
+Name: James Price
+Role: Creative Industries Accounts Assistant
+Date: June 2025
+Relationship: Worked with Lieu on the same team
+
+Quote:
+"Lieu is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.
+
+She is kind, helpful, and extremely skilled. Her attention to detail is exceptional, and she consistently produces work of the highest standard. Lieu communicates complex information clearly to both internal teams and external clients - even those with no background in finance.
+
+She's always learning, always improving, and actively drives positive change in the workplace. I've seen firsthand how her programming and automation skills have saved time and made our processes far more efficient.
+
+I would not hesitate to recommend her to any future employer. She's a brilliant asset to any team."
+
+Testimonial 2:
+--------------
+Name: Duc Nguyen
+Role: Accounts Assistant, MSc FinTech '24
+Date: May 2025
+Relationship: Reported directly to Lieu
+
+Quote:
+"I've learned so much from working with Lieu. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.
+
+What stands out most is her supportive nature and calm, practical problem-solving. No matter how busy things get, she always takes time to help the team.
+
+On top of that, she's built automation tools that save us a huge amount of time. Her ability to combine deep expertise with efficiency is rare - she's someone you can learn a lot from, and she's a true asset to any team."
+
+VIETNAMESE:
+-----------
+Pre-title:
+  nhận xét
+
+Title:
+  khách hàng và đồng nghiệp nói gì
+
+Description:
+  Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của mỗi khách hàng. Đó là điều làm cho việc làm việc với Lieu đáng nhớ.
+
+Testimonial 1:
+--------------
+Tên: James Price
+Vai trò: Trợ lý Kế toán Ngành Sáng tạo
+Ngày: Tháng 6 năm 2025
+Mối quan hệ: Làm việc cùng nhóm với Lieu
+
+Lời nhận xét:
+"Lieu là một người phụ nữ tài năng và đầy tham vọng với một loạt các kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng cô ấy, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của cô ấy - đặc biệt là trong việc phát triển kiến thức kỹ thuật của tôi.
+
+Cô ấy tốt bụng, nhiệt tình và cực kỳ có kỹ năng. Sự chú ý đến chi tiết của cô ấy là đặc biệt, và cô ấy luôn tạo ra công việc ở tiêu chuẩn cao nhất. Lieu truyền đạt thông tin phức tạp một cách rõ ràng cho cả nhóm nội bộ và khách hàng bên ngoài - ngay cả những người không có nền tảng về tài chính.
+
+Cô ấy luôn học hỏi, luôn cải thiện và chủ động thúc đẩy sự thay đổi tích cực tại nơi làm việc. Tôi đã tận mắt chứng kiến cách kỹ năng lập trình và tự động hóa của cô ấy đã tiết kiệm thời gian và làm cho quy trình của chúng tôi hiệu quả hơn nhiều.
+
+Tôi sẽ không ngần ngại giới thiệu cô ấy cho bất kỳ nhà tuyển dụng nào trong tương lai. Cô ấy là một tài sản tuyệt vời cho bất kỳ nhóm nào."
+
+Testimonial 2:
+--------------
+Tên: Duc Nguyen
+Vai trò: Trợ lý Kế toán, Thạc sĩ FinTech '24
+Ngày: Tháng 5 năm 2025
+Mối quan hệ: Báo cáo trực tiếp cho Lieu
+
+Lời nhận xét:
+"Tôi đã học được rất nhiều từ việc làm việc với Lieu. Cô ấy có kiến thức kỹ thuật xuất sắc - đặc biệt là về thuế - và công việc của cô ấy luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.
+
+Điều nổi bật nhất là bản chất hỗ trợ và giải quyết vấn đề thực tế, bình tĩnh của cô ấy. Dù công việc bận rộn đến đâu, cô ấy vẫn luôn dành thời gian để giúp đỡ nhóm.
+
+Hơn nữa, cô ấy đã xây dựng các công cụ tự động hóa giúp chúng tôi tiết kiệm rất nhiều thời gian. Khả năng kết hợp chuyên môn sâu với hiệu quả của cô ấy là hiếm có - cô ấy là người mà bạn có thể học hỏi rất nhiều, và cô ấy là một tài sản thực sự cho bất kỳ nhóm nào."
+
+
+================================================================================
+8. SECTION 6: FAQ (FREQUENTLY ASKED QUESTIONS)
+================================================================================
+
+ENGLISH:
+--------
+Pre-title:
+  faq
+
+Title:
+  frequently asked questions
+
+Description:
+  If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help.
+
+Questions & Answers:
+--------------------
+
+Q1: Are you a qualified accountant?
+A1: Yes. I am an ACCA Affiliate, having completed all 13 exams on the first attempt. I also hold a First Class MSc in Accounting and Finance from BPP University, London.
+
+Q2: What kind of accounting services do you provide?
+A2: I manage full-cycle accounting, including bookkeeping, VAT returns, payroll processing, tax filings, and financial reporting. I also advise on optimising workflows and improving compliance.
+
+Q3: Do you work with small businesses?
+A3: Absolutely. I enjoy working closely with SMEs, helping them manage their numbers while they focus on growing their business. From family-run shops to local partnerships, I am here to help.
+
+Q4: How can you help my business beyond accounting?
+A4: I design systems that make your business run smoother. Whether it's setting up automated reporting, improving payroll processes, or helping your team onboard faster, my goal is to give you more time to focus on the parts of your work that you love.
+
+Q5: Where are you based?
+A5: I am based in London, UK, but I can work remotely with clients across the country or internationally.
+
+VIETNAMESE:
+-----------
+Pre-title:
+  hỏi đáp
+
+Title:
+  câu hỏi thường gặp
+
+Description:
+  Nếu những câu trả lời này khơi gợi thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện. Lieu luôn sẵn sàng giúp đỡ.
+
+Câu hỏi & Câu trả lời:
+----------------------
+
+Q1: Bạn có phải là kế toán viên có trình độ không?
+A1: Có. Tôi là Thành viên ACCA, đã hoàn thành tất cả 13 kỳ thi trong lần thử đầu tiên. Tôi cũng có bằng Thạc sĩ Kế toán và Tài chính Hạng Nhất từ Đại học BPP, London.
+
+Q2: Bạn cung cấp những dịch vụ kế toán gì?
+A2: Tôi quản lý kế toán chu trình đầy đủ, bao gồm ghi sổ, báo cáo VAT, xử lý bảng lương, khai thuế và báo cáo tài chính. Tôi cũng tư vấn về tối ưu hóa quy trình làm việc và cải thiện tuân thủ.
+
+Q3: Bạn có làm việc với các doanh nghiệp nhỏ không?
+A3: Hoàn toàn. Tôi thích làm việc chặt chẽ với các doanh nghiệp vừa và nhỏ, giúp họ quản lý các con số trong khi họ tập trung vào việc phát triển doanh nghiệp của mình. Từ các cửa hàng gia đình đến các quan hệ đối tác địa phương, tôi luôn sẵn sàng giúp đỡ.
+
+Q4: Bạn có thể giúp doanh nghiệp của tôi ngoài kế toán như thế nào?
+A4: Tôi thiết kế các hệ thống giúp doanh nghiệp của bạn hoạt động mượt mà hơn. Cho dù đó là thiết lập báo cáo tự động, cải thiện quy trình bảng lương hay giúp nhóm của bạn làm quen nhanh hơn, mục tiêu của tôi là giúp bạn có nhiều thời gian hơn để tập trung vào những phần công việc mà bạn yêu thích.
+
+Q5: Bạn đặt trụ sở ở đâu?
+A5: Tôi đặt trụ sở tại London, Anh, nhưng tôi có thể làm việc từ xa với khách hàng trên khắp đất nước hoặc quốc tế.
+
+
+================================================================================
+9. FOOTER
+================================================================================
+
+ENGLISH:
+--------
+Logo:
+  Lieu Vo
+  Help SMEs owners and independent professionals to make sense and be on top of their tax
+
+Description:
+  Help SMEs owners and independent professionals to make sense and be on top of their tax.
+  Based in London, UK.
+
+Navigation Links:
+  - About
+  - Services
+  - Blog
+
+Legal Links:
+  - Terms of Service
+  - Privacy Policy
+  - For Employers
+
+Social Media:
+  - Facebook: https://www.facebook.com/lieuvoo
+  - LinkedIn: https://www.linkedin.com/in/lieu-vo-acca-859421209/
+
+Stay Connected:
+  Stay connected
+
+Copyright:
+  Copyright © 2025. All rights reserved.
+
+VIETNAMESE:
+-----------
+Logo:
+  Lieu Vo
+  Kế Toán Hỗ Trợ Tận Tâm
+
+Description:
+  Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.
+  Có trụ sở tại London, Anh.
+
+Navigation Links:
+  - Giới thiệu (About)
+  - Dịch vụ (Services)
+  - Blog
+
+Legal Links:
+  - Điều khoản dịch vụ (Terms of Service)
+  - Chính sách bảo mật (Privacy Policy)
+  - Dành cho Nhà Tuyển Dụng (For Employers)
+
+Social Media:
+  - Facebook: https://www.facebook.com/lieuvoo
+  - LinkedIn: https://www.linkedin.com/in/lieu-vo-acca-859421209/
+
+Stay Connected:
+  Kết nối với chúng tôi
+
+Copyright:
+  Copyright © 2025. Bản quyền được bảo lưu.
+
+
+================================================================================
+                              END OF DOCUMENT
+================================================================================

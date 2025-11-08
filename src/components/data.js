@@ -23,23 +23,23 @@ export const heroData = {
 };
 
 const benefitOne = {
-  title: "Driven by care, backed by results",
-  desc: "I care about more than just your business figures. I care about your peace of mind, your family, and your ability to focus on the parts of life that truly matter.",
+  title: "I streamline and automate, so there is more time to listen to you",
+  desc: "AI, contrary to what some may think, might be the secret sauce that accounting industry have been waiting for so long. It saves my time, so I can focus on what matters the most, you, your business and your story.",
   image: benefitOneImg,
   bullets: [
     {
-      title: "Practical and professional",
-      desc: "Over 2 years of experience serving SMEs across London, from VAT returns to full-cycle financial reporting, with the right mix of precision and understanding.",
+      title: "Streamlined process means higher accuracy",
+      desc: "By standardising the team finely and intricately honed procedures over the years, it helps us see the bigger picture and fix bottleneck and improve accuracy among all phases.",
       icon: <FaceSmileIcon />,
     },
     {
-      title: "Problem-solver at heart",
-      desc: "I have helped clients recover thousands of pounds through strategic tax reviews and process improvements, saving time and reducing stress.",
+      title: "Automation means less human errors in mundane tasks",
+      desc: "Instead of spending 3 hours typing VAT invoices into spreadsheets, AI agents now do that in 3 minutes, and our team spend the rest of the 3 hours checking it, spotting more anomalies and accounting risks.",
       icon: <ChartBarSquareIcon />,
     },
     {
-      title: "Trusted by clients, respected by colleagues",
-      desc: "Through communication, care, and results, I build strong client relationships and mentor junior team members to uphold the same high standards.",
+      title: "Innovation means you benefit more everyday",
+      desc: "Every single day, we look at our playbook and think \"is there a better way to do this?\", \"can it be easier for the clients?\". As a result, working with accountants become more and more pleasant and strategic, instead of pedantic.",
       icon: <CursorArrowRaysIcon />,
     },
   ],

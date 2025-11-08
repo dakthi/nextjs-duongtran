@@ -1,11 +1,9 @@
-import { Container } from "@/components/Container";
 import { Hero } from "@/components/Hero";
+import { Container } from "@/components/Container";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Benefits } from "@/components/Benefits";
-import { VideoSelfHosted } from "@/components/VideoSelfHosted";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
-
 import { benefitOne, benefitTwo } from "@/components/data";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +12,40 @@ interface HomeProps {
   params: { locale: string };
 }
 
+const homeTranslations = {
+  en: {
+    preTitle: "Lieu Vo",
+    title: "It's okay not to know where to start",
+    description: "If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because not wanting to bother them, and finger cross that they do things right, blindly. That's the usual way things go, but it doesn't have to be.",
+    hearFromLieuPreTitle: "hear from lieu",
+    hearFromLieuTitle: "supporting people, supporting businesses",
+    hearFromLieuDescription: "Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.",
+    testimonialsPreTitle: "testimonials",
+    testimonialsTitle: "what clients and colleagues say",
+    testimonialsDescription: "A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.",
+    faqPreTitle: "faq",
+    faqTitle: "frequently asked questions",
+    faqDescription: "If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help."
+  },
+  vi: {
+    preTitle: "Lieu Vo",
+    title: "Không sao nếu bạn không biết bắt đầu từ đâu",
+    description: "Nếu bạn là chủ doanh nghiệp nhỏ hoặc chuyên gia độc lập, tôi hiểu việc hiểu rõ các con số có thể khó khăn như thế nào. Hầu hết kế toán luôn vội vã từ tờ khai thuế này sang tờ khai thuế khác, có nghĩa là ít thời gian giải thích mọi thứ đúng cách. Kết quả là, bạn ngại hỏi vì không muốn làm phiền họ, và chỉ có thể hy vọng họ làm đúng một cách mù quáng. Đó là cách thông thường mọi thứ diễn ra, nhưng không nhất thiết phải như vậy.",
+    hearFromLieuPreTitle: "nghe từ lieu",
+    hearFromLieuTitle: "hỗ trợ con người, hỗ trợ doanh nghiệp",
+    hearFromLieuDescription: "Lieu tin rằng kế toán không chỉ là về con số. Đó là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên làm việc cho chúng ta, giúp doanh nghiệp và gia đình phát triển.",
+    testimonialsPreTitle: "nhận xét",
+    testimonialsTitle: "khách hàng và đồng nghiệp nói gì",
+    testimonialsDescription: "Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của mỗi khách hàng. Đó là điều làm cho việc làm việc với Lieu đáng nhớ.",
+    faqPreTitle: "hỏi đáp",
+    faqTitle: "câu hỏi thường gặp",
+    faqDescription: "Nếu những câu trả lời này khơi gợi thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện. Lieu luôn sẵn sàng giúp đỡ."
+  }
+}
+
 export default async function Home({ params }: HomeProps) {
   const { locale } = params
+  const t = homeTranslations[locale as keyof typeof homeTranslations] || homeTranslations.en
 
   return (
     <>
@@ -23,12 +53,10 @@ export default async function Home({ params }: HomeProps) {
 
       <div className="py-20">
         <SectionTitle
-          preTitle="Lieu Vo"
-          title="Here to make your numbers human"
+          preTitle={t.preTitle}
+          title={t.title}
         >
-          I am an accountant who cares, not just about your business, but about your family, your time, and your peace of mind.
-          I help streamline your numbers, simplify your processes, and give you back the space to focus on what matters most.
-          Good accounting isn&apos;t just about precision. It&apos;s about trust, care, and building a better life beyond the spreadsheets.
+          {t.description}
         </SectionTitle>
       </div>
 
@@ -42,23 +70,23 @@ export default async function Home({ params }: HomeProps) {
 
       <div className="py-20 bg-slate-50">
         <SectionTitle
-          preTitle="hear from lieu"
-          title="supporting people, supporting businesses"
+          preTitle={t.hearFromLieuPreTitle}
+          title={t.hearFromLieuTitle}
         >
-          Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work <em>for us</em>, helping businesses and families thrive.
+          {t.hearFromLieuDescription}
         </SectionTitle>
       </div>
 
       <div className="py-20 bg-slate-800">
         <Container className="text-center">
           <div className="text-xs font-semibold tracking-widest uppercase mb-3 text-amber-400">
-            testimonials
+            {t.testimonialsPreTitle}
           </div>
           <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
-            what clients and colleagues say
+            {t.testimonialsTitle}
           </h2>
           <p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-200 font-medium mb-12">
-            A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.
+            {t.testimonialsDescription}
           </p>
         </Container>
 
@@ -66,8 +94,8 @@ export default async function Home({ params }: HomeProps) {
       </div>
 
       <div className="py-20">
-        <SectionTitle preTitle="faq" title="frequently asked questions">
-          If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help.
+        <SectionTitle preTitle={t.faqPreTitle} title={t.faqTitle}>
+          {t.faqDescription}
         </SectionTitle>
 
         <div className="mt-12">
