@@ -12,7 +12,7 @@ export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => 
       <Container>
         <div className="max-w-3xl mx-auto text-center">
           {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
+            <p className="text-xs font-semibold tracking-widest text-slate-600 mb-4">
               {eyebrow}
             </p>
           )}

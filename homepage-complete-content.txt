@@ -85,7 +85,7 @@ Title:
   It's okay not to know where to start
 
 Description:
-  If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because not wanting to bother them, and finger cross that they do things right, blindly. That's the usual way things go, but it doesn't have to be.
+  If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because you don't want to bother them, and cross your fingers that they do things right, blindly. That's the usual way things go, but it doesn't have to be.
 
 VIETNAMESE:
 -----------
@@ -114,7 +114,7 @@ Description:
 Bullet Points:
 
 1. Streamlined process means higher accuracy
-   By standardising the team finely and intricately honed procedures over the years, it helps us see the bigger picture and fix bottleneck and improve accuracy among all phases.
+   By standardising the finely and intricately honed procedures our team has developed over the years, it helps us see the bigger picture, fix bottlenecks and improve accuracy across all phases.
 
 2. Automation means less human errors in mundane tasks
    Instead of spending 3 hours typing VAT invoices into spreadsheets, AI agents now do that in 3 minutes, and our team spend the rest of the 3 hours checking it, spotting more anomalies and accounting risks.
@@ -149,21 +149,21 @@ Bullet Points:
 ENGLISH:
 --------
 Title:
-  Efficiency that lets you breathe easier
+  I listen attentively, and understand empathically
 
 Description:
-  Work should be smarter, not harder. I constantly optimise workflows so you spend less time worrying about compliance and more time building your dreams.
+  Accounting should be less about technical stuff and more about the visionary and strategic aspects of you and your business.
 
 Bullet Points:
 
-1. Cutting through complexity
-   From payroll for 200+ clients to monthly VAT for 13+ companies, I streamline the numbers so you can focus on your real priorities.
+1. Empathy is what makes a great accountant I believe
+   Not putting themselves in a client's shoes, accountants would never truly be able to make meaningful and valuable advice, because they don't understand how it feels, and what's good, what's not.
 
-2. Designed for growth
-   I create templates, improve systems, and share best practices, helping businesses become more efficient, agile, and ready for what's next.
+2. Always with you in mind, every process, each tax return
+   Sometimes things would take more time for us to explain, but it is crucial for you to understand. We value the latter much more.
 
-3. Technology that serves people
-   Automation and optimisation are powerful, but the heart of business is human. I use tech to make life easier, not to replace personal connection.
+3. It's about helping people
+   I nearly became a doctor just because I wanted to help people. As an accountant, the means is different but the end is the same. So whatever it takes to head in that direction. 
 
 VIETNAMESE:
 -----------
@@ -192,13 +192,13 @@ Bullet Points:
 ENGLISH:
 --------
 Pre-title:
-  hear from lieu
+  having said all that
 
 Title:
-  supporting people, supporting businesses
+  let me help you
 
 Description:
-  Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.
+  Spend hours perfecting your recipe, not going through invoices or fighting with tax returns. I've got that covered.
 
 VIETNAMESE:
 -----------
@@ -219,20 +219,20 @@ Description:
 ENGLISH:
 --------
 Pre-title:
-  testimonials
+  Testimonials
 
 Title:
-  what clients and colleagues say
+  What my clients and colleagues say about me
 
 Description:
-  A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.
+  "Strong work ethics with exceptionally high commitment to client's success. That's what sets her apart."
 
 Testimonial 1:
 --------------
 Name: James Price
 Role: Creative Industries Accounts Assistant
 Date: June 2025
-Relationship: Worked with Lieu on the same team
+James worked with Lieu on the same team
 
 Quote:
 "Lieu is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.
@@ -248,7 +248,7 @@ Testimonial 2:
 Name: Duc Nguyen
 Role: Accounts Assistant, MSc FinTech '24
 Date: May 2025
-Relationship: Reported directly to Lieu
+Duc works in same team, with Lieu as a leader.
 
 Quote:
 "I've learned so much from working with Lieu. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.
@@ -271,18 +271,18 @@ Description:
 Testimonial 1:
 --------------
 Tên: James Price
-Vai trò: Trợ lý Kế toán Ngành Sáng tạo
+Vai trò: Trợ lý Kế toán Ngành Creative
 Ngày: Tháng 6 năm 2025
 Mối quan hệ: Làm việc cùng nhóm với Lieu
 
 Lời nhận xét:
-"Lieu là một người phụ nữ tài năng và đầy tham vọng với một loạt các kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng cô ấy, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của cô ấy - đặc biệt là trong việc phát triển kiến thức kỹ thuật của tôi.
+"Liệu là một người tài năng và đầy tham vọng với một loạt các kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng Liệu, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của Liệu - đặc biệt là trong việc phát triển kiến thức kỹ thuật của tôi.
 
-Cô ấy tốt bụng, nhiệt tình và cực kỳ có kỹ năng. Sự chú ý đến chi tiết của cô ấy là đặc biệt, và cô ấy luôn tạo ra công việc ở tiêu chuẩn cao nhất. Lieu truyền đạt thông tin phức tạp một cách rõ ràng cho cả nhóm nội bộ và khách hàng bên ngoài - ngay cả những người không có nền tảng về tài chính.
+Liệu tốt bụng, nhiệt tình và cực kỳ có kỹ năng. Sự chú ý đến chi tiết của Liệu là đặc biệt, và Liệu luôn tạo ra công việc ở tiêu chuẩn cao nhất. Liệu truyền đạt thông tin phức tạp một cách rõ ràng cho cả nhóm nội bộ và khách hàng bên ngoài - ngay cả những người không có nền tảng về tài chính.
 
-Cô ấy luôn học hỏi, luôn cải thiện và chủ động thúc đẩy sự thay đổi tích cực tại nơi làm việc. Tôi đã tận mắt chứng kiến cách kỹ năng lập trình và tự động hóa của cô ấy đã tiết kiệm thời gian và làm cho quy trình của chúng tôi hiệu quả hơn nhiều.
+Liệu luôn học hỏi, luôn cải thiện và chủ động thúc đẩy sự thay đổi tích cực tại nơi làm việc. Tôi đã tận mắt chứng kiến cách kỹ năng lập trình và tự động hóa của Liệu đã tiết kiệm thời gian và làm cho quy trình của chúng tôi hiệu quả hơn nhiều.
 
-Tôi sẽ không ngần ngại giới thiệu cô ấy cho bất kỳ nhà tuyển dụng nào trong tương lai. Cô ấy là một tài sản tuyệt vời cho bất kỳ nhóm nào."
+Tôi sẽ không ngần ngại giới thiệu Liệu cho bất kỳ nhà tuyển dụng nào trong tương lai. Liệu là một tài sản tuyệt vời cho bất kỳ nhóm nào."
 
 Testimonial 2:
 --------------
@@ -292,11 +292,11 @@ Ngày: Tháng 5 năm 2025
 Mối quan hệ: Báo cáo trực tiếp cho Lieu
 
 Lời nhận xét:
-"Tôi đã học được rất nhiều từ việc làm việc với Lieu. Cô ấy có kiến thức kỹ thuật xuất sắc - đặc biệt là về thuế - và công việc của cô ấy luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.
+"Tôi đã học được rất nhiều từ việc làm việc với Liệu. Liệu có kiến thức kỹ thuật xuất sắc - đặc biệt là về thuế - và công việc của Liệu luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.
 
-Điều nổi bật nhất là bản chất hỗ trợ và giải quyết vấn đề thực tế, bình tĩnh của cô ấy. Dù công việc bận rộn đến đâu, cô ấy vẫn luôn dành thời gian để giúp đỡ nhóm.
+Điều nổi bật nhất là bản chất hỗ trợ và giải quyết vấn đề thực tế, bình tĩnh của Liệu. Dù công việc bận rộn đến đâu, Liệu vẫn luôn dành thời gian để giúp đỡ nhóm.
 
-Hơn nữa, cô ấy đã xây dựng các công cụ tự động hóa giúp chúng tôi tiết kiệm rất nhiều thời gian. Khả năng kết hợp chuyên môn sâu với hiệu quả của cô ấy là hiếm có - cô ấy là người mà bạn có thể học hỏi rất nhiều, và cô ấy là một tài sản thực sự cho bất kỳ nhóm nào."
+Hơn nữa, Liệu đã xây dựng các công cụ tự động hóa giúp chúng tôi tiết kiệm rất nhiều thời gian. Khả năng kết hợp chuyên môn sâu với hiệu quả của Liệu là hiếm có - Liệu là người mà bạn có thể học hỏi rất nhiều, và Liệu là một tài sản thực sự cho bất kỳ nhóm nào."
 
 
 ================================================================================
@@ -403,8 +403,8 @@ Logo:
   Kế Toán Hỗ Trợ Tận Tâm
 
 Description:
-  Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.
-  Có trụ sở tại London, Anh.
+  Giúp cộng đồng n gười Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.
+  C7
 
 Navigation Links:
   - Giới thiệu (About)

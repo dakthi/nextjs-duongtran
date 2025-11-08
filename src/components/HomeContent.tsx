@@ -78,7 +78,7 @@ export function HomeContent({ locale }: HomeContentProps) {
 
       <div className="py-20 bg-slate-800">
         <Container className="text-center">
-          <div className="text-xs font-semibold tracking-widest uppercase mb-3 text-amber-400">
+          <div className="text-xs font-semibold tracking-widest mb-3 text-amber-400">
             {t('testimonialsPreTitle')}
           </div>
           <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">

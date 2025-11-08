@@ -12,7 +12,7 @@ export function Footer() {
   // Simple translation object - no hooks needed
   const translations: any = {
     en: {
-      tagline: "Help SMEs owners and independent professionals to make sense and be on top of their tax",
+      tagline: "ACCA Chartered Accountant",
       description: "Help SMEs owners and independent professionals to make sense and be on top of their tax.",
       location: "Based in London, UK.",
       stayConnected: "Stay connected",
@@ -30,28 +30,29 @@ export function Footer() {
         linkedin: "LinkedIn"
       }
     },
-    vi: {
-      tagline: "Kế Toán Hỗ Trợ Tận Tâm",
-      description: "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
-      location: "Có trụ sở tại London, Anh.",
-      stayConnected: "Kết nối với chúng tôi",
-      links: {
-        about: "Giới thiệu",
-        services: "Dịch vụ",
-        testimonials: "Nhận xét",
-        faq: "Hỏi đáp",
-        terms: "Điều khoản dịch vụ",
-        privacy: "Chính sách bảo mật",
-        forEmployers: "Dành cho Nhà Tuyển Dụng"
-      },
-      social: {
-        facebook: "Facebook",
-        linkedin: "LinkedIn"
-      }
-    }
+    // vi: {
+    //   tagline: "Kế Toán Hỗ Trợ Tận Tâm",
+    //   description: "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
+    //   location: "Có trụ sở tại London, Anh.",
+    //   stayConnected: "Kết nối với chúng tôi",
+    //   links: {
+    //     about: "Giới thiệu",
+    //     services: "Dịch vụ",
+    //     testimonials: "Nhận xét",
+    //     faq: "Hỏi đáp",
+    //     terms: "Điều khoản dịch vụ",
+    //     privacy: "Chính sách bảo mật",
+    //     forEmployers: "Dành cho Nhà Tuyển Dụng"
+    //   },
+    //   social: {
+    //     facebook: "Facebook",
+    //     linkedin: "LinkedIn"
+    //   }
+    // }
   };
 
-  const t = translations[locale] || translations.en;
+  // Always use English for footer
+  const t = translations.en;
 
   const navigation = [
     { label: t.links.about, href: `/${locale}/about` },

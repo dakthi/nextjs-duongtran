@@ -9,6 +9,28 @@
 -- 5. Reading time: estimate 200-250 words per minute
 -- 6. Use proper escaping for quotes: '' (two single quotes) for apostrophes
 -- 7. For markdown content, use proper line breaks and formatting
+-- 8. **IMPORTANT**: Upload image to R2 BEFORE running this SQL (see below)
+-- ============================================================================
+-- UPLOADING IMAGES TO R2:
+-- ============================================================================
+-- For every blog post with an image, you MUST upload the image to R2 first!
+--
+-- Step 1: Upload image to R2 using AWS CLI:
+-- AWS_ACCESS_KEY_ID="[YOUR_R2_ACCESS_KEY]" AWS_SECRET_ACCESS_KEY="[YOUR_R2_SECRET_KEY]" \
+-- aws s3 cp /path/to/your/image.png s3://bucket-lieuvo/blog/[unique-name].png \
+-- --endpoint-url https://[R2_ACCOUNT_ID].r2.cloudflarestorage.com/ \
+-- --content-type image/png
+--
+-- Example:
+-- AWS_ACCESS_KEY_ID="1b6772892999957d50aede7703a8627e" AWS_SECRET_ACCESS_KEY="52279ce0e5fa54e88a5f73bb82365d0d1351316f3e9f2deb3b445db812202037" \
+-- aws s3 cp posts/081125/image.png s3://bucket-lieuvo/blog/081125-credit-cards.png \
+-- --endpoint-url https://f47d23c072e7b2f871ecca11e36e0b25.r2.cloudflarestorage.com/ \
+-- --content-type image/png
+--
+-- Step 2: Verify the image is accessible via the public URL:
+-- https://cdnlieuvo.chartedconsultants.com/blog/[unique-name].png
+--
+-- Step 3: Use the public URL in the 'image' field below
 -- ============================================================================
 
 INSERT INTO blog_posts (
@@ -23,6 +45,7 @@ INSERT INTO blog_posts (
   "publishedDate",
   "isFeatured",
   "isPublished",
+  image,
   "createdAt",
   "updatedAt"
 ) VALUES (
@@ -45,6 +68,7 @@ Remember to escape quotes with two single quotes '''']',
   '[YYYY-MM-DD]',                                   -- Example: 2025-01-15
   [TRUE or FALSE],                                  -- Is featured? true/false (no quotes)
   [TRUE or FALSE],                                  -- Is published? true/false (no quotes)
+  '[IMAGE_URL]',                                    -- Example: https://cdnlieuvo.chartedconsultants.com/blog/081125-credit-cards.png
   CURRENT_TIMESTAMP,
   CURRENT_TIMESTAMP
 );

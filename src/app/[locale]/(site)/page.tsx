@@ -16,15 +16,15 @@ const homeTranslations = {
   en: {
     preTitle: "Lieu Vo",
     title: "It's okay not to know where to start",
-    description: "If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because not wanting to bother them, and finger cross that they do things right, blindly. That's the usual way things go, but it doesn't have to be.",
-    hearFromLieuPreTitle: "hear from lieu",
-    hearFromLieuTitle: "supporting people, supporting businesses",
-    hearFromLieuDescription: "Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.",
-    testimonialsPreTitle: "testimonials",
-    testimonialsTitle: "what clients and colleagues say",
-    testimonialsDescription: "A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.",
-    faqPreTitle: "faq",
-    faqTitle: "frequently asked questions",
+    description: "If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because you don't want to bother them, and cross your fingers that they do things right, blindly. That's the usual way things go, but it doesn't have to be.",
+    hearFromLieuPreTitle: "Having said all that",
+    hearFromLieuTitle: "Let me help you",
+    hearFromLieuDescription: "Spend hours perfecting your recipe, not going through invoices or fighting with tax returns. I've got that covered.",
+    testimonialsPreTitle: "Testimonials",
+    testimonialsTitle: "What my clients and colleagues say about me",
+    testimonialsDescription: "Strong work ethics with exceptionally high commitment to client's success. That's what sets her apart.",
+    faqPreTitle: "FAQ",
+    faqTitle: "Frequently asked questions",
     faqDescription: "If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help."
   },
   vi: {
@@ -79,7 +79,7 @@ export default async function Home({ params }: HomeProps) {
 
       <div className="py-20 bg-slate-800">
         <Container className="text-center">
-          <div className="text-xs font-semibold tracking-widest uppercase mb-3 text-amber-400">
+          <div className="text-xs font-semibold tracking-widest mb-3 text-amber-400">
             {t.testimonialsPreTitle}
           </div>
           <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">

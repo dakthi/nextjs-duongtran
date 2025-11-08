@@ -29,7 +29,7 @@ const benefitOne = {
   bullets: [
     {
       title: "Streamlined process means higher accuracy",
-      desc: "By standardising the team finely and intricately honed procedures over the years, it helps us see the bigger picture and fix bottleneck and improve accuracy among all phases.",
+      desc: "By standardising the finely and intricately honed procedures our team has developed over the years, it helps us see the bigger picture, fix bottlenecks and improve accuracy across all phases.",
       icon: <FaceSmileIcon />,
     },
     {
@@ -46,23 +46,23 @@ const benefitOne = {
 };
 
 const benefitTwo = {
-  title: "Efficiency that lets you breathe easier",
-  desc: "Work should be smarter, not harder. I constantly optimise workflows so you spend less time worrying about compliance and more time building your dreams.",
+  title: "I listen attentively, and understand empathically",
+  desc: "Accounting should be less about technical stuff and more about the visionary and strategic aspects of you and your business.",
   image: benefitTwoImg,
   bullets: [
     {
-      title: "Cutting through complexity",
-      desc: "From payroll for 200+ clients to monthly VAT for 13+ companies, I streamline the numbers so you can focus on your real priorities.",
+      title: "Empathy is what makes a great accountant I believe",
+      desc: "Not putting themselves in a client's shoes, accountants would never truly be able to make meaningful and valuable advice, because they don't understand how it feels, and what's good, what's not.",
       icon: <DevicePhoneMobileIcon />,
     },
     {
-      title: "Designed for growth",
-      desc: "I create templates, improve systems, and share best practices, helping businesses become more efficient, agile, and ready for what's next.",
+      title: "Always with you in mind, every process, each tax return",
+      desc: "Sometimes things would take more time for us to explain, but it is crucial for you to understand. We value the latter much more.",
       icon: <AdjustmentsHorizontalIcon />,
     },
     {
-      title: "Technology that serves people",
-      desc: "Automation and optimisation are powerful, but the heart of business is human. I use tech to make life easier, not to replace personal connection.",
+      title: "It's about helping people",
+      desc: "I nearly became a doctor just because I wanted to help people. As an accountant, the means is different but the end is the same. So whatever it takes to head in that direction.",
       icon: <SunIcon />,
     },
   ],

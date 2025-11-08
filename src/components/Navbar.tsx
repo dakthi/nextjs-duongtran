@@ -13,6 +13,9 @@ export const Navbar = () => {
   // Extract locale from pathname since useLocale might not work
   const locale = pathname.split('/')[1] || 'en';
 
+  // Only show language switcher on blog pages
+  const isBlogPage = pathname.includes('/blog');
+
   let t: any;
   try {
     t = useTranslations('navigation');
@@ -100,25 +103,27 @@ export const Navbar = () => {
             {t('contact') || 'Contact'}
           </Link>
 
-          {/* Language Switcher */}
-          <div className="ml-4 flex space-x-2">
-            <button
-              onClick={() => switchLanguage('en')}
-              className={`px-2 py-1 text-xs font-semibold ${
-                locale === 'en' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400'
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => switchLanguage('vi')}
-              className={`px-2 py-1 text-xs font-semibold ${
-                locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400'
-              }`}
-            >
-              VI
-            </button>
-          </div>
+          {/* Language Switcher - Only show on blog pages */}
+          {isBlogPage && (
+            <div className="ml-4 flex space-x-2">
+              <button
+                onClick={() => switchLanguage('en')}
+                className={`px-2 py-1 text-xs font-semibold ${
+                  locale === 'en' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => switchLanguage('vi')}
+                className={`px-2 py-1 text-xs font-semibold ${
+                  locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400'
+                }`}
+              >
+                VI
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Mobile Navigation */}
@@ -169,31 +174,33 @@ export const Navbar = () => {
                 {t('contact') || 'Contact'}
               </Link>
 
-              {/* Mobile Language Switcher */}
-              <div className="flex gap-2 px-4 pt-3 pb-1">
-                <button
-                  onClick={() => {
-                    switchLanguage('en');
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
-                    locale === 'en' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => {
-                    switchLanguage('vi');
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
-                    locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
-                  }`}
-                >
-                  VI
-                </button>
-              </div>
+              {/* Mobile Language Switcher - Only show on blog pages */}
+              {isBlogPage && (
+                <div className="flex gap-2 px-4 pt-3 pb-1">
+                  <button
+                    onClick={() => {
+                      switchLanguage('en');
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
+                      locale === 'en' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
+                    }`}
+                  >
+                    EN
+                  </button>
+                  <button
+                    onClick={() => {
+                      switchLanguage('vi');
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
+                      locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
+                    }`}
+                  >
+                    VI
+                  </button>
+                </div>
+              )}
               </div>
               </Container>
             </div>

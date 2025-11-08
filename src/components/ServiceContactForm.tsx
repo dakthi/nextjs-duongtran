@@ -47,7 +47,7 @@ export const ServiceContactForm = () => {
       <Container>
         <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-slate-600 mb-4">
             Get Started
           </p>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">

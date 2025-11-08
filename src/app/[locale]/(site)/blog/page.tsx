@@ -36,12 +36,16 @@ interface BlogPageProps {
 export default async function BlogPage({ params }: BlogPageProps) {
   const posts = await getPostSummaries(params.locale)
 
+  // Load translations based on locale
+  const messages = (await import(`@/../messages/${params.locale}.json`)).default
+  const blogTranslations = messages.blog
+
   if (posts.length === 0) {
     return (
       <PageHeader
-        eyebrow="Insights & Reflections"
-        title="Blog"
-        description="Blog posts will appear here once they are published."
+        eyebrow={blogTranslations.eyebrow}
+        title={blogTranslations.title}
+        description={blogTranslations.emptyDescription}
       />
     )
   }
@@ -52,21 +56,27 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const top5Posts = rest.slice(0, 5)
   const morePosts = rest.slice(5)
   const chunked = chunkArray(morePosts, 6)
-  const headings = ['Recent Insights', 'More Articles', 'Further Reflections', 'Latest Updates', 'New Reads']
+  const headings = [
+    blogTranslations.recentInsights,
+    blogTranslations.moreArticles,
+    blogTranslations.furtherReflections,
+    blogTranslations.latestUpdates,
+    blogTranslations.newReads
+  ]
 
   return (
     <>
       <PageHeader
-        eyebrow="Insights & Reflections"
-        title="Blog"
-        description="True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons, the real-world challenges, and the continuous improvement that define my journey. Here, you can find some reflections, lessons learned, and professional thoughts, captured candidly along the way."
+        eyebrow={blogTranslations.eyebrow}
+        title={blogTranslations.title}
+        description={blogTranslations.description}
       />
 
       {/* Featured Post Section */}
       <div className="py-20 bg-white">
         <Container>
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-6">
-            Featured Article
+            {blogTranslations.featuredArticle}
           </p>
           <a
             href={`/${params.locale}/blog/${featuredPost.slug}`}
@@ -90,7 +100,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </div>
               <div className="flex-1 p-8 flex flex-col justify-center">
                 <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
-                  {featuredPost.category || 'Article'}
+                  {featuredPost.category || blogTranslations.category}
                 </p>
                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4 leading-tight group-hover:text-amber-600 transition-colors">
                   {featuredPost.title}
@@ -102,7 +112,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 )}
                 {featuredPost.readingTime != null && (
                   <p className="text-sm text-slate-600">
-                    {featuredPost.readingTime} min read
+                    {featuredPost.readingTime} {blogTranslations.minRead}
                   </p>
                 )}
               </div>
@@ -117,10 +127,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <Container>
             <div className="text-center max-w-3xl mx-auto mb-12">
               <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
-                Recent Posts
+                {blogTranslations.recentPosts}
               </p>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
-                Latest Articles
+                {blogTranslations.latestArticles}
               </h2>
             </div>
 
@@ -146,14 +156,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
-                      {post.category || 'Article'}
+                      {post.category || blogTranslations.category}
                     </p>
                     <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-600 transition-colors">
                       {post.title}
                     </h3>
                     {post.readingTime != null && (
                       <p className="mt-auto text-xs text-slate-600">
-                        {post.readingTime} min read
+                        {post.readingTime} {blogTranslations.minRead}
                       </p>
                     )}
                   </div>
@@ -196,7 +206,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
-                      {post.category || 'Article'}
+                      {post.category || blogTranslations.category}
                     </p>
                     <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-600 transition-colors">
                       {post.title}
@@ -208,7 +218,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     )}
                     {post.readingTime != null && (
                       <p className="mt-auto text-xs text-slate-600">
-                        {post.readingTime} min read
+                        {post.readingTime} {blogTranslations.minRead}
                       </p>
                     )}
                   </div>

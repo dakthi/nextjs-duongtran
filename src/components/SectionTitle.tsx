@@ -15,7 +15,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
         props.align === "left" ? "" : "items-center justify-center text-center"
       }`}>
       {props.preTitle && (
-        <div className="text-xs font-semibold tracking-widest uppercase mb-3 letter-spacing-wider text-slate-600">
+        <div className="text-xs font-semibold tracking-widest mb-3 letter-spacing-wider text-slate-600">
           {props.preTitle}
         </div>
       )}

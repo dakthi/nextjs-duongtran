@@ -60,6 +60,22 @@
       "error": "Không thể gửi tin nhắn. Vui lòng thử lại."
     }
   },
+  "blog": {
+    "eyebrow": "Suy nghĩ & Chia sẻ",
+    "title": "Blog",
+    "description": "Trong quá trình làm nghề, được biết rất nhiều câu chuyện, trường hợp của các anh chị khác nhau, Liệu muốn chia sẻ lại để Anh Chị nào thấy mình trong tình huống tương tự hoặc thấy gì đó có ích thì Liệu cũng vui vì giúp được thêm một người.",
+    "emptyDescription": "Bài viết blog sẽ xuất hiện ở đây khi được xuất bản.",
+    "featuredArticle": "Bài viết nổi bật",
+    "category": "Bài viết",
+    "minRead": "phút đọc",
+    "recentPosts": "Bài viết gần đây",
+    "latestArticles": "Bài viết mới nhất",
+    "recentInsights": "Chia sẻ gần đây",
+    "moreArticles": "Thêm bài viết",
+    "furtherReflections": "Suy nghĩ thêm",
+    "latestUpdates": "Cập nhật mới nhất",
+    "newReads": "Đọc mới"
+  },
   "metadata": {
     "title": "Lieu Vo",
     "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp."
