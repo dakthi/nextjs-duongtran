@@ -19,6 +19,9 @@ export function TipTapEditor({
   placeholder = 'Start writing...',
   editable = true
 }: TipTapEditorProps) {
+  // Ensure content has a valid structure, even if empty
+  const initialContent = content || { type: 'doc', content: [{ type: 'paragraph' }] }
+
   const editor = useEditor({
     immediatelyRender: false,
     shouldRerenderOnTransaction: false,
@@ -33,7 +36,7 @@ export function TipTapEditor({
         placeholder,
       }),
     ],
-    content,
+    content: initialContent,
     editable,
     onUpdate: ({ editor }) => {
       const json = editor.getJSON()

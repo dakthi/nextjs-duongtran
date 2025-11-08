@@ -20,39 +20,51 @@ let allPostsCache: BlogPostRecord[] | null = null
 let cacheTimestamp = 0
 const postCache = new Map<string, { data: BlogPostRecord; timestamp: number }>()
 
-const mapPrismaPost = (post: PrismaBlogPost): BlogPostRecord => ({
-  id: post.id,
-  locale: post.locale,
-  slug: post.slug,
-  title: post.title,
-  excerpt: post.excerpt,
-  content: post.content,
-  image: post.image,
-  imagePosition: post.imagePosition,
-  imageZoom: post.imageZoom,
-  imageFit: post.imageFit,
-  category: post.category,
-  quote: post.quote,
-  readingTime: post.readingTime,
-  publishedDate: post.publishedDate,
-  clientName: post.clientName,
-  clientAge: post.clientAge,
-  clientJob: post.clientJob,
-  clientImage: post.clientImage,
-  clientImagePosition: post.clientImagePosition,
-  clientImageZoom: post.clientImageZoom,
-  clientImageFit: post.clientImageFit,
-  expertName: post.expertName,
-  expertTitle: post.expertTitle,
-  expertImage: post.expertImage,
-  expertImagePosition: post.expertImagePosition,
-  expertImageZoom: post.expertImageZoom,
-  expertImageFit: post.expertImageFit,
-  isFeatured: post.isFeatured,
-  isPublished: post.isPublished,
-  createdAt: post.createdAt,
-  updatedAt: post.updatedAt,
-})
+const mapPrismaPost = (post: PrismaBlogPost): BlogPostRecord => {
+  const mapped: any = {
+    id: post.id,
+    locale: post.locale,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    content: post.content,
+    image: post.image,
+    imagePosition: post.imagePosition,
+    imageZoom: post.imageZoom,
+    imageFit: post.imageFit,
+    category: post.category,
+    quote: post.quote,
+    readingTime: post.readingTime,
+    publishedDate: post.publishedDate,
+    clientName: post.clientName,
+    clientAge: post.clientAge,
+    clientJob: post.clientJob,
+    clientImage: post.clientImage,
+    clientImagePosition: post.clientImagePosition,
+    clientImageZoom: post.clientImageZoom,
+    clientImageFit: post.clientImageFit,
+    expertName: post.expertName,
+    expertTitle: post.expertTitle,
+    expertImage: post.expertImage,
+    expertImagePosition: post.expertImagePosition,
+    expertImageZoom: post.expertImageZoom,
+    expertImageFit: post.expertImageFit,
+    isFeatured: post.isFeatured,
+    isPublished: post.isPublished,
+    createdAt: post.createdAt,
+    updatedAt: post.updatedAt,
+  }
+
+  // Include contentJson and contentHtml if they exist (for admin)
+  if ((post as any).contentJson !== undefined) {
+    mapped.contentJson = (post as any).contentJson
+  }
+  if ((post as any).contentHtml !== undefined) {
+    mapped.contentHtml = (post as any).contentHtml
+  }
+
+  return mapped
+}
 
 export class BlogService {
   static clearCache(): void {
@@ -188,7 +200,12 @@ export class BlogService {
       title: input.title.trim(),
       excerpt: input.excerpt?.trim() ?? null,
       content: input.content,
+      contentJson: (input as any).contentJson ?? null,
+      contentHtml: (input as any).contentHtml ?? null,
       image: input.image?.trim() ?? null,
+      imagePosition: input.imagePosition ?? 'center',
+      imageZoom: input.imageZoom ?? 100,
+      imageFit: input.imageFit ?? 'cover',
       category: input.category?.trim() ?? null,
       quote: input.quote?.trim() ?? null,
       readingTime: input.readingTime ?? null,
@@ -197,9 +214,15 @@ export class BlogService {
       clientAge: input.clientAge ?? null,
       clientJob: input.clientJob?.trim() ?? null,
       clientImage: input.clientImage?.trim() ?? null,
+      clientImagePosition: input.clientImagePosition ?? 'center',
+      clientImageZoom: input.clientImageZoom ?? 100,
+      clientImageFit: input.clientImageFit ?? 'cover',
       expertName: input.expertName?.trim() ?? null,
       expertTitle: input.expertTitle?.trim() ?? null,
       expertImage: input.expertImage?.trim() ?? null,
+      expertImagePosition: input.expertImagePosition ?? 'center',
+      expertImageZoom: input.expertImageZoom ?? 100,
+      expertImageFit: input.expertImageFit ?? 'cover',
       isFeatured: input.isFeatured ?? false,
       isPublished: input.isPublished ?? true,
     }
@@ -231,12 +254,22 @@ export class BlogService {
   }
 
   static async toView(post: BlogPostRecord): Promise<BlogPostView> {
-    const processed = await remark()
-      .use(remarkGfm)
-      .use(html)
-      .process(post.content)
+    // Check if content is already HTML (from TipTap editor)
+    // HTML content typically starts with tags like <p>, <h1>, etc.
+    const isHtml = post.content.trim().startsWith('<')
 
-    const contentHtml = processed.toString()
+    let contentHtml: string
+    if (isHtml) {
+      // Content is already HTML from TipTap, use it directly
+      contentHtml = post.content
+    } else {
+      // Content is markdown, process it
+      const processed = await remark()
+        .use(remarkGfm)
+        .use(html)
+        .process(post.content)
+      contentHtml = processed.toString()
+    }
 
     return {
       ...post,

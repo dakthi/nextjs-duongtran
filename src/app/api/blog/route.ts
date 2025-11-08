@@ -17,28 +17,49 @@ const toBoolean = (value: unknown, fallback = false): boolean => {
   return fallback
 }
 
-const parseBlogInput = (payload: any): BlogPostInput => ({
-  id: typeof payload?.id === 'string' ? payload.id : undefined,
-  locale: payload?.locale ? String(payload.locale) : 'en',
-  slug: String(payload?.slug ?? ''),
-  title: String(payload?.title ?? ''),
-  excerpt: payload?.excerpt ? String(payload.excerpt) : null,
-  content: String(payload?.content ?? ''),
-  image: payload?.image ? String(payload.image) : null,
-  category: payload?.category ? String(payload.category) : null,
-  quote: payload?.quote ? String(payload.quote) : null,
-  readingTime: toOptionalNumber(payload?.readingTime),
-  publishedDate: payload?.publishedDate ? String(payload.publishedDate) : null,
-  clientName: payload?.clientName ? String(payload.clientName) : null,
-  clientAge: toOptionalNumber(payload?.clientAge),
-  clientJob: payload?.clientJob ? String(payload.clientJob) : null,
-  clientImage: payload?.clientImage ? String(payload.clientImage) : null,
-  expertName: payload?.expertName ? String(payload.expertName) : null,
-  expertTitle: payload?.expertTitle ? String(payload.expertTitle) : null,
-  expertImage: payload?.expertImage ? String(payload.expertImage) : null,
-  isFeatured: toBoolean(payload?.isFeatured, false),
-  isPublished: toBoolean(payload?.isPublished, true),
-})
+const parseBlogInput = (payload: any): BlogPostInput => {
+  const input: any = {
+    id: typeof payload?.id === 'string' ? payload.id : undefined,
+    locale: payload?.locale ? String(payload.locale) : 'en',
+    slug: String(payload?.slug ?? ''),
+    title: String(payload?.title ?? ''),
+    excerpt: payload?.excerpt ? String(payload.excerpt) : null,
+    content: String(payload?.content ?? ''),
+    image: payload?.image ? String(payload.image) : null,
+    imagePosition: payload?.imagePosition ? String(payload.imagePosition) : null,
+    imageZoom: toOptionalNumber(payload?.imageZoom),
+    imageFit: payload?.imageFit ? String(payload.imageFit) : null,
+    category: payload?.category ? String(payload.category) : null,
+    quote: payload?.quote ? String(payload.quote) : null,
+    readingTime: toOptionalNumber(payload?.readingTime),
+    publishedDate: payload?.publishedDate ? String(payload.publishedDate) : null,
+    clientName: payload?.clientName ? String(payload.clientName) : null,
+    clientAge: toOptionalNumber(payload?.clientAge),
+    clientJob: payload?.clientJob ? String(payload.clientJob) : null,
+    clientImage: payload?.clientImage ? String(payload.clientImage) : null,
+    clientImagePosition: payload?.clientImagePosition ? String(payload.clientImagePosition) : null,
+    clientImageZoom: toOptionalNumber(payload?.clientImageZoom),
+    clientImageFit: payload?.clientImageFit ? String(payload.clientImageFit) : null,
+    expertName: payload?.expertName ? String(payload.expertName) : null,
+    expertTitle: payload?.expertTitle ? String(payload.expertTitle) : null,
+    expertImage: payload?.expertImage ? String(payload.expertImage) : null,
+    expertImagePosition: payload?.expertImagePosition ? String(payload.expertImagePosition) : null,
+    expertImageZoom: toOptionalNumber(payload?.expertImageZoom),
+    expertImageFit: payload?.expertImageFit ? String(payload.expertImageFit) : null,
+    isFeatured: toBoolean(payload?.isFeatured, false),
+    isPublished: toBoolean(payload?.isPublished, true),
+  }
+
+  // Include TipTap fields if present
+  if (payload?.contentJson !== undefined) {
+    input.contentJson = payload.contentJson
+  }
+  if (payload?.contentHtml !== undefined) {
+    input.contentHtml = payload.contentHtml ? String(payload.contentHtml) : null
+  }
+
+  return input
+}
 
 const unauthorized = NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 })
 
