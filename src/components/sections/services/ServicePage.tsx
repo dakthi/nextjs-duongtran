@@ -43,13 +43,13 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-slate-800 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(245,158,11,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="bg-white border-2 border-outer-space shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(245,158,11,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
               >
-                <div className="p-8 border-l-4 border-amber-500">
-                  <h2 className="text-2xl font-serif font-bold text-slate-900 mb-4 leading-tight">
+                <div className="p-8 border-l-4 border-jungle-green">
+                  <h2 className="text-2xl font-sans font-bold text-outer-space mb-4 leading-tight">
                     {service.title}
                   </h2>
-                  <p className="text-base text-slate-700 leading-relaxed">
+                  <p className="text-base text-feldgrau leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -60,12 +60,12 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
       </div>
 
       {/* Additional Content Section */}
-      <div className="py-20 bg-slate-50">
+      <div className="py-20 bg-mint-green">
         <div className="max-w-5xl mx-auto px-8 xl:px-12">
           <div className="prose prose-slate prose-lg max-w-none
-            prose-headings:font-serif prose-headings:font-bold prose-headings:text-slate-900 prose-headings:leading-tight
+            prose-headings:font-sans prose-headings:font-bold prose-headings:text-outer-space prose-headings:leading-tight
             prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mb-8
-            prose-p:text-lg prose-p:font-medium prose-p:text-slate-900 prose-p:leading-relaxed prose-p:mb-6">
+            prose-p:text-lg prose-p:font-medium prose-p:text-outer-space prose-p:leading-relaxed prose-p:mb-6">
 
             <h2>How I Work</h2>
 
@@ -81,15 +81,15 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="py-20 bg-slate-800">
+      <div className="py-20 bg-feldgrau">
         <Container className="text-center">
-          <div className="text-xs font-semibold tracking-widest mb-3 text-amber-400">
+          <div className="text-xs font-semibold tracking-widest mb-3 text-jungle-green">
             Testimonials
           </div>
-          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
+          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-white">
             What Clients Say
           </h2>
-          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-200 font-medium mb-12">
+          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-mint-green font-medium mb-12">
             Hear from businesses and founders who have worked with Lieu.
           </p>
         </Container>

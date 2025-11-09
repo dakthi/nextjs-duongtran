@@ -46,13 +46,13 @@ export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
-            className="border-2 border-slate-800 bg-amber-50 p-8 shadow-md hover:shadow-xl transition-shadow"
+            className="border-2 border-outer-space bg-white p-8 shadow-brutalist hover:shadow-brutalist-hover hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
           >
             <div className="flex flex-col justify-between w-full h-full">
               <div className="mb-6">
-                <div className="text-6xl text-amber-500 leading-none mb-3">&ldquo;</div>
+                <div className="text-6xl text-jungle-green leading-none mb-3">&ldquo;</div>
                 <div
-                  className="text-base leading-relaxed text-slate-700 italic prose prose-slate max-w-none"
+                  className="text-base leading-relaxed text-feldgrau italic prose prose-slate max-w-none"
                   dangerouslySetInnerHTML={{ __html: testimonial.content }}
                 />
               </div>
@@ -89,8 +89,8 @@ interface AvatarProps {
 function Avatar({ image, name, role, dateLabel, relationship, imagePosition, imageZoom, imageFit }: Readonly<AvatarProps>) {
   const resolvedImage = image ?? legacyMediaUrl('/img/Portrait_Placeholder.png')
   return (
-    <div className="flex items-center space-x-4 pt-5 border-t-2 border-amber-500">
-      <div className="items-center overflow-hidden object-cover w-14 h-14 border-2 border-slate-800">
+    <div className="flex items-center space-x-4 pt-5 border-t-2 border-jungle-green">
+      <div className="items-center overflow-hidden object-cover w-14 h-14 border-2 border-outer-space">
         <Image
           src={resolvedImage}
           width={56}
@@ -105,10 +105,10 @@ function Avatar({ image, name, role, dateLabel, relationship, imagePosition, ima
         />
       </div>
       <div>
-        <div className="text-base font-bold text-slate-800">{name}</div>
-        {role && <div className="text-sm text-slate-600">{role}</div>}
+        <div className="text-base font-bold text-outer-space">{name}</div>
+        {role && <div className="text-sm text-feldgrau">{role}</div>}
         {(dateLabel || relationship) && (
-          <div className="text-xs text-amber-600 font-medium">
+          <div className="text-xs text-jungle-green font-medium">
             {[dateLabel, relationship].filter(Boolean).join(' · ')}
           </div>
         )}

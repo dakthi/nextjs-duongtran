@@ -137,13 +137,13 @@ export function QuizContainer({ locale }: QuizContainerProps) {
   if (!hasStarted) {
     return (
       <div className="max-w-3xl mx-auto text-center py-12">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
+        <h1 className="text-4xl md:text-5xl font-sans font-bold text-gray-900 mb-6">
           {t("quiz.title")}
         </h1>
         <p className="text-xl text-gray-600 mb-8">{t("quiz.subtitle")}</p>
         <button
           onClick={handleStart}
-          className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white text-lg font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl"
+          className="px-8 py-4 bg-mint-green0 hover:bg-jungle-green-dark text-white text-lg font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl"
         >
           {t("quiz.startButton")}
         </button>
@@ -171,7 +171,7 @@ export function QuizContainer({ locale }: QuizContainerProps) {
       <div className="mb-8">
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="bg-amber-500 h-2 rounded-full transition-all duration-300"
+            className="bg-mint-green0 h-2 rounded-full transition-all duration-300"
             style={{
               width: `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`,
             }}
@@ -205,7 +205,7 @@ export function QuizContainer({ locale }: QuizContainerProps) {
         <button
           onClick={handleNext}
           disabled={!canProceed}
-          className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-mint-green0 hover:bg-jungle-green-dark text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {currentQuestionIndex === totalQuestions - 1
             ? t("quiz.submitButton")

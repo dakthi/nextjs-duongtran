@@ -112,17 +112,17 @@ export const AboutBody = ({ sections, contentHtml, contentJson, locale = 'en' }:
             /* TipTap HTML Content */
             <div
               className="prose prose-slate prose-lg max-w-none
-                prose-headings:font-serif prose-headings:font-bold prose-headings:text-slate-900 prose-headings:leading-tight
+                prose-headings:font-sans prose-headings:font-bold prose-headings:text-outer-space prose-headings:leading-tight
                 prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mb-6
                 prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:mb-4
-                prose-p:text-lg prose-p:font-medium prose-p:text-slate-900 prose-p:leading-relaxed prose-p:mb-6
-                prose-img:w-full prose-img:h-auto prose-img:border-4 prose-img:border-slate-800 prose-img:shadow-lg prose-img:my-8
-                prose-a:text-amber-600 prose-a:underline hover:prose-a:text-amber-500
-                prose-strong:text-slate-900 prose-strong:font-bold
-                prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2 prose-ul:text-base prose-ul:text-slate-700
-                prose-ol:list-decimal prose-ol:pl-6 prose-ol:space-y-2 prose-ol:text-base prose-ol:text-slate-700
-                prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-slate-700
-                prose-hr:border-t-2 prose-hr:border-slate-200 prose-hr:my-8"
+                prose-p:text-lg prose-p:font-medium prose-p:text-feldgrau prose-p:leading-relaxed prose-p:mb-6
+                prose-img:w-full prose-img:h-auto prose-img:border-4 prose-img:border-outer-space prose-img:shadow-brutalist prose-img:my-8
+                prose-a:text-jungle-green prose-a:underline hover:prose-a:text-jungle-green-dark
+                prose-strong:text-outer-space prose-strong:font-bold
+                prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2 prose-ul:text-base prose-ul:text-feldgrau
+                prose-ol:list-decimal prose-ol:pl-6 prose-ol:space-y-2 prose-ol:text-base prose-ol:text-feldgrau
+                prose-blockquote:border-l-4 prose-blockquote:border-jungle-green prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-feldgrau
+                prose-hr:border-t-2 prose-hr:border-mint-green prose-hr:my-8"
               dangerouslySetInnerHTML={{ __html: contentHtml || '' }}
             />
           ) : (
@@ -134,14 +134,14 @@ export const AboutBody = ({ sections, contentHtml, contentJson, locale = 'en' }:
                 return (
                   <article key={section.id || index} className="space-y-6">
                     {section.title && (
-                      <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                      <h2 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight">
                         {section.title}
                       </h2>
                     )}
 
                     {/* First paragraph(s) before image */}
                     {section.body.slice(0, 2).map((paragraph, paragraphIndex) => (
-                      <p key={`${section.id}-${paragraphIndex}`} className="text-lg font-medium text-slate-900 leading-relaxed">
+                      <p key={`${section.id}-${paragraphIndex}`} className="text-lg font-medium text-feldgrau leading-relaxed">
                         {paragraph}
                       </p>
                     ))}
@@ -152,14 +152,14 @@ export const AboutBody = ({ sections, contentHtml, contentJson, locale = 'en' }:
                         <img
                           src={image}
                           alt={section.title || 'About section image'}
-                          className="w-full h-auto border-4 border-slate-800 shadow-lg"
+                          className="w-full h-auto border-4 border-outer-space shadow-brutalist"
                         />
                       </figure>
                     )}
 
                     {/* Remaining paragraphs after image */}
                     {section.body.slice(2).map((paragraph, paragraphIndex) => (
-                      <p key={`${section.id}-after-${paragraphIndex}`} className="text-lg font-medium text-slate-900 leading-relaxed">
+                      <p key={`${section.id}-after-${paragraphIndex}`} className="text-lg font-medium text-feldgrau leading-relaxed">
                         {paragraph}
                       </p>
                     ))}

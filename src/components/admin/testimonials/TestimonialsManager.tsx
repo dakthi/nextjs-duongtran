@@ -268,21 +268,21 @@ export default function TestimonialsManager() {
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="lg:w-1/3 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-serif font-bold text-slate-900">Testimonials</h2>
+            <h2 className="text-xl font-sans font-bold text-outer-space">Testimonials</h2>
             <button
               type="button"
               onClick={handleNew}
-              className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-4 py-2 text-sm font-semibold transition-colors"
+              className="bg-mint-green0 hover:bg-jungle-green text-outer-space px-4 py-2 text-sm font-semibold transition-colors"
             >
               New
             </button>
           </div>
 
-          <div className="border-2 border-slate-800 bg-white shadow-md">
+          <div className="border-2 border-outer-space bg-white shadow-md">
             {loading ? (
-              <div className="p-4 text-sm text-slate-600">Loading testimonials…</div>
+              <div className="p-4 text-sm text-feldgrau">Loading testimonials…</div>
             ) : testimonials.length === 0 ? (
-              <div className="p-4 text-sm text-slate-600">No testimonials yet.</div>
+              <div className="p-4 text-sm text-feldgrau">No testimonials yet.</div>
             ) : (
               <ul className="divide-y divide-slate-200">
                 {testimonials.map(testimonial => {
@@ -293,12 +293,12 @@ export default function TestimonialsManager() {
                         type="button"
                         onClick={() => handleSelect(testimonial)}
                         className={`flex w-full flex-col items-start gap-1 px-4 py-3 text-left transition ${
-                          isActive ? 'bg-amber-50 border-l-4 border-l-amber-500' : 'hover:bg-slate-50'
+                          isActive ? 'bg-mint-green border-l-4 border-l-amber-500' : 'hover:bg-mint-green'
                         }`}
                       >
-                        <span className="text-sm font-bold text-slate-900">{testimonial.name}</span>
-                        <span className="text-xs text-slate-600">Order: {testimonial.order}</span>
-                        <span className={`text-xs font-medium ${testimonial.isActive ? 'text-green-700' : 'text-amber-600'}`}>
+                        <span className="text-sm font-bold text-outer-space">{testimonial.name}</span>
+                        <span className="text-xs text-feldgrau">Order: {testimonial.order}</span>
+                        <span className={`text-xs font-medium ${testimonial.isActive ? 'text-green-700' : 'text-jungle-green'}`}>
                           {testimonial.isActive ? 'Visible' : 'Hidden'}
                         </span>
                       </button>
@@ -311,20 +311,20 @@ export default function TestimonialsManager() {
         </div>
 
         <div className="lg:w-2/3">
-          <div className="border-l-4 border-amber-500 bg-white p-8 shadow-md">
+          <div className="border-l-4 border-jungle-green bg-white p-8 shadow-md">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-serif font-bold text-slate-900">Testimonial Editor</h2>
+                <h2 className="text-2xl font-sans font-bold text-outer-space">Testimonial Editor</h2>
                 {selectedId && (
-                  <p className="text-xs text-slate-600">Editing testimonial #{selectedId.slice(0, 6)}…</p>
+                  <p className="text-xs text-feldgrau">Editing testimonial #{selectedId.slice(0, 6)}…</p>
                 )}
               </div>
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-900">
+              <label className="flex items-center gap-2 text-sm font-medium text-outer-space">
                 <input
                   type="checkbox"
                   checked={formState.isActive}
                   onChange={handleInputChange('isActive')}
-                  className="h-4 w-4 border-2 border-slate-800 focus:ring-2 focus:ring-amber-500"
+                  className="h-4 w-4 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
                 />
                 Visible
               </label>
@@ -332,59 +332,59 @@ export default function TestimonialsManager() {
 
             <div className="space-y-4">
               <div>
-                <label className="mb-2 block text-sm font-bold text-slate-900">Name</label>
+                <label className="mb-2 block text-sm font-bold text-outer-space">Name</label>
                 <input
                   type="text"
                   value={formState.name}
                   onChange={handleInputChange('name')}
-                  className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full border-2 border-outer-space px-3 py-2 focus:border-jungle-green focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-slate-900">Role</label>
+                  <label className="mb-2 block text-sm font-bold text-outer-space">Role</label>
                   <input
                     type="text"
                     value={formState.role}
                     onChange={handleInputChange('role')}
-                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border-2 border-outer-space px-3 py-2 focus:border-jungle-green focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-slate-900">Relationship</label>
+                  <label className="mb-2 block text-sm font-bold text-outer-space">Relationship</label>
                   <input
                     type="text"
                     value={formState.relationship}
                     onChange={handleInputChange('relationship')}
-                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border-2 border-outer-space px-3 py-2 focus:border-jungle-green focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-slate-900">Date Label</label>
+                  <label className="mb-2 block text-sm font-bold text-outer-space">Date Label</label>
                   <input
                     type="text"
                     value={formState.dateLabel}
                     onChange={handleInputChange('dateLabel')}
-                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border-2 border-outer-space px-3 py-2 focus:border-jungle-green focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-slate-900">Display Order</label>
+                  <label className="mb-2 block text-sm font-bold text-outer-space">Display Order</label>
                   <input
                     type="number"
                     value={formState.order}
                     onChange={handleInputChange('order')}
-                    className="w-full border-2 border-slate-800 px-3 py-2 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full border-2 border-outer-space px-3 py-2 focus:border-jungle-green focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-bold text-slate-900">Content</label>
+                <label className="mb-2 block text-sm font-bold text-outer-space">Content</label>
                 <TipTapEditor
                   content={formState.contentJson}
                   onChange={(json, html) => {
@@ -410,12 +410,12 @@ export default function TestimonialsManager() {
                 />
               </div>
 
-              <div className="flex flex-wrap gap-3 pt-6 border-t-2 border-slate-800">
+              <div className="flex flex-wrap gap-3 pt-6 border-t-2 border-outer-space">
                 <button
                   type="button"
                   onClick={handleSave}
                   disabled={saving || !hasChanges}
-                  className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-8 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-mint-green0 hover:bg-jungle-green text-outer-space px-8 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {saving ? 'Saving…' : 'Save Changes'}
                 </button>
@@ -423,7 +423,7 @@ export default function TestimonialsManager() {
                   type="button"
                   onClick={resetForm}
                   disabled={!hasChanges}
-                  className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-feldgrau hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Reset
                 </button>

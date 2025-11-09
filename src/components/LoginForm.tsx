@@ -63,13 +63,13 @@ export default function LoginForm({
 
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
-      <form onSubmit={handleSubmit} className="bg-white border-2 border-slate-800 shadow-xl p-8">
+      <form onSubmit={handleSubmit} className="bg-white border-2 border-outer-space shadow-xl p-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight">
             LieuVo Admin
           </h2>
-          <p className="mt-3 text-base text-slate-700">
+          <p className="mt-3 text-base text-feldgrau">
             Enter your credentials to access the admin panel
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function LoginForm({
 
         {/* Email Field */}
         <div className="mb-6">
-          <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
+          <label htmlFor="email" className="block text-sm font-semibold text-outer-space mb-2">
             Email address
           </label>
           <input
@@ -94,7 +94,7 @@ export default function LoginForm({
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border-2 border-slate-800 shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+            className="w-full px-4 py-3 border-2 border-outer-space shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-jungle-green transition-colors"
             placeholder="admin@lieuvo.com"
             disabled={isLoading}
           />
@@ -102,7 +102,7 @@ export default function LoginForm({
 
         {/* Password Field */}
         <div className="mb-8">
-          <label htmlFor="password" className="block text-sm font-semibold text-slate-900 mb-2">
+          <label htmlFor="password" className="block text-sm font-semibold text-outer-space mb-2">
             Password
           </label>
           <input
@@ -113,7 +113,7 @@ export default function LoginForm({
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border-2 border-slate-800 shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+            className="w-full px-4 py-3 border-2 border-outer-space shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-jungle-green transition-colors"
             placeholder="Enter your password"
             disabled={isLoading}
           />
@@ -124,7 +124,7 @@ export default function LoginForm({
           <button
             type="submit"
             disabled={isLoading || !email || !password}
-            className="w-full flex justify-center py-3 px-8 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full flex justify-center py-3 px-8 bg-mint-green0 hover:bg-jungle-green text-outer-space font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isLoading ? (
               <div className="flex items-center">
@@ -139,9 +139,9 @@ export default function LoginForm({
 
         {/* Development Info */}
         {process.env.NODE_ENV === 'development' && (
-          <div className="bg-amber-50 border-l-4 border-amber-500 text-slate-900 px-4 py-3 text-sm">
+          <div className="bg-mint-green border-l-4 border-jungle-green text-outer-space px-4 py-3 text-sm">
             <p className="font-semibold">Development Mode</p>
-            <p className="mt-1 text-slate-700">
+            <p className="mt-1 text-feldgrau">
               Default admin: admin@lieuvo.com / LieuVoAdmin123!
             </p>
           </div>

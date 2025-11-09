@@ -53,12 +53,12 @@ export function ImageCropDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4">
-      <div className="relative w-full max-w-4xl bg-white border-4 border-slate-800 p-6 shadow-xl">
+      <div className="relative w-full max-w-4xl bg-white border-4 border-outer-space p-6 shadow-xl">
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl font-serif font-bold text-slate-900">Crop & Adjust Image</h3>
+          <h3 className="text-2xl font-sans font-bold text-outer-space">Crop & Adjust Image</h3>
           <button
             onClick={onCancel}
-            className="text-slate-600 transition hover:text-slate-900"
+            className="text-feldgrau transition hover:text-outer-space"
             disabled={isProcessing}
           >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@ export function ImageCropDialog({
         {/* Aspect Ratio Selector */}
         {showAspectRatioSelector && (
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-bold text-slate-900">Aspect Ratio</label>
+            <label className="mb-2 block text-sm font-bold text-outer-space">Aspect Ratio</label>
             <div className="flex gap-2">
               {aspectRatioPresets.map((preset) => (
                 <button
@@ -79,8 +79,8 @@ export function ImageCropDialog({
                   onClick={() => setAspectRatio(preset.value)}
                   className={`flex-1 px-4 py-3 font-semibold text-sm transition-colors ${
                     Math.abs(aspectRatio - preset.value) < 0.01
-                      ? 'bg-amber-500 text-slate-900'
-                      : 'bg-slate-800 text-white hover:bg-slate-700'
+                      ? 'bg-mint-green0 text-outer-space'
+                      : 'bg-feldgrau text-white hover:bg-slate-700'
                   }`}
                   disabled={isProcessing}
                 >
@@ -95,7 +95,7 @@ export function ImageCropDialog({
           </div>
         )}
 
-        <div className="relative h-96 w-full bg-slate-900 border-2 border-slate-800">
+        <div className="relative h-96 w-full bg-slate-900 border-2 border-outer-space">
           <Cropper
             image={imageUrl}
             crop={crop}
@@ -110,10 +110,10 @@ export function ImageCropDialog({
         <div className="mt-4 space-y-4">
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="block text-sm font-bold text-slate-900">
+              <label className="block text-sm font-bold text-outer-space">
                 Zoom
               </label>
-              <span className="text-sm font-bold text-amber-600">{Math.round(zoom * 100)}%</span>
+              <span className="text-sm font-bold text-jungle-green">{Math.round(zoom * 100)}%</span>
             </div>
             <input
               type="range"
@@ -122,23 +122,23 @@ export function ImageCropDialog({
               step={0.1}
               value={zoom}
               onChange={(e) => setZoom(Number(e.target.value))}
-              className="w-full h-2 bg-slate-200 appearance-none cursor-pointer accent-amber-500"
+              className="w-full h-2 bg-mint-green appearance-none cursor-pointer accent-amber-500"
               disabled={isProcessing}
             />
           </div>
 
-          <div className="flex justify-end gap-3 pt-4 border-t-2 border-slate-200">
+          <div className="flex justify-end gap-3 pt-4 border-t-2 border-mint-green">
             <button
               onClick={onCancel}
               disabled={isProcessing}
-              className="bg-slate-200 hover:bg-slate-300 text-slate-900 px-6 py-3 font-semibold transition-colors disabled:opacity-50"
+              className="bg-mint-green hover:bg-slate-300 text-outer-space px-6 py-3 font-semibold transition-colors disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               onClick={createCroppedImage}
               disabled={isProcessing}
-              className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-8 py-3 font-semibold transition-colors disabled:opacity-50"
+              className="bg-mint-green0 hover:bg-jungle-green text-outer-space px-8 py-3 font-semibold transition-colors disabled:opacity-50"
             >
               {isProcessing ? "Processing..." : "Apply Crop"}
             </button>

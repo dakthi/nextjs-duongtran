@@ -93,7 +93,7 @@ export function QuizResults({
     <div className="w-full max-w-4xl mx-auto">
       {/* Header */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-sans font-bold text-gray-900 mb-4">
           {t("quiz.results.title")}
         </h2>
       </div>
@@ -134,7 +134,7 @@ export function QuizResults({
 
           {/* Tier Info */}
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-2">
+            <h3 className="text-2xl md:text-3xl font-sans font-bold mb-2">
               {t(`quiz.results.tier.${tier.id}.title`)}
             </h3>
             <p className="text-lg mb-4">{t(`quiz.results.tier.${tier.id}.message`)}</p>
@@ -158,7 +158,7 @@ export function QuizResults({
 
       {/* Category Breakdown */}
       <div className="bg-white rounded-xl border-2 border-gray-200 p-6 md:p-8 mb-8">
-        <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-900 mb-6">
+        <h3 className="text-xl md:text-2xl font-sans font-bold text-gray-900 mb-6">
           {t("quiz.results.categoryBreakdown.title")}
         </h3>
         <div className="space-y-4">
@@ -205,13 +205,13 @@ export function QuizResults({
 
       {/* Next Steps */}
       <div className="bg-white rounded-xl border-2 border-gray-200 p-6 md:p-8 mb-8">
-        <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-900 mb-4">
+        <h3 className="text-xl md:text-2xl font-sans font-bold text-gray-900 mb-4">
           {t("quiz.results.nextSteps.title")}
         </h3>
         <ul className="space-y-3">
           <li className="flex items-start">
             <svg
-              className="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-0.5"
+              className="w-6 h-6 text-jungle-green mr-3 flex-shrink-0 mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -225,7 +225,7 @@ export function QuizResults({
           </li>
           <li className="flex items-start">
             <svg
-              className="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-0.5"
+              className="w-6 h-6 text-jungle-green mr-3 flex-shrink-0 mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -239,7 +239,7 @@ export function QuizResults({
           </li>
           <li className="flex items-start">
             <svg
-              className="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-0.5"
+              className="w-6 h-6 text-jungle-green mr-3 flex-shrink-0 mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -253,7 +253,7 @@ export function QuizResults({
           </li>
           <li className="flex items-start">
             <svg
-              className="w-6 h-6 text-amber-500 mr-3 flex-shrink-0 mt-0.5"
+              className="w-6 h-6 text-jungle-green mr-3 flex-shrink-0 mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -269,15 +269,15 @@ export function QuizResults({
       </div>
 
       {/* CTA */}
-      <div className="bg-slate-800 rounded-xl p-6 md:p-8 text-center mb-8">
-        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white mb-3">
+      <div className="bg-feldgrau rounded-xl p-6 md:p-8 text-center mb-8">
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white mb-3">
           {t("quiz.results.cta.title")}
         </h3>
-        <p className="text-slate-200 text-lg mb-6">{t("quiz.results.cta.description")}</p>
+        <p className="text-mint-green text-lg mb-6">{t("quiz.results.cta.description")}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={`/${locale}/contact`}
-            className="inline-block px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg transition-colors"
+            className="inline-block px-8 py-3 bg-mint-green0 hover:bg-jungle-green-dark text-white font-semibold rounded-lg transition-colors"
           >
             {t("quiz.results.cta.button")}
           </Link>

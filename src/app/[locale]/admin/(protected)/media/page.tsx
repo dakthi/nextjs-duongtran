@@ -70,20 +70,20 @@ export default function AdminMediaPage() {
   return (
     <div className="pb-12">
       <header className="mb-8">
-        <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-3">
           Content Management
         </p>
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-4">
+        <h1 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight mb-4">
           Media Library
         </h1>
-        <p className="text-lg font-medium text-slate-700 leading-relaxed max-w-3xl">
+        <p className="text-lg font-medium text-feldgrau leading-relaxed max-w-3xl">
           Upload new imagery and manage the assets used across the site. Files are stored securely in Cloudflare R2.
         </p>
       </header>
 
-      <section className="bg-white border-2 border-slate-800 p-6 shadow-md mb-8">
-        <h2 className="text-xl font-serif font-bold text-slate-900 mb-2">Upload a new image</h2>
-        <p className="text-base text-slate-700 mb-6">
+      <section className="bg-white border-2 border-outer-space p-6 shadow-md mb-8">
+        <h2 className="text-xl font-sans font-bold text-outer-space mb-2">Upload a new image</h2>
+        <p className="text-base text-feldgrau mb-6">
           Images are optimised automatically after upload. Use descriptive filenames to keep the library searchable.
         </p>
         <div className="max-w-xl">
@@ -93,10 +93,10 @@ export default function AdminMediaPage() {
 
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-serif font-bold text-slate-900">All media</h2>
+          <h2 className="text-2xl font-sans font-bold text-outer-space">All media</h2>
           <button
             onClick={loadMediaItems}
-            className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 font-medium transition-colors"
+            className="bg-feldgrau hover:bg-slate-700 text-white px-4 py-2 font-medium transition-colors"
           >
             Refresh
           </button>
@@ -122,19 +122,19 @@ export default function AdminMediaPage() {
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {mediaItems.map((item) => (
-              <article key={item.id} className="overflow-hidden border-2 border-slate-800 shadow-md hover:shadow-xl transition-shadow">
+              <article key={item.id} className="overflow-hidden border-2 border-outer-space shadow-md hover:shadow-xl transition-shadow">
                 <div className="relative aspect-video bg-slate-100">
                   <img src={item.url} alt={item.alt || item.originalName} className="h-full w-full object-cover" />
                 </div>
                 <div className="space-y-2 p-4 bg-white">
-                  <p className="truncate text-sm font-bold text-slate-900" title={item.originalName}>
+                  <p className="truncate text-sm font-bold text-outer-space" title={item.originalName}>
                     {item.originalName}
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-feldgrau">
                     Uploaded {new Date(item.createdAt).toLocaleDateString()} • {(item.mimeType || '').toUpperCase()}
                   </p>
                   <div className="flex items-center justify-between">
-                    <p className="text-xs text-slate-600">{formatFileSize(item.size)}</p>
+                    <p className="text-xs text-feldgrau">{formatFileSize(item.size)}</p>
                     <button
                       onClick={() => handleDelete(item.id)}
                       disabled={deletingId === item.id}

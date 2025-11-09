@@ -61,7 +61,7 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`w-full sticky top-0 bg-slate-800 z-50 transition-all duration-300 ${
+      className={`w-full sticky top-0 bg-feldgrau z-50 transition-all duration-300 ${
         scrolled ? "shadow-lg" : ""
       }`}
     >
@@ -70,14 +70,14 @@ export const Navbar = () => {
         {/* Logo */}
         <Link href={`/${locale}`} className="flex flex-col space-y-0.5">
           <span
-            className={`font-serif font-bold text-white transition-all duration-300 ${
+            className={`font-sans font-bold text-white transition-all duration-300 ${
               scrolled ? "text-xl" : "text-2xl"
             }`}
           >
             Lieu Vo
           </span>
           <span
-            className={`text-amber-400 tracking-wide transition-all duration-300 ${
+            className={`text-jungle-green tracking-wide transition-all duration-300 ${
               scrolled ? "text-xs hidden md:block" : "text-sm"
             }`}
           >
@@ -91,14 +91,14 @@ export const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className="text-slate-200 hover:text-amber-400 text-sm font-medium transition-colors capitalize"
+              className="text-mint-green hover:text-jungle-green text-sm font-medium transition-colors capitalize"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href={`/${locale}/contact`}
-            className="ml-6 px-5 py-2 text-slate-900 bg-amber-500 hover:bg-amber-400 text-sm font-semibold transition-colors capitalize"
+            className="ml-6 px-5 py-2 text-outer-space bg-mint-green0 hover:bg-jungle-green text-sm font-semibold transition-colors capitalize"
           >
             {t('contact') || 'Contact'}
           </Link>
@@ -109,7 +109,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('en')}
                 className={`px-2 py-1 text-xs font-semibold ${
-                  locale === 'en' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400'
+                  locale === 'en' ? 'bg-mint-green0 text-outer-space' : 'text-slate-300 hover:text-jungle-green'
                 }`}
               >
                 EN
@@ -117,7 +117,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('vi')}
                 className={`px-2 py-1 text-xs font-semibold ${
-                  locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'text-slate-300 hover:text-amber-400'
+                  locale === 'vi' ? 'bg-mint-green0 text-outer-space' : 'text-slate-300 hover:text-jungle-green'
                 }`}
               >
                 VI
@@ -131,7 +131,7 @@ export const Navbar = () => {
           <button
             aria-label="Toggle Menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-slate-200 hover:text-amber-400 focus:outline-none"
+            className="p-2 text-mint-green hover:text-jungle-green focus:outline-none"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -161,7 +161,7 @@ export const Navbar = () => {
                   key={index}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-slate-200 hover:bg-slate-600 hover:text-amber-400 transition capitalize rounded"
+                  className="block px-4 py-3 text-mint-green hover:bg-slate-600 hover:text-jungle-green transition capitalize rounded"
                 >
                   {item.label}
                 </Link>
@@ -169,7 +169,7 @@ export const Navbar = () => {
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block mx-4 mt-3 px-4 py-3 text-center bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition capitalize rounded"
+                className="block mx-4 mt-3 px-4 py-3 text-center bg-mint-green0 text-outer-space font-semibold hover:bg-jungle-green transition capitalize rounded"
               >
                 {t('contact') || 'Contact'}
               </Link>
@@ -183,7 +183,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
-                      locale === 'en' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
+                      locale === 'en' ? 'bg-mint-green0 text-outer-space' : 'bg-slate-600 text-slate-300 hover:bg-mint-green0 hover:text-jungle-green'
                     }`}
                   >
                     EN
@@ -194,7 +194,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 px-3 py-2 text-sm font-semibold transition rounded ${
-                      locale === 'vi' ? 'bg-amber-500 text-slate-900' : 'bg-slate-600 text-slate-300 hover:bg-slate-500 hover:text-amber-400'
+                      locale === 'vi' ? 'bg-mint-green0 text-outer-space' : 'bg-slate-600 text-slate-300 hover:bg-mint-green0 hover:text-jungle-green'
                     }`}
                   >
                     VI

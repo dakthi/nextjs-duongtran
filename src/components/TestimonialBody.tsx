@@ -14,22 +14,22 @@ export const TestimonialBody = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-amber-50 border-2 border-slate-800 shadow-md hover:shadow-xl transition-shadow p-8"
+              className="bg-mint-green border-2 border-outer-space shadow-md hover:shadow-xl transition-shadow p-8"
             >
-              <div className="text-6xl text-amber-500 leading-none mb-4">&quot;</div>
+              <div className="text-6xl text-jungle-green leading-none mb-4">&quot;</div>
 
               <div className="space-y-4">
                 {testimonial.body.map((paragraph, index) => (
                   <p
                     key={`${testimonial.id}-paragraph-${index}`}
-                    className="text-base text-slate-700 leading-relaxed italic"
+                    className="text-base text-feldgrau leading-relaxed italic"
                   >
                     {paragraph}
                   </p>
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t-2 border-amber-500 flex items-center gap-4">
+              <div className="mt-6 pt-6 border-t-2 border-jungle-green flex items-center gap-4">
                 {testimonial.image && (
                   <div className="flex-shrink-0">
                     <Image
@@ -37,21 +37,21 @@ export const TestimonialBody = () => {
                       alt={testimonial.name}
                       width={56}
                       height={56}
-                      className="rounded-full border-2 border-slate-800"
+                      className="rounded-full border-2 border-outer-space"
                       unoptimized={isMediaRemoteUrl(testimonial.image)}
                     />
                   </div>
                 )}
                 <div>
-                  <p className="font-bold text-slate-900">{testimonial.name}</p>
+                  <p className="font-bold text-outer-space">{testimonial.name}</p>
                   {testimonial.role && (
-                    <p className="text-sm text-slate-700">{testimonial.role}</p>
+                    <p className="text-sm text-feldgrau">{testimonial.role}</p>
                   )}
                   {testimonial.dateLabel && (
-                    <p className="text-xs text-slate-600">{testimonial.dateLabel}</p>
+                    <p className="text-xs text-feldgrau">{testimonial.dateLabel}</p>
                   )}
                   {testimonial.relationship && (
-                    <p className="text-xs text-slate-600">{testimonial.relationship}</p>
+                    <p className="text-xs text-feldgrau">{testimonial.relationship}</p>
                   )}
                 </div>
               </div>

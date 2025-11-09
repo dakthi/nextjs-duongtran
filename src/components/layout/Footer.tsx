@@ -74,8 +74,8 @@ export function Footer() {
             <div className="mb-5">
               <Link href={`/${locale}`}>
                 <span className="flex flex-col">
-                  <span className="text-2xl font-serif font-bold text-white">Lieu Vo</span>
-                  <span className="text-sm text-amber-400 tracking-wide">{t.tagline}</span>
+                  <span className="text-2xl font-sans font-bold text-white">Lieu Vo</span>
+                  <span className="text-sm text-jungle-green tracking-wide">{t.tagline}</span>
                 </span>
               </Link>
             </div>
@@ -92,7 +92,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-slate-300 hover:text-amber-400 transition-colors"
+                  className="text-sm text-slate-300 hover:text-jungle-green transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -106,7 +106,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-slate-300 hover:text-amber-400 transition-colors"
+                  className="text-sm text-slate-300 hover:text-jungle-green transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -121,7 +121,7 @@ export function Footer() {
                 href="https://www.facebook.com/lieuvoo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors"
+                className="hover:text-jungle-green transition-colors"
               >
                 <span className="sr-only">{t.social.facebook}</span>
                 <Facebook />
@@ -130,7 +130,7 @@ export function Footer() {
                 href="https://www.linkedin.com/in/lieu-vo-acca-859421209/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors"
+                className="hover:text-jungle-green transition-colors"
               >
                 <span className="sr-only">{t.social.linkedin}</span>
                 <LinkedIn />
@@ -139,7 +139,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="py-6 border-t border-slate-800 text-xs text-center text-slate-400">
+        <div className="py-6 border-t border-outer-space text-xs text-center text-slate-400">
           Copyright © {new Date().getFullYear()}. All rights reserved.
         </div>
       </Container>

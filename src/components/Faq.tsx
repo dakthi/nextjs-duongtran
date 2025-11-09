@@ -20,17 +20,17 @@ export const Faq = () => {
             <div key={item.question} className="mb-4">
               <button
                 onClick={() => toggleFaq(index)}
-                className="flex items-center justify-between w-full px-6 py-5 text-lg text-left font-semibold text-slate-800 bg-amber-50 border-2 border-slate-800 hover:bg-amber-100 focus:outline-none transition-colors"
+                className="flex items-center justify-between w-full px-6 py-5 text-lg text-left font-semibold text-outer-space bg-mint-green border-2 border-outer-space hover:bg-jungle-green-light focus:outline-none transition-colors"
               >
                 <span>{item.question}</span>
                 <ChevronUpIcon
                   className={`${
                     isOpen ? "transform rotate-180" : ""
-                  } w-6 h-6 text-amber-600 flex-shrink-0 ml-4 transition-transform`}
+                  } w-6 h-6 text-jungle-green flex-shrink-0 ml-4 transition-transform`}
                 />
               </button>
               {isOpen && (
-                <div className="px-6 py-5 bg-white border-2 border-t-0 border-slate-800 text-slate-700 leading-relaxed">
+                <div className="px-6 py-5 bg-white border-2 border-t-0 border-outer-space text-feldgrau leading-relaxed">
                   {item.answer}
                 </div>
               )}

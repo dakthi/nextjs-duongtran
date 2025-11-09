@@ -32,10 +32,10 @@ export function QuizQuestion({
   return (
     <div className="w-full">
       <div className="mb-6">
-        <div className="text-sm font-medium text-amber-600 mb-2">
+        <div className="text-sm font-medium text-jungle-green mb-2">
           {t("quiz.progress", { current: questionNumber, total: totalQuestions })}
         </div>
-        <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-6">
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-gray-900 mb-6">
           {t(question)}
         </h3>
       </div>
@@ -49,15 +49,15 @@ export function QuizQuestion({
               onClick={() => onSelect(option.id)}
               className={`w-full text-left p-4 md:p-5 rounded-lg border-2 transition-all duration-200 ${
                 isSelected
-                  ? "border-amber-500 bg-amber-50 shadow-md"
-                  : "border-gray-200 bg-white hover:border-amber-300 hover:bg-amber-50/50"
+                  ? "border-jungle-green bg-mint-green shadow-md"
+                  : "border-gray-200 bg-white hover:border-amber-300 hover:bg-mint-green/50"
               }`}
             >
               <div className="flex items-start">
                 <div
                   className={`flex-shrink-0 w-6 h-6 rounded-full border-2 mt-0.5 mr-4 flex items-center justify-center transition-all ${
                     isSelected
-                      ? "border-amber-500 bg-amber-500"
+                      ? "border-jungle-green bg-mint-green0"
                       : "border-gray-300 bg-white"
                   }`}
                 >

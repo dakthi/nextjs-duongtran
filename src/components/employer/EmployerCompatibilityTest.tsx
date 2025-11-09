@@ -376,14 +376,14 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
         <div className="space-y-4">
           {currentQuestion.fields?.map((field) => (
             <div key={field.id}>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-feldgrau mb-2">
                 {field.label}
               </label>
               <input
                 type={field.type}
                 value={contactInfo[field.id] || ''}
                 onChange={(e) => handleDualTextAnswer(field.id, e.target.value)}
-                className="w-full px-4 py-3 border-2 border-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900"
+                className="w-full px-4 py-3 border-2 border-outer-space focus:outline-none focus:ring-2 focus:ring-amber-500 text-outer-space"
                 placeholder={field.placeholder}
                 disabled={loading}
               />
@@ -402,7 +402,7 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
               key={option.label}
               className={`flex items-start p-4 border-2 cursor-pointer transition-all ${
                 currentAnswer?.value === option.label
-                  ? 'border-amber-500 bg-amber-50'
+                  ? 'border-jungle-green bg-mint-green'
                   : 'border-slate-300 hover:border-slate-400 bg-white'
               } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
@@ -412,10 +412,10 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
                 value={option.label}
                 checked={currentAnswer?.value === option.label}
                 onChange={() => handleAnswer(option.label, option.points)}
-                className="mt-1 w-4 h-4 text-amber-500 focus:ring-amber-500"
+                className="mt-1 w-4 h-4 text-jungle-green focus:ring-amber-500"
                 disabled={loading}
               />
-              <span className="ml-3 text-slate-900">{option.label}</span>
+              <span className="ml-3 text-outer-space">{option.label}</span>
             </label>
           ))}
         </div>
@@ -470,7 +470,7 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
   if (showResults) {
     const results = getResultsMessage()
     return (
-      <div className="bg-white border-2 border-amber-500 shadow-lg p-8">
+      <div className="bg-white border-2 border-jungle-green shadow-lg p-8">
         <div className="text-center">
           {/* Icon */}
           <div className="mb-6">
@@ -482,15 +482,15 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
               </div>
             )}
             {results.icon === 'good' && (
-              <div className="mx-auto w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center">
-                <svg className="w-12 h-12 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mx-auto w-20 h-20 bg-jungle-green-light rounded-full flex items-center justify-center">
+                <svg className="w-12 h-12 text-jungle-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
             )}
             {results.icon === 'mismatch' && (
               <div className="mx-auto w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
-                <svg className="w-12 h-12 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-12 h-12 text-feldgrau" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -498,20 +498,20 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+          <h3 className="text-2xl font-bold text-outer-space mb-4">
             {results.title}
           </h3>
 
           {/* Score */}
-          <div className="mb-6 p-4 bg-slate-50 rounded-lg">
-            <p className="text-sm text-slate-600 mb-1">Compatibility score</p>
-            <p className="text-3xl font-bold text-slate-900">
+          <div className="mb-6 p-4 bg-mint-green rounded-lg">
+            <p className="text-sm text-feldgrau mb-1">Compatibility score</p>
+            <p className="text-3xl font-bold text-outer-space">
               {Math.round((score / (isInHouse ? 90 : 100)) * 100)}%
             </p>
           </div>
 
           {/* Message */}
-          <p className="text-slate-700 leading-relaxed mb-8">
+          <p className="text-feldgrau leading-relaxed mb-8">
             {results.message}
           </p>
 
@@ -520,56 +520,56 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
             <div className="space-y-3">
               <button
                 onClick={() => setShowContactForm(true)}
-                className="w-full px-8 py-3 bg-amber-500 text-slate-900 hover:bg-amber-400 font-semibold transition-colors"
+                className="w-full px-8 py-3 bg-mint-green0 text-outer-space hover:bg-jungle-green font-semibold transition-colors"
               >
                 Let's connect!
               </button>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-feldgrau">
                 I'll review your details and be in touch within 2-3 business days
               </p>
             </div>
           ) : results.canProceed && showContactForm ? (
             <div className="space-y-4 text-left">
-              <div className="border-t-2 border-slate-200 pt-6">
-                <h4 className="text-lg font-bold text-slate-900 mb-4">Your contact information</h4>
-                <p className="text-sm text-slate-600 mb-4 bg-amber-50 border-l-4 border-amber-500 p-3">
+              <div className="border-t-2 border-mint-green pt-6">
+                <h4 className="text-lg font-bold text-outer-space mb-4">Your contact information</h4>
+                <p className="text-sm text-feldgrau mb-4 bg-mint-green border-l-4 border-jungle-green p-3">
                   Please use your company email address for faster verification and response
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                    <label className="block text-sm font-semibold text-feldgrau mb-2">
                       Company name
                     </label>
                     <input
                       type="text"
                       value={contactInfo.companyName}
                       onChange={(e) => setContactInfo({ ...contactInfo, companyName: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900"
+                      className="w-full px-4 py-3 border-2 border-outer-space focus:outline-none focus:ring-2 focus:ring-amber-500 text-outer-space"
                       placeholder="Enter company name"
                       disabled={loading}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                    <label className="block text-sm font-semibold text-feldgrau mb-2">
                       Work email
                     </label>
                     <input
                       type="email"
                       value={contactInfo.email}
                       onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900"
+                      className="w-full px-4 py-3 border-2 border-outer-space focus:outline-none focus:ring-2 focus:ring-amber-500 text-outer-space"
                       placeholder="your.email@company.com"
                       disabled={loading}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                    <label className="block text-sm font-semibold text-feldgrau mb-2">
                       Additional notes (optional)
                     </label>
                     <textarea
                       value={contactInfo.notes}
                       onChange={(e) => setContactInfo({ ...contactInfo, notes: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-900 min-h-[120px]"
+                      className="w-full px-4 py-3 border-2 border-outer-space focus:outline-none focus:ring-2 focus:ring-amber-500 text-outer-space min-h-[120px]"
                       placeholder="Tell me a bit more about your role, what you're looking for, or anything else you'd like to share..."
                       disabled={loading}
                       rows={4}
@@ -592,7 +592,7 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
                 <button
                   onClick={handleSubmitContactInfo}
                   disabled={loading}
-                  className="w-full mt-4 px-8 py-3 bg-amber-500 text-slate-900 hover:bg-amber-400 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full mt-4 px-8 py-3 bg-mint-green0 text-outer-space hover:bg-jungle-green font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? 'Submitting...' : 'Submit information'}
                 </button>
@@ -606,13 +606,13 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
               >
                 Contact me directly
               </a>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-feldgrau">
                 I'd be happy to discuss your opportunity in more detail
               </p>
             </div>
           ) : (
             <div className="space-y-3">
-              <p className="text-sm text-slate-600 italic">
+              <p className="text-sm text-feldgrau italic">
                 Whilst this might not be the perfect match right now, I appreciate your time in completing this assessment.
               </p>
             </div>
@@ -623,20 +623,20 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
   }
 
   return (
-    <div className="bg-white border-2 border-amber-500 shadow-lg p-8">
+    <div className="bg-white border-2 border-jungle-green shadow-lg p-8">
       {/* Progress */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-semibold text-slate-600">
+          <span className="text-sm font-semibold text-feldgrau">
             Question {currentStep + 1} of {activeQuestions.length}
           </span>
-          <span className="text-sm text-slate-600">
+          <span className="text-sm text-feldgrau">
             {Math.round(((currentStep + 1) / activeQuestions.length) * 100)}% complete
           </span>
         </div>
-        <div className="w-full bg-slate-200 h-2">
+        <div className="w-full bg-mint-green h-2">
           <div
-            className="bg-amber-500 h-2 transition-all duration-300"
+            className="bg-mint-green0 h-2 transition-all duration-300"
             style={{ width: `${((currentStep + 1) / activeQuestions.length) * 100}%` }}
           />
         </div>
@@ -644,7 +644,7 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
 
       {/* Question */}
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-slate-900 mb-4">
+        <h3 className="text-xl font-bold text-outer-space mb-4">
           {currentQuestion.question}
           {currentQuestion.required && <span className="text-red-500 ml-1">*</span>}
         </h3>
@@ -666,14 +666,14 @@ export function EmployerCompatibilityTest({ onComplete, loading, error }: Employ
         <button
           onClick={handlePrevious}
           disabled={currentStep === 0 || loading}
-          className="px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-mint-green hover:bg-slate-300 text-outer-space font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Previous
         </button>
         <button
           onClick={handleNext}
           disabled={loading}
-          className="px-6 py-3 bg-amber-500 text-slate-900 hover:bg-amber-400 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 bg-mint-green0 text-outer-space hover:bg-jungle-green font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLastQuestion ? 'See results' : 'Next'}
         </button>

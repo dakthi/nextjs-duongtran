@@ -57,7 +57,7 @@ export function HomeContent({ locale }: HomeContentProps) {
         </SectionTitle>
       </div>
 
-      <div className="py-20 bg-slate-50">
+      <div className="py-20 bg-mint-green">
         <Benefits imgPos="left" data={benefitOne} />
       </div>
 
@@ -65,7 +65,7 @@ export function HomeContent({ locale }: HomeContentProps) {
         <Benefits imgPos="right" size="large" data={benefitTwo} />
       </div>
 
-      <div className="py-20 bg-slate-50">
+      <div className="py-20 bg-mint-green">
         <SectionTitle
           preTitle={t('hearFromLieuPreTitle')}
           title={t('hearFromLieuTitle')}
@@ -76,15 +76,15 @@ export function HomeContent({ locale }: HomeContentProps) {
         </SectionTitle>
       </div>
 
-      <div className="py-20 bg-slate-800">
+      <div className="py-20 bg-feldgrau">
         <Container className="text-center">
-          <div className="text-xs font-semibold tracking-widest mb-3 text-amber-400">
+          <div className="text-xs font-semibold tracking-widest mb-3 text-jungle-green">
             {t('testimonialsPreTitle')}
           </div>
-          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
+          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-white">
             {t('testimonialsTitle')}
           </h2>
-          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-200 font-medium mb-12">
+          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-mint-green font-medium mb-12">
             {t('testimonialsDescription')}
           </p>
         </Container>

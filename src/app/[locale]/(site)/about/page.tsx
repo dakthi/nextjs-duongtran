@@ -8,6 +8,9 @@ import { getActiveAboutContent } from '@/lib/about-service'
 import { generateMetadata as genMeta } from '@/lib/seo'
 import { Metadata } from 'next'
 
+// Force dynamic rendering to fetch fresh data from database
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
   return genMeta({
     title: 'About',

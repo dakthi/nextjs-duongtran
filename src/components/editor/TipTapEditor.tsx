@@ -29,7 +29,7 @@ export function TipTapEditor({
       StarterKit,
       Image.configure({
         HTMLAttributes: {
-          class: 'w-full h-auto border-4 border-slate-800 shadow-lg my-8',
+          class: 'w-full h-auto border-4 border-outer-space shadow-lg my-8',
         },
       }),
       Placeholder.configure({
@@ -61,16 +61,16 @@ export function TipTapEditor({
   }
 
   return (
-    <div className="border-2 border-slate-800 [&_em]:italic [&_em]:font-normal">
+    <div className="border-2 border-outer-space [&_em]:italic [&_em]:font-normal">
       {/* Toolbar */}
       {editable && (
-        <div className="border-b-2 border-slate-800 bg-slate-50 p-3 flex flex-wrap gap-2">
+        <div className="border-b-2 border-outer-space bg-mint-green p-3 flex flex-wrap gap-2">
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('bold')
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -81,8 +81,8 @@ export function TipTapEditor({
             onClick={() => editor.chain().focus().toggleItalic().run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('italic')
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -95,8 +95,8 @@ export function TipTapEditor({
             onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('heading', { level: 2 })
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -107,8 +107,8 @@ export function TipTapEditor({
             onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('heading', { level: 3 })
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -121,8 +121,8 @@ export function TipTapEditor({
             onClick={() => editor.chain().focus().toggleBulletList().run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('bulletList')
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -133,8 +133,8 @@ export function TipTapEditor({
             onClick={() => editor.chain().focus().toggleOrderedList().run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('orderedList')
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -147,8 +147,8 @@ export function TipTapEditor({
             onClick={() => editor.chain().focus().toggleBlockquote().run()}
             className={`px-3 py-1 text-sm font-semibold transition-colors ${
               editor.isActive('blockquote')
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
             }`}
             type="button"
           >
@@ -159,7 +159,7 @@ export function TipTapEditor({
 
           <button
             onClick={() => editor.chain().focus().setHorizontalRule().run()}
-            className="px-3 py-1 text-sm font-semibold bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100 transition-colors"
+            className="px-3 py-1 text-sm font-semibold bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100 transition-colors"
             type="button"
           >
             Divider
@@ -168,7 +168,7 @@ export function TipTapEditor({
           <button
             onClick={() => editor.chain().focus().undo().run()}
             disabled={!editor.can().undo()}
-            className="px-3 py-1 text-sm font-semibold bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100 transition-colors disabled:opacity-50"
+            className="px-3 py-1 text-sm font-semibold bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100 transition-colors disabled:opacity-50"
             type="button"
           >
             Undo
@@ -177,7 +177,7 @@ export function TipTapEditor({
           <button
             onClick={() => editor.chain().focus().redo().run()}
             disabled={!editor.can().redo()}
-            className="px-3 py-1 text-sm font-semibold bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100 transition-colors disabled:opacity-50"
+            className="px-3 py-1 text-sm font-semibold bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100 transition-colors disabled:opacity-50"
             type="button"
           >
             Redo

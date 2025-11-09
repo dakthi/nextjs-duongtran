@@ -90,13 +90,13 @@ export default function AdminDashboard() {
     <div className="max-w-5xl mx-auto px-8 xl:px-12 py-12">
       {/* Header */}
       <div className="mb-12">
-        <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-4">
+        <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-4">
           Admin Dashboard
         </p>
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
+        <h1 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight mb-6">
           Content Management
         </h1>
-        <p className="text-lg font-medium text-slate-900 leading-relaxed max-w-3xl">
+        <p className="text-lg font-medium text-outer-space leading-relaxed max-w-3xl">
           Manage your website content, media, and settings. Select a section below to get started.
         </p>
       </div>
@@ -107,12 +107,12 @@ export default function AdminDashboard() {
           <Link
             key={section.href}
             href={`/${locale}/admin/${section.href}`}
-            className="bg-white border-2 border-slate-800 p-6 shadow-md hover:shadow-xl transition-shadow border-l-4 border-l-amber-500"
+            className="bg-white border-2 border-outer-space p-6 shadow-md hover:shadow-xl transition-shadow border-l-4 border-l-amber-500"
           >
-            <h3 className="text-lg font-bold text-slate-900 mb-2">
+            <h3 className="text-lg font-bold text-outer-space mb-2">
               {section.label}
             </h3>
-            <p className="text-base text-slate-700 leading-relaxed">
+            <p className="text-base text-feldgrau leading-relaxed">
               {section.description}
             </p>
           </Link>
@@ -120,12 +120,12 @@ export default function AdminDashboard() {
       </div>
 
       {/* Export Section */}
-      <div className="bg-amber-50 border-l-4 border-amber-500 shadow-md p-8">
+      <div className="bg-mint-green border-l-4 border-jungle-green shadow-md p-8">
         <div className="max-w-2xl mx-auto text-center space-y-6">
-          <h2 className="text-2xl font-serif font-bold text-slate-900 leading-tight">
+          <h2 className="text-2xl font-sans font-bold text-outer-space leading-tight">
             Database Backup
           </h2>
-          <p className="text-base text-slate-700 leading-relaxed">
+          <p className="text-base text-feldgrau leading-relaxed">
             Export your complete database in multiple formats for backup or migration purposes.
           </p>
 
@@ -133,7 +133,7 @@ export default function AdminDashboard() {
             <button
               onClick={() => handleExportDatabase('json')}
               disabled={exporting}
-              className="bg-amber-500 hover:bg-amber-400 text-slate-900 px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-mint-green0 hover:bg-jungle-green text-outer-space px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {exporting ? 'Exporting...' : 'Export as JSON'}
             </button>
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
             <button
               onClick={() => handleExportDatabase('txt')}
               disabled={exporting}
-              className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-feldgrau hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {exporting ? 'Exporting...' : 'Export as Text'}
             </button>
@@ -149,13 +149,13 @@ export default function AdminDashboard() {
             <button
               onClick={() => handleExportDatabase('csv')}
               disabled={exporting}
-              className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-feldgrau hover:bg-slate-700 text-white px-6 py-3 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {exporting ? 'Exporting...' : 'Export as CSV'}
             </button>
           </div>
 
-          <div className="text-xs text-slate-600 space-y-1">
+          <div className="text-xs text-feldgrau space-y-1">
             <p><strong>JSON</strong>: Complete structured data, easy to import</p>
             <p><strong>Text</strong>: Human-readable format for review</p>
             <p><strong>CSV</strong>: Summary view with table counts</p>

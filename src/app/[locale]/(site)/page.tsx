@@ -51,7 +51,7 @@ export default async function Home({ params }: HomeProps) {
     <>
       <Hero params={params} />
 
-      <div className="py-20">
+      <div className="py-20 bg-mint-green">
         <SectionTitle
           preTitle={t.preTitle}
           title={t.title}
@@ -60,15 +60,15 @@ export default async function Home({ params }: HomeProps) {
         </SectionTitle>
       </div>
 
-      <div className="py-20 bg-slate-50">
+      <div className="py-20 bg-white">
         <Benefits imgPos="left" data={benefitOne} />
       </div>
 
-      <div className="py-20">
+      <div className="py-20 bg-mint-green">
         <Benefits imgPos="right" size="large" data={benefitTwo} />
       </div>
 
-      <div className="py-20 bg-slate-50">
+      <div className="py-20 bg-white">
         <SectionTitle
           preTitle={t.hearFromLieuPreTitle}
           title={t.hearFromLieuTitle}
@@ -77,15 +77,15 @@ export default async function Home({ params }: HomeProps) {
         </SectionTitle>
       </div>
 
-      <div className="py-20 bg-slate-800">
+      <div className="py-20 bg-feldgrau">
         <Container className="text-center">
-          <div className="text-xs font-semibold tracking-widest mb-3 text-amber-400">
+          <div className="text-xs font-semibold tracking-widest uppercase mb-3 text-jungle-green-light">
             {t.testimonialsPreTitle}
           </div>
-          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
+          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-white">
             {t.testimonialsTitle}
           </h2>
-          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-200 font-medium mb-12">
+          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-mint-green font-medium mb-12">
             {t.testimonialsDescription}
           </p>
         </Container>
@@ -93,7 +93,7 @@ export default async function Home({ params }: HomeProps) {
         <Testimonials locale={locale} />
       </div>
 
-      <div className="py-20">
+      <div className="py-20 bg-white">
         <SectionTitle preTitle={t.faqPreTitle} title={t.faqTitle}>
           {t.faqDescription}
         </SectionTitle>

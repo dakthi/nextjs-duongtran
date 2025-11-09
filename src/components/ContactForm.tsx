@@ -55,7 +55,7 @@ export const ContactForm = () => {
       <div className="py-20 bg-white">
         <Container>
           {/* Introduction Section */}
-          <div className="mb-12 space-y-4 text-lg text-slate-700 leading-relaxed">
+          <div className="mb-12 space-y-4 text-lg text-feldgrau leading-relaxed">
             <p>
               If you&apos;re a founder or small business owner and you&apos;d like to connect, I&apos;d love to hear from you.
               Whether it&apos;s a specific question, a collaboration idea, or just something you&apos;d like to share,
@@ -68,16 +68,16 @@ export const ContactForm = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white border-l-4 border-amber-500 shadow-md p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Send a Message</h2>
-            <p className="text-base text-slate-700 leading-relaxed mb-6">
+          <div className="bg-white border-l-4 border-jungle-green shadow-md p-8">
+            <h2 className="text-2xl font-bold text-outer-space mb-4">Send a Message</h2>
+            <p className="text-base text-feldgrau leading-relaxed mb-6">
               Fill out the form below. I usually respond within 2-3 working days.
             </p>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block mb-2 text-sm font-semibold text-slate-900">
+                  <label htmlFor="name" className="block mb-2 text-sm font-semibold text-outer-space">
                     Your Name (Required)
                   </label>
                   <input
@@ -86,13 +86,13 @@ export const ContactForm = () => {
                     id="name"
                     placeholder="Your Full Name"
                     required
-                    className="block w-full p-3 border-2 border-slate-800 text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-sm font-semibold text-slate-900">
+                  <label htmlFor="email" className="block mb-2 text-sm font-semibold text-outer-space">
                     Your Email (Required)
                   </label>
                   <input
@@ -101,13 +101,13 @@ export const ContactForm = () => {
                     id="email"
                     placeholder="you@example.com"
                     required
-                    className="block w-full p-3 border-2 border-slate-800 text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block mb-2 text-sm font-semibold text-slate-900">
+                  <label htmlFor="message" className="block mb-2 text-sm font-semibold text-outer-space">
                     Your Message (Required)
                   </label>
                   <textarea
@@ -116,7 +116,7 @@ export const ContactForm = () => {
                     placeholder="Tell me what's on your mind..."
                     required
                     rows={5}
-                    className="block w-full p-3 border-2 border-slate-800 text-base resize-y focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    className="block w-full p-3 border-2 border-outer-space text-base resize-y focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
                   ></textarea>
                 </div>
 
@@ -127,11 +127,11 @@ export const ContactForm = () => {
                     name="privacyPolicy"
                     id="privacyPolicy"
                     required
-                    className="h-4 w-4 mt-1 border-2 border-slate-800 focus:ring-2 focus:ring-amber-500"
+                    className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
                   />
-                  <label htmlFor="privacyPolicy" className="text-sm font-medium text-slate-700">
+                  <label htmlFor="privacyPolicy" className="text-sm font-medium text-feldgrau">
                     I agree to the{" "}
-                    <Link href="/privacy-policy" className="text-amber-600 underline hover:text-amber-500">
+                    <Link href="/privacy-policy" className="text-jungle-green underline hover:text-jungle-green">
                       privacy policy
                     </Link>
                   </label>
@@ -143,9 +143,9 @@ export const ContactForm = () => {
                     type="checkbox"
                     name="newsletter"
                     id="newsletter"
-                    className="h-4 w-4 mt-1 border-2 border-slate-800 focus:ring-2 focus:ring-amber-500"
+                    className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
                   />
-                  <label htmlFor="newsletter" className="text-sm font-medium text-slate-700">
+                  <label htmlFor="newsletter" className="text-sm font-medium text-feldgrau">
                     Subscribe to occasional updates and behind-the-scenes notes from Lieu
                   </label>
                 </div>
@@ -154,7 +154,7 @@ export const ContactForm = () => {
                 <button
                   type="submit"
                   disabled={status === "Submitting your message..."}
-                  className="w-full px-8 py-3 text-base font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
+                  className="w-full px-8 py-3 text-base font-semibold text-outer-space bg-mint-green0 hover:bg-jungle-green transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
                 >
                   {status === "Submitting your message..." ? "Sending..." : "Send Message"}
                 </button>

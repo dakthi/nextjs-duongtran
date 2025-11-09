@@ -67,19 +67,19 @@ export function Footer() {
   ];
 
   return (
-    <div className="relative bg-slate-900">
+    <div className="relative bg-[#434F4D] border-t-4 border-[#40B291]">
       <Container>
         <div className="grid grid-cols-1 gap-10 pt-12 pb-8 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="mb-5">
               <Link href={`/${locale}`}>
-                <span className="flex flex-col">
-                  <span className="text-2xl font-serif font-bold text-white">Lieu Vo</span>
-                  <span className="text-sm text-amber-400 tracking-wide">{t.tagline}</span>
+                <span className="flex flex-col items-start">
+                  <span className="text-2xl font-sans font-bold text-[#D2E8E2]">Lieu Vo</span>
+                  <span className="text-xs text-white bg-[#40B291] tracking-wide font-bold px-2 py-0.5 border-2 border-[#434F4D] shadow-[2px_2px_0px_0px_rgba(67,79,77,1)] w-fit">{t.tagline}</span>
                 </span>
               </Link>
             </div>
-            <div className="max-w-md text-sm text-slate-300 leading-relaxed">
+            <div className="max-w-md text-sm text-[#D2E8E2] leading-relaxed opacity-90">
               {t.description}
               <br />
               {t.location}
@@ -92,7 +92,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-slate-300 hover:text-amber-400 transition-colors"
+                  className="text-sm text-[#D2E8E2] hover:text-[#40B291] transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -106,7 +106,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-slate-300 hover:text-amber-400 transition-colors"
+                  className="text-sm text-[#D2E8E2] hover:text-[#40B291] transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -115,13 +115,13 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm text-slate-400 mb-4">{t.stayConnected}</div>
-            <div className="flex space-x-5 text-slate-400">
+            <div className="text-sm text-[#D2E8E2] opacity-75 mb-4">{t.stayConnected}</div>
+            <div className="flex space-x-5 text-[#D2E8E2]">
               <a
                 href="https://www.facebook.com/lieuvoo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors"
+                className="hover:text-[#40B291] transition-colors"
               >
                 <span className="sr-only">{t.social.facebook}</span>
                 <Facebook />
@@ -130,7 +130,7 @@ export function Footer() {
                 href="https://www.linkedin.com/in/lieu-vo-acca-859421209/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors"
+                className="hover:text-[#40B291] transition-colors"
               >
                 <span className="sr-only">{t.social.linkedin}</span>
                 <LinkedIn />
@@ -139,7 +139,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="py-6 border-t border-slate-800 text-xs text-center text-slate-400">
+        <div className="py-6 border-t border-[#3F6059] text-xs text-center text-[#D2E8E2] opacity-75">
           Copyright © {new Date().getFullYear()}. All rights reserved.
         </div>
       </Container>

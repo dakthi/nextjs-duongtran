@@ -135,14 +135,14 @@ export function ImagePositionControl({
 
   return (
     <div className="space-y-3">
-      <label className="block text-sm font-bold text-slate-900">
+      <label className="block text-sm font-bold text-outer-space">
         {label}
       </label>
 
       {/* Aspect Ratio Selector */}
       {showAspectRatioSelector && (
         <div className="space-y-2">
-          <label className="text-sm font-medium text-slate-700">Aspect Ratio</label>
+          <label className="text-sm font-medium text-feldgrau">Aspect Ratio</label>
           <div className="flex gap-2">
             {aspectRatioPresets.map((preset) => (
               <button
@@ -151,8 +151,8 @@ export function ImagePositionControl({
                 onClick={() => handleAspectRatioChange(preset.value)}
                 className={`flex-1 px-4 py-2 font-semibold text-sm transition-colors ${
                   aspectRatio && Math.abs(aspectRatio - preset.value) < 0.01
-                    ? 'bg-amber-500 text-slate-900'
-                    : 'bg-slate-800 text-white hover:bg-slate-700'
+                    ? 'bg-mint-green0 text-outer-space'
+                    : 'bg-feldgrau text-white hover:bg-slate-700'
                 }`}
               >
                 <span className="mr-2">{preset.icon}</span>
@@ -165,7 +165,7 @@ export function ImagePositionControl({
 
       {/* Image Preview - Draggable */}
       {imageUrl && (
-        <div className="relative bg-slate-200 overflow-hidden border-2 border-slate-800">
+        <div className="relative bg-mint-green overflow-hidden border-2 border-outer-space">
           <div
             ref={previewRef}
             className="relative cursor-move select-none"
@@ -189,7 +189,7 @@ export function ImagePositionControl({
               draggable={false}
             />
           </div>
-          <div className="absolute top-2 left-2 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1">
+          <div className="absolute top-2 left-2 bg-mint-green0 text-outer-space text-xs font-bold px-3 py-1">
             Drag to position
           </div>
         </div>
@@ -197,15 +197,15 @@ export function ImagePositionControl({
 
       {/* Fit Mode Selector */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-slate-700">Display Mode</label>
+        <label className="text-sm font-medium text-feldgrau">Display Mode</label>
         <div className="grid grid-cols-3 gap-2">
           <button
             type="button"
             onClick={() => handleFitChange('cover')}
             className={`px-4 py-3 font-semibold text-sm transition-colors ${
               fit === 'cover'
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-slate-800 text-white hover:bg-slate-700'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-feldgrau text-white hover:bg-slate-700'
             }`}
           >
             <div className="flex flex-col items-center gap-1">
@@ -219,8 +219,8 @@ export function ImagePositionControl({
             onClick={() => handleFitChange('contain')}
             className={`px-4 py-3 font-semibold text-sm transition-colors ${
               fit === 'contain'
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-slate-800 text-white hover:bg-slate-700'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-feldgrau text-white hover:bg-slate-700'
             }`}
           >
             <div className="flex flex-col items-center gap-1">
@@ -234,8 +234,8 @@ export function ImagePositionControl({
             onClick={() => handleFitChange('fill')}
             className={`px-4 py-3 font-semibold text-sm transition-colors ${
               fit === 'fill'
-                ? 'bg-amber-500 text-slate-900'
-                : 'bg-slate-800 text-white hover:bg-slate-700'
+                ? 'bg-mint-green0 text-outer-space'
+                : 'bg-feldgrau text-white hover:bg-slate-700'
             }`}
           >
             <div className="flex flex-col items-center gap-1">
@@ -250,10 +250,10 @@ export function ImagePositionControl({
       {/* Zoom Slider */}
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-medium text-slate-700">
+          <label className="text-sm font-medium text-feldgrau">
             Zoom
           </label>
-          <span className="text-sm font-bold text-amber-600">{zoom}%</span>
+          <span className="text-sm font-bold text-jungle-green">{zoom}%</span>
         </div>
         <input
           type="range"
@@ -262,7 +262,7 @@ export function ImagePositionControl({
           step="5"
           value={zoom}
           onChange={(e) => handleZoomChange(Number(e.target.value))}
-          className="w-full h-2 bg-slate-200 appearance-none cursor-pointer accent-amber-500"
+          className="w-full h-2 bg-mint-green appearance-none cursor-pointer accent-amber-500"
         />
       </div>
     </div>

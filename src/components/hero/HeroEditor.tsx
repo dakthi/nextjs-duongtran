@@ -315,7 +315,7 @@ export function HeroEditor({
       onChange: (e: any) => handleFieldChange(field.key, e.target.value),
       placeholder: field.placeholder,
       maxLength: field.maxLength,
-      className: `w-full px-3 py-2 border-2 border-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-slate-900 ${
+      className: `w-full px-3 py-2 border-2 border-outer-space focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-jungle-green text-outer-space ${
         error ? 'border-red-600' : ''
       }`
     }
@@ -335,13 +335,13 @@ export function HeroEditor({
           {value && (
             <>
               <div className="flex items-center gap-2">
-                <div className="flex-1 break-all border-2 border-slate-800 bg-slate-50 px-3 py-2 text-xs text-slate-700">
+                <div className="flex-1 break-all border-2 border-outer-space bg-mint-green px-3 py-2 text-xs text-feldgrau">
                   {value}
                 </div>
                 <button
                   type="button"
                   onClick={() => handleEditImage(value)}
-                  className="px-4 py-2 text-sm font-medium text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors whitespace-nowrap"
+                  className="px-4 py-2 text-sm font-medium text-outer-space bg-mint-green0 hover:bg-jungle-green transition-colors whitespace-nowrap"
                 >
                   ✏️ Edit Image
                 </button>
@@ -390,8 +390,8 @@ export function HeroEditor({
   if (editorState.isLoading) {
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div>
-        <span className="ml-2 text-slate-700">Loading hero editor...</span>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-jungle-green"></div>
+        <span className="ml-2 text-feldgrau">Loading hero editor...</span>
       </div>
     )
   }
@@ -401,22 +401,22 @@ export function HeroEditor({
       <div className={`flex flex-col gap-6 ${showPreview ? 'lg:flex-row' : ''}`}>
         {/* Editor Form */}
         <div className={showPreview ? 'lg:w-1/2' : 'w-full'}>
-          <div className="bg-white border-l-4 border-amber-500 shadow-md p-8">
+          <div className="bg-white border-l-4 border-jungle-green shadow-md p-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-serif font-bold text-slate-900">Hero Editor</h2>
+              <h2 className="text-2xl font-sans font-bold text-outer-space">Hero Editor</h2>
               <div className="flex items-center gap-3">
                 {editorState.hasUnsavedChanges && (
-                  <span className="text-amber-600 text-sm font-medium">• Unsaved changes</span>
+                  <span className="text-jungle-green text-sm font-medium">• Unsaved changes</span>
                 )}
                 {editorState.lastSaved && (
-                  <span className="text-slate-600 text-sm">
+                  <span className="text-feldgrau text-sm">
                     Saved {editorState.lastSaved.toLocaleTimeString()}
                   </span>
                 )}
                 {showPreview && (
                   <button
                     onClick={() => setEditorState(prev => ({ ...prev, previewMode: !prev.previewMode }))}
-                    className="px-3 py-1 text-sm bg-slate-800 text-white hover:bg-slate-700 transition-colors"
+                    className="px-3 py-1 text-sm bg-feldgrau text-white hover:bg-slate-700 transition-colors"
                   >
                     {editorState.previewMode ? 'Hide' : 'Show'} Preview
                   </button>
@@ -426,10 +426,10 @@ export function HeroEditor({
 
             <form onSubmit={(e) => { e.preventDefault(); handleSave() }} className="space-y-6">
               {fieldGroups.map((group, groupIndex) => (
-                <div key={groupIndex} className="border-2 border-slate-800 p-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{group.title}</h3>
+                <div key={groupIndex} className="border-2 border-outer-space p-6">
+                  <h3 className="text-lg font-bold text-outer-space mb-2">{group.title}</h3>
                   {group.description && (
-                    <p className="text-sm text-slate-700 mb-4">{group.description}</p>
+                    <p className="text-sm text-feldgrau mb-4">{group.description}</p>
                   )}
 
                   <div className="space-y-4">
@@ -437,7 +437,7 @@ export function HeroEditor({
                       <div key={field.key}>
                         <label
                           htmlFor={field.key}
-                          className="block text-sm font-semibold text-slate-900 mb-2"
+                          className="block text-sm font-semibold text-outer-space mb-2"
                         >
                           {field.label}
                           {field.required && <span className="text-red-600 ml-1">*</span>}
@@ -446,7 +446,7 @@ export function HeroEditor({
                         {renderField(field)}
 
                         {field.description && (
-                          <p className="text-xs text-slate-600 mt-1">{field.description}</p>
+                          <p className="text-xs text-feldgrau mt-1">{field.description}</p>
                         )}
 
                         {editorState.errors[field.key] && (
@@ -458,11 +458,11 @@ export function HeroEditor({
                 </div>
               ))}
 
-              <div className="flex gap-3 pt-6 border-t-2 border-slate-800">
+              <div className="flex gap-3 pt-6 border-t-2 border-outer-space">
                 <button
                   type="submit"
                   disabled={editorState.isSaving || !editorState.hasUnsavedChanges}
-                  className="px-8 py-3 bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-8 py-3 bg-mint-green0 text-outer-space font-semibold hover:bg-jungle-green disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {editorState.isSaving ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -474,7 +474,7 @@ export function HeroEditor({
                     setEditorState(prev => ({ ...prev, errors: {} }))
                   }}
                   disabled={!editorState.hasUnsavedChanges}
-                  className="px-6 py-3 bg-slate-800 text-white font-medium hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-6 py-3 bg-feldgrau text-white font-medium hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Reset
                 </button>

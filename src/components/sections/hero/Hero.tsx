@@ -31,12 +31,12 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
   const imageFit = (heroContent?.imageFit as 'cover' | 'contain' | 'fill') || 'cover';
 
   return (
-    <div className="bg-amber-50 py-20 border-b-4 border-amber-500">
+    <div className="bg-mint-green py-20 border-b-4 border-jungle-green">
       <Container>
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Text Content */}
           <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-serif font-bold leading-tight text-slate-800 mb-6">
+            <h1 className="text-3xl md:text-4xl font-sans font-bold leading-tight text-outer-space mb-6">
               {title.split('\n').map((line, index) => (
                 <span key={index}>
                   {line}
@@ -45,12 +45,12 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               ))}
             </h1>
             {subtitle && (
-              <p className="text-lg leading-relaxed text-slate-700 mb-4">
+              <p className="text-lg leading-relaxed text-feldgrau mb-4">
                 {subtitle.split('\n').map((line, index) => (
                   <span key={index}>
                     {line.split(/(<em>.*?<\/em>)/g).map((part, partIndex) => {
                       if (part.startsWith('<em>') && part.endsWith('</em>')) {
-                        return <em key={partIndex} className="text-amber-600 font-semibold">{part.slice(4, -5)}</em>;
+                        return <em key={partIndex} className="text-jungle-green font-semibold">{part.slice(4, -5)}</em>;
                       }
                       return part;
                     })}
@@ -60,12 +60,12 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               </p>
             )}
             {description && (
-              <p className="text-base leading-relaxed text-slate-600 mb-8">
+              <p className="text-base leading-relaxed text-feldgrau mb-8">
                 {description.split('\n').map((line, index) => (
                   <span key={index}>
                     {line.split(/(<em>.*?<\/em>)/g).map((part, partIndex) => {
                       if (part.startsWith('<em>') && part.endsWith('</em>')) {
-                        return <em key={partIndex} className="text-amber-600 font-semibold">{part.slice(4, -5)}</em>;
+                        return <em key={partIndex} className="text-jungle-green font-semibold">{part.slice(4, -5)}</em>;
                       }
                       return part;
                     })}
@@ -79,7 +79,7 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               <a
                 href={ctaLink}
                 rel="noopener"
-                className="inline-block px-8 py-3 text-base font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors"
+                className="inline-block px-8 py-3 text-base font-semibold text-outer-space bg-mint-green0 hover:bg-jungle-green transition-colors"
               >
                 {ctaText}
               </a>
@@ -88,7 +88,7 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
 
           {/* Image */}
           <div className="flex-1 w-full">
-            <div className="relative w-full overflow-hidden border-4 border-slate-800">
+            <div className="relative w-full overflow-hidden border-4 border-outer-space">
               <Image
                 src={heroImage}
                 alt="Lieu Vo"

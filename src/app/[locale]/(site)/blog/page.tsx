@@ -76,15 +76,25 @@ export default async function BlogPage({ params }: BlogPageProps) {
         description={blogTranslations.description}
       />
 
+      {/* Search Section */}
+      <BlogSearch
+        posts={posts}
+        locale={locale}
+        fallbackImg={fallbackImg}
+        minReadText={blogTranslations.minRead}
+        searchPlaceholder={blogTranslations.searchPlaceholder || 'Search articles...'}
+        noResultsText={blogTranslations.noResults || 'No articles found matching your search.'}
+      />
+
       {/* Featured Post Section */}
-      <div className="py-20 bg-white">
+      <div className="pt-6 pb-20 bg-white">
         <Container>
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-6">
             {blogTranslations.featuredArticle}
           </p>
           <a
             href={`/${locale}/blog/${featuredPost.slug}`}
-            className="group block bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow"
+            className="group block bg-white border-l-4 border-jungle-green shadow-md hover:shadow-xl transition-shadow"
           >
             <div className="flex flex-col lg:flex-row">
               <div className="relative w-full lg:w-1/2 h-80 lg:h-96">
@@ -97,24 +107,24 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     objectPosition: featuredPost.imagePosition || 'center',
                     transform: `scale(${(featuredPost.imageZoom || 100) / 100})`
                   }}
-                  className="border-4 border-slate-800"
+                  className="border-4 border-outer-space"
                   quality={90}
                   unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
                 />
               </div>
               <div className="flex-1 p-8 flex flex-col justify-center">
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+                <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-3">
                   {featuredPost.category || blogTranslations.category}
                 </p>
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4 leading-tight group-hover:text-amber-600 transition-colors">
+                <h2 className="text-2xl md:text-3xl font-sans font-bold text-outer-space mb-4 leading-tight group-hover:text-jungle-green transition-colors">
                   {featuredPost.title}
                 </h2>
                 {featuredPost.quote && (
-                  <p className="text-base text-slate-700 leading-relaxed italic mb-4">
+                  <p className="text-base text-feldgrau leading-relaxed italic mb-4">
                     "{featuredPost.quote}"
                   </p>
                 )}
-                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+                <div className="flex flex-wrap items-center gap-3 text-sm text-feldgrau">
                   {featuredPost.date && (
                     <span className="whitespace-nowrap">{new Date(featuredPost.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                   )}
@@ -131,32 +141,22 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </Container>
       </div>
 
-      {/* Search Section */}
-      <BlogSearch
-        posts={posts}
-        locale={locale}
-        fallbackImg={fallbackImg}
-        minReadText={blogTranslations.minRead}
-        searchPlaceholder={blogTranslations.searchPlaceholder || 'Search articles...'}
-        noResultsText={blogTranslations.noResults || 'No articles found matching your search.'}
-      />
-
       {/* Category Sections */}
       {categories.map((category, index) => {
         const categoryPosts = postsByCategory[category]
         const hasMoreThanThree = categoryPosts.length > 3
 
         return (
-          <div key={category} className={`py-20 ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}`}>
+          <div key={category} className={`py-20 ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}>
             <Container>
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                <h2 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight">
                   {category}
                 </h2>
                 {hasMoreThanThree && (
                   <a
                     href={`/${locale}/blog?category=${encodeURIComponent(category)}`}
-                    className="text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors whitespace-nowrap"
+                    className="text-sm font-semibold text-jungle-green hover:text-jungle-green transition-colors whitespace-nowrap"
                   >
                     {blogTranslations.viewAll || 'View All'} →
                   </a>

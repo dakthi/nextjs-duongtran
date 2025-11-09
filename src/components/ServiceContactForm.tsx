@@ -47,22 +47,22 @@ export const ServiceContactForm = () => {
       <Container>
         <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold tracking-widest text-slate-600 mb-4">
+          <p className="text-xs font-semibold tracking-widest text-feldgrau mb-4">
             Get Started
           </p>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight mb-6">
             Let's Talk
           </h2>
-          <p className="text-lg text-slate-700 leading-relaxed">
+          <p className="text-lg text-feldgrau leading-relaxed">
             Have a question or want to discuss your needs? Fill out the form below and I'll get back to you within 2-3 working days.
           </p>
         </div>
 
-        <div className="bg-white border-2 border-slate-800 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] p-8">
+        <div className="bg-white border-2 border-outer-space shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-semibold text-slate-900">
+              <label htmlFor="name" className="block mb-2 text-sm font-semibold text-outer-space">
                 Your Name (Required)
               </label>
               <input
@@ -71,13 +71,13 @@ export const ServiceContactForm = () => {
                 id="name"
                 placeholder="Your Full Name"
                 required
-                className="block w-full p-3 border-2 border-slate-800 text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block mb-2 text-sm font-semibold text-slate-900">
+              <label htmlFor="email" className="block mb-2 text-sm font-semibold text-outer-space">
                 Your Email (Required)
               </label>
               <input
@@ -86,13 +86,13 @@ export const ServiceContactForm = () => {
                 id="email"
                 placeholder="you@example.com"
                 required
-                className="block w-full p-3 border-2 border-slate-800 text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
               />
             </div>
 
             {/* Message */}
             <div>
-              <label htmlFor="message" className="block mb-2 text-sm font-semibold text-slate-900">
+              <label htmlFor="message" className="block mb-2 text-sm font-semibold text-outer-space">
                 Your Message (Required)
               </label>
               <textarea
@@ -101,7 +101,7 @@ export const ServiceContactForm = () => {
                 placeholder="Tell me what you need help with..."
                 required
                 rows={5}
-                className="block w-full p-3 border-2 border-slate-800 text-base resize-y focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                className="block w-full p-3 border-2 border-outer-space text-base resize-y focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
               ></textarea>
             </div>
 
@@ -112,11 +112,11 @@ export const ServiceContactForm = () => {
                 name="privacyPolicy"
                 id="privacyPolicy"
                 required
-                className="h-4 w-4 mt-1 border-2 border-slate-800 focus:ring-2 focus:ring-amber-500"
+                className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
               />
-              <label htmlFor="privacyPolicy" className="text-sm font-medium text-slate-700">
+              <label htmlFor="privacyPolicy" className="text-sm font-medium text-feldgrau">
                 I agree to the{" "}
-                <Link href="/privacy-policy" className="text-amber-600 underline hover:text-amber-500">
+                <Link href="/privacy-policy" className="text-jungle-green underline hover:text-jungle-green">
                   privacy policy
                 </Link>
               </label>
@@ -128,9 +128,9 @@ export const ServiceContactForm = () => {
                 type="checkbox"
                 name="newsletter"
                 id="newsletter"
-                className="h-4 w-4 mt-1 border-2 border-slate-800 focus:ring-2 focus:ring-amber-500"
+                className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
               />
-              <label htmlFor="newsletter" className="text-sm font-medium text-slate-700">
+              <label htmlFor="newsletter" className="text-sm font-medium text-feldgrau">
                 Subscribe to occasional updates and behind-the-scenes notes from Lieu
               </label>
             </div>
@@ -139,7 +139,7 @@ export const ServiceContactForm = () => {
             <button
               type="submit"
               disabled={status === "Submitting your message..."}
-              className="w-full px-8 py-3 text-base font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
+              className="w-full px-8 py-3 text-base font-semibold text-outer-space bg-mint-green0 hover:bg-jungle-green transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
             >
               {status === "Submitting your message..." ? "Sending..." : "Send Message"}
             </button>

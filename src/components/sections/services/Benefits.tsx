@@ -23,11 +23,11 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
   const { data } = props;
   return (
       <Container className="flex flex-col">
-        <h3 className="text-3xl md:text-4xl font-serif font-bold leading-tight text-slate-900 mb-4 text-center">
+        <h3 className="text-3xl md:text-4xl font-sans font-bold leading-tight text-outer-space mb-4 text-center">
           {data.title}
         </h3>
 
-        <p className="text-lg leading-relaxed text-slate-800 mb-12 text-center max-w-4xl mx-auto">
+        <p className="text-lg leading-relaxed text-feldgrau mb-12 text-center max-w-4xl mx-auto">
           {data.desc}
         </p>
 
@@ -44,11 +44,11 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
 
 function Benefit(props: any) {
   return (
-      <div className="bg-white p-6 border-l-4 border-amber-500 shadow-md">
-        <h4 className="text-lg font-bold text-slate-900 mb-3">
+      <div className="bg-white p-6 border-l-4 border-jungle-green border-2 border-outer-space shadow-brutalist hover:shadow-brutalist-hover hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+        <h4 className="text-lg font-bold text-outer-space mb-3">
           {props.title}
         </h4>
-        <p className="text-base leading-relaxed text-slate-700">
+        <p className="text-base leading-relaxed text-feldgrau">
           {props.children}
         </p>
       </div>

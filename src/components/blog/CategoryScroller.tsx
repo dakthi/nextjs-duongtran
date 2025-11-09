@@ -61,7 +61,7 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
       {canScrollLeft && (
         <button
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-slate-800 text-white p-3 shadow-lg hover:bg-slate-700 transition-colors"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-feldgrau text-white p-3 shadow-lg hover:bg-slate-700 transition-colors"
           aria-label="Scroll left"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +73,7 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
       {canScrollRight && (
         <button
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-slate-800 text-white p-3 shadow-lg hover:bg-slate-700 transition-colors"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-feldgrau text-white p-3 shadow-lg hover:bg-slate-700 transition-colors"
           aria-label="Scroll right"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
           <a
             key={post.slug}
             href={`/${locale}/blog/${post.slug}`}
-            className="group bg-white border-l-4 border-amber-500 shadow-md hover:shadow-xl transition-shadow flex flex-col flex-shrink-0"
+            className="group bg-white border-l-4 border-jungle-green shadow-md hover:shadow-xl transition-shadow flex flex-col flex-shrink-0"
             style={{ width: '320px' }}
           >
             <div className="relative w-full h-56">
@@ -104,24 +104,24 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
                 style={{
                   objectFit: 'cover'
                 }}
-                className="border-4 border-slate-800"
+                className="border-4 border-outer-space"
                 quality={85}
                 unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
               />
             </div>
             <div className="p-6 flex flex-col flex-grow">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-3">
                 {post.category || category}
               </p>
-              <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-600 transition-colors">
+              <h3 className="text-lg font-bold text-outer-space mb-3 leading-snug group-hover:text-jungle-green transition-colors">
                 {post.title}
               </h3>
               {post.excerpt && (
-                <p className="text-sm text-slate-700 leading-relaxed mb-4 line-clamp-2">
+                <p className="text-sm text-feldgrau leading-relaxed mb-4 line-clamp-2">
                   {post.excerpt}
                 </p>
               )}
-              <div className="mt-auto flex flex-wrap items-center gap-2 text-xs text-slate-600">
+              <div className="mt-auto flex flex-wrap items-center gap-2 text-xs text-feldgrau">
                 {post.date && (
                   <span className="whitespace-nowrap">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                 )}

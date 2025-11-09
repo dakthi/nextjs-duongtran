@@ -115,18 +115,18 @@ export default function AboutEditor() {
         </div>
       )}
 
-      <div className="rounded-lg border-2 border-slate-800 bg-white shadow-md">
-        <div className="border-b-2 border-slate-800 bg-slate-50 p-6">
-          <h2 className="text-xl font-serif font-bold text-slate-900">About Page Content</h2>
-          <p className="text-sm text-slate-700 mt-2">Edit the blog-style content for the About page using the rich text editor.</p>
+      <div className="rounded-lg border-2 border-outer-space bg-white shadow-md">
+        <div className="border-b-2 border-outer-space bg-mint-green p-6">
+          <h2 className="text-xl font-sans font-bold text-outer-space">About Page Content</h2>
+          <p className="text-sm text-feldgrau mt-2">Edit the blog-style content for the About page using the rich text editor.</p>
         </div>
 
         {loading ? (
-          <div className="py-10 text-center text-sm text-slate-700">Loading about content...</div>
+          <div className="py-10 text-center text-sm text-feldgrau">Loading about content...</div>
         ) : (
           <div className="p-6 space-y-6">
             <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-900">Headline (Optional)</label>
+              <label className="mb-2 block text-sm font-semibold text-outer-space">Headline (Optional)</label>
               <input
                 type="text"
                 value={headline}
@@ -135,12 +135,12 @@ export default function AboutEditor() {
                   setHasChanges(true)
                 }}
                 placeholder="Optional headline for the about page"
-                className="w-full border-2 border-slate-800 px-4 py-2 text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                className="w-full border-2 border-outer-space px-4 py-2 text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-900">Intro (Optional)</label>
+              <label className="mb-2 block text-sm font-semibold text-outer-space">Intro (Optional)</label>
               <textarea
                 rows={3}
                 value={intro}
@@ -149,28 +149,28 @@ export default function AboutEditor() {
                   setHasChanges(true)
                 }}
                 placeholder="Optional intro paragraph"
-                className="w-full border-2 border-slate-800 px-4 py-2 text-base focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                className="w-full border-2 border-outer-space px-4 py-2 text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-900">Content</label>
+              <label className="mb-2 block text-sm font-semibold text-outer-space">Content</label>
               <TipTapEditor
                 content={contentJson}
                 onChange={handleEditorChange}
                 placeholder="Start writing your about page content..."
               />
-              <p className="mt-2 text-xs text-slate-600">
+              <p className="mt-2 text-xs text-feldgrau">
                 Use headings (H2, H3) to structure your content. The content will be displayed in a single-column blog-style layout.
               </p>
             </div>
 
-            <div className="flex gap-3 pt-4 border-t-2 border-slate-200">
+            <div className="flex gap-3 pt-4 border-t-2 border-mint-green">
               <button
                 type="button"
                 onClick={handleSave}
                 disabled={saving || !hasChanges}
-                className="px-8 py-3 text-base font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
+                className="px-8 py-3 text-base font-semibold text-outer-space bg-mint-green0 hover:bg-jungle-green transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
               >
                 {saving ? 'Saving...' : 'Save Changes'}
               </button>
@@ -178,7 +178,7 @@ export default function AboutEditor() {
                 type="button"
                 onClick={fetchContent}
                 disabled={!hasChanges}
-                className="px-6 py-2 text-sm font-medium bg-white border-2 border-slate-800 text-slate-900 hover:bg-slate-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2 text-sm font-medium bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Reset
               </button>
