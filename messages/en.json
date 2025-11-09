@@ -70,6 +70,8 @@
     "minRead": "min read",
     "viewAll": "View All",
     "recentPosts": "Recent Posts",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles found matching your search.",
     "latestArticles": "Latest Articles",
     "recentInsights": "Recent Insights",
     "moreArticles": "More Articles",

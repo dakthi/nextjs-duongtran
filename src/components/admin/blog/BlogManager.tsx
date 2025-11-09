@@ -170,9 +170,46 @@ export default function BlogManager() {
     type: null,
     message: ''
   })
+  const [searchQuery, setSearchQuery] = useState('')
+  const [sortBy, setSortBy] = useState<'date' | 'category' | 'name'>('date')
 
   const selectedId = formState.id ?? null
   const hasChanges = useMemo(() => !isEqual(formState, originalState), [formState, originalState])
+
+  // Filter and sort posts
+  const filteredAndSortedPosts = useMemo(() => {
+    let filtered = posts
+
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase()
+      filtered = filtered.filter(post =>
+        post.title.toLowerCase().includes(query) ||
+        post.slug.toLowerCase().includes(query) ||
+        (post.category?.toLowerCase() || '').includes(query)
+      )
+    }
+
+    // Apply sorting
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case 'date':
+          const dateA = a.publishedDate ? new Date(a.publishedDate).getTime() : 0
+          const dateB = b.publishedDate ? new Date(b.publishedDate).getTime() : 0
+          return dateB - dateA // Most recent first
+        case 'category':
+          const catA = a.category || ''
+          const catB = b.category || ''
+          return catA.localeCompare(catB)
+        case 'name':
+          return a.title.localeCompare(b.title)
+        default:
+          return 0
+      }
+    })
+
+    return sorted
+  }, [posts, searchQuery, sortBy])
 
   const showStatus = useCallback((type: 'success' | 'error', message: string) => {
     setStatus({ type, message })
@@ -487,14 +524,40 @@ export default function BlogManager() {
             </div>
           </div>
 
+          {/* Search bar */}
+          <div>
+            <input
+              type="text"
+              placeholder="Search posts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full border-2 border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+
+          {/* Sort dropdown */}
+          <div>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as 'date' | 'category' | 'name')}
+              className="w-full border-2 border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            >
+              <option value="date">Sort by Date (Newest first)</option>
+              <option value="category">Sort by Category (A-Z)</option>
+              <option value="name">Sort by Name (A-Z)</option>
+            </select>
+          </div>
+
           <div className="border-2 border-slate-800 bg-white shadow-md">
             {loading ? (
               <div className="p-4 text-sm text-slate-600">Loading posts…</div>
-            ) : posts.length === 0 ? (
-              <div className="p-4 text-sm text-slate-600">No posts yet. Create your first article.</div>
+            ) : filteredAndSortedPosts.length === 0 ? (
+              <div className="p-4 text-sm text-slate-600">
+                {searchQuery ? 'No posts found matching your search.' : 'No posts yet. Create your first article.'}
+              </div>
             ) : (
               <ul className="divide-y-2 divide-slate-200">
-                {posts.map((post) => {
+                {filteredAndSortedPosts.map((post) => {
                   const isActive = post.id === selectedId
                   return (
                     <li key={post.id} className="relative group">

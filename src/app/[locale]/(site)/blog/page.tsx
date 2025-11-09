@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Container } from '@/components/Container'
 import { PageHeader } from '@/components/PageHeader'
 import { CategoryScroller } from '@/components/blog/CategoryScroller'
+import { BlogSearch } from '@/components/blog/BlogSearch'
 import { getPostSummaries } from '@/lib/post'
 import { legacyMediaUrl, isMediaRemoteUrl } from '@/lib/media/media-client'
 import { generateMetadata as genMeta } from '@/lib/seo'
@@ -129,6 +130,16 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </a>
         </Container>
       </div>
+
+      {/* Search Section */}
+      <BlogSearch
+        posts={posts}
+        locale={locale}
+        fallbackImg={fallbackImg}
+        minReadText={blogTranslations.minRead}
+        searchPlaceholder={blogTranslations.searchPlaceholder || 'Search articles...'}
+        noResultsText={blogTranslations.noResults || 'No articles found matching your search.'}
+      />
 
       {/* Category Sections */}
       {categories.map((category, index) => {

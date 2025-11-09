@@ -44,7 +44,8 @@ export default function AboutEditor() {
       if (data) {
         setHeadline(data.headline || '')
         setIntro(data.intro || '')
-        setContentJson(data.contentJson)
+        // Initialize with empty TipTap document if contentJson is null
+        setContentJson(data.contentJson || { type: 'doc', content: [{ type: 'paragraph' }] })
         setContentHtml(data.contentHtml || '')
       }
     } catch (error) {
