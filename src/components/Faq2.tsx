@@ -21,7 +21,7 @@
     {
       question: "Are you a qualified accountant?",
       answer:
-        "Yes. I am an ACCA Affiliate, having completed all 13 exams on the first attempt. I also hold a First Class MSc in Accounting and Finance from BPP University, London.",
+        "Yes. I am an ACCA Qualified Accountant, having completed all 13 exams on the first attempt. I also hold a First Class MSc in Accounting and Finance from BPP University, London.",
     },
     {
       question: "What kind of accounting services do you provide?",
