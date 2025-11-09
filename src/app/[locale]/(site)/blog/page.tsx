@@ -25,9 +25,12 @@ interface BlogPageProps {
   params: {
     locale: string
   }
+  searchParams?: {
+    category?: string
+  }
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params, searchParams }: BlogPageProps) {
   // Validate locale - fallback to 'en' if invalid
   const validLocales = ['en', 'vi']
   const locale = validLocales.includes(params.locale) ? params.locale : 'en'
@@ -84,6 +87,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         minReadText={blogTranslations.minRead}
         searchPlaceholder={blogTranslations.searchPlaceholder || 'Search articles...'}
         noResultsText={blogTranslations.noResults || 'No articles found matching your search.'}
+        initialCategory={searchParams?.category}
       />
 
       {/* Featured Post Section */}
@@ -94,10 +98,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </p>
           <a
             href={`/${locale}/blog/${featuredPost.slug}`}
-            className="group block bg-white border-l-4 border-jungle-green shadow-md hover:shadow-xl transition-shadow"
+            className="group block bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all"
           >
             <div className="flex flex-col lg:flex-row">
-              <div className="relative w-full lg:w-1/2 h-80 lg:h-96">
+              <div className="relative w-full lg:w-1/2 h-80 lg:h-96 overflow-hidden rounded-r-md">
                 <Image
                   src={featuredPost.image || fallbackImg}
                   alt={featuredPost.title}
@@ -107,13 +111,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     objectPosition: featuredPost.imagePosition || 'center',
                     transform: `scale(${(featuredPost.imageZoom || 100) / 100})`
                   }}
-                  className="border-4 border-outer-space"
                   quality={90}
                   unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
                 />
               </div>
               <div className="flex-1 p-8 flex flex-col justify-center">
-                <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-3">
+                <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-3">
                   {featuredPost.category || blogTranslations.category}
                 </p>
                 <h2 className="text-2xl md:text-3xl font-sans font-bold text-outer-space mb-4 leading-tight group-hover:text-jungle-green transition-colors">

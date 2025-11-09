@@ -43,16 +43,14 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-outer-space shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(245,158,11,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-r-lg p-8"
               >
-                <div className="p-8 border-l-4 border-jungle-green">
-                  <h2 className="text-2xl font-sans font-bold text-outer-space mb-4 leading-tight">
-                    {service.title}
-                  </h2>
-                  <p className="text-base text-feldgrau leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
+                <h2 className="text-2xl font-sans font-bold text-outer-space mb-4 leading-tight">
+                  {service.title}
+                </h2>
+                <p className="text-base text-feldgrau leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>

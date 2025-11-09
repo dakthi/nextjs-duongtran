@@ -68,7 +68,7 @@ export const ContactForm = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white border-l-4 border-jungle-green shadow-md p-8">
+          <div className="bg-white border-l-4 border-jungle-green shadow-md p-8 rounded-r-lg">
             <h2 className="text-2xl font-bold text-outer-space mb-4">Send a Message</h2>
             <p className="text-base text-feldgrau leading-relaxed mb-6">
               Fill out the form below. I usually respond within 2-3 working days.
@@ -86,7 +86,7 @@ export const ContactForm = () => {
                     id="name"
                     placeholder="Your Full Name"
                     required
-                    className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
+                    className="block w-full p-3 border-2 border-gray-300 rounded-md text-base focus:ring-2 focus:ring-jungle-green focus:border-jungle-green"
                   />
                 </div>
 
@@ -101,7 +101,7 @@ export const ContactForm = () => {
                     id="email"
                     placeholder="you@example.com"
                     required
-                    className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
+                    className="block w-full p-3 border-2 border-gray-300 rounded-md text-base focus:ring-2 focus:ring-jungle-green focus:border-jungle-green"
                   />
                 </div>
 
@@ -116,7 +116,7 @@ export const ContactForm = () => {
                     placeholder="Tell me what's on your mind..."
                     required
                     rows={5}
-                    className="block w-full p-3 border-2 border-outer-space text-base resize-y focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
+                    className="block w-full p-3 border-2 border-gray-300 rounded-md text-base resize-y focus:ring-2 focus:ring-jungle-green focus:border-jungle-green"
                   ></textarea>
                 </div>
 
@@ -127,7 +127,7 @@ export const ContactForm = () => {
                     name="privacyPolicy"
                     id="privacyPolicy"
                     required
-                    className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
+                    className="h-4 w-4 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-jungle-green"
                   />
                   <label htmlFor="privacyPolicy" className="text-sm font-medium text-feldgrau">
                     I agree to the{" "}
@@ -143,7 +143,7 @@ export const ContactForm = () => {
                     type="checkbox"
                     name="newsletter"
                     id="newsletter"
-                    className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
+                    className="h-4 w-4 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-jungle-green"
                   />
                   <label htmlFor="newsletter" className="text-sm font-medium text-feldgrau">
                     Subscribe to occasional updates and behind-the-scenes notes from Lieu

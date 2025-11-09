@@ -27,23 +27,49 @@ function calculateReadingTime(htmlContent: string): number {
 
 // Extract first paragraph from HTML content as excerpt
 function extractFirstParagraph(htmlContent: string): string {
-  // Match the first <p> tag content
-  const match = htmlContent.match(/<p[^>]*>(.*?)<\/p>/i)
-  if (!match || !match[1]) {
-    // Fallback: strip all HTML and take first 150 characters
+  const MIN_EXCERPT_LENGTH = 100
+  const MAX_EXCERPT_LENGTH = 200
+
+  // Match all <p> tags
+  const paragraphs = htmlContent.match(/<p[^>]*>(.*?)<\/p>/gi)
+
+  if (!paragraphs || paragraphs.length === 0) {
+    // Fallback: strip all HTML and take first MAX_EXCERPT_LENGTH characters
     const plainText = htmlContent.replace(/<[^>]*>/g, ' ').trim()
-    return plainText.substring(0, 150) + (plainText.length > 150 ? '...' : '')
+    return plainText.substring(0, MAX_EXCERPT_LENGTH) + (plainText.length > MAX_EXCERPT_LENGTH ? '...' : '')
   }
 
-  // Strip HTML tags from the paragraph content
-  const paragraphText = match[1].replace(/<[^>]*>/g, '').trim()
+  let excerpt = ''
 
-  // Limit to ~150 characters
-  if (paragraphText.length > 150) {
-    return paragraphText.substring(0, 150) + '...'
+  // Combine paragraphs until we reach minimum length
+  for (const paragraph of paragraphs) {
+    // Strip HTML tags from the paragraph content
+    const paragraphText = paragraph.replace(/<[^>]*>/g, '').trim()
+
+    if (!paragraphText) continue
+
+    // Add paragraph with space
+    if (excerpt) excerpt += ' '
+    excerpt += paragraphText
+
+    // If we've reached minimum length, stop
+    if (excerpt.length >= MIN_EXCERPT_LENGTH) {
+      break
+    }
   }
 
-  return paragraphText
+  // If still no content, fallback to stripping all HTML
+  if (!excerpt) {
+    const plainText = htmlContent.replace(/<[^>]*>/g, ' ').trim()
+    return plainText.substring(0, MAX_EXCERPT_LENGTH) + (plainText.length > MAX_EXCERPT_LENGTH ? '...' : '')
+  }
+
+  // Limit to MAX_EXCERPT_LENGTH characters
+  if (excerpt.length > MAX_EXCERPT_LENGTH) {
+    return excerpt.substring(0, MAX_EXCERPT_LENGTH) + '...'
+  }
+
+  return excerpt
 }
 
 export interface PostSummary {
@@ -89,7 +115,7 @@ const mapViewToPost = (view: BlogPostView): Post => ({
   imagePosition: view.imagePosition,
   imageZoom: view.imageZoom,
   imageFit: view.imageFit,
-  date: view.publishedDate,
+  date: view.publishedDate || (view.createdAt ? view.createdAt.toISOString() : null),
   readingTime: view.readingTime ?? calculateReadingTime(view.contentHtml),
   category: view.category,
   quote: view.quote,
@@ -125,7 +151,7 @@ const mapRecordToSummary = (record: BlogPostRecord & { contentHtml: string }): P
   imagePosition: record.imagePosition,
   imageZoom: record.imageZoom,
   imageFit: record.imageFit,
-  date: record.publishedDate,
+  date: record.publishedDate || (record.createdAt ? record.createdAt.toISOString() : null),
   readingTime: record.readingTime ?? calculateReadingTime(record.contentHtml),
   category: record.category,
   quote: record.quote,

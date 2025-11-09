@@ -22,6 +22,7 @@ interface BlogSearchProps {
   minReadText: string
   searchPlaceholder: string
   noResultsText: string
+  initialCategory?: string
 }
 
 export function BlogSearch({
@@ -30,11 +31,14 @@ export function BlogSearch({
   fallbackImg,
   minReadText,
   searchPlaceholder,
-  noResultsText
+  noResultsText,
+  initialCategory
 }: BlogSearchProps) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [showFilters, setShowFilters] = useState(false)
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [showFilters, setShowFilters] = useState(!!initialCategory)
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    initialCategory ? [decodeURIComponent(initialCategory)] : []
+  )
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -154,9 +158,9 @@ export function BlogSearch({
                     <a
                       key={post.slug}
                       href={`/${locale}/blog/${post.slug}`}
-                      className="group bg-white border-l-4 border-jungle-green shadow-md hover:shadow-xl transition-shadow flex flex-col"
+                      className="group bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all flex flex-col"
                     >
-                      <div className="relative w-full h-56">
+                      <div className="relative w-full h-56 overflow-hidden rounded-r-md">
                         <Image
                           src={post.image || fallbackImg}
                           alt={post.title}
@@ -164,14 +168,13 @@ export function BlogSearch({
                           style={{
                             objectFit: 'cover'
                           }}
-                          className="border-4 border-outer-space"
                           quality={85}
                           unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">
                         {post.category && (
-                          <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-3">
+                          <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-3">
                             {post.category}
                           </p>
                         )}

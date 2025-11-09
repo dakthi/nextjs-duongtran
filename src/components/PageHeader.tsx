@@ -8,7 +8,7 @@ interface PageHeaderProps {
 
 export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => {
   return (
-    <div className="relative py-8 rounded-b-3xl overflow-hidden">
+    <div className="relative py-8 overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -30,7 +30,7 @@ export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => 
             {title}
           </h1>
           {description && (
-            <p className="text-lg font-normal text-outer-space leading-relaxed bg-white/95 backdrop-blur-sm rounded-2xl p-6 inline-block">
+            <p className="text-lg font-normal text-outer-space leading-relaxed bg-white/95 backdrop-blur-sm p-6 rounded-lg">
               {description}
             </p>
           )}

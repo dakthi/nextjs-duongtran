@@ -46,13 +46,13 @@ export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
-            className="border-2 border-outer-space bg-white p-8 shadow-brutalist hover:shadow-brutalist-hover hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            className="border-l-4 border-gray-300 hover:border-jungle-green bg-white p-8 shadow-md hover:shadow-xl transition-all rounded-r-lg"
           >
             <div className="flex flex-col justify-between w-full h-full">
               <div className="mb-6">
                 <div className="text-6xl text-jungle-green leading-none mb-3">&ldquo;</div>
                 <div
-                  className="text-base leading-relaxed text-feldgrau italic prose prose-slate max-w-none"
+                  className="text-base leading-relaxed text-feldgrau italic max-w-none"
                   dangerouslySetInnerHTML={{ __html: testimonial.content }}
                 />
               </div>
@@ -90,7 +90,7 @@ function Avatar({ image, name, role, dateLabel, relationship, imagePosition, ima
   const resolvedImage = image ?? legacyMediaUrl('/img/Portrait_Placeholder.png')
   return (
     <div className="flex items-center space-x-4 pt-5 border-t-2 border-jungle-green">
-      <div className="items-center overflow-hidden object-cover w-14 h-14 border-2 border-outer-space">
+      <div className="items-center overflow-hidden object-cover w-14 h-14 rounded-lg">
         <Image
           src={resolvedImage}
           width={56}

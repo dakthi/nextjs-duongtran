@@ -69,13 +69,21 @@ export default async function Home({ params }: HomeProps) {
     <>
       <Hero params={params} />
 
-      <div className="py-20 bg-mint-green">
-        <SectionTitle
-          preTitle={t.preTitle}
-          title={t.title}
-        >
-          {t.description}
-        </SectionTitle>
+      <div className="relative py-8 overflow-hidden bg-mint-green">
+        {/* Content */}
+        <Container className="relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-xs font-semibold tracking-widest uppercase text-white bg-jungle-green px-3 py-1 inline-block mb-4 border-2 border-jungle-green shadow-[2px_2px_0px_0px_rgba(64,178,145,1)]">
+              {t.preTitle}
+            </p>
+            <h2 className="text-2xl md:text-4xl font-sans font-bold text-outer-space leading-tight mb-6">
+              {t.title}
+            </h2>
+            <p className="text-lg font-normal text-outer-space leading-relaxed bg-white/95 backdrop-blur-sm p-6 rounded-lg">
+              {t.description}
+            </p>
+          </div>
+        </Container>
       </div>
 
       <div className="py-20 bg-white">

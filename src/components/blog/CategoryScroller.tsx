@@ -93,10 +93,10 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
           <a
             key={post.slug}
             href={`/${locale}/blog/${post.slug}`}
-            className="group bg-white border-l-4 border-jungle-green shadow-md hover:shadow-xl transition-shadow flex flex-col flex-shrink-0"
+            className="group bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all flex flex-col flex-shrink-0"
             style={{ width: '320px' }}
           >
-            <div className="relative w-full h-56">
+            <div className="relative w-full h-56 overflow-hidden rounded-r-md">
               <Image
                 src={post.image || fallbackImg}
                 alt={post.title}
@@ -104,13 +104,12 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
                 style={{
                   objectFit: 'cover'
                 }}
-                className="border-4 border-outer-space"
                 quality={85}
                 unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
               />
             </div>
             <div className="p-6 flex flex-col flex-grow">
-              <p className="text-xs font-semibold uppercase tracking-widest text-feldgrau mb-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-3">
                 {post.category || category}
               </p>
               <h3 className="text-lg font-bold text-outer-space mb-3 leading-snug group-hover:text-jungle-green transition-colors">

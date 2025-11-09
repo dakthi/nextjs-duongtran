@@ -58,7 +58,7 @@ export const ServiceContactForm = () => {
           </p>
         </div>
 
-        <div className="bg-white border-2 border-outer-space shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] p-8">
+        <div className="bg-white border-l-4 border-jungle-green shadow-md p-8 rounded-r-lg">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Name */}
             <div>
@@ -71,7 +71,7 @@ export const ServiceContactForm = () => {
                 id="name"
                 placeholder="Your Full Name"
                 required
-                className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
+                className="block w-full p-3 border-2 border-gray-300 rounded-md text-base focus:ring-2 focus:ring-jungle-green focus:border-jungle-green"
               />
             </div>
 
@@ -86,7 +86,7 @@ export const ServiceContactForm = () => {
                 id="email"
                 placeholder="you@example.com"
                 required
-                className="block w-full p-3 border-2 border-outer-space text-base focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
+                className="block w-full p-3 border-2 border-gray-300 rounded-md text-base focus:ring-2 focus:ring-jungle-green focus:border-jungle-green"
               />
             </div>
 
@@ -101,7 +101,7 @@ export const ServiceContactForm = () => {
                 placeholder="Tell me what you need help with..."
                 required
                 rows={5}
-                className="block w-full p-3 border-2 border-outer-space text-base resize-y focus:ring-2 focus:ring-amber-500 focus:border-jungle-green"
+                className="block w-full p-3 border-2 border-gray-300 rounded-md text-base resize-y focus:ring-2 focus:ring-jungle-green focus:border-jungle-green"
               ></textarea>
             </div>
 
@@ -112,7 +112,7 @@ export const ServiceContactForm = () => {
                 name="privacyPolicy"
                 id="privacyPolicy"
                 required
-                className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
+                className="h-4 w-4 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-jungle-green"
               />
               <label htmlFor="privacyPolicy" className="text-sm font-medium text-feldgrau">
                 I agree to the{" "}
@@ -128,7 +128,7 @@ export const ServiceContactForm = () => {
                 type="checkbox"
                 name="newsletter"
                 id="newsletter"
-                className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
+                className="h-4 w-4 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-jungle-green"
               />
               <label htmlFor="newsletter" className="text-sm font-medium text-feldgrau">
                 Subscribe to occasional updates and behind-the-scenes notes from Lieu

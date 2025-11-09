@@ -44,8 +44,8 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
 
 function Benefit(props: any) {
   return (
-      <div className="bg-white p-6 border-l-4 border-jungle-green border-2 border-outer-space shadow-brutalist hover:shadow-brutalist-hover hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
-        <h4 className="text-lg font-bold text-outer-space mb-3">
+      <div className="bg-white p-6 border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-r-lg">
+        <h4 className="text-lg font-bold text-jungle-green mb-3">
           {props.title}
         </h4>
         <p className="text-base leading-relaxed text-feldgrau">

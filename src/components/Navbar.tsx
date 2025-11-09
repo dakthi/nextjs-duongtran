@@ -17,6 +17,9 @@ export const Navbar = () => {
   // Only show language switcher on blog pages
   const isBlogPage = pathname.includes('/blog');
 
+  // Check if we're on the homepage
+  const isHomepage = pathname === `/${locale}` || pathname === `/${locale}/`;
+
   let t: any;
   try {
     t = useTranslations('navigation');
@@ -96,8 +99,10 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`w-full sticky top-0 bg-white z-50 transition-all duration-300 border-b-2 ${
-        scrolled ? "shadow-lg border-[#40B291]" : "border-gray-200"
+      className={`w-full sticky top-0 z-50 transition-all duration-300 ${
+        isHomepage
+          ? `bg-[#434F4D] border-b-4 ${scrolled ? "shadow-lg border-[#40B291]" : "border-[#40B291]"}`
+          : `bg-white border-b-2 ${scrolled ? "shadow-lg border-[#40B291]" : "border-gray-200"}`
       }`}
     >
       <Container>
@@ -105,16 +110,16 @@ export const Navbar = () => {
         {/* Logo */}
         <Link href={`/${locale}`} className="flex flex-col space-y-0.5">
           <span
-            className={`font-sans font-bold text-[#434F4D] transition-all duration-300 ${
-              scrolled ? "text-xl" : "text-2xl"
-            }`}
+            className={`font-sans font-bold transition-all duration-300 ${
+              isHomepage ? "text-[#D2E8E2]" : "text-[#434F4D]"
+            } ${scrolled ? "text-xl" : "text-2xl"}`}
           >
             Lieu Vo
           </span>
           <span
-            className={`text-white bg-[#40B291] tracking-wide font-bold transition-all duration-300 px-2 py-0.5 border-2 border-[#40B291] shadow-[2px_2px_0px_0px_rgba(64,178,145,1)] ${
-              scrolled ? "text-xs hidden md:block" : "text-xs"
-            }`}
+            className={`text-white bg-[#40B291] tracking-wide font-bold transition-all duration-300 px-2 py-0.5 border-2 ${
+              isHomepage ? "border-[#434F4D] shadow-[2px_2px_0px_0px_rgba(67,79,77,1)]" : "border-[#40B291] shadow-[2px_2px_0px_0px_rgba(64,178,145,1)]"
+            } ${scrolled ? "text-xs hidden md:block" : "text-xs"}`}
           >
             ACCA Chartered Accountant
           </span>
@@ -126,7 +131,9 @@ export const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className="text-[#434F4D] hover:text-[#40B291] text-sm font-medium transition-colors capitalize"
+              className={`text-sm font-medium transition-colors capitalize ${
+                isHomepage ? "text-[#D2E8E2] hover:text-[#40B291]" : "text-[#434F4D] hover:text-[#40B291]"
+              }`}
             >
               {item.label}
             </Link>
@@ -144,7 +151,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('en')}
                 className={`px-2 py-1 text-xs font-semibold transition-colors ${
-                  locale === 'en' ? 'bg-[#40B291] text-white' : 'text-[#434F4D] hover:text-[#40B291]'
+                  locale === 'en' ? 'bg-[#40B291] text-white' : `${isHomepage ? 'text-[#D2E8E2]' : 'text-[#434F4D]'} hover:text-[#40B291]`
                 }`}
               >
                 EN
@@ -152,7 +159,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('vi')}
                 className={`px-2 py-1 text-xs font-semibold transition-colors ${
-                  locale === 'vi' ? 'bg-[#40B291] text-white' : 'text-[#434F4D] hover:text-[#40B291]'
+                  locale === 'vi' ? 'bg-[#40B291] text-white' : `${isHomepage ? 'text-[#D2E8E2]' : 'text-[#434F4D]'} hover:text-[#40B291]`
                 }`}
               >
                 VI
@@ -166,7 +173,9 @@ export const Navbar = () => {
           <button
             aria-label="Toggle Menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[#434F4D] hover:text-[#40B291] focus:outline-none"
+            className={`p-2 hover:text-[#40B291] focus:outline-none ${
+              isHomepage ? "text-[#D2E8E2]" : "text-[#434F4D]"
+            }`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -188,7 +197,9 @@ export const Navbar = () => {
           </button>
 
           {mobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-white border-t-2 border-[#40B291] shadow-lg">
+            <div className={`absolute top-full left-0 right-0 border-t-2 border-[#40B291] shadow-lg ${
+              isHomepage ? "bg-[#434F4D]" : "bg-white"
+            }`}>
               <Container>
               <div className="space-y-1 py-4">
               {navigation.map((item, index) => (
@@ -196,7 +207,9 @@ export const Navbar = () => {
                   key={index}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-[#434F4D] hover:bg-gray-50 hover:text-[#40B291] transition capitalize"
+                  className={`block px-4 py-3 hover:text-[#40B291] transition capitalize ${
+                    isHomepage ? "text-[#D2E8E2] hover:bg-[#3F6059]" : "text-[#434F4D] hover:bg-gray-50"
+                  }`}
                 >
                   {item.label}
                 </Link>
