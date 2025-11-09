@@ -75,22 +75,17 @@ export default function CVPage() {
   return (
     <>
       {/* Header Section */}
-      <div className="py-20 bg-mint-green border-b-4 border-jungle-green">
-        <Container>
-          <h1 className="text-3xl md:text-5xl font-sans font-bold text-outer-space mb-6 leading-tight">
-            For Employers & Recruiters
-          </h1>
-          <p className="text-lg font-medium text-outer-space leading-relaxed max-w-3xl">
-            I'm always interested in meaningful conversations about opportunities where I can leverage my technical expertise,
-            automation skills, and client-focused approach to drive financial clarity, operational efficiency, and strategic growth.
-          </p>
-        </Container>
-      </div>
+      <PageHeader
+        eyebrow="Connecting with opportunities"
+        title="For Employers & Recruiters"
+        description="I'm always interested in meaningful conversations about opportunities where I can leverage my technical expertise, automation skills, and client-focused approach to drive financial clarity, operational efficiency, and strategic growth."
+      />
 
-      {/* Introduction Section */}
+      {/* Expertise & Experience Section */}
       <div className="py-20 bg-white">
         <Container>
-          <div className="space-y-6 text-feldgrau leading-relaxed">
+          {/* Introduction */}
+          <div className="space-y-6 text-feldgrau leading-relaxed mb-16">
             <p className="text-lg">
               I'm an ACCA Qualified Chartered Accountant with extensive experience in UK accounting and tax compliance for SMEs.
               I have been working full-time at an accounting practice in London, where I progressed from Trainee to Senior Accountant,
@@ -102,155 +97,152 @@ export default function CVPage() {
               significantly reduce their tax liabilities and drive revenue growth.
             </p>
           </div>
-        </Container>
-      </div>
 
-      {/* Skills & Experience Section */}
-      <div className="py-20 bg-mint-green">
-        <Container>
+          {/* Section Title */}
           <SectionTitle
             preTitle="what i bring"
             title="Core Expertise & Experience"
           />
 
-          <div className="mt-12 space-y-0">
+          {/* Expertise Cards Grid */}
+          <div className="mt-12 space-y-6">
             {/* Core Accounting Expertise */}
-            <div className="border-l-4 border-jungle-green border-t-2 border-b-2 border-mint-green pl-4 py-6">
+            <div className="bg-white border-l-4 border-jungle-green shadow-md p-6">
               <h3 className="text-xl font-bold text-outer-space mb-4">Core Accounting Expertise</h3>
-              <p className="text-lg text-feldgrau leading-relaxed mb-4">
+              <p className="text-base text-feldgrau leading-relaxed mb-4">
                 My core expertise spans the full spectrum of UK accounting and tax services for SMEs:
               </p>
-              <ul className="space-y-0.5 text-lg text-feldgrau leading-relaxed">
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+              <ul className="space-y-2 text-base text-feldgrau leading-relaxed">
+                <li className="flex">
+                  <span className="text-jungle-green mr-3 flex-shrink-0 leading-relaxed">•</span>
                   <span>Year-end accounts preparation and corporation tax</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Self-assessments with 100% on-time filing rates for hundreds of clients</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>VAT returns and payroll management with strict HMRC compliance</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Large client portfolio management with proven track record</span>
                 </li>
               </ul>
             </div>
 
             {/* Process Automation */}
-            <div className="border-l-4 border-jungle-green border-b-2 border-mint-green pl-4 py-6">
-              <h3 className="text-xl font-bold text-outer-space mb-4">Process Automation & Workflow Optimization</h3>
-              <p className="text-lg text-feldgrau leading-relaxed mb-4">
+            <div className="bg-white border-r-4 border-jungle-green shadow-md p-6 rounded-l-md">
+              <h3 className="text-xl font-bold text-outer-space mb-4">Process Automation & Workflow Optimisation</h3>
+              <p className="text-base text-feldgrau leading-relaxed mb-4">
                 One of my key strengths is leveraging technology to improve efficiency and accuracy:
               </p>
-              <ul className="space-y-0.5 text-lg text-feldgrau leading-relaxed">
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+              <ul className="space-y-2 text-base text-feldgrau leading-relaxed">
+                <li className="flex">
+                  <span className="text-jungle-green mr-3 flex-shrink-0 leading-relaxed">•</span>
                   <span>Python scripting and Excel automation for streamlined workflows</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Custom solutions that reduce manual workload and improve accuracy</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Saved hundreds of hours while increasing quality and reliability</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Freed up time for higher-value advisory work</span>
                 </li>
               </ul>
             </div>
 
             {/* Tax Planning */}
-            <div className="border-l-4 border-jungle-green border-b-2 border-mint-green pl-4 py-6">
+            <div className="bg-white border-l-4 border-jungle-green shadow-md p-6">
               <h3 className="text-xl font-bold text-outer-space mb-4">Strategic Tax Planning & Advisory</h3>
-              <p className="text-lg text-feldgrau leading-relaxed mb-4">
+              <p className="text-base text-feldgrau leading-relaxed mb-4">
                 Beyond compliance work, I provide strategic advisory services that deliver tangible results:
               </p>
-              <ul className="space-y-0.5 text-lg text-feldgrau leading-relaxed">
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+              <ul className="space-y-2 text-base text-feldgrau leading-relaxed">
+                <li className="flex">
+                  <span className="text-jungle-green mr-3 flex-shrink-0 leading-relaxed">•</span>
                   <span>Careful planning around income structure, dividends, and VAT strategies</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Significantly reduced tax liabilities for clients</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Enabled businesses to reinvest savings into growth</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Clients have seen substantial revenue increases from recommendations</span>
                 </li>
               </ul>
             </div>
 
             {/* Technical Skills */}
-            <div className="border-l-4 border-jungle-green border-b-2 border-mint-green pl-4 py-6">
+            <div className="bg-white border-r-4 border-jungle-green shadow-md p-6 rounded-l-md">
               <h3 className="text-xl font-bold text-outer-space mb-4">Technical Skills & Platforms</h3>
-              <p className="text-lg text-feldgrau leading-relaxed mb-4">
+              <p className="text-base text-feldgrau leading-relaxed mb-4">
                 Proficient in industry-standard platforms and modern technologies:
               </p>
-              <ul className="space-y-0.5 text-lg text-feldgrau leading-relaxed">
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+              <ul className="space-y-2 text-base text-feldgrau leading-relaxed">
+                <li className="flex">
+                  <span className="text-jungle-green mr-3 flex-shrink-0 leading-relaxed">•</span>
                   <span>CCH, Sage 50, BrightPay, IRIS</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Companies House and HMRC services</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Python, Google Apps Script, AI tools</span>
                 </li>
               </ul>
             </div>
 
             {/* Leadership */}
-            <div className="border-l-4 border-jungle-green border-b-2 border-mint-green pl-4 py-6">
+            <div className="bg-white border-l-4 border-jungle-green shadow-md p-6">
               <h3 className="text-xl font-bold text-outer-space mb-4">Leadership & Team Development</h3>
-              <ul className="space-y-0.5 text-lg text-feldgrau leading-relaxed">
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+              <ul className="space-y-2 text-base text-feldgrau leading-relaxed">
+                <li className="flex">
+                  <span className="text-jungle-green mr-3 flex-shrink-0 leading-relaxed">•</span>
                   <span>Trained and mentored junior staff, cutting onboarding time significantly</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Built more capable, self-sufficient teams</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Maintained high client satisfaction and strong retention rates</span>
                 </li>
               </ul>
             </div>
 
             {/* Community Impact */}
-            <div className="border-l-4 border-jungle-green border-b-2 border-mint-green pl-4 py-6">
+            <div className="bg-white border-r-4 border-jungle-green shadow-md p-6 rounded-l-md">
               <h3 className="text-xl font-bold text-outer-space mb-4">Community Education Impact</h3>
-              <ul className="space-y-0.5 text-lg text-feldgrau leading-relaxed">
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+              <ul className="space-y-2 text-base text-feldgrau leading-relaxed">
+                <li className="flex">
+                  <span className="text-jungle-green mr-3 flex-shrink-0 leading-relaxed">•</span>
                   <span>Founded UK tax education initiative for Vietnamese community</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Grown engaged audience of thousands</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Clear, actionable content simplifying complex HMRC rules</span>
                 </li>
-                <li className="flex items-start">
-                  <span className="text-jungle-green mr-3 mt-1">•</span>
+                <li className="flex items-center">
+                  <span className="text-jungle-green mr-3 flex-shrink-0">•</span>
                   <span>Helped reduce penalties and improve financial decisions</span>
                 </li>
               </ul>
@@ -268,7 +260,7 @@ export default function CVPage() {
           />
 
           <div className="mt-12 space-y-4">
-            <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-6 flex items-start gap-4">
+            <div className="bg-white border-l-4 border-jungle-green shadow-md p-6 flex items-start gap-4">
               <svg className="w-8 h-8 text-jungle-green flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -278,7 +270,7 @@ export default function CVPage() {
               </div>
             </div>
 
-            <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-6 flex items-start gap-4">
+            <div className="bg-white border-l-4 border-jungle-green shadow-md p-6 flex items-start gap-4">
               <svg className="w-8 h-8 text-jungle-green flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -294,7 +286,7 @@ export default function CVPage() {
       {/* Call to Action Section */}
       <div className="py-20 bg-white">
         <Container>
-          <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-8">
+          <div className="bg-white border-l-4 border-jungle-green shadow-md p-8">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-jungle-green mb-4 leading-tight">
               Let's Connect
             </h2>
@@ -395,7 +387,7 @@ export default function CVPage() {
                       <button
                         type="submit"
                         disabled={loading || !code.trim()}
-                        className="w-full px-8 py-3 bg-mint-green0 text-outer-space hover:bg-jungle-green disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-base"
+                        className="w-full px-8 py-3 bg-jungle-green text-white hover:bg-jungle-green-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold text-base"
                       >
                         {loading ? 'Verifying...' : 'Access CV'}
                       </button>
@@ -407,7 +399,7 @@ export default function CVPage() {
                           <button
                             type="button"
                             onClick={() => setShowTest(true)}
-                            className="px-6 py-2 bg-slate-900 text-white hover:bg-slate-700 transition-colors font-semibold text-sm"
+                            className="px-6 py-2 bg-jungle-green text-white hover:bg-jungle-green-dark transition-colors font-semibold text-sm"
                           >
                             Take Compatibility Test
                           </button>
