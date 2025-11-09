@@ -4,6 +4,7 @@ import { Container } from '@/components/Container'
 import Image from 'next/image'
 import { isMediaRemoteUrl } from '@/lib/media/media-client'
 import { generateMetadata as genMeta, generateBlogPostingSchema, generateBreadcrumbSchema, siteConfig } from '@/lib/seo'
+import { BlogContent } from '@/components/blog/BlogContent'
 import type { Metadata } from 'next'
 
 type Params = {
@@ -181,9 +182,9 @@ export default async function BlogPostPage({ params }: Params) {
             )}
 
             {/* Markdown Content */}
-            <article
+            <BlogContent
+              content={post.content}
               className="prose prose-lg max-w-none text-lg leading-snug md:leading-normal text-outer-space"
-              dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
         </Container>

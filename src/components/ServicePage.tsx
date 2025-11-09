@@ -45,7 +45,7 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
                 key={index}
                 className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-r-lg p-8"
               >
-                <h2 className="text-2xl font-sans font-bold text-outer-space mb-4 leading-tight">
+                <h2 className="text-2xl font-sans font-bold text-jungle-green mb-4 leading-tight">
                   {service.title}
                 </h2>
                 <p className="text-base text-feldgrau leading-relaxed">

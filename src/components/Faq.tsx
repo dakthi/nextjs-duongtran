@@ -13,24 +13,28 @@ export const Faq = () => {
 
   return (
     <Container>
-      <div className="w-full">
+      <div className="w-full max-w-3xl mx-auto">
         {faqData.map((item, index) => {
           const isOpen = openIndex === index;
           return (
-            <div key={item.question} className="mb-4">
+            <div key={item.question} className="mb-6 group">
               <button
                 onClick={() => toggleFaq(index)}
-                className="flex items-center justify-between w-full px-6 py-5 text-lg text-left font-semibold text-outer-space bg-mint-green border-2 border-outer-space hover:bg-jungle-green-light focus:outline-none transition-colors"
+                className="flex items-center justify-between w-full bg-white border-l-4 border-gray-300 group-hover:border-jungle-green shadow-md group-hover:shadow-xl transition-all focus:outline-none rounded-tr-md overflow-hidden"
               >
-                <span>{item.question}</span>
-                <ChevronUpIcon
-                  className={`${
-                    isOpen ? "transform rotate-180" : ""
-                  } w-6 h-6 text-jungle-green flex-shrink-0 ml-4 transition-transform`}
-                />
+                <div className="flex items-center justify-between w-full px-6 py-5">
+                  <span className="text-lg text-left font-semibold text-outer-space group-hover:text-jungle-green transition-colors">
+                    {item.question}
+                  </span>
+                  <ChevronUpIcon
+                    className={`${
+                      isOpen ? "transform rotate-180" : ""
+                    } w-6 h-6 text-jungle-green flex-shrink-0 ml-4 transition-transform`}
+                  />
+                </div>
               </button>
               {isOpen && (
-                <div className="px-6 py-5 bg-white border-2 border-t-0 border-outer-space text-feldgrau leading-relaxed">
+                <div className="px-8 py-6 bg-mint-green border-l-4 border-jungle-green text-feldgrau leading-relaxed">
                   {item.answer}
                 </div>
               )}

@@ -151,11 +151,158 @@ Based on Tailwind's 4px increment system:
 ## 🎭 Visual Components
 
 ### Cards
-- **Border:** 2–4px solid `#434F4D`
-- **Accent:** Left border in `#40B291` (4px)
-- **Shadow:** `4px 4px 0px 0px rgba(67, 79, 77, 1)` (brutalist offset)
-- **Hover:** Shift to `6px 6px 0px 0px rgba(64, 178, 145, 1)` + translate `(-2px, -2px)`
-- **Padding:** 1.5–2rem internal
+
+#### Standard Cards (Square/Vertical)
+- **Border:** 4px solid `#434F4D` (Outer Space) on all sides
+- **Left Accent Border:** Additional 4px solid `#40B291` (Jungle Green) layered on top of the left border
+- **Shadow (Default):** `4px 4px 0px 0px rgba(67, 79, 77, 1)` — brutalist offset shadow in Outer Space
+- **Shadow (Hover):** `6px 6px 0px 0px rgba(64, 178, 145, 1)` — larger offset shadow in Jungle Green
+- **Hover Transform:** `translate(-2px, -2px)` — card shifts up and left on hover
+- **Corners:** All sharp (90° corners), no rounding
+- **Background:** White (`#FFFFFF`)
+- **Padding:** 1.5–2rem (24–32px) internal padding
+- **Transition:** `transition-all` for smooth hover effects
+
+**Example Implementation:**
+```tsx
+<div className="bg-white border-4 border-outer-space shadow-[4px_4px_0px_0px_rgba(67,79,77,1)] hover:shadow-[6px_6px_0px_0px_rgba(64,178,145,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+  <div className="p-6 border-l-4 border-jungle-green">
+    {/* Card content */}
+  </div>
+</div>
+```
+
+#### Rectangular Cards (Multi-Purpose Pattern)
+
+**Use this pattern for any rectangular content including:**
+- Blog posts and articles
+- Portfolio items
+- Product cards
+- Event listings
+- Team member profiles
+- Case studies
+- Resource cards
+- Any content with a landscape/horizontal aspect ratio
+
+**Core Visual Pattern:**
+- **Outer Border:** 4px solid `#B5B5B5` (light gray `border-gray-300`) on left side ONLY
+- **Hover Border:** Changes to `#40B291` (Jungle Green) on hover
+- **Featured Media Section (Image/Video/Graphic):**
+  - No border on the media container itself
+  - Media fills container with `object-fit: cover`
+  - Recommended aspect ratio: 16:10, 16:9, or 3:2 (height: 224px / 14rem works well)
+  - **Top-right corner ONLY:** `rounded-r-md` (0.375rem / 6px border-radius)
+  - Other 3 corners: Sharp (90°)
+  - `overflow: hidden` to clip media to rounded corner
+- **Shadow (Default):** Standard Material Design shadow (`shadow-md`)
+- **Shadow (Hover):** Elevated shadow (`shadow-xl`)
+- **No Position Transform:** Unlike square cards, these don't shift position on hover (prevents layout shift)
+- **Content Section:**
+  - White background
+  - Padding: 1.5rem (24px) or 2rem (32px) for larger cards
+  - Typical structure: eyebrow/category label (uppercase, green), title, description/excerpt, metadata
+- **Layout:** Vertical stack (media on top, content below)
+- **Transition:** `transition-all` for smooth border and shadow changes
+
+**Visual Breakdown:**
+```
+┌─────────────────────────╮  ← Top-right: rounded-r-md (6px radius)
+│                         │
+│   Featured Media        │
+│   (Image/Video/etc)     │
+│   object-fit: cover     │
+│   h-56 recommended      │
+│                         │
+├─────────────────────────┤  ← All other corners: sharp 90°
+│ 4px left border         │
+│ (gray → green on hover) │
+│                         │
+│  Label/Category (GREEN) │
+│  Title (hover → green)  │
+│  Description/Excerpt    │
+│  Metadata/Footer Info   │
+│                         │
+└─────────────────────────┘
+```
+
+**Example Implementation (Blog Post):**
+```tsx
+<a
+  href="/blog/post-slug"
+  className="group bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all flex flex-col"
+>
+  <div className="relative w-full h-56 overflow-hidden rounded-r-md">
+    <Image src={imageUrl} alt={title} fill style={{ objectFit: 'cover' }} />
+  </div>
+  <div className="p-6 flex flex-col flex-grow">
+    <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-3">
+      {category}
+    </p>
+    <h3 className="text-lg font-bold text-outer-space mb-3 group-hover:text-jungle-green transition-colors">
+      {title}
+    </h3>
+    <p className="text-sm text-feldgrau">{excerpt}</p>
+  </div>
+</a>
+```
+
+**Example Implementation (Product Card):**
+```tsx
+<div className="group bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all flex flex-col">
+  <div className="relative w-full h-56 overflow-hidden rounded-r-md">
+    <Image src={productImage} alt={productName} fill style={{ objectFit: 'cover' }} />
+  </div>
+  <div className="p-6">
+    <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-2">
+      {category}
+    </p>
+    <h3 className="text-xl font-bold text-outer-space mb-2 group-hover:text-jungle-green transition-colors">
+      {productName}
+    </h3>
+    <p className="text-sm text-feldgrau mb-4">{description}</p>
+    <p className="text-lg font-bold text-outer-space">{price}</p>
+  </div>
+</div>
+```
+
+**Example Implementation (Team Member):**
+```tsx
+<div className="group bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all flex flex-col">
+  <div className="relative w-full h-56 overflow-hidden rounded-r-md">
+    <Image src={photoUrl} alt={name} fill style={{ objectFit: 'cover' }} />
+  </div>
+  <div className="p-6">
+    <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-2">
+      {role}
+    </p>
+    <h3 className="text-xl font-bold text-outer-space mb-2 group-hover:text-jungle-green transition-colors">
+      {name}
+    </h3>
+    <p className="text-sm text-feldgrau">{bio}</p>
+  </div>
+</div>
+```
+
+**Key Visual Elements:**
+1. **Left border accent** — 4px gray that becomes green on hover (visual indicator of interactivity)
+2. **Single rounded corner** — top-right only (`rounded-r-md`), creates asymmetric, modern feel
+3. **Three sharp corners** — maintains brutalist aesthetic while softening the visual transition between media and content
+4. **Green label/category** — always visible at top of content, provides consistent color anchor
+5. **Title color shift** — dark gray (`#434F4D`) to green (`#40B291`) on hover, reinforces clickability
+6. **Shadow elevation** — subtle to prominent on hover, creates depth hierarchy without position shift
+
+**Design Rationale:**
+- **Why one rounded corner?** Creates visual softness and modern appeal while maintaining the brutalist sharp-corner aesthetic. The asymmetry adds visual interest.
+- **Why left border only?** Minimalist accent that doesn't compete with the media. Becomes an intuitive hover indicator when it changes color.
+- **Why no position transform?** Prevents layout shift in grids, maintains stable visual rhythm, especially important for content-heavy pages.
+- **Why gray to green?** Subtle in default state, vibrant on hover — follows progressive disclosure principles.
+
+**When to Use:**
+- **Any rectangular content card** where the media (image, video, illustration) is a primary visual element
+- Content with landscape/horizontal orientation
+- Grid layouts where consistent card heights matter
+- Interactive elements (links, buttons) that benefit from hover feedback
+- Situations where you want a softer, more modern feel than the full brutalist cards
 
 ### Buttons
 - **Primary:**

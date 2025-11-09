@@ -1,11 +1,10 @@
-import Image from 'next/image'
-
 import { Container } from '@/components/Container'
 import { PageHeader } from '@/components/PageHeader'
 import { CategoryScroller } from '@/components/blog/CategoryScroller'
 import { BlogSearch } from '@/components/blog/BlogSearch'
+import { PostImage } from '@/components/blog/PostImage'
 import { getPostSummaries } from '@/lib/post'
-import { legacyMediaUrl, isMediaRemoteUrl } from '@/lib/media/media-client'
+import { legacyMediaUrl } from '@/lib/media/media-client'
 import { generateMetadata as genMeta } from '@/lib/seo'
 import { Metadata } from 'next'
 
@@ -51,7 +50,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
     )
   }
 
-  const fallbackImg = legacyMediaUrl('/img/Portrait_Placeholder.png')
+  const fallbackImg = legacyMediaUrl('/img/post-thumbnail-fallback.png')
 
   // Featured post (most recent)
   const [featuredPost, ...rest] = posts
@@ -101,20 +100,17 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
             className="group block bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all"
           >
             <div className="flex flex-col lg:flex-row">
-              <div className="relative w-full lg:w-1/2 h-80 lg:h-96 overflow-hidden rounded-r-md">
-                <Image
-                  src={featuredPost.image || fallbackImg}
-                  alt={featuredPost.title}
-                  fill
-                  style={{
-                    objectFit: (featuredPost.imageFit as 'cover' | 'contain' | 'fill') || 'cover',
-                    objectPosition: featuredPost.imagePosition || 'center',
-                    transform: `scale(${(featuredPost.imageZoom || 100) / 100})`
-                  }}
-                  quality={90}
-                  unoptimized={isMediaRemoteUrl(featuredPost.image || fallbackImg)}
-                />
-              </div>
+              <PostImage
+                src={featuredPost.image}
+                fallbackSrc={fallbackImg}
+                alt={featuredPost.title}
+                imageFit={featuredPost.imageFit as 'cover' | 'contain' | 'fill' | null}
+                imagePosition={featuredPost.imagePosition}
+                imageZoom={featuredPost.imageZoom}
+                quality={90}
+                priority={true}
+                className="w-full lg:w-1/2 h-80 lg:h-96 overflow-hidden rounded-r-md"
+              />
               <div className="flex-1 p-8 flex flex-col justify-center">
                 <p className="text-xs font-semibold uppercase tracking-widest text-jungle-green mb-3">
                   {featuredPost.category || blogTranslations.category}

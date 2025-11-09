@@ -39,6 +39,7 @@ export function BlogSearch({
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
     initialCategory ? [decodeURIComponent(initialCategory)] : []
   )
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -162,14 +163,15 @@ export function BlogSearch({
                     >
                       <div className="relative w-full h-56 overflow-hidden rounded-r-md">
                         <Image
-                          src={post.image || fallbackImg}
+                          src={imageErrors[post.slug] || !post.image ? fallbackImg : post.image}
                           alt={post.title}
                           fill
                           style={{
                             objectFit: 'cover'
                           }}
                           quality={85}
-                          unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
+                          unoptimized={isMediaRemoteUrl(imageErrors[post.slug] || !post.image ? fallbackImg : post.image)}
+                          onError={() => setImageErrors(prev => ({ ...prev, [post.slug]: true }))}
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">

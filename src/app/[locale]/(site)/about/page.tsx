@@ -86,17 +86,13 @@ export default async function AboutPage({ params }: AboutPageProps) {
       />
 
       {hasPosts && featuredPost && (
-        <div className="pt-12 pb-20 bg-white">
-          <Container>
-            <PostGallery
-              featuredPost={featuredPost}
-              topPosts={topPosts}
-              chunkedPosts={chunked}
-              headings={headings}
-              locale={params.locale}
-            />
-          </Container>
-        </div>
+        <PostGallery
+          featuredPost={featuredPost}
+          topPosts={topPosts}
+          chunkedPosts={chunked}
+          headings={headings}
+          locale={params.locale}
+        />
       )}
     </>
   )

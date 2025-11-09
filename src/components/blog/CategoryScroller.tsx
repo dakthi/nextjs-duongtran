@@ -27,6 +27,7 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
 
   const checkScroll = () => {
     const container = scrollContainerRef.current
@@ -98,14 +99,15 @@ export function CategoryScroller({ posts, category, locale, fallbackImg, minRead
           >
             <div className="relative w-full h-56 overflow-hidden rounded-r-md">
               <Image
-                src={post.image || fallbackImg}
+                src={imageErrors[post.slug] || !post.image ? fallbackImg : post.image}
                 alt={post.title}
                 fill
                 style={{
                   objectFit: 'cover'
                 }}
                 quality={85}
-                unoptimized={isMediaRemoteUrl(post.image || fallbackImg)}
+                unoptimized={isMediaRemoteUrl(imageErrors[post.slug] || !post.image ? fallbackImg : post.image)}
+                onError={() => setImageErrors(prev => ({ ...prev, [post.slug]: true }))}
               />
             </div>
             <div className="p-6 flex flex-col flex-grow">
