@@ -227,9 +227,65 @@ export default function BlogManager() {
       slug: '',
       title: '',
       isPublished: false,
+      locale: locale,
     }
     setFormState(nextState)
     setOriginalState(nextState)
+  }
+
+  const handleCreateTranslation = async (post: BlogPostRecord) => {
+    const targetLocale = locale === 'en' ? 'vi' : 'en'
+
+    // Check if translation already exists
+    try {
+      const response = await fetch(`/api/blog/check-translation?slug=${post.slug}&locale=${targetLocale}`)
+      const data = await response.json()
+
+      if (data.exists) {
+        showStatus('error', `Translation already exists in ${targetLocale.toUpperCase()}. Switch to ${targetLocale.toUpperCase()} to edit it.`)
+        return
+      }
+    } catch (error) {
+      console.error('Failed to check translation', error)
+    }
+
+    // Create new post form with ALL content copied from original
+    const nextState: BlogFormState = {
+      ...emptyForm,
+      locale: targetLocale,
+      slug: post.slug, // Keep the same slug!
+      title: post.title, // Copy title to translate from
+      excerpt: post.excerpt ?? '',
+      content: post.content || '<p></p>',
+      contentJson: (post as any).contentJson || { type: 'doc', content: [{ type: 'paragraph' }] },
+      contentHtml: (post as any).contentHtml || post.content || '<p></p>',
+      category: post.category ?? '',
+      quote: post.quote ?? '',
+      readingTime: post.readingTime != null ? String(post.readingTime) : '',
+      publishedDate: post.publishedDate ?? '',
+      image: post.image ?? '',
+      imagePosition: post.imagePosition ?? 'center',
+      imageZoom: post.imageZoom ?? 100,
+      imageFit: (post.imageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
+      clientName: post.clientName ?? '',
+      clientAge: post.clientAge != null ? String(post.clientAge) : '',
+      clientJob: post.clientJob ?? '',
+      clientImage: post.clientImage ?? '',
+      clientImagePosition: post.clientImagePosition ?? 'center',
+      clientImageZoom: post.clientImageZoom ?? 100,
+      clientImageFit: (post.clientImageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
+      expertName: post.expertName ?? '',
+      expertTitle: post.expertTitle ?? '',
+      expertImage: post.expertImage ?? '',
+      expertImagePosition: post.expertImagePosition ?? 'center',
+      expertImageZoom: post.expertImageZoom ?? 100,
+      expertImageFit: (post.expertImageFit as 'cover' | 'contain' | 'fill') ?? 'cover',
+      isFeatured: post.isFeatured,
+      isPublished: false, // Start as draft
+    }
+    setFormState(nextState)
+    setOriginalState(nextState)
+    showStatus('success', `Ready to create ${targetLocale.toUpperCase()} translation. Original content copied - translate and save!`)
   }
 
   const handleExportBackup = () => {
@@ -441,7 +497,7 @@ export default function BlogManager() {
                 {posts.map((post) => {
                   const isActive = post.id === selectedId
                   return (
-                    <li key={post.id}>
+                    <li key={post.id} className="relative group">
                       <button
                         type="button"
                         onClick={() => handleSelectPost(post)}
@@ -454,6 +510,14 @@ export default function BlogManager() {
                         <span className={`text-xs font-bold ${post.isPublished ? 'text-green-700' : 'text-amber-600'}`}>
                           {post.isPublished ? 'Published' : 'Draft'}
                         </span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleCreateTranslation(post)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-blue-500 hover:bg-blue-400 text-white px-2 py-1 text-xs font-semibold"
+                        title={`Create ${locale === 'en' ? 'VI' : 'EN'} translation`}
+                      >
+                        + {locale === 'en' ? 'VI' : 'EN'}
                       </button>
                     </li>
                   )
@@ -470,6 +534,19 @@ export default function BlogManager() {
                 <h2 className="text-2xl font-serif font-bold text-slate-900">Blog Post Editor</h2>
                 {selectedId && (
                   <p className="text-xs text-slate-600">Editing post #{selectedId.slice(0, 6)}…</p>
+                )}
+                {!selectedId && formState.slug && (
+                  <div className="mt-2 bg-blue-50 border-l-4 border-blue-500 p-3">
+                    <p className="text-xs font-semibold text-blue-900">
+                      Creating {formState.locale.toUpperCase()} translation
+                    </p>
+                    <p className="text-xs text-blue-700 mt-1">
+                      Slug is locked to: <span className="font-mono font-bold">{formState.slug}</span>
+                    </p>
+                    <p className="text-xs text-blue-700 mt-1">
+                      Translate the title and content manually. Images and metadata are copied from the original.
+                    </p>
+                  </div>
                 )}
               </div>
               <div className="flex items-center gap-3">

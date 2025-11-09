@@ -25,6 +25,27 @@ function calculateReadingTime(htmlContent: string): number {
   return Math.max(1, Math.ceil(wordCount / 200))
 }
 
+// Extract first paragraph from HTML content as excerpt
+function extractFirstParagraph(htmlContent: string): string {
+  // Match the first <p> tag content
+  const match = htmlContent.match(/<p[^>]*>(.*?)<\/p>/i)
+  if (!match || !match[1]) {
+    // Fallback: strip all HTML and take first 150 characters
+    const plainText = htmlContent.replace(/<[^>]*>/g, ' ').trim()
+    return plainText.substring(0, 150) + (plainText.length > 150 ? '...' : '')
+  }
+
+  // Strip HTML tags from the paragraph content
+  const paragraphText = match[1].replace(/<[^>]*>/g, '').trim()
+
+  // Limit to ~150 characters
+  if (paragraphText.length > 150) {
+    return paragraphText.substring(0, 150) + '...'
+  }
+
+  return paragraphText
+}
+
 export interface PostSummary {
   slug: string
   title: string
@@ -63,13 +84,13 @@ export interface Post extends PostSummary {
 const mapViewToPost = (view: BlogPostView): Post => ({
   slug: view.slug,
   title: view.title,
-  excerpt: view.excerpt,
+  excerpt: view.excerpt || extractFirstParagraph(view.contentHtml),
   image: optionalLegacyMediaUrl(view.image ?? undefined) ?? view.image,
   imagePosition: view.imagePosition,
   imageZoom: view.imageZoom,
   imageFit: view.imageFit,
   date: view.publishedDate,
-  readingTime: calculateReadingTime(view.contentHtml),
+  readingTime: view.readingTime ?? calculateReadingTime(view.contentHtml),
   category: view.category,
   quote: view.quote,
   content: view.contentHtml,
@@ -99,13 +120,13 @@ const mapViewToPost = (view: BlogPostView): Post => ({
 const mapRecordToSummary = (record: BlogPostRecord & { contentHtml: string }): PostSummary => ({
   slug: record.slug,
   title: record.title,
-  excerpt: record.excerpt,
+  excerpt: record.excerpt || extractFirstParagraph(record.contentHtml),
   image: optionalLegacyMediaUrl(record.image ?? undefined) ?? record.image,
   imagePosition: record.imagePosition,
   imageZoom: record.imageZoom,
   imageFit: record.imageFit,
   date: record.publishedDate,
-  readingTime: calculateReadingTime(record.contentHtml),
+  readingTime: record.readingTime ?? calculateReadingTime(record.contentHtml),
   category: record.category,
   quote: record.quote,
 })
@@ -207,10 +228,10 @@ export async function getPostSummaries(locale?: string): Promise<PostSummary[]> 
   return fallbackPosts.filter(Boolean).map((post) => ({
     slug: post!.slug,
     title: post!.title,
-    excerpt: post!.excerpt,
+    excerpt: post!.excerpt || extractFirstParagraph(post!.content),
     image: post!.image,
     date: post!.date,
-    readingTime: calculateReadingTime(post!.content),
+    readingTime: post!.readingTime ?? calculateReadingTime(post!.content),
     category: post!.category,
     quote: post!.quote,
   }))

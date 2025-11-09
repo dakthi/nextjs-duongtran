@@ -30,10 +30,27 @@ export const Navbar = () => {
     { label: t('blog') || 'Blog', href: `/${locale}/blog` },
   ];
 
-  const switchLanguage = (newLocale: string) => {
+  const switchLanguage = async (newLocale: string) => {
     const segments = pathname.split('/');
     segments[1] = newLocale;
-    const newPath = segments.join('/');
+    let newPath = segments.join('/');
+
+    // If we're on a specific blog post page, check if it exists in the target language
+    if (pathname.includes('/blog/') && segments.length > 3) {
+      const slug = segments[3];
+      try {
+        // Check if the post exists in the target language
+        const response = await fetch(`/api/blog/check-translation?slug=${slug}&locale=${newLocale}`);
+        const data = await response.json();
+        if (!data.exists) {
+          // Post doesn't exist in target language, go to blog listing instead
+          newPath = `/${newLocale}/blog`;
+        }
+      } catch (error) {
+        // On error, fallback to blog listing
+        newPath = `/${newLocale}/blog`;
+      }
+    }
 
     // Force a hard navigation to avoid caching issues
     window.location.href = newPath;
