@@ -96,8 +96,8 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`w-full sticky top-0 bg-[#434F4D] z-50 transition-all duration-300 border-b-4 ${
-        scrolled ? "shadow-lg border-[#40B291]" : "border-[#3F6059]"
+      className={`w-full sticky top-0 bg-white z-50 transition-all duration-300 border-b-2 ${
+        scrolled ? "shadow-lg border-[#40B291]" : "border-gray-200"
       }`}
     >
       <Container>
@@ -105,14 +105,14 @@ export const Navbar = () => {
         {/* Logo */}
         <Link href={`/${locale}`} className="flex flex-col space-y-0.5">
           <span
-            className={`font-sans font-bold text-[#D2E8E2] transition-all duration-300 ${
+            className={`font-sans font-bold text-[#434F4D] transition-all duration-300 ${
               scrolled ? "text-xl" : "text-2xl"
             }`}
           >
             Lieu Vo
           </span>
           <span
-            className={`text-white bg-[#40B291] tracking-wide font-bold transition-all duration-300 px-2 py-0.5 border-2 border-[#434F4D] shadow-[2px_2px_0px_0px_rgba(67,79,77,1)] ${
+            className={`text-white bg-[#40B291] tracking-wide font-bold transition-all duration-300 px-2 py-0.5 border-2 border-[#40B291] shadow-[2px_2px_0px_0px_rgba(64,178,145,1)] ${
               scrolled ? "text-xs hidden md:block" : "text-xs"
             }`}
           >
@@ -126,14 +126,14 @@ export const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className="text-[#D2E8E2] hover:text-[#40B291] text-sm font-medium transition-colors capitalize"
+              className="text-[#434F4D] hover:text-[#40B291] text-sm font-medium transition-colors capitalize"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href={`/${locale}/contact`}
-            className="ml-6 px-5 py-2 text-white bg-[#40B291] hover:bg-[#3AA084] text-sm font-semibold transition-colors capitalize border-2 border-[#434F4D]"
+            className="ml-6 px-5 py-2 text-white bg-[#40B291] hover:bg-[#3AA084] text-sm font-semibold transition-colors capitalize"
           >
             {t('contact') || 'Contact'}
           </Link>
@@ -144,7 +144,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('en')}
                 className={`px-2 py-1 text-xs font-semibold transition-colors ${
-                  locale === 'en' ? 'bg-[#40B291] text-white' : 'text-[#D2E8E2] hover:text-[#40B291]'
+                  locale === 'en' ? 'bg-[#40B291] text-white' : 'text-[#434F4D] hover:text-[#40B291]'
                 }`}
               >
                 EN
@@ -152,7 +152,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('vi')}
                 className={`px-2 py-1 text-xs font-semibold transition-colors ${
-                  locale === 'vi' ? 'bg-[#40B291] text-white' : 'text-[#D2E8E2] hover:text-[#40B291]'
+                  locale === 'vi' ? 'bg-[#40B291] text-white' : 'text-[#434F4D] hover:text-[#40B291]'
                 }`}
               >
                 VI
@@ -166,7 +166,7 @@ export const Navbar = () => {
           <button
             aria-label="Toggle Menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[#D2E8E2] hover:text-[#40B291] focus:outline-none"
+            className="p-2 text-[#434F4D] hover:text-[#40B291] focus:outline-none"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -188,7 +188,7 @@ export const Navbar = () => {
           </button>
 
           {mobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-[#3F6059] border-t-4 border-[#40B291] shadow-lg">
+            <div className="absolute top-full left-0 right-0 bg-white border-t-2 border-[#40B291] shadow-lg">
               <Container>
               <div className="space-y-1 py-4">
               {navigation.map((item, index) => (
@@ -196,7 +196,7 @@ export const Navbar = () => {
                   key={index}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-[#D2E8E2] hover:bg-[#434F4D] hover:text-[#40B291] transition capitalize"
+                  className="block px-4 py-3 text-[#434F4D] hover:bg-gray-50 hover:text-[#40B291] transition capitalize"
                 >
                   {item.label}
                 </Link>
@@ -204,7 +204,7 @@ export const Navbar = () => {
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block mx-4 mt-3 px-4 py-3 text-center bg-[#40B291] text-white font-semibold hover:bg-[#3AA084] transition capitalize border-2 border-[#434F4D]"
+                className="block mx-4 mt-3 px-4 py-3 text-center bg-[#40B291] text-white font-semibold hover:bg-[#3AA084] transition capitalize"
               >
                 {t('contact') || 'Contact'}
               </Link>
@@ -218,7 +218,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 px-3 py-2 text-sm font-semibold transition ${
-                      locale === 'en' ? 'bg-[#40B291] text-white' : 'bg-[#434F4D] text-[#D2E8E2] hover:bg-[#454E4D] hover:text-[#40B291]'
+                      locale === 'en' ? 'bg-[#40B291] text-white' : 'bg-gray-100 text-[#434F4D] hover:bg-gray-200 hover:text-[#40B291]'
                     }`}
                   >
                     EN
@@ -229,7 +229,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 px-3 py-2 text-sm font-semibold transition ${
-                      locale === 'vi' ? 'bg-[#40B291] text-white' : 'bg-[#434F4D] text-[#D2E8E2] hover:bg-[#454E4D] hover:text-[#40B291]'
+                      locale === 'vi' ? 'bg-[#40B291] text-white' : 'bg-gray-100 text-[#434F4D] hover:bg-gray-200 hover:text-[#40B291]'
                     }`}
                   >
                     VI
