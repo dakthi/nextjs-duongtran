@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "lieuvo-cms",
   "version": "2.0.0",
-  "description": "Nextly Landing Page Template",
+  "description": "Lieu Vo Professional Website & CMS",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -253,21 +253,21 @@ export default function AboutManager() {
     <div className="space-y-6">
       {status.type && (
         <div
-          className={`rounded-md border p-3 ${
+          className={`border-l-4 p-4 shadow-md rounded-tr-md ${
             status.type === 'success'
-              ? 'border-green-200 bg-green-50 text-green-700'
-              : 'border-red-200 bg-red-50 text-red-700'
+              ? 'border-jungle-green bg-mint-green text-outer-space'
+              : 'border-red-700 bg-red-50 text-red-800'
           }`}
         >
-          {status.message}
+          <span className="font-medium">{status.message}</span>
         </div>
       )}
 
-      <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-        <div className="mb-6 flex items-center justify-between">
+      <div className="border-l-4 border-gray-300 hover:border-jungle-green bg-white p-6 shadow-md hover:shadow-xl transition-all rounded-tr-md">
+        <div className="mb-6 flex items-center justify-between border-b-2 border-mint-green pb-4">
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">About Page Content</h2>
-            <p className="text-sm text-gray-500">Edit the storytelling sections that power the About page.</p>
+            <h2 className="text-xl font-semibold text-jungle-green">About Page Content</h2>
+            <p className="text-sm text-feldgrau">Edit the storytelling sections that power the About page.</p>
           </div>
           <label className="flex items-center gap-2 text-sm text-gray-600">
             <input

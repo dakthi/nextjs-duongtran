@@ -483,9 +483,9 @@ export default function BlogManager() {
     <div className="space-y-6">
       {status.type && (
         <div
-          className={`border-2 p-4 ${
+          className={`border-l-4 p-4 shadow-md rounded-tr-md ${
             status.type === 'success'
-              ? 'border-green-700 bg-green-50 text-green-800'
+              ? 'border-jungle-green bg-mint-green text-outer-space'
               : 'border-red-700 bg-red-50 text-red-800'
           }`}
         >
@@ -548,7 +548,7 @@ export default function BlogManager() {
             </select>
           </div>
 
-          <div className="border-2 border-outer-space bg-white shadow-md">
+          <div className="border-l-4 border-gray-300 bg-white shadow-md rounded-tr-md">
             {loading ? (
               <div className="p-4 text-sm text-feldgrau">Loading posts…</div>
             ) : filteredAndSortedPosts.length === 0 ? (
@@ -591,10 +591,10 @@ export default function BlogManager() {
         </div>
 
         <div className="lg:w-2/3">
-          <div className="border-2 border-outer-space bg-white p-6 shadow-md">
-            <div className="mb-6 flex items-center justify-between">
+          <div className="border-l-4 border-gray-300 hover:border-jungle-green bg-white p-6 shadow-md hover:shadow-xl transition-all rounded-tr-md">
+            <div className="mb-6 flex items-center justify-between border-b-2 border-mint-green pb-4">
               <div>
-                <h2 className="text-2xl font-sans font-bold text-outer-space">Blog Post Editor</h2>
+                <h2 className="text-2xl font-sans font-bold text-jungle-green">Blog Post Editor</h2>
                 {selectedId && (
                   <p className="text-xs text-feldgrau">Editing post #{selectedId.slice(0, 6)}…</p>
                 )}

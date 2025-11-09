@@ -36,10 +36,33 @@ export function BlogContent({ content, className = '' }: BlogContentProps) {
   }, [content])
 
   return (
-    <article
-      ref={contentRef}
-      className={className}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
+    <>
+      <article
+        ref={contentRef}
+        className={className}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+      <style jsx global>{`
+        .float-left {
+          float: left;
+        }
+        .float-right {
+          float: right;
+        }
+        article img {
+          display: block;
+        }
+        article img.mx-auto {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        /* Clear floats after content */
+        article::after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+      `}</style>
+    </>
   )
 }

@@ -46,7 +46,7 @@ export const Testimonials = async ({ locale }: TestimonialsProps = {}) => {
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
-            className="border-4 border-outer-space border-l-4 border-l-jungle-green bg-white p-8 shadow-[4px_4px_0px_0px_rgba(67,79,77,1)] hover:shadow-[6px_6px_0px_0px_rgba(64,178,145,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            className="border-l-4 border-gray-300 hover:border-jungle-green bg-white p-8 shadow-md hover:shadow-xl transition-all rounded-tr-md"
           >
             <div className="flex flex-col justify-between w-full h-full">
               <div className="mb-6">

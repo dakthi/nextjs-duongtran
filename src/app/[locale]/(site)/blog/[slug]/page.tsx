@@ -191,16 +191,16 @@ export default async function BlogPostPage({ params }: Params) {
       </div>
 
       {/* CTA Section */}
-      <div className="py-12 bg-mint-green">
+      <div className="py-12 bg-white">
         <Container>
-          <div className="bg-mint-green border-l-4 border-jungle-green shadow-md max-w-3xl py-8 px-6">
-            <div className="text-xs font-semibold tracking-widest uppercase mb-3 letter-spacing-wider text-feldgrau">
+          <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md max-w-3xl py-8 px-6">
+            <div className="text-xs font-semibold tracking-widest uppercase mb-3 letter-spacing-wider text-jungle-green">
               let's connect
             </div>
             <h2 className="max-w-3xl text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-outer-space">
               How can I help you?
             </h2>
-            <p className="max-w-3xl text-lg leading-relaxed text-outer-space font-medium">
+            <p className="max-w-3xl text-lg leading-relaxed text-feldgrau font-medium">
               Every blog post, every insight, and every resource shared here reflects a simple belief: thoughtful numbers make powerful changes.
               <br /><br />
               If you would like to work with someone who cares about the financial side of your business - and the people behind it - I would love to hear your story.

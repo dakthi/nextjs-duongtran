@@ -2,9 +2,11 @@
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { CustomImage } from './ImageExtension'
+import { ImageUploadWidget } from './ImageUploadWidget'
+import { ImageSizeControl } from './ImageSizeControl'
 
 interface TipTapEditorProps {
   content: any
@@ -19,6 +21,9 @@ export function TipTapEditor({
   placeholder = 'Start writing...',
   editable = true
 }: TipTapEditorProps) {
+  const [showImageUpload, setShowImageUpload] = useState(false)
+  const [showImageControl, setShowImageControl] = useState(false)
+
   // Ensure content has a valid structure, even if empty
   const initialContent = content || { type: 'doc', content: [{ type: 'paragraph' }] }
 
@@ -27,10 +32,10 @@ export function TipTapEditor({
     shouldRerenderOnTransaction: false,
     extensions: [
       StarterKit,
-      Image.configure({
-        HTMLAttributes: {
-          class: 'w-full h-auto border-4 border-outer-space shadow-lg my-8',
-        },
+      CustomImage.configure({
+        inline: false,
+        allowBase64: false,
+        HTMLAttributes: {},
       }),
       Placeholder.configure({
         placeholder,
@@ -42,6 +47,11 @@ export function TipTapEditor({
       const json = editor.getJSON()
       const html = editor.getHTML()
       onChange(json, html)
+    },
+    onSelectionUpdate: ({ editor }) => {
+      // Show image control when image is selected
+      const isImageSelected = editor.isActive('customImage')
+      setShowImageControl(isImageSelected)
     },
     editorProps: {
       attributes: {
@@ -165,6 +175,22 @@ export function TipTapEditor({
             Divider
           </button>
 
+          <div className="w-px bg-slate-300 mx-1" />
+
+          <button
+            onClick={() => setShowImageUpload(!showImageUpload)}
+            className={`px-3 py-1 text-sm font-semibold transition-colors ${
+              showImageUpload
+                ? 'bg-jungle-green text-white'
+                : 'bg-white border-2 border-outer-space text-outer-space hover:bg-slate-100'
+            }`}
+            type="button"
+          >
+            📷 Insert Image
+          </button>
+
+          <div className="w-px bg-slate-300 mx-1" />
+
           <button
             onClick={() => editor.chain().focus().undo().run()}
             disabled={!editor.can().undo()}
@@ -186,8 +212,24 @@ export function TipTapEditor({
       )}
 
       {/* Editor Content */}
-      <div className="bg-white">
+      <div className="bg-white relative">
         <EditorContent editor={editor} />
+
+        {/* Image Upload Widget */}
+        {showImageUpload && editor && (
+          <ImageUploadWidget
+            editor={editor}
+            onClose={() => setShowImageUpload(false)}
+          />
+        )}
+
+        {/* Image Size Control */}
+        {showImageControl && editor && editable && (
+          <ImageSizeControl
+            editor={editor}
+            onClose={() => setShowImageControl(false)}
+          />
+        )}
       </div>
     </div>
   )

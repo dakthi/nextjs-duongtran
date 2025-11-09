@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { Container } from '@/components/Container'
+import { PageHeader } from '@/components/PageHeader'
 import { SectionTitle } from '@/components/SectionTitle'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -267,7 +268,7 @@ export default function CVPage() {
           />
 
           <div className="mt-12 space-y-4">
-            <div className="bg-mint-green border-2 border-outer-space shadow-md p-6 flex items-start gap-4">
+            <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-6 flex items-start gap-4">
               <svg className="w-8 h-8 text-jungle-green flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -277,7 +278,7 @@ export default function CVPage() {
               </div>
             </div>
 
-            <div className="bg-mint-green border-2 border-outer-space shadow-md p-6 flex items-start gap-4">
+            <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-6 flex items-start gap-4">
               <svg className="w-8 h-8 text-jungle-green flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -291,20 +292,20 @@ export default function CVPage() {
       </div>
 
       {/* Call to Action Section */}
-      <div className="py-20 bg-mint-green">
+      <div className="py-20 bg-white">
         <Container>
-          <div className="bg-mint-green border-l-4 border-outer-space shadow-md p-8">
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-outer-space mb-4 leading-tight">
+          <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-8">
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-jungle-green mb-4 leading-tight">
               Let's Connect
             </h2>
-            <p className="text-lg text-outer-space font-medium leading-relaxed mb-4">
+            <p className="text-lg text-feldgrau font-medium leading-relaxed mb-4">
               I'm always open to meaningful conversations with professionals in the accounting and finance space.
               Whether you're exploring ways to streamline operations, enhance strategic tax guidance, or leverage automation
               to drive efficiency, I'd welcome the opportunity to connect.
             </p>
-            <p className="text-lg text-outer-space font-medium leading-relaxed mb-6">
+            <p className="text-lg text-feldgrau font-medium leading-relaxed mb-6">
               For networking, collaboration discussions, or to explore potential opportunities, please feel free to{' '}
-              <Link href={`/${locale}/contact`} className="text-jungle-green font-bold underline hover:text-jungle-green transition-colors">
+              <Link href={`/${locale}/contact`} className="text-jungle-green font-bold underline hover:text-outer-space transition-colors">
                 reach out via the contact form
               </Link>
               . I'm happy to share my full CV for those interested in learning more about my background and experience.
@@ -322,8 +323,8 @@ export default function CVPage() {
             </h2>
 
             {testSuccess ? (
-              <div className="text-center bg-white border-2 border-jungle-green shadow-lg p-8">
-                <div className="mb-6 p-6 bg-mint-green border-2 border-jungle-green">
+              <div className="text-center bg-white border-l-4 border-jungle-green shadow-md rounded-tr-md p-8">
+                <div className="mb-6 p-6 bg-mint-green border-l-4 border-jungle-green rounded-tr-md">
                   <svg className="w-16 h-16 text-jungle-green mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
@@ -378,7 +379,7 @@ export default function CVPage() {
                   </>
                 ) : (
                   <>
-                    <form onSubmit={handleSubmit} className="bg-white border-2 border-jungle-green shadow-lg p-8">
+                    <form onSubmit={handleSubmit} className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md p-8">
                       <input
                         type="text"
                         value={code}
@@ -423,8 +424,8 @@ export default function CVPage() {
                 )}
               </>
             ) : (
-              <div className="text-center bg-white border-2 border-jungle-green shadow-lg p-8">
-                <div className="mb-6 p-6 bg-mint-green border-2 border-jungle-green">
+              <div className="text-center bg-white border-l-4 border-jungle-green shadow-md rounded-tr-md p-8">
+                <div className="mb-6 p-6 bg-mint-green border-l-4 border-jungle-green rounded-tr-md">
                   <svg className="w-16 h-16 text-jungle-green mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>

@@ -278,7 +278,7 @@ export default function TestimonialsManager() {
             </button>
           </div>
 
-          <div className="border-2 border-outer-space bg-white shadow-md">
+          <div className="border-l-4 border-gray-300 bg-white shadow-md rounded-tr-md">
             {loading ? (
               <div className="p-4 text-sm text-feldgrau">Loading testimonials…</div>
             ) : testimonials.length === 0 ? (

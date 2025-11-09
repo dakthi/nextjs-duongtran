@@ -4,8 +4,8 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { generateHTML } from '@tiptap/html'
 import StarterKit from '@tiptap/starter-kit'
-import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
+import { CustomImage } from '@/components/editor/ImageExtension'
 
 // GET - Fetch about content
 export async function GET(request: NextRequest) {
@@ -46,7 +46,11 @@ export async function POST(request: NextRequest) {
     // Generate HTML from TipTap JSON
     const extensions = [
       StarterKit,
-      Image,
+      CustomImage.configure({
+        inline: false,
+        allowBase64: false,
+        HTMLAttributes: {},
+      }),
       Link,
     ]
     const contentHtml = generateHTML(contentJson, extensions)
