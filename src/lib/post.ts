@@ -15,6 +15,16 @@ import type { BlogPostRecord, BlogPostView } from '@/types/blog.types'
 
 const postsDirectory = path.join(process.cwd(), 'src/content/posts')
 
+// Calculate reading time based on word count (average reading speed: 200 words per minute)
+function calculateReadingTime(htmlContent: string): number {
+  // Strip HTML tags to get plain text
+  const plainText = htmlContent.replace(/<[^>]*>/g, ' ')
+  // Count words (split by whitespace and filter out empty strings)
+  const wordCount = plainText.trim().split(/\s+/).filter(word => word.length > 0).length
+  // Calculate reading time in minutes (round up)
+  return Math.max(1, Math.ceil(wordCount / 200))
+}
+
 export interface PostSummary {
   slug: string
   title: string
@@ -59,7 +69,7 @@ const mapViewToPost = (view: BlogPostView): Post => ({
   imageZoom: view.imageZoom,
   imageFit: view.imageFit,
   date: view.publishedDate,
-  readingTime: view.readingTime,
+  readingTime: calculateReadingTime(view.contentHtml),
   category: view.category,
   quote: view.quote,
   content: view.contentHtml,
@@ -86,7 +96,7 @@ const mapViewToPost = (view: BlogPostView): Post => ({
     : undefined,
 })
 
-const mapRecordToSummary = (record: BlogPostRecord): PostSummary => ({
+const mapRecordToSummary = (record: BlogPostRecord & { contentHtml: string }): PostSummary => ({
   slug: record.slug,
   title: record.title,
   excerpt: record.excerpt,
@@ -95,7 +105,7 @@ const mapRecordToSummary = (record: BlogPostRecord): PostSummary => ({
   imageZoom: record.imageZoom,
   imageFit: record.imageFit,
   date: record.publishedDate,
-  readingTime: record.readingTime,
+  readingTime: calculateReadingTime(record.contentHtml),
   category: record.category,
   quote: record.quote,
 })
@@ -179,7 +189,17 @@ export async function getPostSummaries(locale?: string): Promise<PostSummary[]> 
   }
 
   if (filteredPosts.length > 0) {
-    return filteredPosts.map((post) => mapRecordToSummary(post))
+    // Render posts to get HTML content for reading time calculation
+    const renderedPosts = await Promise.all(
+      filteredPosts.map(async (post) => {
+        const view = await renderBlogPost(post)
+        return {
+          ...post,
+          contentHtml: view.contentHtml
+        }
+      })
+    )
+    return renderedPosts.map((post) => mapRecordToSummary(post))
   }
 
   const localSlugs = getLocalPostSlugs()
@@ -190,7 +210,7 @@ export async function getPostSummaries(locale?: string): Promise<PostSummary[]> 
     excerpt: post!.excerpt,
     image: post!.image,
     date: post!.date,
-    readingTime: post!.readingTime != null ? Number(post!.readingTime) || null : null,
+    readingTime: calculateReadingTime(post!.content),
     category: post!.category,
     quote: post!.quote,
   }))

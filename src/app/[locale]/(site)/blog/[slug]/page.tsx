@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: Params) {
               {post.date && (
                 <>
                   <span className="text-slate-300">|</span>
-                  <span className="whitespace-nowrap">{new Date(post.date).getFullYear()}</span>
+                  <span className="whitespace-nowrap">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                 </>
               )}
               {post.readingTime != null && (

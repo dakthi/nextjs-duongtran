@@ -114,11 +114,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     "{featuredPost.quote}"
                   </p>
                 )}
-                {featuredPost.readingTime != null && (
-                  <p className="text-sm text-slate-600">
-                    {featuredPost.readingTime} {blogTranslations.minRead}
-                  </p>
-                )}
+                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+                  {featuredPost.date && (
+                    <span className="whitespace-nowrap">{new Date(featuredPost.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                  )}
+                  {featuredPost.date && featuredPost.readingTime != null && (
+                    <span className="text-slate-300">|</span>
+                  )}
+                  {featuredPost.readingTime != null && (
+                    <span className="whitespace-nowrap">{featuredPost.readingTime} {blogTranslations.minRead}</span>
+                  )}
+                </div>
               </div>
             </div>
           </a>
@@ -165,11 +171,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug group-hover:text-amber-600 transition-colors">
                       {post.title}
                     </h3>
-                    {post.readingTime != null && (
-                      <p className="mt-auto text-xs text-slate-600">
-                        {post.readingTime} {blogTranslations.minRead}
-                      </p>
-                    )}
+                    <div className="mt-auto flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                      {post.date && (
+                        <span className="whitespace-nowrap">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                      )}
+                      {post.date && post.readingTime != null && (
+                        <span className="text-slate-300">|</span>
+                      )}
+                      {post.readingTime != null && (
+                        <span className="whitespace-nowrap">{post.readingTime} {blogTranslations.minRead}</span>
+                      )}
+                    </div>
                   </div>
                 </a>
               ))}
@@ -220,11 +232,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
                         "{post.quote}"
                       </p>
                     )}
-                    {post.readingTime != null && (
-                      <p className="mt-auto text-xs text-slate-600">
-                        {post.readingTime} {blogTranslations.minRead}
-                      </p>
-                    )}
+                    <div className="mt-auto flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                      {post.date && (
+                        <span className="whitespace-nowrap">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                      )}
+                      {post.date && post.readingTime != null && (
+                        <span className="text-slate-300">|</span>
+                      )}
+                      {post.readingTime != null && (
+                        <span className="whitespace-nowrap">{post.readingTime} {blogTranslations.minRead}</span>
+                      )}
+                    </div>
                   </div>
                 </a>
               ))}
