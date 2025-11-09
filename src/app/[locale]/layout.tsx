@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "../globals.css";
 
@@ -13,6 +13,16 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = genMeta({});
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' },
+  ],
+};
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'vi' }];

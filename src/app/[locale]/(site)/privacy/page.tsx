@@ -1,4 +1,21 @@
 import { PageHeader } from '@/components/PageHeader'
+import { generateMetadata as genMeta } from "@/lib/seo";
+import type { Metadata } from "next";
+
+interface PrivacyPageProps {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
+  const { locale } = params;
+  return genMeta({
+    title: "Privacy Policy",
+    description: "Privacy policy for lieuvo.com. Learn how we collect, use, and protect your personal information when you visit our website.",
+    locale,
+    path: '/privacy',
+    noIndex: true,
+  });
+}
 
 export default function PrivacyPolicy() {
   return (

@@ -115,9 +115,8 @@ export const organizationSchema = {
   name: siteConfig.name,
   description: siteConfig.description,
   url: siteConfig.url,
-  logo: `${siteConfig.url}/logo.png`,
+  logo: `${siteConfig.url}/img/lieu-barbican.jpg`,
   image: `${siteConfig.url}${siteConfig.ogImage}`,
-  telephone: '+44-XXX-XXX-XXXX', // Add actual phone number
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'London',
@@ -174,4 +173,84 @@ export const personSchema = {
     name: 'BPP University',
     degree: 'MSc in Accounting and Finance',
   },
+}
+
+// Function to generate BlogPosting schema
+export function generateBlogPostingSchema({
+  title,
+  description,
+  url,
+  image,
+  datePublished,
+  dateModified,
+  author = 'Lieu Vo',
+  category,
+}: {
+  title: string
+  description: string
+  url: string
+  image?: string
+  datePublished: string
+  dateModified?: string
+  author?: string
+  category?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    image: image || `${siteConfig.url}${siteConfig.ogImage}`,
+    datePublished: datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: siteConfig.url,
+      jobTitle: 'Chartered Accountant (ACCA)',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/img/lieu-barbican.jpg`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+    articleSection: category,
+  }
+}
+
+// Function to generate FAQPage schema
+export function generateFAQPageSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  }
+}
+
+// Function to generate BreadcrumbList schema
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  }
 }

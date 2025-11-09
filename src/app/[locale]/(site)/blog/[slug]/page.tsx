@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
 import { isMediaRemoteUrl } from '@/lib/media/media-client'
+import { generateMetadata as genMeta, generateBlogPostingSchema, generateBreadcrumbSchema, siteConfig } from '@/lib/seo'
+import type { Metadata } from 'next'
 
 type Params = {
   params: { slug: string; locale: string };
@@ -16,6 +18,35 @@ export async function generateStaticParams(): Promise<{ slug: string; locale: st
   ])
 }
 
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  let post
+  try {
+    post = await getPostBySlug(params.slug, params.locale)
+  } catch (error) {
+    return genMeta({
+      title: 'Post Not Found',
+      locale: params.locale,
+      noIndex: true,
+    })
+  }
+
+  if (!post) {
+    return genMeta({
+      title: 'Post Not Found',
+      locale: params.locale,
+      noIndex: true,
+    })
+  }
+
+  return genMeta({
+    title: post.title,
+    description: post.excerpt || post.title,
+    image: post.image || undefined,
+    locale: params.locale,
+    path: `/blog/${params.slug}`,
+  })
+}
+
 export default async function BlogPostPage({ params }: Params) {
   let post
   try {
@@ -26,8 +57,38 @@ export default async function BlogPostPage({ params }: Params) {
 
   if (!post) return notFound()
 
+  // Generate structured data
+  const blogPostingSchema = generateBlogPostingSchema({
+    title: post.title,
+    description: post.excerpt || post.title,
+    url: `${siteConfig.url}/${params.locale}/blog/${params.slug}`,
+    image: post.image || undefined,
+    datePublished: post.date || new Date().toISOString(),
+    dateModified: post.date || new Date().toISOString(),
+    author: post.expert?.name || 'Lieu Vo',
+    category: post.category || undefined,
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: `${siteConfig.url}/${params.locale}` },
+    { name: 'Blog', url: `${siteConfig.url}/${params.locale}/blog` },
+    { name: post.title, url: `${siteConfig.url}/${params.locale}/blog/${params.slug}` },
+  ])
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostingSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       {/* Header Section */}
       <div className="py-8 bg-white border-b-2 border-jungle-green">
         <Container>

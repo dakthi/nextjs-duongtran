@@ -5,11 +5,29 @@ import { Benefits } from "@/components/Benefits";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { benefitOne, benefitTwo } from "@/components/data";
+import { generateMetadata as genMeta } from "@/lib/seo";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 
 interface HomeProps {
   params: { locale: string };
+}
+
+export async function generateMetadata({ params }: HomeProps): Promise<Metadata> {
+  const { locale } = params;
+
+  const descriptions = {
+    en: "Expert chartered accountant helping SMEs and independent professionals with accounting, tax, payroll, and VAT services in London, UK. ACCA qualified with personalized support.",
+    vi: "Kế toán chuyên nghiệp giúp doanh nghiệp nhỏ và chuyên gia độc lập với dịch vụ kế toán, thuế, lương và VAT tại London, UK. Được ACCA công nhận."
+  };
+
+  return genMeta({
+    title: locale === 'vi' ? 'Trang chủ' : 'Home',
+    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    locale,
+    path: '',
+  });
 }
 
 const homeTranslations = {

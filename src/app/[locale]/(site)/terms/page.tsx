@@ -1,4 +1,21 @@
 import { PageHeader } from '@/components/PageHeader'
+import { generateMetadata as genMeta } from "@/lib/seo";
+import type { Metadata } from "next";
+
+interface TermsPageProps {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: TermsPageProps): Promise<Metadata> {
+  const { locale } = params;
+  return genMeta({
+    title: "Terms of Service",
+    description: "Terms of service for accounting, tax, and payroll services provided by Lieu Vo. Review our professional service agreements and policies.",
+    locale,
+    path: '/terms',
+    noIndex: true,
+  });
+}
 
 export default function TermsOfService() {
   return (
