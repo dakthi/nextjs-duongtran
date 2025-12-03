@@ -227,21 +227,44 @@ export class BlogService {
       isPublished: input.isPublished ?? true,
     }
 
-    const post = input.id
-      ? await prisma.blogPost.update({
-          where: { id: input.id },
-          data,
-        })
-      : await prisma.blogPost.upsert({
-          where: {
-            locale_slug: {
-              locale: input.locale,
-              slug: input.slug.trim()
-            }
-          },
-          update: data,
-          create: data,
-        })
+    let post: PrismaBlogPost
+
+    if (input.id) {
+      // When updating an existing post, we need to check if the new slug conflicts with another post
+      const existingPostWithSlug = await prisma.blogPost.findFirst({
+        where: {
+          locale: input.locale,
+          slug: input.slug.trim(),
+          id: { not: input.id } // Exclude current post
+        }
+      })
+
+      if (existingPostWithSlug) {
+        const error = new Error('Validation failed') as Error & { validationErrors?: BlogValidationErrors }
+        error.validationErrors = { slug: 'A post with this slug already exists in this locale' }
+        throw error
+      }
+
+      // Update existing post by ID
+      console.log('[blog-service] Updating post:', input.id, 'with slug:', input.slug.trim())
+      post = await prisma.blogPost.update({
+        where: { id: input.id },
+        data,
+      })
+      console.log('[blog-service] Updated post slug:', post.slug)
+    } else {
+      // Create new post or update if locale+slug combo exists
+      post = await prisma.blogPost.upsert({
+        where: {
+          locale_slug: {
+            locale: input.locale,
+            slug: input.slug.trim()
+          }
+        },
+        update: data,
+        create: data,
+      })
+    }
 
     this.clearCache()
 

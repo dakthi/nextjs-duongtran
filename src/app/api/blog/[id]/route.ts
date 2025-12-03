@@ -94,8 +94,12 @@ export async function PUT(
   }
 
   try {
-    const payload = parseBlogInput(await request.json())
+    const rawPayload = await request.json()
+    console.log('[api/blog/[id]] PUT - received slug:', rawPayload.slug)
+    const payload = parseBlogInput(rawPayload)
+    console.log('[api/blog/[id]] PUT - parsed slug:', payload.slug)
     const post = await upsertBlogPost({ ...payload, id: params.id })
+    console.log('[api/blog/[id]] PUT - returned post slug:', post.slug)
     return NextResponse.json({ success: true, data: post })
   } catch (error) {
     console.error('[api/blog/[id]] Failed to update post', error)
