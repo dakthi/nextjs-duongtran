@@ -7,6 +7,9 @@ import { generateMetadata as genMeta, generateBlogPostingSchema, generateBreadcr
 import { BlogContent } from '@/components/blog/BlogContent'
 import type { Metadata } from 'next'
 
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = 'force-dynamic'
+
 type Params = {
   params: { slug: string; locale: string };
 };
