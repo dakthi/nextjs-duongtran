@@ -592,6 +592,47 @@ export default function BlogManager() {
 
         <div className="lg:w-2/3">
           <div className="border-l-4 border-gray-300 hover:border-jungle-green bg-white p-6 shadow-md hover:shadow-xl transition-all rounded-tr-md">
+            <div className="mb-6 flex flex-wrap gap-3 pb-4 border-b-2 border-mint-green">
+              <button
+                type="button"
+                onClick={handleSave}
+                disabled={saving || !hasChanges}
+                className="bg-jungle-green hover:bg-green-700 text-white px-8 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {saving ? 'Saving…' : 'Save Changes'}
+              </button>
+              <button
+                type="button"
+                onClick={resetForm}
+                disabled={!hasChanges}
+                className="bg-mint-green hover:bg-slate-300 text-outer-space px-6 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Reset
+              </button>
+              {selectedId && formState.slug && (
+                <a
+                  href={`/${formState.locale}/blog/${formState.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 font-semibold transition-colors inline-flex items-center gap-2"
+                >
+                  View Post
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+              {selectedId && (
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  className="bg-red-700 hover:bg-red-600 text-white px-6 py-3 font-semibold transition-colors"
+                >
+                  Delete
+                </button>
+              )}
+            </div>
+
             <div className="mb-6 flex items-center justify-between border-b-2 border-mint-green pb-4">
               <div>
                 <h2 className="text-2xl font-sans font-bold text-jungle-green">Blog Post Editor</h2>
@@ -812,34 +853,6 @@ export default function BlogManager() {
                     showAspectRatioSelector={true}
                   />
                 </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3 pt-6 border-t-2 border-mint-green">
-                <button
-                  type="button"
-                  onClick={handleSave}
-                  disabled={saving || !hasChanges}
-                  className="bg-mint-green0 hover:bg-jungle-green text-outer-space px-8 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {saving ? 'Saving…' : 'Save Changes'}
-                </button>
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  disabled={!hasChanges}
-                  className="bg-mint-green hover:bg-slate-300 text-outer-space px-6 py-3 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Reset
-                </button>
-                {selectedId && (
-                  <button
-                    type="button"
-                    onClick={handleDelete}
-                    className="bg-red-700 hover:bg-red-600 text-white px-6 py-3 font-semibold transition-colors"
-                  >
-                    Delete
-                  </button>
-                )}
               </div>
             </div>
           </div>
