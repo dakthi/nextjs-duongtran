@@ -3,7 +3,7 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { CustomImage } from './ImageExtension'
 import { ImageUploadWidget } from './ImageUploadWidget'
 import { ImageSizeControl } from './ImageSizeControl'
@@ -23,6 +23,7 @@ export function TipTapEditor({
 }: TipTapEditorProps) {
   const [showImageUpload, setShowImageUpload] = useState(false)
   const [showImageControl, setShowImageControl] = useState(false)
+  const isUpdatingRef = useRef(false)
 
   // Ensure content has a valid structure, even if empty
   const initialContent = content || { type: 'doc', content: [{ type: 'paragraph' }] }
@@ -44,6 +45,10 @@ export function TipTapEditor({
     content: initialContent,
     editable,
     onUpdate: ({ editor }) => {
+      // Prevent triggering onChange during external content updates
+      if (isUpdatingRef.current) {
+        return
+      }
       const json = editor.getJSON()
       const html = editor.getHTML()
       onChange(json, html)
@@ -61,8 +66,22 @@ export function TipTapEditor({
   })
 
   useEffect(() => {
-    if (editor && content && JSON.stringify(editor.getJSON()) !== JSON.stringify(content)) {
-      editor.commands.setContent(content)
+    if (editor && content) {
+      const currentContent = editor.getJSON()
+      const newContent = content
+
+      // More reliable comparison that handles nested objects
+      const isDifferent = JSON.stringify(currentContent) !== JSON.stringify(newContent)
+
+      if (isDifferent) {
+        // Set flag to prevent onChange from firing during external update
+        isUpdatingRef.current = true
+        editor.commands.setContent(newContent)
+        // Reset flag after a brief delay to allow the update to complete
+        setTimeout(() => {
+          isUpdatingRef.current = false
+        }, 0)
+      }
     }
   }, [content, editor])
 
