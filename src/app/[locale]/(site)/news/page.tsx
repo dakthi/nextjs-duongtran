@@ -56,39 +56,6 @@ export default function RSSFeedsPage() {
 
         {/* RSS Feed Grid */}
         <RSSFeedGrid source={selectedCategory} />
-
-        {/* Info Box */}
-        <div className="mt-12 bg-mint-green border-l-4 border-jungle-green p-4 sm:p-6 md:p-8">
-          <h3 className="text-xl sm:text-2xl font-sans font-bold text-outer-space mb-4">
-            About These Feeds
-          </h3>
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-outer-space mb-3">Sources Include:</h4>
-              <ul className="space-y-2 text-sm sm:text-base text-feldgrau leading-relaxed">
-                <li>• <strong>GOV.UK - HMRC</strong>: Official tax guidance and policy updates</li>
-                <li>• <strong>Bank of England</strong>: Monetary policy and regulatory news</li>
-                <li>• <strong>Financial Times</strong>: Global financial markets and business news</li>
-                <li>• <strong>ICAEW</strong>: Professional accounting standards and updates</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-outer-space mb-3">Additional Resources:</h4>
-              <ul className="space-y-2 text-sm sm:text-base text-feldgrau leading-relaxed">
-                <li>• <strong>AccountingWEB</strong>: UK accounting news and resources</li>
-                <li>• <strong>Tax Journal</strong>: In-depth tax analysis and commentary</li>
-                <li>• <strong>FreeAgent</strong>: Tips for small businesses and freelancers</li>
-                <li>• <strong>Pearl Accountants</strong>: Contractor and SME insights</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-6 pt-6 border-t border-jungle-green">
-            <p className="text-xs sm:text-sm text-feldgrau">
-              <strong>Note:</strong> This is a demonstration RSS feed reader displaying sample content.
-              In production, these feeds would pull live data from the respective sources.
-            </p>
-          </div>
-        </div>
       </Container>
     </>
   )
