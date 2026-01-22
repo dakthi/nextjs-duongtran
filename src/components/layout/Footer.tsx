@@ -9,61 +9,59 @@ export function Footer() {
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'en';
 
-  // Simple translation object - no hooks needed
+  // Translations
   const translations: any = {
     en: {
-      tagline: "Life Coach & Student Mentor",
+      tagline: "Life coach & student mentor",
       description: "Helping students and young professionals unlock their potential and achieve their dreams.",
       location: "Based in Vietnam.",
       stayConnected: "Stay connected",
       links: {
         about: "About",
         services: "Services",
-        testimonials: "Testimonials",
-        faq: "FAQ",
-        terms: "Terms of Service",
-        privacy: "Privacy Policy",
-        forEmployers: "For Employers"
+        contact: "Contact",
+        terms: "Terms of service",
+        privacy: "Privacy policy",
+        faq: "FAQ"
       },
       social: {
         facebook: "Facebook",
         linkedin: "LinkedIn"
       }
     },
-    // vi: {
-    //   tagline: "Kế Toán Hỗ Trợ Tận Tâm",
-    //   description: "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
-    //   location: "Có trụ sở tại London, Anh.",
-    //   stayConnected: "Kết nối với chúng tôi",
-    //   links: {
-    //     about: "Giới thiệu",
-    //     services: "Dịch vụ",
-    //     testimonials: "Nhận xét",
-    //     faq: "Hỏi đáp",
-    //     terms: "Điều khoản dịch vụ",
-    //     privacy: "Chính sách bảo mật",
-    //     forEmployers: "Dành cho Nhà Tuyển Dụng"
-    //   },
-    //   social: {
-    //     facebook: "Facebook",
-    //     linkedin: "LinkedIn"
-    //   }
-    // }
+    vi: {
+      tagline: "Life coach & mentor sinh viên",
+      description: "Giúp sinh viên và người trẻ khai phá tiềm năng và đạt được ước mơ.",
+      location: "Tại Việt Nam.",
+      stayConnected: "Kết nối",
+      links: {
+        about: "Giới thiệu",
+        services: "Dịch vụ",
+        contact: "Liên hệ",
+        terms: "Điều khoản",
+        privacy: "Bảo mật",
+        faq: "Hỏi đáp"
+      },
+      social: {
+        facebook: "Facebook",
+        linkedin: "LinkedIn"
+      }
+    }
   };
 
-  // Always use English for footer
-  const t = translations.en;
+  const t = translations[locale] || translations.en;
 
   const navigation = [
     { label: t.links.about, href: `/${locale}/about` },
     { label: t.links.services, href: `/${locale}/services` },
     { label: 'Blog', href: `/${locale}/blog` },
+    { label: t.links.contact, href: `/${locale}/contact` },
   ];
 
   const legal = [
     { label: t.links.terms, href: `/${locale}/terms` },
     { label: t.links.privacy, href: `/${locale}/privacy` },
-    { label: t.links.forEmployers, href: `/${locale}/cv` },
+    { label: t.links.faq, href: `/${locale}/faq` },
   ];
 
   return (
