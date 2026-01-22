@@ -6,20 +6,24 @@ import { ServiceContactForm } from "@/components/ServiceContactForm";
 
 const services = [
   {
-    title: "Bookkeeping & Financial Records",
-    description: "Clean, accurate bookkeeping that gives you a clear view of your business. From monthly reconciliation to year-end preparation, I ensure your records are always audit-ready and easy to understand."
+    title: "University application mentoring",
+    description: "Navigate the complex university application process with confidence. From selecting the right schools to crafting compelling personal statements, I guide you through every step to help you stand out."
   },
   {
-    title: "Tax Planning & Compliance",
-    description: "Navigate tax season with confidence. I help you understand your obligations, identify opportunities for tax efficiency, and ensure timely, accurate submissions to HMRC."
+    title: "Scholarship & financial aid consulting",
+    description: "Discover scholarship opportunities you didn't know existed. I help you identify the best fits, prepare standout applications, and coach you through interviews to maximize your chances of success."
   },
   {
-    title: "Business Structure & Strategy",
-    description: "Choosing the right structure matters. Whether you're starting as a sole trader or incorporating a limited company, I'll guide you through the implications and help you make informed decisions."
+    title: "Study abroad preparation",
+    description: "Dreaming of studying overseas? I'll help you prepare academically and emotionally for international education, from choosing destinations to understanding what to expect when you arrive."
   },
   {
-    title: "Workflow Automation & Systems",
-    description: "Save time with smarter systems. I create custom automation using Python and APIs to streamline repetitive tasks, giving you more time to focus on growing your business."
+    title: "Career guidance for young professionals",
+    description: "Feeling uncertain about your career path? Together we'll explore your interests, skills, and opportunities to create a roadmap that aligns with who you are and where you want to go."
+  },
+  {
+    title: "Personal development coaching",
+    description: "Build the soft skills, confidence, and mindset that will serve you throughout life. We work on communication, goal-setting, time management, and developing genuine self-belief."
   }
 ];
 
@@ -31,28 +35,26 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
   return (
     <>
       <PageHeader
-        eyebrow="What I Offer"
-        title="Services"
-        description="I offer practical, hands-on support to small business owners and founders who want clarity, not confusion. Whether it's managing your books, planning for tax, or automating workflows, I'm here to help you move forward with confidence."
+        eyebrow="What I offer"
+        title="Mentoring services"
+        description="I work with students and young professionals who want clarity, not confusion. Whether you're preparing for university, seeking scholarships, or figuring out your career path, I'm here to guide you forward."
       />
 
-      {/* Services - Horizontal Cards */}
+      {/* Services - Cards */}
       <div className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-8 xl:px-12">
-          <div className="space-y-8">
+          <div className="space-y-6">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-outer-space shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(245,158,11,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="bg-white rounded-xl shadow-soft hover:shadow-lg transition-all p-8 border-l-4 border-warm-gold"
               >
-                <div className="p-8 border-l-4 border-jungle-green">
-                  <h2 className="text-2xl font-sans font-bold text-outer-space mb-4 leading-tight">
-                    {service.title}
-                  </h2>
-                  <p className="text-base text-feldgrau leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
+                <h2 className="text-xl font-serif font-bold text-outer-space mb-3 leading-tight">
+                  {service.title}
+                </h2>
+                <p className="text-base text-feldgrau leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>
@@ -60,37 +62,31 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
       </div>
 
       {/* Additional Content Section */}
-      <div className="py-20 bg-mint-green">
-        <div className="max-w-5xl mx-auto px-8 xl:px-12">
-          <div className="prose prose-slate prose-lg max-w-none
-            prose-headings:font-sans prose-headings:font-bold prose-headings:text-outer-space prose-headings:leading-tight
-            prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mb-8
-            prose-p:text-lg prose-p:font-medium prose-p:text-outer-space prose-p:leading-relaxed prose-p:mb-6">
-
-            <h2>How I Work</h2>
-
-            <p>
-              I believe in doing things properly, but without unnecessary complexity. You'll get clear communication, timely responses, and work that's done right the first time.
-            </p>
-
-            <p>
-              Every business is different, so I take time to understand your specific situation before recommending solutions. Whether you need ongoing support or help with a one-off project, I'm flexible and straightforward.
-            </p>
-          </div>
+      <div className="py-20 bg-warm-cream">
+        <div className="max-w-3xl mx-auto px-8 xl:px-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-outer-space mb-8">
+            How I work
+          </h2>
+          <p className="text-lg text-feldgrau leading-relaxed mb-6">
+            Every student is different, and I believe mentoring should be too. I take time to understand your unique situation, goals, and challenges before creating a personalized plan.
+          </p>
+          <p className="text-lg text-feldgrau leading-relaxed">
+            My approach is practical and conversational. No lectures, no pressure — just honest guidance from someone who genuinely cares about your success. Whether you need intensive support or occasional check-ins, I'm flexible and always in your corner.
+          </p>
         </div>
       </div>
 
       {/* Testimonials Section */}
-      <div className="py-20 bg-feldgrau">
+      <div className="py-20 bg-jungle-green">
         <Container className="text-center">
-          <div className="text-xs font-semibold tracking-widest mb-3 text-jungle-green">
+          <p className="text-sm font-medium tracking-widest mb-4 text-warm-gold uppercase">
             Testimonials
-          </div>
-          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-white">
-            What Clients Say
+          </p>
+          <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
+            Success stories
           </h2>
-          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-mint-green font-medium mb-12">
-            Hear from businesses and founders who have worked with Duong.
+          <p className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-200 mb-12">
+            Hear from students and families who have worked with Duong.
           </p>
         </Container>
 

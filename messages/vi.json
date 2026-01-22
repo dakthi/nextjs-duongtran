@@ -13,23 +13,23 @@
   },
   "home": {
     "preTitle": "Duong Tran",
-    "title": "Ở đây để làm cho con số của bạn trở nên nhân văn",
-    "description": "Tôi là một kế toán viên quan tâm — không chỉ về doanh nghiệp của bạn, mà còn về gia đình, thời gian và sự yên tâm của bạn. Tôi giúp đơn giản hóa con số, đơn giản hóa quy trình và trả lại cho bạn không gian để tập trung vào những gì quan trọng nhất. Kế toán tốt không chỉ về độ chính xác — mà còn về niềm tin, sự quan tâm và xây dựng cuộc sống tốt hơn ngoài bảng tính.",
-    "hearFromDuongPreTitle": "nghe từ lieu",
-    "hearFromDuongTitle": "hỗ trợ con người, hỗ trợ doanh nghiệp",
-    "hearFromDuongDescription": "Duong tin rằng kế toán không chỉ là về con số. Đó là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên làm việc cho chúng ta, giúp doanh nghiệp và gia đình phát triển.",
-    "testimonialsPreTitle": "nhận xét",
-    "testimonialsTitle": "khách hàng và đồng nghiệp nói gì",
-    "testimonialsDescription": "Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của mỗi khách hàng. Đó là điều làm cho việc làm việc với Duong đáng nhớ.",
-    "faqPreTitle": "hỏi đáp",
-    "faqTitle": "câu hỏi thường gặp",
-    "faqDescription": "Nếu những câu trả lời này khơi gợi thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện. Duong luôn sẵn sàng giúp đỡ."
+    "title": "Hành trình thành công bắt đầu từ đây",
+    "description": "Dù bạn là sinh viên mơ ước du học, đang chuẩn bị hồ sơ đại học, hay là người trẻ đang tìm kiếm hướng đi — tôi sẵn sàng đồng hành cùng bạn. Với nhiều năm kinh nghiệm hướng dẫn sinh viên đạt được ước mơ, tôi tin rằng ai cũng có tiềm năng để thành công. Hãy để tôi giúp bạn khám phá tiềm năng của chính mình.",
+    "hearFromDuongPreTitle": "Phương pháp",
+    "hearFromDuongTitle": "Khai phá tiềm năng của bạn",
+    "hearFromDuongDescription": "Tôi tin vào hướng dẫn thực tế, không chỉ động viên suông. Qua mentoring cá nhân hóa, tôi giúp bạn xây dựng kỹ năng thực sự, viết hồ sơ ấn tượng và phát triển sự tự tin để theo đuổi ước mơ.",
+    "testimonialsPreTitle": "Nhận xét",
+    "testimonialsTitle": "Câu chuyện thành công",
+    "testimonialsDescription": "Lắng nghe từ các bạn sinh viên và người trẻ đã thay đổi tương lai của họ với sự hướng dẫn và hỗ trợ phù hợp.",
+    "faqPreTitle": "Hỏi đáp",
+    "faqTitle": "Câu hỏi thường gặp",
+    "faqDescription": "Có câu hỏi về mentoring, hồ sơ đại học, hay hướng nghiệp? Tìm câu trả lời ở đây hoặc liên hệ trực tiếp."
   },
   "footer": {
-    "tagline": "kế toán hỗ trợ tận tâm",
-    "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp.",
-    "location": "Có trụ sở tại London, Anh.",
-    "stayConnected": "Kết nối với chúng tôi",
+    "tagline": "Life coach & mentor sinh viên",
+    "description": "Giúp sinh viên và người trẻ khai phá tiềm năng và đạt được ước mơ.",
+    "location": "Tại Việt Nam.",
+    "stayConnected": "Kết nối",
     "copyright": "Bản quyền © {year}. Được tạo bởi",
     "links": {
       "about": "Giới thiệu",
@@ -49,7 +49,7 @@
   },
   "contact": {
     "title": "Liên hệ",
-    "description": "Liên hệ với Duong để được hỗ trợ kế toán cá nhân hóa.",
+    "description": "Sẵn sàng bắt đầu hành trình? Liên hệ để được mentoring và hướng dẫn cá nhân hóa.",
     "form": {
       "name": "Tên",
       "email": "Email",
@@ -61,10 +61,10 @@
     }
   },
   "blog": {
-    "eyebrow": "Suy nghĩ & Chia sẻ",
+    "eyebrow": "Chia sẻ & cảm hứng",
     "title": "Blog",
-    "description": "Trong quá trình làm nghề, được biết rất nhiều câu chuyện, trường hợp của các anh chị khác nhau, Liệu muốn chia sẻ lại để Anh Chị nào thấy mình trong tình huống tương tự hoặc thấy gì đó có ích thì Liệu cũng vui vì giúp được thêm một người.",
-    "emptyDescription": "Bài viết mới sắp ra mắt. Hãy đón chờ những chia sẻ và suy nghĩ mới.",
+    "description": "Câu chuyện, mẹo hay và chia sẻ giúp bạn trên hành trình thành công. Từ lời khuyên học tập đến hướng nghiệp, tìm cảm hứng cho bước tiếp theo.",
+    "emptyDescription": "Bài viết mới sắp ra mắt. Hãy đón chờ những chia sẻ và cảm hứng mới.",
     "featuredArticle": "Bài viết nổi bật",
     "category": "Bài viết",
     "minRead": "phút đọc",
@@ -80,24 +80,24 @@
     "newReads": "Đọc mới"
   },
   "metadata": {
-    "title": "Duong Tran",
-    "description": "Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp."
+    "title": "Duong Tran - Life coach & mentor sinh viên",
+    "description": "Hỗ trợ sinh viên và người trẻ đạt được ước mơ qua mentoring và hướng dẫn cá nhân hóa."
   },
   "admin": {
-    "title": "Quản Trị DuongTran",
+    "title": "Quản trị DuongTran",
     "navigation": {
-      "dashboard": "Bảng Điều Khiển",
-      "hero": "Trang Chủ",
+      "dashboard": "Bảng điều khiển",
+      "hero": "Trang chủ",
       "blog": "Blog",
-      "about": "Giới Thiệu",
-      "testimonials": "Nhận Xét",
-      "media": "Phương Tiện",
-      "faq": "Hỏi Đáp"
+      "about": "Giới thiệu",
+      "testimonials": "Nhận xét",
+      "media": "Phương tiện",
+      "faq": "Hỏi đáp"
     },
     "actions": {
-      "signOut": "Đăng Xuất",
-      "closeSidebar": "Đóng Menu",
-      "openMenu": "Mở Menu"
+      "signOut": "Đăng xuất",
+      "closeSidebar": "Đóng menu",
+      "openMenu": "Mở menu"
     }
   }
 }

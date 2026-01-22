@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
   const { locale } = params;
 
   const descriptions = {
-    en: "Expert chartered accountant helping SMEs and independent professionals with accounting, tax, payroll, and VAT services in London, UK. ACCA qualified with personalized support.",
-    vi: "Kế toán chuyên nghiệp giúp doanh nghiệp nhỏ và chuyên gia độc lập với dịch vụ kế toán, thuế, lương và VAT tại London, UK. Được ACCA công nhận."
+    en: "Life Coach & Student Mentor helping young people achieve their dreams through university guidance, scholarship consulting, and personal development coaching.",
+    vi: "Life Coach & Mentor Sinh Viên giúp bạn trẻ đạt được ước mơ qua hướng dẫn đại học, tư vấn học bổng và coaching phát triển bản thân."
   };
 
   return genMeta({
@@ -33,31 +33,31 @@ export async function generateMetadata({ params }: HomeProps): Promise<Metadata>
 const homeTranslations = {
   en: {
     preTitle: "Duong Tran",
-    title: "It's okay not to know where to start",
-    description: "If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because you don't want to bother them, and cross your fingers that they do things right, blindly. That's the usual way things go, but it doesn't have to be.",
-    hearFromDuongPreTitle: "Having said all that",
-    hearFromDuongTitle: "Let me help you",
-    hearFromDuongDescription: "Spend hours perfecting your recipe, not going through invoices or fighting with tax returns. I've got that covered.",
+    title: "Your Journey to Success Starts Here",
+    description: "Whether you're a student dreaming of studying abroad, preparing for university applications, or a young professional seeking direction — I'm here to guide you. With years of experience mentoring students and helping them achieve their dreams, I believe everyone has the potential to succeed. Let me help you unlock yours.",
+    hearFromDuongPreTitle: "My Approach",
+    hearFromDuongTitle: "Empowering Your Potential",
+    hearFromDuongDescription: "I believe in practical guidance, not just motivation. Through personalized mentoring, I help you build real skills, craft compelling applications, and develop the confidence to pursue your dreams.",
     testimonialsPreTitle: "Testimonials",
-    testimonialsTitle: "What my clients and colleagues say about me",
-    testimonialsDescription: "Strong work ethics with exceptionally high commitment to client's success. That's what sets her apart.",
+    testimonialsTitle: "Success Stories",
+    testimonialsDescription: "Hear from students and young professionals who have transformed their futures with the right guidance and support.",
     faqPreTitle: "FAQ",
-    faqTitle: "Frequently asked questions",
-    faqDescription: "If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Duong is always happy to help."
+    faqTitle: "Frequently Asked Questions",
+    faqDescription: "Have questions about mentoring, university applications, or career guidance? Find answers here or reach out directly."
   },
   vi: {
     preTitle: "Duong Tran",
-    title: "Không sao nếu bạn không biết bắt đầu từ đâu",
-    description: "Nếu bạn là chủ doanh nghiệp nhỏ hoặc chuyên gia độc lập, tôi hiểu việc hiểu rõ các con số có thể khó khăn như thế nào. Hầu hết kế toán luôn vội vã từ tờ khai thuế này sang tờ khai thuế khác, có nghĩa là ít thời gian giải thích mọi thứ đúng cách. Kết quả là, bạn ngại hỏi vì không muốn làm phiền họ, và chỉ có thể hy vọng họ làm đúng một cách mù quáng. Đó là cách thông thường mọi thứ diễn ra, nhưng không nhất thiết phải như vậy.",
-    hearFromDuongPreTitle: "nghe từ lieu",
-    hearFromDuongTitle: "hỗ trợ con người, hỗ trợ doanh nghiệp",
-    hearFromDuongDescription: "Duong tin rằng kế toán không chỉ là về con số. Đó là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên làm việc cho chúng ta, giúp doanh nghiệp và gia đình phát triển.",
-    testimonialsPreTitle: "nhận xét",
-    testimonialsTitle: "khách hàng và đồng nghiệp nói gì",
-    testimonialsDescription: "Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của mỗi khách hàng. Đó là điều làm cho việc làm việc với Duong đáng nhớ.",
-    faqPreTitle: "hỏi đáp",
-    faqTitle: "câu hỏi thường gặp",
-    faqDescription: "Nếu những câu trả lời này khơi gợi thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện. Duong luôn sẵn sàng giúp đỡ."
+    title: "Hành Trình Thành Công Bắt Đầu Từ Đây",
+    description: "Dù bạn là sinh viên mơ ước du học, đang chuẩn bị hồ sơ đại học, hay là người trẻ đang tìm kiếm hướng đi — tôi sẵn sàng đồng hành cùng bạn. Với nhiều năm kinh nghiệm hướng dẫn sinh viên đạt được ước mơ, tôi tin rằng ai cũng có tiềm năng để thành công. Hãy để tôi giúp bạn khám phá tiềm năng của chính mình.",
+    hearFromDuongPreTitle: "Phương Pháp",
+    hearFromDuongTitle: "Khai Phá Tiềm Năng Của Bạn",
+    hearFromDuongDescription: "Tôi tin vào hướng dẫn thực tế, không chỉ động viên suông. Qua mentoring cá nhân hóa, tôi giúp bạn xây dựng kỹ năng thực sự, viết hồ sơ ấn tượng và phát triển sự tự tin để theo đuổi ước mơ.",
+    testimonialsPreTitle: "Nhận Xét",
+    testimonialsTitle: "Câu Chuyện Thành Công",
+    testimonialsDescription: "Lắng nghe từ các bạn sinh viên và người trẻ đã thay đổi tương lai của họ với sự hướng dẫn và hỗ trợ phù hợp.",
+    faqPreTitle: "Hỏi Đáp",
+    faqTitle: "Câu Hỏi Thường Gặp",
+    faqDescription: "Có câu hỏi về mentoring, hồ sơ đại học, hay hướng nghiệp? Tìm câu trả lời ở đây hoặc liên hệ trực tiếp."
   }
 }
 

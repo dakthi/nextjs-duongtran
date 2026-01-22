@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic'
 export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
   return genMeta({
     title: 'About',
-    description: 'Learn about Duong Tran, ACCA Chartered Accountant helping SMEs and independent professionals with accounting, tax, and payroll services in London, UK.',
+    description: 'Learn about Duong Tran, Life Coach & Student Mentor helping young people achieve their dreams through university guidance, scholarship consulting, and career coaching.',
     locale: params.locale,
     path: '/about',
   })
@@ -38,12 +38,12 @@ const pageHeaderTranslations = {
   en: {
     eyebrow: "About",
     title: "About Duong Tran",
-    description: "ACCA-qualified accountant helping founders and small businesses with clarity, confidence, and practical support."
+    description: "Life Coach & Student Mentor helping young people unlock their potential and achieve their dreams."
   },
   vi: {
     eyebrow: "Giới Thiệu",
     title: "Về Duong Tran",
-    description: "Kế toán viên có chứng chỉ ACCA giúp các nhà sáng lập và doanh nghiệp nhỏ với sự rõ ràng, tự tin và hỗ trợ thực tế."
+    description: "Life Coach & Mentor Sinh Viên giúp các bạn trẻ khai phá tiềm năng và đạt được ước mơ."
   }
 }
 

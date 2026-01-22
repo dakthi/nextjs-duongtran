@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Duong Tran - Chartered Accountant',
+    name: 'Duong Tran - Life Coach & Student Mentor',
     short_name: 'Duong Tran',
-    description: 'Expert accounting, tax, and payroll services for SMEs and independent professionals in London, UK',
+    description: 'Empowering students and young professionals with personalized mentoring, university guidance, and career coaching',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

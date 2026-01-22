@@ -13,22 +13,22 @@
   },
   "home": {
     "preTitle": "Duong Tran",
-    "title": "It's okay not to know where to start",
-    "description": "If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because you don't want to bother them, and cross your fingers that they do things right, blindly. That's the usual way things go, but it doesn't have to be.",
-    "hearFromDuongPreTitle": "Having said all that",
-    "hearFromDuongTitle": "Let me help you",
-    "hearFromDuongDescription": "Spend hours perfecting your recipe, not going through invoices or fighting with tax returns. I've got that covered.",
+    "title": "Your journey to success starts here",
+    "description": "Whether you're a student dreaming of studying abroad, preparing for university applications, or a young professional seeking direction — I'm here to guide you. With years of experience mentoring students and helping them achieve their dreams, I believe everyone has the potential to succeed. Let me help you unlock yours.",
+    "hearFromDuongPreTitle": "My approach",
+    "hearFromDuongTitle": "Empowering your potential",
+    "hearFromDuongDescription": "I believe in practical guidance, not just motivation. Through personalized mentoring, I help you build real skills, craft compelling applications, and develop the confidence to pursue your dreams.",
     "testimonialsPreTitle": "Testimonials",
-    "testimonialsTitle": "What my clients and colleagues say about me",
-    "testimonialsDescription": "Strong work ethics with exceptionally high commitment to client's success. That's what sets her apart.",
+    "testimonialsTitle": "Success stories",
+    "testimonialsDescription": "Hear from students and young professionals who have transformed their futures with the right guidance and support.",
     "faqPreTitle": "FAQ",
     "faqTitle": "Frequently asked questions",
-    "faqDescription": "If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Duong is always happy to help."
+    "faqDescription": "Have questions about mentoring, university applications, or career guidance? Find answers here or reach out directly."
   },
   "footer": {
-    "tagline": "Your helpful accountant",
-    "description": "Helping the Vietnamese community in the UK understand taxes and business finances.",
-    "location": "Based in London, UK.",
+    "tagline": "Life coach & student mentor",
+    "description": "Helping students and young professionals unlock their potential and achieve their dreams.",
+    "location": "Based in Vietnam.",
     "stayConnected": "Stay connected",
     "copyright": "Copyright © {year}. Made by",
     "links": {
@@ -38,8 +38,8 @@
       "faq": "FAQ",
       "blog": "Blog",
       "contact": "Contact",
-      "terms": "Terms of Service",
-      "privacy": "Privacy Policy",
+      "terms": "Terms of service",
+      "privacy": "Privacy policy",
       "legal": "Legal"
     },
     "social": {
@@ -49,39 +49,39 @@
   },
   "contact": {
     "title": "Contact",
-    "description": "Get in touch with Duong for personalized accounting support.",
+    "description": "Ready to start your journey? Get in touch for personalized mentoring and guidance.",
     "form": {
       "name": "Name",
       "email": "Email",
       "message": "Message",
-      "submit": "Send Message",
+      "submit": "Send message",
       "sending": "Sending...",
       "success": "Message sent successfully!",
       "error": "Failed to send message. Please try again."
     }
   },
   "blog": {
-    "eyebrow": "Insights & Reflections",
+    "eyebrow": "Insights & inspiration",
     "title": "Blog",
-    "description": "True expertise is built over time. Beyond qualifications and certifications, it's the quiet lessons, the real-world challenges, and the continuous improvement that define my journey. Here, you can find some reflections, lessons learned, and professional thoughts, captured candidly along the way.",
-    "emptyDescription": "New posts coming soon. Stay tuned for insights and reflections.",
-    "featuredArticle": "Featured Article",
+    "description": "Stories, tips, and insights to help you on your journey to success. From study advice to career guidance, find inspiration for your next step.",
+    "emptyDescription": "New posts coming soon. Stay tuned for insights and inspiration.",
+    "featuredArticle": "Featured article",
     "category": "Article",
     "minRead": "min read",
-    "viewAll": "View All",
-    "recentPosts": "Recent Posts",
+    "viewAll": "View all",
+    "recentPosts": "Recent posts",
     "searchPlaceholder": "Search articles...",
     "noResults": "No articles found matching your search.",
-    "latestArticles": "Latest Articles",
-    "recentInsights": "Recent Insights",
-    "moreArticles": "More Articles",
-    "furtherReflections": "Further Reflections",
-    "latestUpdates": "Latest Updates",
-    "newReads": "New Reads"
+    "latestArticles": "Latest articles",
+    "recentInsights": "Recent insights",
+    "moreArticles": "More articles",
+    "furtherReflections": "Further reflections",
+    "latestUpdates": "Latest updates",
+    "newReads": "New reads"
   },
   "metadata": {
-    "title": "Duong Tran",
-    "description": "Helping the Vietnamese community in the UK understand taxes and business finances."
+    "title": "Duong Tran - Life coach & student mentor",
+    "description": "Empowering students and young professionals to achieve their dreams through personalized mentoring and guidance."
   },
   "admin": {
     "title": "DuongTran Admin",

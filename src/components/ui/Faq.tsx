@@ -44,23 +44,23 @@ export const Faq = () => {
 
 const faqData = [
   {
-    question: "Are you a qualified accountant?",
-    answer: "Yes. I am an ACCA Qualified Accountant, having completed all 13 exams on the first attempt. I also hold a First Class MSc in Accounting and Finance from BPP University, London.",
+    question: "Who do you help?",
+    answer: "I work with students preparing for university applications, young professionals seeking career direction, and anyone looking to unlock their potential through personalized mentoring and guidance.",
   },
   {
-    question: "What kind of accounting services do you provide?",
-    answer: "I manage full-cycle accounting, including bookkeeping, VAT returns, payroll processing, tax filings, and financial reporting. I also advise on optimising workflows and improving compliance.",
+    question: "What services do you offer?",
+    answer: "I provide university application guidance, scholarship consulting, personal statement reviews, career coaching, study abroad preparation, and ongoing mentorship for personal development.",
   },
   {
-    question: "Do you work with small businesses?",
-    answer: "Absolutely. I enjoy working closely with SMEs, helping them manage their numbers while they focus on growing their business. From family-run shops to local partnerships, I am here to help.",
+    question: "How does the mentoring process work?",
+    answer: "We start with a discovery session to understand your goals and aspirations. Then I create a personalized plan tailored to your needs, whether it's preparing applications, developing skills, or planning your career path.",
   },
   {
-    question: "How can you help my business beyond accounting?",
-    answer: "I design systems that make your business run smoother. Whether it’s setting up automated reporting, improving payroll processes, or helping your team onboard faster, my goal is to give you more time to focus on the parts of your work that you love.",
+    question: "Can you help with scholarship applications?",
+    answer: "Yes! I help students identify scholarship opportunities, craft compelling applications, prepare for interviews, and present their best selves to selection committees.",
   },
   {
     question: "Where are you based?",
-    answer: "I am based in London, UK, but I can work remotely with clients across the country or internationally.",
+    answer: "I am based in Vietnam but work with students and professionals globally through online sessions. Distance is no barrier to achieving your dreams!",
   },
 ];

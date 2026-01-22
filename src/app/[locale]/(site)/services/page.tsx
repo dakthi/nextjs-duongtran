@@ -11,7 +11,7 @@ interface ServicesPageProps {
 export async function generateMetadata({ params }: ServicesPageProps): Promise<Metadata> {
   return genMeta({
     title: 'Services',
-    description: 'Expert accounting services for SMEs and independent professionals: bookkeeping, VAT returns, payroll, tax filings, and financial reporting in London, UK.',
+    description: 'Life coaching and student mentoring services: university application guidance, scholarship consulting, career coaching, and personal development support.',
     locale: params.locale,
     path: '/services',
   })

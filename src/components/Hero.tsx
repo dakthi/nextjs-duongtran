@@ -9,10 +9,10 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
   const heroContent = await getHeroData(locale);
 
   // Fallback to default content if no CMS content found
-  const title = heroContent?.title || "SMEs owners and independent professionals";
-  const subtitle = heroContent?.subtitle || "can make sense and be on top of their tax";
-  const description = heroContent?.description || "Access the benefits and reliefs you're entitled to, and keep more of what you work hard for.";
-  const ctaText = heroContent?.ctaText || "Get in touch";
+  const title = heroContent?.title || "Your Journey to Success Starts Here";
+  const subtitle = heroContent?.subtitle || "Life Coach & Student Mentor";
+  const description = heroContent?.description || "Helping students achieve their dreams through personalized guidance on university applications, scholarships, and career development.";
+  const ctaText = heroContent?.ctaText || "Start Your Journey";
   const ctaLinkRaw = heroContent?.ctaLink || "/contact";
 
   // Add locale prefix to relative paths (not external URLs or anchors)
@@ -21,7 +21,7 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
     : ctaLinkRaw;
 
   const image = heroContent?.image || null;
-  const fallbackImage = legacyMediaUrl('/img/lieu-barbican.jpg');
+  const fallbackImage = legacyMediaUrl('/img/duong-tran-hero.jpg');
   const heroImage = image || fallbackImage;
   const isRemote = isMediaRemoteUrl(heroImage);
 
@@ -31,12 +31,15 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
   const imageFit = (heroContent?.imageFit as 'cover' | 'contain' | 'fill') || 'cover';
 
   return (
-    <div className="bg-white py-20">
+    <div className="bg-warm-cream py-24">
       <Container>
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Text Content */}
-          <div className="flex-1">
-            <h1 className="text-3xl md:text-5xl font-sans font-bold leading-tight text-outer-space mb-6">
+          <div className="flex-1 max-w-xl">
+            <p className="text-sm font-medium tracking-widest text-warm-gold uppercase mb-4">
+              {subtitle || "Life coach & student mentor"}
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight text-outer-space mb-6">
               {title.split('\n').map((line, index) => (
                 <span key={index}>
                   {line}
@@ -44,28 +47,13 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
                 </span>
               ))}
             </h1>
-            {subtitle && (
-              <p className="text-lg md:text-xl leading-relaxed text-feldgrau mb-4">
-                {subtitle.split('\n').map((line, index) => (
-                  <span key={index}>
-                    {line.split(/(<em>.*?<\/em>)/g).map((part, partIndex) => {
-                      if (part.startsWith('<em>') && part.endsWith('</em>')) {
-                        return <em key={partIndex} className="text-jungle-green font-semibold">{part.slice(4, -5)}</em>;
-                      }
-                      return part;
-                    })}
-                    {index < subtitle.split('\n').length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
-            )}
             {description && (
-              <p className="text-base leading-relaxed text-feldgrau mb-8">
+              <p className="text-lg leading-relaxed text-feldgrau mb-10">
                 {description.split('\n').map((line, index) => (
                   <span key={index}>
                     {line.split(/(<em>.*?<\/em>)/g).map((part, partIndex) => {
                       if (part.startsWith('<em>') && part.endsWith('</em>')) {
-                        return <em key={partIndex} className="text-jungle-green font-semibold">{part.slice(4, -5)}</em>;
+                        return <em key={partIndex} className="text-jungle-green font-medium not-italic">{part.slice(4, -5)}</em>;
                       }
                       return part;
                     })}
@@ -75,11 +63,11 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
               </p>
             )}
 
-            <div>
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href={ctaLink}
                 rel="noopener"
-                className="inline-block px-8 py-3 text-base font-semibold tracking-wide text-white bg-jungle-green hover:bg-jungle-green-dark transition-all"
+                className="inline-block px-8 py-4 text-base font-semibold text-white bg-jungle-green hover:bg-jungle-green-dark rounded-full transition-all shadow-soft hover:shadow-lg"
               >
                 {ctaText}
               </a>
@@ -87,17 +75,16 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
           </div>
 
           {/* Image */}
-          <div className="flex-1 w-full">
-            <div className="relative w-full overflow-hidden">
+          <div className="flex-1 w-full max-w-lg">
+            <div className="relative w-full overflow-hidden rounded-2xl shadow-soft">
               <Image
                 src={heroImage}
-                alt="Duong Tran - ACCA Chartered Accountant"
+                alt="Duong Tran - Life Coach & Student Mentor"
                 width={800}
                 height={800}
                 priority
+                className="w-full h-auto"
                 style={{
-                  width: '100%',
-                  height: 'auto',
                   objectFit: imageFit,
                   objectPosition: imagePosition,
                   transform: `scale(${imageZoom / 100})`,

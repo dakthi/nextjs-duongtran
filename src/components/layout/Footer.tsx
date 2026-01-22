@@ -12,9 +12,9 @@ export function Footer() {
   // Simple translation object - no hooks needed
   const translations: any = {
     en: {
-      tagline: "ACCA Chartered Accountant",
-      description: "Help SMEs owners and independent professionals to make sense and be on top of their tax.",
-      location: "Based in London, UK.",
+      tagline: "Life Coach & Student Mentor",
+      description: "Helping students and young professionals unlock their potential and achieve their dreams.",
+      location: "Based in Vietnam.",
       stayConnected: "Stay connected",
       links: {
         about: "About",
@@ -67,22 +67,22 @@ export function Footer() {
   ];
 
   return (
-    <div className="relative bg-slate-900">
+    <div className="relative bg-outer-space">
       <Container>
-        <div className="grid grid-cols-1 gap-10 pt-12 pb-8 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 pt-16 pb-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <div className="mb-5">
+            <div className="mb-6">
               <Link href={`/${locale}`}>
                 <span className="flex flex-col">
-                  <span className="text-2xl font-sans font-bold text-white">Duong Tran</span>
-                  <span className="text-sm text-jungle-green tracking-wide">{t.tagline}</span>
+                  <span className="text-2xl font-serif font-bold text-white">Duong Tran</span>
+                  <span className="text-sm text-warm-gold tracking-wide">{t.tagline}</span>
                 </span>
               </Link>
             </div>
-            <div className="max-w-md text-sm text-slate-300 leading-relaxed">
+            <div className="max-w-md text-sm text-gray-300 leading-relaxed">
               {t.description}
-              <br />
-              {t.location}
+              <br className="hidden sm:block" />
+              <span className="text-gray-400">{t.location}</span>
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-slate-300 hover:text-jungle-green transition-colors"
+                  className="text-sm text-gray-300 hover:text-warm-gold transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -106,7 +106,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-slate-300 hover:text-jungle-green transition-colors"
+                  className="text-sm text-gray-300 hover:text-warm-gold transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -115,22 +115,22 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm text-slate-400 mb-4">{t.stayConnected}</div>
-            <div className="flex space-x-5 text-slate-400">
+            <div className="text-sm text-gray-400 mb-4">{t.stayConnected}</div>
+            <div className="flex space-x-5 text-gray-400">
               <a
-                href="https://www.facebook.com/duongtrano"
+                href="https://www.facebook.com/duongtran110"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-jungle-green transition-colors"
+                className="hover:text-warm-gold transition-colors"
               >
                 <span className="sr-only">{t.social.facebook}</span>
                 <Facebook />
               </a>
               <a
-                href="https://www.linkedin.com/in/lieu-vo-acca-859421209/"
+                href="https://www.linkedin.com/in/duongtran110/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-jungle-green transition-colors"
+                className="hover:text-warm-gold transition-colors"
               >
                 <span className="sr-only">{t.social.linkedin}</span>
                 <LinkedIn />
@@ -139,7 +139,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="py-6 border-t border-outer-space text-xs text-center text-slate-400">
+        <div className="py-6 border-t border-gray-700 text-xs text-center text-gray-400">
           Copyright © {new Date().getFullYear()}. All rights reserved.
         </div>
       </Container>

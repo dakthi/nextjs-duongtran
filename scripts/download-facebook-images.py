@@ -38,7 +38,7 @@ GALLERY_DIR = BASE_DIR / ".resources" / "facebook-gallery"
 POSTS_FILE = BASE_DIR / "facebook_posts.json"
 
 # Facebook page URL to scrape
-FACEBOOK_PAGE_URL = "https://www.facebook.com/profile.php?id=110742004926744"  # Thi ACCA
+FACEBOOK_PAGE_URL = "https://www.facebook.com/duongtran110"  # Duong Tran
 
 
 def slugify(text, max_length=50):

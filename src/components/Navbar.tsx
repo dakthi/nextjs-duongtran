@@ -17,14 +17,8 @@ export const Navbar = () => {
   // Only show language switcher on blog pages
   const isBlogPage = pathname.includes('/blog');
 
-  // Check if we're on the homepage
-  const isHomepage = pathname === `/${locale}` || pathname === `/${locale}/`;
-
   // Check if we're on an individual blog post page (not the blog listing page)
   const isBlogPostPage = pathname.includes('/blog/') && pathname.split('/').length > 3;
-
-  // Use dark navbar for homepage and individual blog posts
-  const useDarkNavbar = isHomepage || isBlogPostPage;
 
   let t: any;
   try {
@@ -107,66 +101,58 @@ export const Navbar = () => {
   return (
     <div
       className={`w-full sticky top-0 z-50 transition-all duration-300 ${
-        useDarkNavbar
-          ? `bg-[#434F4D] border-b-4 ${scrolled ? "shadow-lg border-[#40B291]" : "border-[#40B291]"}`
-          : `bg-white border-b-2 ${scrolled ? "shadow-lg border-[#40B291]" : "border-gray-200"}`
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-soft" : "bg-transparent"
       }`}
     >
       <Container>
       <nav className="flex items-center justify-between py-4 md:py-5">
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex flex-col space-y-0.5">
+        <Link href={`/${locale}`} className="flex flex-col">
           <span
-            className={`font-sans font-bold transition-all duration-300 ${
-              useDarkNavbar ? "text-[#D2E8E2]" : "text-[#434F4D]"
-            } ${scrolled ? "text-xl" : "text-2xl"}`}
+            className={`font-serif font-bold transition-all duration-300 text-outer-space ${scrolled ? "text-xl" : "text-2xl"}`}
           >
             Duong Tran
           </span>
           <span
-            className={`text-white bg-[#40B291] tracking-wide font-bold transition-all duration-300 px-2 py-0.5 border-2 ${
-              useDarkNavbar ? "border-[#434F4D] shadow-[2px_2px_0px_0px_rgba(67,79,77,1)]" : "border-[#40B291] shadow-[2px_2px_0px_0px_rgba(64,178,145,1)]"
-            } ${scrolled ? "text-xs hidden md:block" : "text-xs"}`}
+            className={`text-warm-gold text-xs tracking-wider font-medium transition-all duration-300 ${scrolled ? "hidden md:block" : ""}`}
           >
-            ACCA Chartered Accountant
+            Life coach & student mentor
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6 items-center">
+        <div className="hidden md:flex space-x-8 items-center">
           {navigation.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className={`text-sm font-medium transition-colors capitalize ${
-                useDarkNavbar ? "text-[#D2E8E2] hover:text-[#40B291]" : "text-[#434F4D] hover:text-[#40B291]"
-              }`}
+              className="text-sm font-medium text-feldgrau hover:text-jungle-green transition-colors"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href={`/${locale}/contact`}
-            className="ml-6 px-5 py-2 text-white bg-[#40B291] hover:bg-[#3AA084] text-sm font-semibold transition-colors capitalize"
+            className="ml-4 px-6 py-2.5 text-white bg-jungle-green hover:bg-jungle-green-dark text-sm font-semibold rounded-full transition-colors"
           >
             {t('contact') || 'Contact'}
           </Link>
 
           {/* Language Switcher - Only show on blog pages */}
           {isBlogPage && (
-            <div className="ml-4 flex space-x-2">
+            <div className="ml-4 flex space-x-1">
               <button
                 onClick={() => switchLanguage('en')}
-                className={`px-2 py-1 text-xs font-semibold transition-colors ${
-                  locale === 'en' ? 'bg-[#40B291] text-white' : `${useDarkNavbar ? 'text-[#D2E8E2]' : 'text-[#434F4D]'} hover:text-[#40B291]`
+                className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
+                  locale === 'en' ? 'bg-jungle-green text-white' : 'text-feldgrau hover:text-jungle-green'
                 }`}
               >
                 EN
               </button>
               <button
                 onClick={() => switchLanguage('vi')}
-                className={`px-2 py-1 text-xs font-semibold transition-colors ${
-                  locale === 'vi' ? 'bg-[#40B291] text-white' : `${useDarkNavbar ? 'text-[#D2E8E2]' : 'text-[#434F4D]'} hover:text-[#40B291]`
+                className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
+                  locale === 'vi' ? 'bg-jungle-green text-white' : 'text-feldgrau hover:text-jungle-green'
                 }`}
               >
                 VI
@@ -180,9 +166,7 @@ export const Navbar = () => {
           <button
             aria-label="Toggle Menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`p-2 hover:text-[#40B291] focus:outline-none ${
-              useDarkNavbar ? "text-[#D2E8E2]" : "text-[#434F4D]"
-            }`}
+            className="p-2 text-outer-space hover:text-jungle-green focus:outline-none"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -204,19 +188,15 @@ export const Navbar = () => {
           </button>
 
           {mobileMenuOpen && (
-            <div className={`absolute top-full left-0 right-0 border-t-2 border-[#40B291] shadow-lg ${
-              useDarkNavbar ? "bg-[#434F4D]" : "bg-white"
-            }`}>
+            <div className="absolute top-full left-0 right-0 bg-white shadow-soft border-t border-gray-100">
               <Container>
-              <div className="space-y-1 py-4">
+              <div className="py-4">
               {navigation.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 hover:text-[#40B291] transition capitalize ${
-                    useDarkNavbar ? "text-[#D2E8E2] hover:bg-[#3F6059]" : "text-[#434F4D] hover:bg-gray-50"
-                  }`}
+                  className="block px-4 py-3 text-feldgrau hover:text-jungle-green hover:bg-warm-cream transition rounded-lg"
                 >
                   {item.label}
                 </Link>
@@ -224,21 +204,21 @@ export const Navbar = () => {
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block mx-4 mt-3 px-4 py-3 text-center bg-[#40B291] text-white font-semibold hover:bg-[#3AA084] transition capitalize"
+                className="block mx-4 mt-3 px-4 py-3 text-center bg-jungle-green text-white font-semibold hover:bg-jungle-green-dark rounded-full transition"
               >
                 {t('contact') || 'Contact'}
               </Link>
 
               {/* Mobile Language Switcher - Only show on blog pages */}
               {isBlogPage && (
-                <div className="flex gap-2 px-4 pt-3 pb-1">
+                <div className="flex gap-2 px-4 pt-4">
                   <button
                     onClick={() => {
                       switchLanguage('en');
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex-1 px-3 py-2 text-sm font-semibold transition ${
-                      locale === 'en' ? 'bg-[#40B291] text-white' : 'bg-gray-100 text-[#434F4D] hover:bg-gray-200 hover:text-[#40B291]'
+                    className={`flex-1 px-3 py-2 text-sm font-medium rounded-full transition ${
+                      locale === 'en' ? 'bg-jungle-green text-white' : 'bg-gray-100 text-feldgrau hover:bg-gray-200'
                     }`}
                   >
                     EN
@@ -248,8 +228,8 @@ export const Navbar = () => {
                       switchLanguage('vi');
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex-1 px-3 py-2 text-sm font-semibold transition ${
-                      locale === 'vi' ? 'bg-[#40B291] text-white' : 'bg-gray-100 text-[#434F4D] hover:bg-gray-200 hover:text-[#40B291]'
+                    className={`flex-1 px-3 py-2 text-sm font-medium rounded-full transition ${
+                      locale === 'vi' ? 'bg-jungle-green text-white' : 'bg-gray-100 text-feldgrau hover:bg-gray-200'
                     }`}
                   >
                     VI

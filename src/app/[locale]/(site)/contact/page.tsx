@@ -11,7 +11,7 @@ interface ContactPageProps {
 export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
   return genMeta({
     title: 'Contact',
-    description: 'Get in touch with Duong Tran for accounting, tax, and payroll services. Expert support for SMEs and independent professionals in London, UK.',
+    description: 'Ready to start your journey? Get in touch with Duong Tran for personalized mentoring on university applications, scholarships, and career guidance.',
     locale: params.locale,
     path: '/contact',
   })

@@ -6,24 +6,24 @@ import type { Metadata } from "next";
 
 const faqData = [
   {
-    question: "Are you a qualified accountant?",
-    answer: "Yes. I am an ACCA Qualified Accountant, having completed all 13 exams on the first attempt. I also hold a First Class MSc in Accounting and Finance from BPP University, London.",
+    question: "Who do you work with?",
+    answer: "I work with students preparing for university applications, young professionals seeking career direction, and parents looking for guidance on their children's education journey — especially families at international schools in Vietnam.",
   },
   {
-    question: "What kind of accounting services do you provide?",
-    answer: "I manage full-cycle accounting, including bookkeeping, VAT returns, payroll processing, tax filings, and financial reporting. I also advise on optimising workflows and improving compliance.",
+    question: "What services do you offer?",
+    answer: "I provide university application mentoring, scholarship consulting, personal statement reviews, career coaching, study abroad preparation, and ongoing mentorship for personal development.",
   },
   {
-    question: "Do you work with small businesses?",
-    answer: "Absolutely. I enjoy working closely with SMEs, helping them manage their numbers while they focus on growing their business. From family-run shops to local partnerships, I am here to help.",
+    question: "How does the mentoring process work?",
+    answer: "We start with a conversation to understand your goals and situation. Then I create a personalized plan tailored to your needs, whether it's preparing applications, developing skills, or planning your career path. It's collaborative and flexible.",
   },
   {
-    question: "How can you help my business beyond accounting?",
-    answer: "I design systems that make your business run smoother. Whether it's setting up automated reporting, improving payroll processes, or helping your team onboard faster, my goal is to give you more time to focus on the parts of your work that you love.",
+    question: "Can you help with scholarship applications?",
+    answer: "Yes! I help students identify scholarship opportunities, craft compelling applications, prepare for interviews, and present their best selves to selection committees.",
   },
   {
     question: "Where are you based?",
-    answer: "I am based in London, UK, but I can work remotely with clients across the country or internationally.",
+    answer: "I'm based in Vietnam and work with students and families both locally and internationally through online sessions. Distance is no barrier to achieving your dreams.",
   },
 ];
 
@@ -34,8 +34,8 @@ interface FaqPageProps {
 export async function generateMetadata({ params }: FaqPageProps): Promise<Metadata> {
   const { locale } = params;
   return genMeta({
-    title: "FAQ - Frequently Asked Questions",
-    description: "Find answers to common questions about ACCA accounting services, tax, payroll, and how we support SMEs and independent professionals.",
+    title: "FAQ - Frequently asked questions",
+    description: "Find answers to common questions about student mentoring, university applications, scholarships, and career guidance.",
     locale,
     path: '/faq',
   });
@@ -53,8 +53,8 @@ export default function Home({ params }: FaqPageProps) {
         }}
       />
       <PageHeader
-        title="Frequently Asked Questions"
-        description="See below for answers to commonly asked questions. If you'd like to discuss how we can support your business, feel free to get in touch."
+        title="Frequently asked questions"
+        description="Got questions? Here are answers to the most common ones. If you'd like to chat about something specific, feel free to reach out."
       />
       <div className="py-20 bg-white">
         <Container>
