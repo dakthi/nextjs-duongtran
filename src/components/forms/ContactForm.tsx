@@ -146,7 +146,7 @@ export const ContactForm = () => {
                     className="h-4 w-4 mt-1 border-2 border-outer-space focus:ring-2 focus:ring-amber-500"
                   />
                   <label htmlFor="newsletter" className="text-sm font-medium text-feldgrau">
-                    Subscribe to occasional updates and behind-the-scenes notes from Lieu
+                    Subscribe to occasional updates and behind-the-scenes notes from Duong
                   </label>
                 </div>
 

@@ -74,7 +74,7 @@ export function Footer() {
             <div className="mb-5">
               <Link href={`/${locale}`}>
                 <span className="flex flex-col">
-                  <span className="text-2xl font-sans font-bold text-white">Lieu Vo</span>
+                  <span className="text-2xl font-sans font-bold text-white">Duong Tran</span>
                   <span className="text-sm text-jungle-green tracking-wide">{t.tagline}</span>
                 </span>
               </Link>
@@ -118,7 +118,7 @@ export function Footer() {
             <div className="text-sm text-slate-400 mb-4">{t.stayConnected}</div>
             <div className="flex space-x-5 text-slate-400">
               <a
-                href="https://www.facebook.com/lieuvoo"
+                href="https://www.facebook.com/duongtrano"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-jungle-green transition-colors"

@@ -121,7 +121,7 @@ export const Navbar = () => {
               useDarkNavbar ? "text-[#D2E8E2]" : "text-[#434F4D]"
             } ${scrolled ? "text-xl" : "text-2xl"}`}
           >
-            Lieu Vo
+            Duong Tran
           </span>
           <span
             className={`text-white bg-[#40B291] tracking-wide font-bold transition-all duration-300 px-2 py-0.5 border-2 ${

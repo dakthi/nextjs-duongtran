@@ -1,7 +1,7 @@
 /**
  * Custom Login Form Component
  *
- * Custom login form matching LieuVo project styles
+ * Custom login form matching DuongTran project styles
  */
 
 "use client"
@@ -67,7 +67,7 @@ export default function LoginForm({
         {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-sans font-bold text-outer-space leading-tight">
-            LieuVo Admin
+            DuongTran Admin
           </h2>
           <p className="mt-3 text-base text-feldgrau">
             Enter your credentials to access the admin panel
@@ -95,7 +95,7 @@ export default function LoginForm({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-3 border-2 border-outer-space shadow-md placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-jungle-green transition-colors"
-            placeholder="admin@lieuvo.com"
+            placeholder="admin@duongtran.com"
             disabled={isLoading}
           />
         </div>
@@ -142,7 +142,7 @@ export default function LoginForm({
           <div className="bg-mint-green border-l-4 border-jungle-green text-outer-space px-4 py-3 text-sm">
             <p className="font-semibold">Development Mode</p>
             <p className="mt-1 text-feldgrau">
-              Default admin: admin@lieuvo.com / LieuVoAdmin123!
+              Default admin: admin@duongtran.com / DuongTranAdmin123!
             </p>
           </div>
         )}

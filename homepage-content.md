@@ -17,7 +17,7 @@ Get in touch
 ---
 
 ## Section 1: Main Message
-**Pre-title:** Lieu Vo
+**Pre-title:** Duong Tran
 
 **Title:** It's okay not to know where to start
 
@@ -64,13 +64,13 @@ Work should be smarter, not harder. I constantly optimise workflows so you spend
 
 ---
 
-## Section 4: Hear from Lieu
+## Section 4: Hear from Duong
 **Pre-title:** hear from lieu
 
 **Title:** supporting people, supporting businesses
 
 **Description:**
-Lieu believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.
+Duong believes that accounting is not just about numbers. It is about enabling people to focus on what matters. Systems and tools should work for us, helping businesses and families thrive.
 
 ---
 
@@ -80,7 +80,7 @@ Lieu believes that accounting is not just about numbers. It is about enabling pe
 **Title:** what clients and colleagues say
 
 **Description:**
-A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Lieu memorable.
+A tailored approach, genuine care, and a strong commitment to each client's success. That's what makes working with Duong memorable.
 
 ---
 
@@ -90,4 +90,4 @@ A tailored approach, genuine care, and a strong commitment to each client's succ
 **Title:** frequently asked questions
 
 **Description:**
-If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help.
+If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Duong is always happy to help.

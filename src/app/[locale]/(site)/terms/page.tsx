@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: TermsPageProps): Promise<Meta
   const { locale } = params;
   return genMeta({
     title: "Terms of Service",
-    description: "Terms of service for accounting, tax, and payroll services provided by Lieu Vo. Review our professional service agreements and policies.",
+    description: "Terms of service for accounting, tax, and payroll services provided by Duong Tran. Review our professional service agreements and policies.",
     locale,
     path: '/terms',
     noIndex: true,

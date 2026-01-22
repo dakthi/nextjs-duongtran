@@ -90,7 +90,7 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
             What Clients Say
           </h2>
           <p className="max-w-3xl mx-auto text-lg leading-relaxed text-mint-green font-medium mb-12">
-            Hear from businesses and founders who have worked with Lieu.
+            Hear from businesses and founders who have worked with Duong.
           </p>
         </Container>
 

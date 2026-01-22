@@ -71,7 +71,7 @@ function parsePosts(content: string): BlogPost[] {
 }
 
 async function main() {
-  const filePath = path.join(process.cwd(), 'posts-migrate', 'Lieu Vo - Posts.txt');
+  const filePath = path.join(process.cwd(), 'posts-migrate', 'Duong Tran - Posts.txt');
   const fileContent = fs.readFileSync(filePath, 'utf-8');
 
   const posts = parsePosts(fileContent);

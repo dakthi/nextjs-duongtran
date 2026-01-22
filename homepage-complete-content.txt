@@ -9,7 +9,7 @@
 ENGLISH:
 --------
 Logo:
-  Lieu Vo
+  Duong Tran
   ACCA Chartered Accountant
 
 Navigation Links:
@@ -25,7 +25,7 @@ Language Switcher:
 VIETNAMESE:
 -----------
 Logo:
-  Lieu Vo
+  Duong Tran
   ACCA Chartered Accountant
 
 Navigation Links:
@@ -79,7 +79,7 @@ CTA Button:
 ENGLISH:
 --------
 Pre-title:
-  Lieu Vo
+  Duong Tran
 
 Title:
   It's okay not to know where to start
@@ -90,7 +90,7 @@ Description:
 VIETNAMESE:
 -----------
 Pre-title:
-  Lieu Vo
+  Duong Tran
 
 Title:
   Không sao nếu bạn không biết bắt đầu từ đâu
@@ -209,7 +209,7 @@ Title:
   hỗ trợ con người, hỗ trợ doanh nghiệp
 
 Description:
-  Lieu tin rằng kế toán không chỉ là về con số. Đó là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên làm việc cho chúng ta, giúp doanh nghiệp và gia đình phát triển.
+  Duong tin rằng kế toán không chỉ là về con số. Đó là về việc giúp mọi người tập trung vào những gì quan trọng. Hệ thống và công cụ nên làm việc cho chúng ta, giúp doanh nghiệp và gia đình phát triển.
 
 
 ================================================================================
@@ -232,12 +232,12 @@ Testimonial 1:
 Name: James Price
 Role: Creative Industries Accounts Assistant
 Date: June 2025
-James worked with Lieu on the same team
+James worked with Duong on the same team
 
 Quote:
-"Lieu is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.
+"Duong is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.
 
-She is kind, helpful, and extremely skilled. Her attention to detail is exceptional, and she consistently produces work of the highest standard. Lieu communicates complex information clearly to both internal teams and external clients - even those with no background in finance.
+She is kind, helpful, and extremely skilled. Her attention to detail is exceptional, and she consistently produces work of the highest standard. Duong communicates complex information clearly to both internal teams and external clients - even those with no background in finance.
 
 She's always learning, always improving, and actively drives positive change in the workplace. I've seen firsthand how her programming and automation skills have saved time and made our processes far more efficient.
 
@@ -248,10 +248,10 @@ Testimonial 2:
 Name: Duc Nguyen
 Role: Accounts Assistant, MSc FinTech '24
 Date: May 2025
-Duc works in same team, with Lieu as a leader.
+Duc works in same team, with Duong as a leader.
 
 Quote:
-"I've learned so much from working with Lieu. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.
+"I've learned so much from working with Duong. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.
 
 What stands out most is her supportive nature and calm, practical problem-solving. No matter how busy things get, she always takes time to help the team.
 
@@ -266,14 +266,14 @@ Title:
   khách hàng và đồng nghiệp nói gì
 
 Description:
-  Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của mỗi khách hàng. Đó là điều làm cho việc làm việc với Lieu đáng nhớ.
+  Cách tiếp cận phù hợp, sự quan tâm chân thành và cam kết mạnh mẽ với thành công của mỗi khách hàng. Đó là điều làm cho việc làm việc với Duong đáng nhớ.
 
 Testimonial 1:
 --------------
 Tên: James Price
 Vai trò: Trợ lý Kế toán Ngành Creative
 Ngày: Tháng 6 năm 2025
-Mối quan hệ: Làm việc cùng nhóm với Lieu
+Mối quan hệ: Làm việc cùng nhóm với Duong
 
 Lời nhận xét:
 "Liệu là một người tài năng và đầy tham vọng với một loạt các kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng Liệu, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của Liệu - đặc biệt là trong việc phát triển kiến thức kỹ thuật của tôi.
@@ -289,7 +289,7 @@ Testimonial 2:
 Tên: Duc Nguyen
 Vai trò: Trợ lý Kế toán, Thạc sĩ FinTech '24
 Ngày: Tháng 5 năm 2025
-Mối quan hệ: Báo cáo trực tiếp cho Lieu
+Mối quan hệ: Báo cáo trực tiếp cho Duong
 
 Lời nhận xét:
 "Tôi đã học được rất nhiều từ việc làm việc với Liệu. Liệu có kiến thức kỹ thuật xuất sắc - đặc biệt là về thuế - và công việc của Liệu luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.
@@ -312,7 +312,7 @@ Title:
   frequently asked questions
 
 Description:
-  If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help.
+  If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Duong is always happy to help.
 
 Questions & Answers:
 --------------------
@@ -341,7 +341,7 @@ Title:
   câu hỏi thường gặp
 
 Description:
-  Nếu những câu trả lời này khơi gợi thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện. Lieu luôn sẵn sàng giúp đỡ.
+  Nếu những câu trả lời này khơi gợi thêm câu hỏi, hãy gửi email, để lại tin nhắn hoặc đặt lịch trò chuyện. Duong luôn sẵn sàng giúp đỡ.
 
 Câu hỏi & Câu trả lời:
 ----------------------
@@ -369,7 +369,7 @@ A5: Tôi đặt trụ sở tại London, Anh, nhưng tôi có thể làm việc 
 ENGLISH:
 --------
 Logo:
-  Lieu Vo
+  Duong Tran
   Help SMEs owners and independent professionals to make sense and be on top of their tax
 
 Description:
@@ -387,7 +387,7 @@ Legal Links:
   - For Employers
 
 Social Media:
-  - Facebook: https://www.facebook.com/lieuvoo
+  - Facebook: https://www.facebook.com/duongtrano
   - LinkedIn: https://www.linkedin.com/in/lieu-vo-acca-859421209/
 
 Stay Connected:
@@ -399,7 +399,7 @@ Copyright:
 VIETNAMESE:
 -----------
 Logo:
-  Lieu Vo
+  Duong Tran
   Kế Toán Hỗ Trợ Tận Tâm
 
 Description:
@@ -417,7 +417,7 @@ Legal Links:
   - Dành cho Nhà Tuyển Dụng (For Employers)
 
 Social Media:
-  - Facebook: https://www.facebook.com/lieuvoo
+  - Facebook: https://www.facebook.com/duongtrano
   - LinkedIn: https://www.linkedin.com/in/lieu-vo-acca-859421209/
 
 Stay Connected:

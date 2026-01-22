@@ -211,5 +211,5 @@ For a content-heavy CMS where updates need to be immediately visible, this trade
 
 **Date**: December 3, 2025
 **Author**: Thi Nguyen with Claude Code
-**Project**: nextjs-lieuvo
+**Project**: nextjs-duongtran
 **Status**: Resolved

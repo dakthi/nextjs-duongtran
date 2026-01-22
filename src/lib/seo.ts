@@ -1,16 +1,16 @@
 import { Metadata } from 'next'
 
 export const siteConfig = {
-  name: 'Lieu Vo',
-  title: 'Lieu Vo - Chartered Accountant for SMEs and Independent Professionals',
+  name: 'Duong Tran',
+  title: 'Duong Tran - Chartered Accountant for SMEs and Independent Professionals',
   description: 'Help SMEs owners and independent professionals to make sense and be on top of their tax. Expert accounting, tax, and payroll services in London, UK.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://lieuvo.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://duongtran.com',
   ogImage: '/og-image.jpg',
   links: {
-    facebook: 'https://www.facebook.com/lieuvoo',
+    facebook: 'https://www.facebook.com/duongtrano',
     linkedin: 'https://www.linkedin.com/in/lieu-vo-acca-859421209/',
   },
-  creator: 'Lieu Vo',
+  creator: 'Duong Tran',
   keywords: [
     'ACCA chartered accountant',
     'ACCA accountant London',
@@ -92,7 +92,7 @@ export function generateMetadata({
       title: pageTitle,
       description: description || siteConfig.description,
       images: [image],
-      creator: '@lieuvo',
+      creator: '@duongtran',
     },
     robots: {
       index: !noIndex,
@@ -125,7 +125,7 @@ export const organizationSchema = {
   sameAs: [siteConfig.links.facebook, siteConfig.links.linkedin],
   founder: {
     '@type': 'Person',
-    name: 'Lieu Vo',
+    name: 'Duong Tran',
     jobTitle: 'ACCA Accountant',
     sameAs: siteConfig.links.linkedin,
   },
@@ -147,7 +147,7 @@ export const organizationSchema = {
 export const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Lieu Vo',
+  name: 'Duong Tran',
   jobTitle: 'Chartered Accountant (ACCA)',
   description:
     'ACCA Chartered Accountant specializing in helping SMEs and independent professionals with accounting, tax, and payroll services.',
@@ -183,7 +183,7 @@ export function generateBlogPostingSchema({
   image,
   datePublished,
   dateModified,
-  author = 'Lieu Vo',
+  author = 'Duong Tran',
   category,
 }: {
   title: string

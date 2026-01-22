@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Return the public R2 URL
-    const cvUrl = `${process.env.NEXT_PUBLIC_MEDIA_BASE_URL}/LieuVo_CV.pdf`
+    const cvUrl = `${process.env.NEXT_PUBLIC_MEDIA_BASE_URL}/DuongTran_CV.pdf`
 
     return NextResponse.json({ url: cvUrl })
   } catch (error) {

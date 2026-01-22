@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: Params) {
     image: post.image || undefined,
     datePublished: post.date || new Date().toISOString(),
     dateModified: post.date || new Date().toISOString(),
-    author: post.expert?.name || 'Lieu Vo',
+    author: post.expert?.name || 'Duong Tran',
     category: post.category || undefined,
   })
 
@@ -162,7 +162,7 @@ export default async function BlogPostPage({ params }: Params) {
                 </div>
               )}
               <div>
-                <p className="text-sm font-semibold text-outer-space">{post.expert.name ?? 'Lieu Vo'}</p>
+                <p className="text-sm font-semibold text-outer-space">{post.expert.name ?? 'Duong Tran'}</p>
                 {post.expert.title && (
                   <p className="text-xs text-feldgrau">{post.expert.title}</p>
                 )}

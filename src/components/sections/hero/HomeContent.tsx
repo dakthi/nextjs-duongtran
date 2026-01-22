@@ -67,10 +67,10 @@ export function HomeContent({ locale }: HomeContentProps) {
 
       <div className="py-20 bg-mint-green">
         <SectionTitle
-          preTitle={t('hearFromLieuPreTitle')}
-          title={t('hearFromLieuTitle')}
+          preTitle={t('hearFromDuongPreTitle')}
+          title={t('hearFromDuongTitle')}
         >
-          {t.rich('hearFromLieuDescription', {
+          {t.rich('hearFromDuongDescription', {
             em: (chunks) => <em>{chunks}</em>
           })}
         </SectionTitle>

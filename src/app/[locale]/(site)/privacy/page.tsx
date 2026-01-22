@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
   const { locale } = params;
   return genMeta({
     title: "Privacy Policy",
-    description: "Privacy policy for lieuvo.com. Learn how we collect, use, and protect your personal information when you visit our website.",
+    description: "Privacy policy for duongtran.com. Learn how we collect, use, and protect your personal information when you visit our website.",
     locale,
     path: '/privacy',
     noIndex: true,

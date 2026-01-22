@@ -12,7 +12,7 @@ Eyebrow:
   About
 
 Title:
-  About Lieu Vo
+  About Duong Tran
 
 Description:
   ACCA-qualified accountant helping founders and small businesses with clarity, confidence, and practical support.
@@ -23,7 +23,7 @@ Eyebrow:
   Giới Thiệu
 
 Title:
-  Về Lieu Vo
+  Về Duong Tran
 
 Description:
   Kế toán viên có chứng chỉ ACCA giúp các nhà sáng lập và doanh nghiệp nhỏ với sự rõ ràng, tự tin và hỗ trợ thực tế.

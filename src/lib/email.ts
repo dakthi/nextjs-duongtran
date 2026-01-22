@@ -83,7 +83,7 @@ export interface ContactFormData {
   message: string
 }
 
-export interface LieuVoContactFormData {
+export interface DuongTranContactFormData {
   name: string
   email: string
   message: string
@@ -138,7 +138,7 @@ export async function sendContactFormNotification(data: ContactFormData) {
   }
 }
 
-export async function sendLieuVoContactEmail(data: LieuVoContactFormData) {
+export async function sendDuongTranContactEmail(data: DuongTranContactFormData) {
   try {
     const resend = getResendClient()
     const { data: emailData, error } = await resend.emails.send({
@@ -269,7 +269,7 @@ export async function sendEmployerThankYou(data: { email: string; companyName: s
     const { data: emailData, error } = await resend.emails.send({
       from: 'noreply@chartedconsultants.com',
       to: [data.email],
-      subject: 'Thank you for your interest - Lieu Vo',
+      subject: 'Thank you for your interest - Duong Tran',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background-color: #FEF3C7; padding: 20px; border-left: 4px solid #F59E0B; margin-bottom: 20px;">
@@ -305,7 +305,7 @@ export async function sendEmployerThankYou(data: { email: string; companyName: s
           <div style="border-top: 2px solid #E2E8F0; margin-top: 30px; padding-top: 20px;">
             <p style="color: #64748B; font-size: 14px; margin: 0;">
               Best regards,<br>
-              <strong>Lieu Vo</strong><br>
+              <strong>Duong Tran</strong><br>
               ACCA Qualified Chartered Accountant
             </p>
           </div>
@@ -332,7 +332,7 @@ export async function sendEmployerThankYou(data: { email: string; companyName: s
         In the meantime, if you have any questions or would like to expedite the conversation, please feel free to reach out directly at lieu.boa@outlook.com.
 
         Best regards,
-        Lieu Vo
+        Duong Tran
         ACCA Qualified Chartered Accountant
       `,
     })
@@ -349,7 +349,7 @@ export async function sendEmployerThankYou(data: { email: string; companyName: s
   }
 }
 
-export async function sendLieuEmployerNotification(data: EmployerTestNotificationData) {
+export async function sendDuongEmployerNotification(data: EmployerTestNotificationData) {
   try {
     const resend = getResendClient()
 
@@ -419,13 +419,13 @@ export async function sendLieuEmployerNotification(data: EmployerTestNotificatio
     })
 
     if (error) {
-      console.error('Failed to send Lieu notification email:', error)
+      console.error('Failed to send Duong notification email:', error)
       return { success: false, error: error.message }
     }
 
     return { success: true, data: emailData }
   } catch (error) {
-    console.error('Error sending Lieu notification email:', error)
+    console.error('Error sending Duong notification email:', error)
     return { success: false, error: 'Failed to send email' }
   }
 }

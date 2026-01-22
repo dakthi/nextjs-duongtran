@@ -10,9 +10,20 @@
         ]
       }
     ],
-    "Notification": [
+    "PreToolUse": [
       {
         "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Pop.aiff"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",

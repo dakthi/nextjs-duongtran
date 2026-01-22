@@ -74,7 +74,7 @@ export function Footer() {
             <div className="mb-5">
               <Link href={`/${locale}`}>
                 <span className="flex flex-col items-start">
-                  <span className="text-2xl font-sans font-bold text-[#D2E8E2]">Lieu Vo</span>
+                  <span className="text-2xl font-sans font-bold text-[#D2E8E2]">Duong Tran</span>
                   <span className="text-xs text-white bg-[#40B291] tracking-wide font-bold px-2 py-0.5 border-2 border-[#434F4D] shadow-[2px_2px_0px_0px_rgba(67,79,77,1)] w-fit">{t.tagline}</span>
                 </span>
               </Link>
@@ -118,7 +118,7 @@ export function Footer() {
             <div className="text-sm text-[#D2E8E2] opacity-75 mb-4">{t.stayConnected}</div>
             <div className="flex space-x-5 text-[#D2E8E2]">
               <a
-                href="https://www.facebook.com/lieuvoo"
+                href="https://www.facebook.com/duongtrano"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#40B291] transition-colors"

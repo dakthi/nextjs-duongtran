@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const getTitle = () => {
     const translated = t('title');
     if (translated === 'title') {
-      return locale === 'vi' ? 'Quản Trị LieuVo' : 'LieuVo Admin';
+      return locale === 'vi' ? 'Quản Trị DuongTran' : 'DuongTran Admin';
     }
     return translated;
   };
@@ -133,7 +133,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             </div>
             <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center px-4">
-                <h1 className="text-lg font-bold text-white">LieuVo Admin</h1>
+                <h1 className="text-lg font-bold text-white">DuongTran Admin</h1>
               </div>
               <nav className="mt-5 px-2 space-y-1">{renderNavItems()}</nav>
             </div>

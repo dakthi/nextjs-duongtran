@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic'
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   return genMeta({
     title: 'Blog',
-    description: 'Insights, reflections, and professional thoughts on accounting, tax, and small business finance from Lieu Vo, ACCA Qualified Accountant.',
+    description: 'Insights, reflections, and professional thoughts on accounting, tax, and small business finance from Duong Tran, ACCA Qualified Accountant.',
     locale: params.locale,
     path: '/blog',
   })

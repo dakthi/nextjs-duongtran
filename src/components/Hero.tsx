@@ -91,7 +91,7 @@ export const Hero = async ({ params }: { params?: { locale?: string } }) => {
             <div className="relative w-full overflow-hidden">
               <Image
                 src={heroImage}
-                alt="Lieu Vo - ACCA Chartered Accountant"
+                alt="Duong Tran - ACCA Chartered Accountant"
                 width={800}
                 height={800}
                 priority

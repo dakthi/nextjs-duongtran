@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Lieu Vo - Chartered Accountant',
-    short_name: 'Lieu Vo',
+    name: 'Duong Tran - Chartered Accountant',
+    short_name: 'Duong Tran',
     description: 'Expert accounting, tax, and payroll services for SMEs and independent professionals in London, UK',
     start_url: '/',
     display: 'standalone',

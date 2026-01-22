@@ -1,7 +1,7 @@
 {
-  "name": "lieuvo-cms",
+  "name": "duongtran-cms",
   "version": "2.0.0",
-  "description": "Lieu Vo Professional Website & CMS",
+  "description": "Duong Tran Professional Website & CMS",
   "private": true,
   "scripts": {
     "dev": "next dev",

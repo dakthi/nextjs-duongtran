@@ -20,8 +20,8 @@ async function seedAdminUser() {
   console.log('👤 Creating NextAuth admin user...')
 
   // Get admin credentials from environment or use defaults
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@lieuvo.com'
-  const adminPassword = process.env.ADMIN_PASSWORD || 'LieuVoAdmin123!'
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@duongtran.com'
+  const adminPassword = process.env.ADMIN_PASSWORD || 'DuongTranAdmin123!'
   const adminName = process.env.ADMIN_NAME || 'Admin User'
 
   try {
@@ -83,7 +83,7 @@ async function seedHeroContent() {
   const heroContentData = [
     {
       locale: 'en',
-      title: 'Welcome to LieuVo',
+      title: 'Welcome to DuongTran',
       subtitle: 'Tax & Business Finance Consultancy',
       description: 'Helping the Vietnamese community in the UK understand taxes and business finances with expert guidance and support.',
       ctaText: 'Get Started',
@@ -92,7 +92,7 @@ async function seedHeroContent() {
     },
     {
       locale: 'vi',
-      title: 'Chào Mừng Đến LieuVo',
+      title: 'Chào Mừng Đến DuongTran',
       subtitle: 'Tư Vấn Thuế & Tài Chính Doanh Nghiệp',
       description: 'Giúp cộng đồng người Việt tại Anh hiểu về thuế và tài chính doanh nghiệp với sự hướng dẫn và hỗ trợ chuyên nghiệp.',
       ctaText: 'Bắt Đầu',
@@ -304,11 +304,11 @@ async function seedTestimonials() {
       name: 'James Price',
       role: 'Creative Industries Accounts Assistant',
       dateLabel: 'June 2025',
-      relationship: 'Worked with Lieu on the same team',
+      relationship: 'Worked with Duong on the same team',
       image: '/img/testimonials/james-price.jpeg',
       body: [
-        `Lieu is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.`,
-        `She is kind, helpful, and extremely skilled. Her attention to detail is exceptional, and she consistently produces work of the highest standard. Lieu communicates complex information clearly to both internal teams and external clients - even those with no background in finance.`,
+        `Duong is a talented and ambitious woman with a range of skills spanning the full spectrum of accountancy. During my time working alongside her, I benefited greatly from her guidance - especially in developing my technical knowledge.`,
+        `She is kind, helpful, and extremely skilled. Her attention to detail is exceptional, and she consistently produces work of the highest standard. Duong communicates complex information clearly to both internal teams and external clients - even those with no background in finance.`,
         `She's always learning, always improving, and actively drives positive change in the workplace. I've seen firsthand how her programming and automation skills have saved time and made our processes far more efficient.`,
         `I would not hesitate to recommend her to any future employer. She's a brilliant asset to any team.`
       ]
@@ -319,10 +319,10 @@ async function seedTestimonials() {
       name: 'Duc Nguyen',
       role: "Accounts Assistant, MSc FinTech '24",
       dateLabel: 'May 2025',
-      relationship: 'Reported directly to Lieu',
+      relationship: 'Reported directly to Duong',
       image: '/img/testimonials/duc-nguyen.jpeg',
       body: [
-        `I've learned so much from working with Lieu. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.`,
+        `I've learned so much from working with Duong. She has excellent technical knowledge - especially around tax - and her work is always detailed, organised, and deeply trusted by clients.`,
         `What stands out most is her supportive nature and calm, practical problem-solving. No matter how busy things get, she always takes time to help the team.`,
         `On top of that, she's built automation tools that save us a huge amount of time. Her ability to combine deep expertise with efficiency is rare - she's someone you can learn a lot from, and she's a true asset to any team.`
       ]
@@ -334,11 +334,11 @@ async function seedTestimonials() {
       name: 'James Price',
       role: 'Trợ Lý Kế Toán Ngành Sáng Tạo',
       dateLabel: 'Tháng 6 2025',
-      relationship: 'Đã làm việc cùng Lieu trong cùng một đội',
+      relationship: 'Đã làm việc cùng Duong trong cùng một đội',
       image: '/img/testimonials/james-price.jpeg',
       body: [
-        `Lieu là một người phụ nữ tài năng và có tham vọng với nhiều kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng cô ấy, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của cô - đặc biệt trong việc phát triển kiến thức chuyên môn.`,
-        `Cô ấy tốt bụng, hữu ích và cực kỳ có kỹ năng. Sự chú ý đến chi tiết của cô ấy là đặc biệt, và cô ấy luôn tạo ra công việc có tiêu chuẩn cao nhất. Lieu giao tiếp thông tin phức tạp một cách rõ ràng với cả đội ngũ nội bộ và khách hàng bên ngoài.`,
+        `Duong là một người phụ nữ tài năng và có tham vọng với nhiều kỹ năng trải dài toàn bộ phạm vi kế toán. Trong thời gian làm việc cùng cô ấy, tôi đã được hưởng lợi rất nhiều từ sự hướng dẫn của cô - đặc biệt trong việc phát triển kiến thức chuyên môn.`,
+        `Cô ấy tốt bụng, hữu ích và cực kỳ có kỹ năng. Sự chú ý đến chi tiết của cô ấy là đặc biệt, và cô ấy luôn tạo ra công việc có tiêu chuẩn cao nhất. Duong giao tiếp thông tin phức tạp một cách rõ ràng với cả đội ngũ nội bộ và khách hàng bên ngoài.`,
         `Cô ấy luôn học hỏi, luôn cải thiện và tích cực thúc đẩy thay đổi tích cực tại nơi làm việc. Tôi đã chứng kiến tận mắt cách kỹ năng lập trình và tự động hóa của cô ấy đã tiết kiệm thời gian và làm cho quy trình của chúng tôi hiệu quả hơn nhiều.`,
         `Tôi sẽ không ngần ngại giới thiệu cô ấy cho bất kỳ nhà tuyển dụng nào trong tương lai. Cô ấy là một tài sản tuyệt vời cho bất kỳ đội nào.`
       ]
@@ -349,10 +349,10 @@ async function seedTestimonials() {
       name: 'Duc Nguyen',
       role: "Trợ Lý Kế Toán, Thạc Sĩ FinTech '24",
       dateLabel: 'Tháng 5 2025',
-      relationship: 'Báo cáo trực tiếp với Lieu',
+      relationship: 'Báo cáo trực tiếp với Duong',
       image: '/img/testimonials/duc-nguyen.jpeg',
       body: [
-        `Tôi đã học được rất nhiều từ việc làm việc với Lieu. Cô ấy có kiến thức kỹ thuật tuyệt vời - đặc biệt về thuế - và công việc của cô ấy luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.`,
+        `Tôi đã học được rất nhiều từ việc làm việc với Duong. Cô ấy có kiến thức kỹ thuật tuyệt vời - đặc biệt về thuế - và công việc của cô ấy luôn chi tiết, có tổ chức và được khách hàng tin tưởng sâu sắc.`,
         `Điều nổi bật nhất là bản chất hỗ trợ và giải quyết vấn đề thực tế, bình tĩnh của cô ấy. Dù bận rộn đến đâu, cô ấy luôn dành thời gian để giúp đỡ đội.`,
         `Hơn thế nữa, cô ấy đã xây dựng các công cụ tự động hóa giúp chúng tôi tiết kiệm rất nhiều thời gian. Khả năng kết hợp chuyên môn sâu với hiệu quả của cô ấy là hiếm có - cô ấy là người mà bạn có thể học hỏi được nhiều điều.`
       ]

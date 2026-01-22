@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
 
     // Export as JSON
     if (format === 'json') {
-      const filename = `lieuvo-db-backup-${timestamp}.json`
+      const filename = `duongtran-db-backup-${timestamp}.json`
       return new NextResponse(JSON.stringify(data, null, 2), {
         status: 200,
         headers: {
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
 
     // Export as CSV (simplified - one file with all table names and counts)
     if (format === 'csv') {
-      const filename = `lieuvo-db-backup-${timestamp}.csv`
+      const filename = `duongtran-db-backup-${timestamp}.csv`
       let csv = 'Table,Record Count,Sample Data\n'
 
       Object.entries(data.tables).forEach(([tableName, records]) => {
@@ -87,8 +87,8 @@ export async function GET(request: NextRequest) {
 
     // Export as Text (human-readable format)
     if (format === 'txt') {
-      const filename = `lieuvo-db-backup-${timestamp}.txt`
-      let text = `Database Export - Lieu Vo Website\n`
+      const filename = `duongtran-db-backup-${timestamp}.txt`
+      let text = `Database Export - Duong Tran Website\n`
       text += `Export Date: ${new Date().toISOString()}\n`
       text += `${'='.repeat(60)}\n\n`
 

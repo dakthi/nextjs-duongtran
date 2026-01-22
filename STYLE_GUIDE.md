@@ -1,4 +1,4 @@
-# Lieu Vo Website Style Guide
+# Duong Tran Website Style Guide
 
 A traditional accounting firm design system emphasizing trust, professionalism, and clarity.
 

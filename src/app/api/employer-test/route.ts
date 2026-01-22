@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { sendEmployerThankYou, sendLieuEmployerNotification } from '@/lib/email'
+import { sendEmployerThankYou, sendDuongEmployerNotification } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   try {
@@ -53,8 +53,8 @@ export async function POST(req: NextRequest) {
       console.error('Failed to send thank you email:', thankYouResult.error)
     }
 
-    // Send notification to Lieu
-    const notificationResult = await sendLieuEmployerNotification({
+    // Send notification to Duong
+    const notificationResult = await sendDuongEmployerNotification({
       employerEmail: data.email,
       companyName: data.companyName,
       score: data.score,
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     })
 
     if (!notificationResult.success) {
-      console.error('Failed to send notification email to Lieu:', notificationResult.error)
+      console.error('Failed to send notification email to Duong:', notificationResult.error)
     }
 
     // Update submission to mark emails as sent

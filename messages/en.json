@@ -12,18 +12,18 @@
     "terms": "Terms"
   },
   "home": {
-    "preTitle": "Lieu Vo",
+    "preTitle": "Duong Tran",
     "title": "It's okay not to know where to start",
     "description": "If you're a small business owner or an independent professional, I understand how hard it can be to make sense of the numbers. Most accountants are always rushing from one tax return to another, which means less time to explain things properly. As a result, you hesitate to ask because you don't want to bother them, and cross your fingers that they do things right, blindly. That's the usual way things go, but it doesn't have to be.",
-    "hearFromLieuPreTitle": "Having said all that",
-    "hearFromLieuTitle": "Let me help you",
-    "hearFromLieuDescription": "Spend hours perfecting your recipe, not going through invoices or fighting with tax returns. I've got that covered.",
+    "hearFromDuongPreTitle": "Having said all that",
+    "hearFromDuongTitle": "Let me help you",
+    "hearFromDuongDescription": "Spend hours perfecting your recipe, not going through invoices or fighting with tax returns. I've got that covered.",
     "testimonialsPreTitle": "Testimonials",
     "testimonialsTitle": "What my clients and colleagues say about me",
     "testimonialsDescription": "Strong work ethics with exceptionally high commitment to client's success. That's what sets her apart.",
     "faqPreTitle": "FAQ",
     "faqTitle": "Frequently asked questions",
-    "faqDescription": "If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Lieu is always happy to help."
+    "faqDescription": "If these answers spark more questions, feel free to send an email, leave a message, or book a chat. Duong is always happy to help."
   },
   "footer": {
     "tagline": "Your helpful accountant",
@@ -49,7 +49,7 @@
   },
   "contact": {
     "title": "Contact",
-    "description": "Get in touch with Lieu for personalized accounting support.",
+    "description": "Get in touch with Duong for personalized accounting support.",
     "form": {
       "name": "Name",
       "email": "Email",
@@ -80,11 +80,11 @@
     "newReads": "New Reads"
   },
   "metadata": {
-    "title": "Lieu Vo",
+    "title": "Duong Tran",
     "description": "Helping the Vietnamese community in the UK understand taxes and business finances."
   },
   "admin": {
-    "title": "LieuVo Admin",
+    "title": "DuongTran Admin",
     "navigation": {
       "dashboard": "Dashboard",
       "hero": "Hero",

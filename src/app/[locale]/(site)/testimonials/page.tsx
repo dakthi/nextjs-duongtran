@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: TestimonialsPageProps): Promi
   const { locale } = params;
   return genMeta({
     title: "Testimonials - Client Reviews",
-    description: "Read what clients and colleagues say about working with Lieu Vo - ACCA chartered accountant known for exceptional service and commitment to client success.",
+    description: "Read what clients and colleagues say about working with Duong Tran - ACCA chartered accountant known for exceptional service and commitment to client success.",
     locale,
     path: '/testimonials',
   });

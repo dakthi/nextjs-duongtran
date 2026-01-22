@@ -1,4 +1,4 @@
-name: Build and Deploy Lieuvo
+name: Build and Deploy Duongtran
 
 on:
   push:
@@ -15,10 +15,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image (linux/amd64)
-        run: docker buildx build --platform linux/amd64 -t lieuvo:latest --load .
+        run: docker buildx build --platform linux/amd64 -t duongtran:latest --load .
 
       - name: Save Docker image to tar.gz
-        run: docker save lieuvo:latest | gzip > lieuvo.tar.gz
+        run: docker save duongtran:latest | gzip > duongtran.tar.gz
 
       - name: Copy image to VPS
         uses: appleboy/scp-action@v0.1.7
@@ -26,8 +26,8 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "lieuvo.tar.gz"
-          target: "/root/docker-images/lieuvo/"
+          source: "duongtran.tar.gz"
+          target: "/root/docker-images/duongtran/"
 
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
@@ -36,5 +36,5 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            chmod +x /root/docker-images/lieuvo/deploy-lieuvo.sh || true
-            /root/docker-images/lieuvo/deploy-lieuvo.sh
+            chmod +x /root/docker-images/duongtran/deploy-duongtran.sh || true
+            /root/docker-images/duongtran/deploy-duongtran.sh

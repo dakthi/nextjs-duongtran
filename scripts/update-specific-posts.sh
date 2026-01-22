@@ -3,5 +3,5 @@
 # This script will update each migrated blog post with properly formatted HTML
 # Run the TypeScript script which will process posts one by one
 
-cd /Users/dakthi/Downloads/nextjs/nextjs-lieuvo
+cd /Users/dakthi/Downloads/nextjs/nextjs-duongtran
 npx tsx scripts/ai-format-posts.ts

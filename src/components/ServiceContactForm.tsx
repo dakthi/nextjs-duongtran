@@ -131,7 +131,7 @@ export const ServiceContactForm = () => {
                 className="h-4 w-4 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-jungle-green"
               />
               <label htmlFor="newsletter" className="text-sm font-medium text-feldgrau">
-                Subscribe to occasional updates and behind-the-scenes notes from Lieu
+                Subscribe to occasional updates and behind-the-scenes notes from Duong
               </label>
             </div>
 

@@ -74,7 +74,7 @@ export const Navbar = () => {
               scrolled ? "text-xl" : "text-2xl"
             }`}
           >
-            Lieu Vo
+            Duong Tran
           </span>
           <span
             className={`text-jungle-green tracking-wide transition-all duration-300 ${

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendLieuVoContactEmail } from "@/lib/email";
+import { sendDuongTranContactEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Send email using Resend
-    const result = await sendLieuVoContactEmail({
+    const result = await sendDuongTranContactEmail({
       name,
       email,
       message,

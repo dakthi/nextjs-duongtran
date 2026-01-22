@@ -7,4 +7,4 @@ Disallow: /*/admin/
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://lieuvo.com/sitemap.xml
+Sitemap: https://duongtran.com/sitemap.xml

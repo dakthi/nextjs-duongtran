@@ -35,3 +35,20 @@ yarn-error.log*
 .vercel
 
 /src/generated/prisma
+
+# SQL dumps and backups
+*.sql
+*.dump
+
+# Large files
+*.tar.gz
+*.pdf
+
+# Local data
+.resources/
+design-variations/
+facebook_posts.json
+.playwright-mcp/
+
+# Posts migration
+posts-migrate/
