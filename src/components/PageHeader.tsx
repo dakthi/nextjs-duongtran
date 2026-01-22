@@ -8,19 +8,19 @@ interface PageHeaderProps {
 
 export const PageHeader = ({ eyebrow, title, description }: PageHeaderProps) => {
   return (
-    <div className="bg-warm-cream py-16 md:py-20">
+    <div className="bg-card py-16 md:py-24">
       <Container>
         <div className="max-w-3xl mx-auto text-center">
           {eyebrow && (
-            <p className="text-sm font-medium tracking-widest uppercase text-warm-gold mb-4">
+            <p className="text-sm font-medium tracking-widest uppercase text-accent-2 mb-4">
               {eyebrow}
             </p>
           )}
-          <h1 className="text-3xl md:text-5xl font-serif font-bold text-outer-space leading-tight mb-6">
+          <h1 className="text-3xl md:text-5xl font-serif font-bold text-fg leading-tight mb-6">
             {title}
           </h1>
           {description && (
-            <p className="text-lg text-feldgrau leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg text-muted leading-relaxed max-w-2xl mx-auto">
               {description}
             </p>
           )}

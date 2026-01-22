@@ -65,7 +65,7 @@ export function Footer() {
   ];
 
   return (
-    <div className="relative bg-outer-space">
+    <div className="relative bg-fg">
       <Container>
         <div className="grid grid-cols-1 gap-10 pt-16 pb-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
@@ -73,7 +73,7 @@ export function Footer() {
               <Link href={`/${locale}`}>
                 <span className="flex flex-col">
                   <span className="text-2xl font-serif font-bold text-white">Duong Tran</span>
-                  <span className="text-sm text-warm-gold tracking-wide">{t.tagline}</span>
+                  <span className="text-sm text-accent-2 tracking-wide">{t.tagline}</span>
                 </span>
               </Link>
             </div>
@@ -90,7 +90,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-gray-300 hover:text-warm-gold transition-colors"
+                  className="text-sm text-gray-300 hover:text-accent-2 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -104,7 +104,7 @@ export function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-gray-300 hover:text-warm-gold transition-colors"
+                  className="text-sm text-gray-300 hover:text-accent-2 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -119,7 +119,7 @@ export function Footer() {
                 href="https://www.facebook.com/duongtran110"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-warm-gold transition-colors"
+                className="hover:text-accent-2 transition-colors"
               >
                 <span className="sr-only">{t.social.facebook}</span>
                 <Facebook />
@@ -128,7 +128,7 @@ export function Footer() {
                 href="https://www.linkedin.com/in/duongtran110/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-warm-gold transition-colors"
+                className="hover:text-accent-2 transition-colors"
               >
                 <span className="sr-only">{t.social.linkedin}</span>
                 <LinkedIn />

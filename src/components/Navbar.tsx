@@ -101,7 +101,7 @@ export const Navbar = () => {
   return (
     <div
       className={`w-full sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-soft" : "bg-transparent"
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-card"
       }`}
     >
       <Container>
@@ -109,12 +109,12 @@ export const Navbar = () => {
         {/* Logo */}
         <Link href={`/${locale}`} className="flex flex-col">
           <span
-            className={`font-serif font-bold transition-all duration-300 text-outer-space ${scrolled ? "text-xl" : "text-2xl"}`}
+            className={`font-serif font-bold transition-all duration-300 text-fg ${scrolled ? "text-xl" : "text-2xl"}`}
           >
             Duong Tran
           </span>
           <span
-            className={`text-warm-gold text-xs tracking-wider font-medium transition-all duration-300 ${scrolled ? "hidden md:block" : ""}`}
+            className={`text-accent-2 text-xs tracking-wider font-medium transition-all duration-300 ${scrolled ? "hidden md:block" : ""}`}
           >
             Life coach & student mentor
           </span>
@@ -126,14 +126,14 @@ export const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className="text-sm font-medium text-feldgrau hover:text-jungle-green transition-colors"
+              className="text-sm font-medium text-muted hover:text-accent transition-colors"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href={`/${locale}/contact`}
-            className="ml-4 px-6 py-2.5 text-white bg-jungle-green hover:bg-jungle-green-dark text-sm font-semibold rounded-full transition-colors"
+            className="ml-4 px-6 py-2.5 text-white bg-accent hover:bg-accent/90 text-sm font-semibold rounded-full transition-all"
           >
             {t('contact') || 'Contact'}
           </Link>
@@ -144,7 +144,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('en')}
                 className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
-                  locale === 'en' ? 'bg-jungle-green text-white' : 'text-feldgrau hover:text-jungle-green'
+                  locale === 'en' ? 'bg-accent text-white' : 'text-muted hover:text-accent'
                 }`}
               >
                 EN
@@ -152,7 +152,7 @@ export const Navbar = () => {
               <button
                 onClick={() => switchLanguage('vi')}
                 className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
-                  locale === 'vi' ? 'bg-jungle-green text-white' : 'text-feldgrau hover:text-jungle-green'
+                  locale === 'vi' ? 'bg-accent text-white' : 'text-muted hover:text-accent'
                 }`}
               >
                 VI
@@ -166,7 +166,7 @@ export const Navbar = () => {
           <button
             aria-label="Toggle Menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-outer-space hover:text-jungle-green focus:outline-none"
+            className="p-2 text-fg hover:text-accent focus:outline-none"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -188,7 +188,7 @@ export const Navbar = () => {
           </button>
 
           {mobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-white shadow-soft border-t border-gray-100">
+            <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100">
               <Container>
               <div className="py-4">
               {navigation.map((item, index) => (
@@ -196,7 +196,7 @@ export const Navbar = () => {
                   key={index}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-feldgrau hover:text-jungle-green hover:bg-warm-cream transition rounded-lg"
+                  className="block px-4 py-3 text-muted hover:text-accent hover:bg-card transition rounded-lg"
                 >
                   {item.label}
                 </Link>
@@ -204,7 +204,7 @@ export const Navbar = () => {
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block mx-4 mt-3 px-4 py-3 text-center bg-jungle-green text-white font-semibold hover:bg-jungle-green-dark rounded-full transition"
+                className="block mx-4 mt-3 px-4 py-3 text-center bg-accent text-white font-semibold hover:bg-accent/90 rounded-full transition"
               >
                 {t('contact') || 'Contact'}
               </Link>
@@ -218,7 +218,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 px-3 py-2 text-sm font-medium rounded-full transition ${
-                      locale === 'en' ? 'bg-jungle-green text-white' : 'bg-gray-100 text-feldgrau hover:bg-gray-200'
+                      locale === 'en' ? 'bg-accent text-white' : 'bg-gray-100 text-muted hover:bg-gray-200'
                     }`}
                   >
                     EN
@@ -229,7 +229,7 @@ export const Navbar = () => {
                       setMobileMenuOpen(false);
                     }}
                     className={`flex-1 px-3 py-2 text-sm font-medium rounded-full transition ${
-                      locale === 'vi' ? 'bg-jungle-green text-white' : 'bg-gray-100 text-feldgrau hover:bg-gray-200'
+                      locale === 'vi' ? 'bg-accent text-white' : 'bg-gray-100 text-muted hover:bg-gray-200'
                     }`}
                   >
                     VI

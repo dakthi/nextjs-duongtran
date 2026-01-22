@@ -15,19 +15,19 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
         props.align === "left" ? "" : "items-center justify-center text-center"
       }`}>
       {props.preTitle && (
-        <div className="text-xs font-semibold tracking-widest mb-3 letter-spacing-wider text-feldgrau">
+        <div className="text-sm font-medium tracking-widest uppercase mb-4 text-accent-2">
           {props.preTitle}
         </div>
       )}
 
       {props.title && (
-        <h2 className="max-w-3xl text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-outer-space">
+        <h2 className="max-w-3xl text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-fg">
           {props.title}
         </h2>
       )}
 
       {props.children && (
-        <p className="max-w-3xl text-lg leading-relaxed text-outer-space font-medium">
+        <p className="max-w-3xl text-lg leading-relaxed text-muted">
           {props.children}
         </p>
       )}

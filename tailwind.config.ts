@@ -14,26 +14,21 @@ const config: Config = {
     extend: {
       colors: {
         neutral: colors.neutral,
-        // Warm, premium coaching palette
-        'outer-space': '#2D3436',      // Deep charcoal for text
-        'jungle-green': '#1E3A5F',     // Deep navy blue - trust & professionalism
-        'mint-green': '#F8F6F3',       // Warm off-white
-        'mint-green-light': '#FDFCFB', // Light cream
-        'feldgrau': '#4A5568',         // Warm gray for body text
-        'outer-space-variant': '#374151',
-        'jungle-green-light': '#2E5B8C', // Lighter navy
-        'jungle-green-dark': '#152A44',  // Darker navy
-        // Accent colors
-        'warm-gold': '#C9A227',        // Premium gold accent
-        'warm-gold-light': '#E8D48A',  // Light gold
-        'warm-cream': '#FAF8F5',       // Warm background
-        'soft-coral': '#E8B4A0',       // Soft accent
-        brand: {
-          primary: "#1E3A5F",  // Deep navy
-          accent: "#C9A227",   // Warm gold
-          light: "#FAF8F5",    // Warm cream
-          dark: "#2D3436",     // Deep charcoal
-        },
+        // Jules-inspired warm premium palette
+        fg: '#1A1A1A',                 // Near-black text
+        muted: '#6B7280',              // Gray secondary text
+        accent: '#1E3A5F',             // Deep navy - primary
+        'accent-2': '#C9A227',         // Warm gold - premium
+        card: '#FAF8F5',               // Warm cream background
+        // Legacy mappings for compatibility
+        'outer-space': '#1A1A1A',
+        'jungle-green': '#1E3A5F',
+        'jungle-green-light': '#2E5B8C',
+        'jungle-green-dark': '#152A44',
+        'feldgrau': '#6B7280',
+        'mint-green': '#FAF8F5',
+        'warm-gold': '#C9A227',
+        'warm-cream': '#FAF8F5',
       },
       fontFamily: {
         serif: ['Libre Baskerville', 'serif'],

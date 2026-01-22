@@ -47,12 +47,12 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-soft hover:shadow-lg transition-all p-8 border-l-4 border-warm-gold"
+                className="bg-white rounded-xl shadow-soft hover:shadow-lg transition-all p-8 border-l-4 border-accent-2"
               >
-                <h2 className="text-xl font-serif font-bold text-outer-space mb-3 leading-tight">
+                <h2 className="text-xl font-serif font-bold text-fg mb-3 leading-tight">
                   {service.title}
                 </h2>
-                <p className="text-base text-feldgrau leading-relaxed">
+                <p className="text-base text-muted leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -62,24 +62,24 @@ export const ServicePage = ({ locale }: ServicePageProps) => {
       </div>
 
       {/* Additional Content Section */}
-      <div className="py-20 bg-warm-cream">
+      <div className="py-20 bg-card">
         <div className="max-w-3xl mx-auto px-8 xl:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-outer-space mb-8">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-fg mb-8">
             How I work
           </h2>
-          <p className="text-lg text-feldgrau leading-relaxed mb-6">
+          <p className="text-lg text-muted leading-relaxed mb-6">
             Every student is different, and I believe mentoring should be too. I take time to understand your unique situation, goals, and challenges before creating a personalized plan.
           </p>
-          <p className="text-lg text-feldgrau leading-relaxed">
+          <p className="text-lg text-muted leading-relaxed">
             My approach is practical and conversational. No lectures, no pressure — just honest guidance from someone who genuinely cares about your success. Whether you need intensive support or occasional check-ins, I'm flexible and always in your corner.
           </p>
         </div>
       </div>
 
       {/* Testimonials Section */}
-      <div className="py-20 bg-jungle-green">
+      <div className="py-20 bg-accent">
         <Container className="text-center">
-          <p className="text-sm font-medium tracking-widest mb-4 text-warm-gold uppercase">
+          <p className="text-sm font-medium tracking-widest mb-4 text-accent-2 uppercase">
             Testimonials
           </p>
           <h2 className="max-w-3xl mx-auto text-3xl md:text-4xl font-serif font-bold leading-tight mb-6 text-white">
