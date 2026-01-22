@@ -49,6 +49,7 @@ yarn-error.log*
 design-variations/
 facebook_posts.json
 .playwright-mcp/
+public/img/blog/
 
 # Posts migration
 posts-migrate/
