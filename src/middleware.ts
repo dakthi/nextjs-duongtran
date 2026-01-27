@@ -14,16 +14,7 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Check if the path is Vietnamese and NOT a blog or admin path
-  if (pathname.startsWith('/vi') && !pathname.startsWith('/vi/blog') && !pathname.startsWith('/vi/admin')) {
-    // Redirect to English version
-    const newPathname = pathname.replace('/vi', '/en');
-    return NextResponse.redirect(new URL(newPathname, request.url));
-  }
-
-  // For all other paths, use the default next-intl middleware
+  // Use the default next-intl middleware
   return intlMiddleware(request);
 }
 

@@ -1,4 +1,10 @@
-const remotePatterns = []
+const remotePatterns = [
+  {
+    protocol: 'https',
+    hostname: 'pub-cf120b0c88184c87975e3da39b1fd856.r2.dev',
+    pathname: '/**',
+  }
+]
 
 if (process.env.R2_PUBLIC_URL) {
   try {

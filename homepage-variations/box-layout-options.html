@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Layout Options - Dương Trần</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap&subset=vietnamese,latin" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            line-height: 1.6;
+            background: #f5f5f5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Libre Baskerville', serif;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1E3A5F;
+        }
+
+        .layouts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 1200px) {
+            .layouts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .layout-option {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .layout-label {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #C9A227;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            color: #1A1A1A;
+            line-height: 1.8;
+        }
+
+        .section-text p {
+            margin-bottom: 1.25rem;
+        }
+
+        .section-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Option 1: Cream Box (Current) */
+        .option-1 {
+            background: #FAF8F5;
+            padding: 3rem;
+            border-radius: 16px;
+        }
+
+        /* Option 2: Card with Shadow */
+        .option-2 {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E5E7EB;
+        }
+
+        /* Option 3: Left Accent Border */
+        .option-3 {
+            background: white;
+            padding: 3rem;
+            padding-left: 3.5rem;
+            border-left: 5px solid #C9A227;
+            border-radius: 0 16px 16px 0;
+        }
+
+        /* Option 4: Two-Tone Background */
+        .option-4 {
+            background: linear-gradient(135deg, #FAF8F5 0%, white 100%);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid #FAF8F5;
+        }
+
+        /* Option 5: Quote Style with Large Marks */
+        .option-5 {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            position: relative;
+            border: 2px solid #1E3A5F;
+        }
+
+        .option-5::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            left: 2rem;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 6rem;
+            line-height: 1;
+            color: #C9A227;
+            opacity: 0.2;
+        }
+
+        /* Option 6: Minimal Clean */
+        .option-6 {
+            background: transparent;
+            padding: 3rem 2rem;
+            border-top: 3px solid #1E3A5F;
+            border-bottom: 3px solid #1E3A5F;
+        }
+
+        /* Philosophy section styles */
+        .philosophy-quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #1E3A5F;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid #C9A227;
+        }
+
+        .spacer {
+            height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Container Layout Options</h1>
+
+        <div class="layouts-grid">
+
+            <!-- Option 1: Cream Box -->
+            <div class="layout-option">
+                <div class="layout-label">OPTION 1: Cream Box (Current)</div>
+
+                <div class="option-1">
+                    <div class="section-label">Du học sinh về hay ở</div>
+                    <h2 class="section-title">Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"</h2>
+                    <div class="section-text">
+                        <p>Thú thật là mình khá dè dặt khi chia sẻ về Together We Grow một cách rộng rãi. Phần vì mình thấy chúng mình còn bé nhỏ, phần vì mình rất ngại những cụm từ các bài báo về giáo dục thường dùng (ví dụ như "profile khủng").</p>
+                        <p>Lần đầu tiên mình xây dựng một điều gì đó mà mình biết rằng mình sẽ không muốn bỏ cuộc, lần đầu tiên mình biết mơ một ước mơ lớn hơn bản thân mình.</p>
+                        <p>Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.</p>
+                        <p>TWG không có những con số "khủng", cũng không tập trung vào trường top rank cao hay vào việc nhất định phải được học bổng. TWG không có gì để giật tít.</p>
+                        <p>Con số học sinh chúng mình hỗ trợ được chưa phải nhiều (khoảng 50 học sinh) nhưng khối lượng công việc chúng mình làm mỗi ngày bên cạnh việc học/làm full time là khổng lồ.</p>
+                        <p>Mong rằng chúng mình sẽ được "cùng lớn" với nhiều bạn trẻ Việt Nam hơn nữa. 🌟</p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="section-label">MÌNH NGHĨ LÀ</div>
+                    <div class="philosophy-quote">"Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."</div>
+                    <div class="section-text">
+                        <p>Trong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn.</p>
+                        <p>Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thân. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân và khả năng lan tỏa năng lượng tích cực đến cộng đồng.</p>
+                        <p>Những gì team Together We Grow chia sẻ với các bạn học sinh không chỉ là cách "gọi vốn" mà giúp các bạn hiểu hơn về bản thân mình—và đó là điều quan trọng nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2: Card with Shadow -->
+            <div class="layout-option">
+                <div class="layout-label">OPTION 2: Card with Shadow</div>
+
+                <div class="option-2">
+                    <div class="section-label">Du học sinh về hay ở</div>
+                    <h2 class="section-title">Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"</h2>
+                    <div class="section-text">
+                        <p>Thú thật là mình khá dè dặt khi chia sẻ về Together We Grow một cách rộng rãi. Phần vì mình thấy chúng mình còn bé nhỏ, phần vì mình rất ngại những cụm từ các bài báo về giáo dục thường dùng (ví dụ như "profile khủng").</p>
+                        <p>Lần đầu tiên mình xây dựng một điều gì đó mà mình biết rằng mình sẽ không muốn bỏ cuộc, lần đầu tiên mình biết mơ một ước mơ lớn hơn bản thân mình.</p>
+                        <p>Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.</p>
+                        <p>TWG không có những con số "khủng", cũng không tập trung vào trường top rank cao hay vào việc nhất định phải được học bổng. TWG không có gì để giật tít.</p>
+                        <p>Con số học sinh chúng mình hỗ trợ được chưa phải nhiều (khoảng 50 học sinh) nhưng khối lượng công việc chúng mình làm mỗi ngày bên cạnh việc học/làm full time là khổng lồ.</p>
+                        <p>Mong rằng chúng mình sẽ được "cùng lớn" với nhiều bạn trẻ Việt Nam hơn nữa. 🌟</p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="section-label">MÌNH NGHĨ LÀ</div>
+                    <div class="philosophy-quote">"Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."</div>
+                    <div class="section-text">
+                        <p>Trong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn.</p>
+                        <p>Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thân. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân và khả năng lan tỏa năng lượng tích cực đến cộng đồng.</p>
+                        <p>Những gì team Together We Grow chia sẻ với các bạn học sinh không chỉ là cách "gọi vốn" mà giúp các bạn hiểu hơn về bản thân mình—và đó là điều quan trọng nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 3: Left Accent Border -->
+            <div class="layout-option">
+                <div class="layout-label">OPTION 3: Left Accent Border</div>
+
+                <div class="option-3">
+                    <div class="section-label">Du học sinh về hay ở</div>
+                    <h2 class="section-title">Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"</h2>
+                    <div class="section-text">
+                        <p>Thú thật là mình khá dè dặt khi chia sẻ về Together We Grow một cách rộng rãi. Phần vì mình thấy chúng mình còn bé nhỏ, phần vì mình rất ngại những cụm từ các bài báo về giáo dục thường dùng (ví dụ như "profile khủng").</p>
+                        <p>Lần đầu tiên mình xây dựng một điều gì đó mà mình biết rằng mình sẽ không muốn bỏ cuộc, lần đầu tiên mình biết mơ một ước mơ lớn hơn bản thân mình.</p>
+                        <p>Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.</p>
+                        <p>TWG không có những con số "khủng", cũng không tập trung vào trường top rank cao hay vào việc nhất định phải được học bổng. TWG không có gì để giật tít.</p>
+                        <p>Con số học sinh chúng mình hỗ trợ được chưa phải nhiều (khoảng 50 học sinh) nhưng khối lượng công việc chúng mình làm mỗi ngày bên cạnh việc học/làm full time là khổng lồ.</p>
+                        <p>Mong rằng chúng mình sẽ được "cùng lớn" với nhiều bạn trẻ Việt Nam hơn nữa. 🌟</p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="section-label">MÌNH NGHĨ LÀ</div>
+                    <div class="philosophy-quote">"Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."</div>
+                    <div class="section-text">
+                        <p>Trong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn.</p>
+                        <p>Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thân. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân và khả năng lan tỏa năng lượng tích cực đến cộng đồng.</p>
+                        <p>Những gì team Together We Grow chia sẻ với các bạn học sinh không chỉ là cách "gọi vốn" mà giúp các bạn hiểu hơn về bản thân mình—và đó là điều quan trọng nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 4: Two-Tone Background -->
+            <div class="layout-option">
+                <div class="layout-label">OPTION 4: Two-Tone Gradient</div>
+
+                <div class="option-4">
+                    <div class="section-label">Du học sinh về hay ở</div>
+                    <h2 class="section-title">Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"</h2>
+                    <div class="section-text">
+                        <p>Thú thật là mình khá dè dặt khi chia sẻ về Together We Grow một cách rộng rãi. Phần vì mình thấy chúng mình còn bé nhỏ, phần vì mình rất ngại những cụm từ các bài báo về giáo dục thường dùng (ví dụ như "profile khủng").</p>
+                        <p>Lần đầu tiên mình xây dựng một điều gì đó mà mình biết rằng mình sẽ không muốn bỏ cuộc, lần đầu tiên mình biết mơ một ước mơ lớn hơn bản thân mình.</p>
+                        <p>Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.</p>
+                        <p>TWG không có những con số "khủng", cũng không tập trung vào trường top rank cao hay vào việc nhất định phải được học bổng. TWG không có gì để giật tít.</p>
+                        <p>Con số học sinh chúng mình hỗ trợ được chưa phải nhiều (khoảng 50 học sinh) nhưng khối lượng công việc chúng mình làm mỗi ngày bên cạnh việc học/làm full time là khổng lồ.</p>
+                        <p>Mong rằng chúng mình sẽ được "cùng lớn" với nhiều bạn trẻ Việt Nam hơn nữa. 🌟</p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="section-label">MÌNH NGHĨ LÀ</div>
+                    <div class="philosophy-quote">"Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."</div>
+                    <div class="section-text">
+                        <p>Trong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn.</p>
+                        <p>Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thân. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân và khả năng lan tỏa năng lượng tích cực đến cộng đồng.</p>
+                        <p>Những gì team Together We Grow chia sẻ với các bạn học sinh không chỉ là cách "gọi vốn" mà giúp các bạn hiểu hơn về bản thân mình—và đó là điều quan trọng nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 5: Quote Style -->
+            <div class="layout-option">
+                <div class="layout-label">OPTION 5: Quote Style with Large Marks</div>
+
+                <div class="option-5">
+                    <div class="section-label">Du học sinh về hay ở</div>
+                    <h2 class="section-title">Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"</h2>
+                    <div class="section-text">
+                        <p>Thú thật là mình khá dè dặt khi chia sẻ về Together We Grow một cách rộng rãi. Phần vì mình thấy chúng mình còn bé nhỏ, phần vì mình rất ngại những cụm từ các bài báo về giáo dục thường dùng (ví dụ như "profile khủng").</p>
+                        <p>Lần đầu tiên mình xây dựng một điều gì đó mà mình biết rằng mình sẽ không muốn bỏ cuộc, lần đầu tiên mình biết mơ một ước mơ lớn hơn bản thân mình.</p>
+                        <p>Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.</p>
+                        <p>TWG không có những con số "khủng", cũng không tập trung vào trường top rank cao hay vào việc nhất định phải được học bổng. TWG không có gì để giật tít.</p>
+                        <p>Con số học sinh chúng mình hỗ trợ được chưa phải nhiều (khoảng 50 học sinh) nhưng khối lượng công việc chúng mình làm mỗi ngày bên cạnh việc học/làm full time là khổng lồ.</p>
+                        <p>Mong rằng chúng mình sẽ được "cùng lớn" với nhiều bạn trẻ Việt Nam hơn nữa. 🌟</p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="section-label">MÌNH NGHĨ LÀ</div>
+                    <div class="philosophy-quote">"Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."</div>
+                    <div class="section-text">
+                        <p>Trong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn.</p>
+                        <p>Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thân. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân và khả năng lan tỏa năng lượng tích cực đến cộng đồng.</p>
+                        <p>Những gì team Together We Grow chia sẻ với các bạn học sinh không chỉ là cách "gọi vốn" mà giúp các bạn hiểu hơn về bản thân mình—và đó là điều quan trọng nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 6: Minimal Clean -->
+            <div class="layout-option">
+                <div class="layout-label">OPTION 6: Minimal Clean Lines</div>
+
+                <div class="option-6">
+                    <div class="section-label">Du học sinh về hay ở</div>
+                    <h2 class="section-title">Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"</h2>
+                    <div class="section-text">
+                        <p>Thú thật là mình khá dè dặt khi chia sẻ về Together We Grow một cách rộng rãi. Phần vì mình thấy chúng mình còn bé nhỏ, phần vì mình rất ngại những cụm từ các bài báo về giáo dục thường dùng (ví dụ như "profile khủng").</p>
+                        <p>Lần đầu tiên mình xây dựng một điều gì đó mà mình biết rằng mình sẽ không muốn bỏ cuộc, lần đầu tiên mình biết mơ một ước mơ lớn hơn bản thân mình.</p>
+                        <p>Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.</p>
+                        <p>TWG không có những con số "khủng", cũng không tập trung vào trường top rank cao hay vào việc nhất định phải được học bổng. TWG không có gì để giật tít.</p>
+                        <p>Con số học sinh chúng mình hỗ trợ được chưa phải nhiều (khoảng 50 học sinh) nhưng khối lượng công việc chúng mình làm mỗi ngày bên cạnh việc học/làm full time là khổng lồ.</p>
+                        <p>Mong rằng chúng mình sẽ được "cùng lớn" với nhiều bạn trẻ Việt Nam hơn nữa. 🌟</p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="section-label">MÌNH NGHĨ LÀ</div>
+                    <div class="philosophy-quote">"Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."</div>
+                    <div class="section-text">
+                        <p>Trong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn.</p>
+                        <p>Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thân. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân và khả năng lan tỏa năng lượng tích cực đến cộng đồng.</p>
+                        <p>Những gì team Together We Grow chia sẻ với các bạn học sinh không chỉ là cách "gọi vốn" mà giúp các bạn hiểu hơn về bản thân mình—và đó là điều quan trọng nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

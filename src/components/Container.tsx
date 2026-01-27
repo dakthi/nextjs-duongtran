@@ -8,7 +8,7 @@
   export function Container(props: Readonly<ContainerProps>) {
     return (
       <div
-        className={`container max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 ${
+        className={`container max-w-5xl mx-auto px-1.5 sm:px-2 md:px-3 lg:px-4 xl:px-6 ${
           props.className ? props.className : ""
         }`}>
         {props.children}

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồng hành với những dự định du học - Dương Trần</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap&subset=vietnamese,latin" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1A1A1A;
+            line-height: 1.6;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E3A5F;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #1A1A1A;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #1E3A5F;
+        }
+
+        .nav-cta {
+            background: #1E3A5F;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #152A44;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1.4fr 1fr;
+                gap: 5rem;
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1A1A1A;
+            margin-bottom: 2rem;
+        }
+
+        .author-intro {
+            margin-top: 2.5rem;
+        }
+
+        .author-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-name {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+
+        .author-credentials {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .story-text {
+            font-size: 1.125rem;
+            color: #1A1A1A;
+            line-height: 2;
+            margin-bottom: 2rem;
+        }
+
+        .story-text.emphasis {
+            font-weight: 600;
+            color: #1E3A5F;
+            font-size: 1.25rem;
+            padding: 1.5rem 0;
+        }
+
+        /* Hero Image */
+        .hero-image-wrapper {
+            position: relative;
+            height: 100%;
+            min-height: 600px;
+        }
+
+        .hero-image-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+        }
+
+        /* CTA Buttons in Hero */
+        .hero-cta {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .hero-cta {
+                flex-direction: row;
+            }
+        }
+
+        .hero-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+        }
+
+        .hero-cta .btn-primary {
+            background: #1E3A5F;
+            color: white;
+        }
+
+        .hero-cta .btn-primary:hover {
+            background: #152A44;
+            transform: translateY(-2px);
+        }
+
+        .hero-cta .btn-secondary {
+            background: transparent;
+            color: #1E3A5F;
+            border: 2px solid #1E3A5F;
+            box-shadow: none;
+        }
+
+        .hero-cta .btn-secondary:hover {
+            background: #F0EBE0;
+            transform: translateY(-2px);
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 5rem 0;
+            background: #F0EBE0;
+        }
+
+        .philosophy-content {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 1024px) {
+            .philosophy-grid {
+                grid-template-columns: 2fr 3fr;
+            }
+        }
+
+        .quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            line-height: 1.4;
+            color: #1A1A1A;
+        }
+
+        .quote::before {
+            content: '"';
+            color: #C9A227;
+        }
+
+        .quote::after {
+            content: '"';
+            color: #C9A227;
+        }
+
+        .philosophy-points {
+            font-size: 1.125rem;
+            color: #1A1A1A;
+            line-height: 1.8;
+        }
+
+        .philosophy-points p {
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-points p:last-child {
+            font-weight: 600;
+            color: #1E3A5F;
+        }
+
+        /* What You'll Learn */
+        .what-learn {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.875rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 3rem;
+        }
+
+        .learn-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .learn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .learn-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .learn-card {
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 2rem;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .learn-card:hover {
+            border-color: #C9A227;
+            box-shadow: 0 4px 20px -2px rgba(201, 162, 39, 0.15);
+        }
+
+        .learn-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #C9A227;
+            margin-bottom: 1rem;
+        }
+
+        .learn-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 0.75rem;
+        }
+
+        .learn-description {
+            font-size: 1rem;
+            color: #6B7280;
+            line-height: 1.7;
+        }
+
+        .learn-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1E3A5F;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .learn-link:hover {
+            color: #C9A227;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: #F5EBE0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1E3A5F;
+        }
+
+        .btn-primary:hover {
+            background: #F0EBE0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background: #C9A227;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #B8911E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(201, 162, 39, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Dương Trần</a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">Về mình</a>
+                <a href="#services" class="nav-link">Dịch vụ</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-cta">Đặt lịch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+
+                <!-- Left: Main Content -->
+                <div class="hero-content">
+                    <h1>Đồng hành với những dự định du học</h1>
+
+                    <div class="author-intro">
+                        <p class="story-text" style="font-size: 1.375rem; line-height: 1.8; color: #1A1A1A; margin-bottom: 3rem;">
+                            Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp. Không phải về con số "khủng" hay trường top rank, mà về việc hiểu rõ bản thân và tự tin đưa ra lựa chọn đúng đắn cho riêng mình.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="hero-cta">
+                            <a href="#book-session" class="btn btn-primary">Đặt lịch tư vấn</a>
+                            <a href="#read-journey" class="btn btn-secondary">Đọc hành trình của mình</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Image -->
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-about.jpg"
+                             alt="Duong Tran"
+                             class="hero-image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Quote -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <div class="section-label">Du học sinh về hay ở</div>
+                <h2 style="font-family: 'Libre Baskerville', serif; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.4; color: #1E3A5F; margin-bottom: 1rem;">
+                    Chọn cách đồng hành với các bạn trẻ sau mình là cách mình "trở về"
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy with Image - Newspaper Style -->
+    <section style="padding: 5rem 0; background: #F0EBE0;">
+        <div class="container">
+            <div style="max-width: 1400px; margin: 0 auto;">
+
+                <!-- Large Featured Image -->
+                <div style="margin-bottom: 4rem;">
+                    <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-award-hero.webp"
+                         alt="Duong Tran receiving Student of the Year award at University of Liverpool"
+                         style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); max-height: 600px; object-fit: cover;">
+                </div>
+
+                <!-- 3-Column Newspaper Text -->
+                <div style="columns: 1; column-gap: 3rem; text-align: justify;">
+                    <p style="font-size: 1.125rem; line-height: 1.9; color: #1A1A1A; margin-bottom: 1.5rem;">
+                        <span style="float: left; font-family: 'Libre Baskerville', serif; font-size: 5rem; line-height: 0.8; margin-right: 0.5rem; margin-top: 0.3rem; color: #C9A227; font-weight: 700;">T</span>rong quan sát của mình, nhiều người trẻ đi du học vì sự sắp đặt của cha mẹ hoặc coi đó là sự đầu tư thuần túy, thiếu mục đích rõ ràng. Khi được hỏi "Tại sao bạn muốn đi du học?", nhiều bạn trẻ chỉ có thể đưa ra những câu trả lời chung chung hoặc dựa trên mong muốn của người khác.
+                    </p>
+
+                    <p style="font-size: 1.125rem; line-height: 1.9; color: #1A1A1A; margin-bottom: 1.5rem;">
+                        Nhưng khi bạn hiểu mình cần gì, bạn sẽ tự tin hơn trong việc đưa ra lựa chọn. Bạn sẽ biết mình cần trường nào, môi trường như thế nào, và quan trọng nhất là bạn muốn phát triển bản thân theo hướng nào. Đó không chỉ là việc chọn một ngôi trường hay một ngành học, mà là việc chọn một hành trình phù hợp với con người thật của bạn.
+                    </p>
+
+                    <p style="font-size: 1.125rem; line-height: 1.9; color: #1A1A1A; margin-bottom: 1.5rem;">
+                        Du học không chỉ là về bằng cấp hay kiến thức, mà còn là cơ hội để bạn khám phá bản thân, thử thách giới hạn, và xây dựng tương lai mà bạn thực sự mong muốn. Khi bạn kết nối với chính mình, mọi quyết định sẽ trở nên rõ ràng và có ý nghĩa hơn rất nhiều.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @media (min-width: 768px) {
+            section:has(div[style*="columns: 1"]) div[style*="columns: 1"] {
+                columns: 2 !important;
+            }
+        }
+        @media (min-width: 1024px) {
+            section:has(div[style*="columns: 1"]) div[style*="columns: 1"] {
+                columns: 3 !important;
+            }
+        }
+    </style>
+
+    <!-- Story Part 2 - Mission Statement Redesigned -->
+    <section style="padding: 5rem 0; background: linear-gradient(135deg, #F0EBE0 0%, white 100%);">
+        <div class="container">
+            <div style="max-width: 1000px; margin: 0 auto;">
+
+                <!-- Main mission statement in emphasized box -->
+                <div style="background: white; border: 2px solid #1E3A5F; border-radius: 16px; padding: 3rem 3rem; margin-bottom: 3rem; box-shadow: 0 8px 24px rgba(30, 58, 95, 0.08);">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="display: inline-block; padding: 0.5rem 1.5rem; background: #1E3A5F; color: white; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">
+                            Mission
+                        </div>
+                    </div>
+                    <p style="font-size: 1.5rem; color: #1E3A5F; line-height: 1.7; font-weight: 600; text-align: center;">
+                        Mình muốn Together We Grow là một nơi an toàn để các bạn học sinh được kết nối với bản thân, từ đó tìm và apply thành công vào môi trường học tập phù hợp.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarship Factors & Blog Section -->
+    <section style="padding: 6rem 0; background: white;">
+        <div class="container">
+            <div style="max-width: 1200px; margin: 0 auto;">
+
+                <!-- Scholarship Factors Intro -->
+                <div style="margin-bottom: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                    <h2 style="font-family: 'Libre Baskerville', serif; font-size: clamp(1.75rem, 3.5vw, 2.25rem); font-weight: 700; color: #1E3A5F; margin-bottom: 2rem; text-align: center;">
+                        Ba yếu tố quan trọng khi "gọi vốn" cho bản thân
+                    </h2>
+                    <div class="intro-text-columns" style="column-count: 1; column-gap: 3rem; text-align: left;">
+                        <p class="drop-cap" style="font-size: 1.125rem; color: #1A1A1A; line-height: 1.8; margin-bottom: 1.5rem;">
+                            Mình gọi việc apply học bổng là một cách "gọi vốn" cho bản thán. Các nhà cấp học bổng sẽ nhìn vào ba yếu tố: sự đam mê, năng lực bản thân, và khả năng lan tỏa năng lượng tích cực đến cộng đồng.
+                        </p>
+                        <p style="font-size: 1.125rem; color: #6B7280; line-height: 1.8;">
+                            Mình viết về những trải nghiệm, bài học và suy ngẫm trong hành trình này. Hy vọng những chia sẻ dưới đây sẽ hữu ích cho bạn.
+                        </p>
+                        <div style="margin-top: 2rem; text-align: right;">
+                            <p style="font-family: 'Brush Script MT', cursive, 'Dancing Script', cursive; font-size: 1.75rem; color: #1E3A5F; margin: 0;">— Dương Trân</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9-Tile Grid Layout -->
+                <div class="blog-grid" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+
+                    <!-- Featured Post - 2x2 (4 tiles) -->
+                    <article class="featured-post" style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; min-height: 55vh; display: flex; flex-direction: column;">
+                        <!-- Featured Image -->
+                        <div style="height: 28vh; position: relative; overflow: hidden; flex-shrink: 0;">
+                            <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-award-hero.webp" alt="Featured blog post" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; top: 1.5rem; left: 1.5rem; background: white; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; color: #1E3A5F;">
+                                Du học
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div style="padding: 2.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1rem;">15 Tháng 1, 2024 • 5 phút đọc</div>
+                            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; font-weight: 700; color: #1A1A1A; margin-bottom: 1.25rem; line-height: 1.3;">
+                                Làm sao để "kết nối với bản thân" trước khi đi du học?
+                            </h3>
+                            <p style="font-size: 1.125rem; color: #6B7280; line-height: 1.8; margin-bottom: 1.5rem;">
+                                Nhiều bạn trẻ lựa chọn du học dựa trên sự sắp đặt của cha mẹ hoặc coi đó là khoản đầu tư thuần túy. Nhưng khi bạn hiểu mình thực sự cần gì, mọi quyết định sẽ trở nên rõ ràng hơn...
+                            </p>
+                            <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #1E3A5F; font-weight: 600; text-decoration: none; font-size: 1rem;">
+                                Đọc bài viết đầy đủ
+                                <span style="transition: transform 0.2s;">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 - Right Column Top (No Image) -->
+                    <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer;">
+                        <!-- Content -->
+                        <div style="padding: 2rem;">
+                            <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.75rem;">8 Tháng 1, 2024 • 6 phút đọc</div>
+                            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; line-height: 1.3;">
+                                Ba yếu tố để "gọi vốn" thành công
+                            </h3>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 - Right Column (No Image) -->
+                    <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer;">
+                        <!-- Content -->
+                        <div style="padding: 2rem;">
+                            <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.75rem;">2 Tháng 1, 2024 • 8 phút đọc</div>
+                            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; line-height: 1.3;">
+                                Together We Grow: Cùng lớn với thế hệ trẻ
+                            </h3>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 - Right Column (No Image) -->
+                    <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer;">
+                        <!-- Content -->
+                        <div style="padding: 2rem;">
+                            <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.75rem;">28 Tháng 12, 2023 • 5 phút đọc</div>
+                            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; line-height: 1.3;">
+                                Kinh nghiệm xin visa du học Anh
+                            </h3>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 - Right Column (No Image) -->
+                    <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer;">
+                        <!-- Content -->
+                        <div style="padding: 2rem;">
+                            <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.75rem;">20 Tháng 12, 2023 • 7 phút đọc</div>
+                            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; line-height: 1.3;">
+                                Tại sao nên đầu tư vào bản thân?
+                            </h3>
+                        </div>
+                    </article>
+
+                    <!-- Carousel Section - Full Width Bottom Row -->
+                    <div class="carousel-section" style="grid-column: 1 / -1; margin-top: 1rem;">
+                        <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.5rem; font-weight: 700; color: #1A1A1A;">
+                                Bài viết khác
+                            </h3>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E7EB; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                                    ←
+                                </button>
+                                <button style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E7EB; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                                    →
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel Cards -->
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; overflow: hidden;">
+
+                            <!-- Carousel Card 1 -->
+                            <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; min-width: 280px;">
+                                <div style="height: 180px; position: relative; overflow: hidden;">
+                                    <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-about.jpg" alt="Blog post" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="padding: 1.5rem;">
+                                    <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.5rem;">20 Tháng 12, 2023</div>
+                                    <h4 style="font-family: 'Libre Baskerville', serif; font-size: 1.125rem; font-weight: 700; color: #1A1A1A; margin-bottom: 0.75rem; line-height: 1.3;">
+                                        Kinh nghiệm xin visa du học Anh
+                                    </h4>
+                                    <a href="#" style="color: #1E3A5F; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                                        Đọc tiếp →
+                                    </a>
+                                </div>
+                            </article>
+
+                            <!-- Carousel Card 2 -->
+                            <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; min-width: 280px;">
+                                <div style="height: 180px; position: relative; overflow: hidden;">
+                                    <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-award-hero.webp" alt="Blog post" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="padding: 1.5rem;">
+                                    <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.5rem;">15 Tháng 12, 2023</div>
+                                    <h4 style="font-family: 'Libre Baskerville', serif; font-size: 1.125rem; font-weight: 700; color: #1A1A1A; margin-bottom: 0.75rem; line-height: 1.3;">
+                                        Cuộc sống du học sinh tại Liverpool
+                                    </h4>
+                                    <a href="#" style="color: #1E3A5F; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                                        Đọc tiếp →
+                                    </a>
+                                </div>
+                            </article>
+
+                            <!-- Carousel Card 3 - Text Only -->
+                            <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; min-width: 280px;">
+                                <div style="padding: 2rem;">
+                                    <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.75rem;">10 Tháng 12, 2023 • 7 phút đọc</div>
+                                    <h4 style="font-family: 'Libre Baskerville', serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; margin-bottom: 1rem; line-height: 1.3;">
+                                        Làm thế nào để viết Personal Statement nổi bật?
+                                    </h4>
+                                    <p style="font-size: 0.875rem; color: #6B7280; line-height: 1.6; margin-bottom: 1.25rem;">
+                                        Personal Statement là cơ hội để bạn kể câu chuyện của chính mình. Đây không chỉ là danh sách thành tích mà là cách bạn thể hiện giá trị cốt lõi...
+                                    </p>
+                                    <a href="#" style="color: #1E3A5F; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                                        Đọc tiếp →
+                                    </a>
+                                </div>
+                            </article>
+
+                            <!-- Carousel Card 4 - Text Only -->
+                            <article style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; min-width: 280px;">
+                                <div style="padding: 2rem;">
+                                    <div style="font-size: 0.75rem; color: #6B7280; margin-bottom: 0.75rem;">5 Tháng 12, 2023 • 6 phút đọc</div>
+                                    <h4 style="font-family: 'Libre Baskerville', serif; font-size: 1.25rem; font-weight: 700; color: #1A1A1A; margin-bottom: 1rem; line-height: 1.3;">
+                                        Top 5 học bổng toàn phần cho sinh viên Việt Nam
+                                    </h4>
+                                    <p style="font-size: 0.875rem; color: #6B7280; line-height: 1.6; margin-bottom: 1.25rem;">
+                                        Tổng hợp những học bổng toàn phần dành cho sinh viên Việt Nam, từ yêu cầu đến cách chuẩn bị hồ sơ hiệu quả...
+                                    </p>
+                                    <a href="#" style="color: #1E3A5F; font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                                        Đọc tiếp →
+                                    </a>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- View All Link -->
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#blog" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: #1E3A5F; color: white; border-radius: 9999px; text-decoration: none; font-weight: 600; transition: all 0.2s;">
+                        Xem tất cả bài viết
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <style>
+        article:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+        article a:hover span {
+            transform: translateX(4px);
+        }
+
+        /* Drop Cap Styling */
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4.5rem;
+            line-height: 0.85;
+            margin-right: 0.15rem;
+            margin-top: 0.1rem;
+            color: #1E3A5F;
+            font-weight: 700;
+        }
+
+        /* Two Column Layout for Intro Text */
+        @media (min-width: 768px) {
+            .intro-text-columns {
+                column-count: 2 !important;
+            }
+        }
+
+        /* 9-Tile Grid Layout */
+        @media (min-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: 1.5fr 1fr !important;
+                grid-template-rows: auto !important;
+            }
+            .featured-post {
+                grid-column: 1 !important;
+                grid-row: 1 / 5 !important;
+            }
+            .carousel-section > div:last-child {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .carousel-section > div:last-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+    </style>
+
+    <!-- Philosophy Quote Section -->
+    <section style="padding: 5rem 0; background: linear-gradient(135deg, #1E3A5F 0%, #152A44 100%);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #C9A227; margin-bottom: 2rem;">MÌNH NGHĨ LÀ</div>
+                <h2 style="font-family: 'Libre Baskerville', serif; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.4; color: white;">
+                    "Những bạn biết mình cần gì khi đi du học thì cũng sẽ biết mình nên lựa chọn thế nào."
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="what-learn">
+        <div class="container">
+            <h2 class="section-title">
+                Những gì bạn sẽ nhận được khi đồng hành cùng mình
+            </h2>
+
+            <div class="learn-grid">
+
+                <div class="learn-card">
+                    <div class="learn-number">01</div>
+                    <h3 class="learn-title">Hiểu rõ bản thân</h3>
+                    <p class="learn-description">
+                        Khai phá giá trị cốt lõi, đam mê thực sự và điểm mạnh của bạn. Đây là nền tảng giúp bạn tự tin trong việc chọn trường, ngành học và định hướng tương lai.
+                    </p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-number">02</div>
+                    <h3 class="learn-title">Chiến lược "gọi vốn" hiệu quả</h3>
+                    <p class="learn-description">
+                        Học cách thể hiện đam mê, năng lực và khả năng lan tỏa năng lượng tích cực—ba yếu tố quan trọng nhất mà các nhà cấp học bổng tìm kiếm ở ứng viên.
+                    </p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-number">03</div>
+                    <h3 class="learn-title">Đồng hành trong hành trình</h3>
+                    <p class="learn-description">
+                        Mình sẽ lắng nghe, chia sẻ và hỗ trợ bạn qua những xung đột, khó khăn và quyết định quan trọng—không chỉ về du học mà còn về cuộc sống.
+                    </p>
+                    <a href="#" class="learn-link">Tìm hiểu thêm về Together We Grow →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta">
+        <div class="container">
+            <div style="display: flex; gap: 2.5rem; align-items: center; justify-content: center; max-width: 900px; margin: 0 auto;">
+                <!-- Avatar -->
+                <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-about.jpg"
+                     alt="Dương Trân"
+                     style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 6px solid white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+
+                <!-- Content -->
+                <div style="flex: 1; text-align: left;">
+                    <h2 style="font-family: 'Libre Baskerville', serif; font-size: 1.75rem; font-weight: 700; color: #1E3A5F; margin-bottom: 1rem;">Dương Trân</h2>
+                    <p style="color: #374151; font-size: 1.0625rem; line-height: 1.7; margin-bottom: 1.5rem; text-align: left;">
+                        Hiện tại, mình đang làm Marketing Specialist tại University of Oxford và đồng thời điều hành Together We Grow. Để mình có thể hỗ trợ bạn tốt nhất, bạn nên đọc các bài viết trước, sau đó đặt lịch tư vấn với mình.
+                    </p>
+                    <div class="cta-buttons" style="justify-content: flex-start;">
+                        <a href="#blog" class="btn btn-primary">Đọc bài viết</a>
+                        <a href="#book-session" class="btn btn-secondary">Đặt lịch tư vấn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: white; border-top: 1px solid #E5E7EB; padding: 3rem 0 2rem;">
+        <div class="container">
+            <!-- Footer Main -->
+            <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; align-items: start;">
+
+                    <!-- Brand -->
+                    <div>
+                        <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.5rem; font-weight: 700; color: #1E3A5F; margin-bottom: 0.5rem;">Dương Trân</h3>
+                        <p style="color: #6B7280; font-size: 0.875rem; line-height: 1.6;">Life coach đồng hành cùng bạn trẻ Việt Nam</p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Liên kết</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><a href="#about" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Về mình</a></li>
+                            <li><a href="#services" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Dịch vụ</a></li>
+                            <li><a href="#blog" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Blog</a></li>
+                            <li><a href="#contact" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Liên hệ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Resources -->
+                    <div>
+                        <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Tài liệu tham khảo</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><a href="#scholarship" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Xin học bổng</a></li>
+                            <li><a href="#study-abroad" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Du học</a></li>
+                            <li><a href="#career" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Sự nghiệp</a></li>
+                            <li><a href="#faq" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div style="border-top: 1px solid #E5E7EB; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p style="color: #6B7280; margin: 0; font-size: 0.875rem;">
+                    © Dương Trân. All rights reserved.
+                </p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#privacy" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Chính sách bảo mật</a>
+                    <a href="#terms" style="color: #6B7280; text-decoration: none; font-size: 0.875rem; transition: color 0.3s;" onmouseover="this.style.color='#1E3A5F'" onmouseout="this.style.color='#6B7280'">Điều khoản sử dụng</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

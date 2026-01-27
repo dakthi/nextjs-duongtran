@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variation 3: The Conversation - Duong Tran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1A1A1A;
+            line-height: 1.6;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0 0;
+            background: linear-gradient(180deg, #FAF8F5 0%, white 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-question {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1E3A5F;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-answer {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hero-intro {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            background: white;
+            border: 2px solid #C9A227;
+            border-radius: 9999px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.15);
+        }
+
+        .hero-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #C9A227;
+        }
+
+        .hero-intro-text {
+            text-align: left;
+        }
+
+        .hero-name {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-role {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .hero-image-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+
+        /* Conversation Section */
+        .conversation {
+            padding: 5rem 0;
+        }
+
+        .conversation-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .conversation-block {
+            padding-left: 2rem;
+            border-left: 4px solid #FAF8F5;
+        }
+
+        .conversation-block.highlight {
+            border-left-color: #C9A227;
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+            padding-left: 2rem;
+            margin-left: -2rem;
+            padding-right: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .conversation-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #C9A227;
+            margin-bottom: 1rem;
+        }
+
+        .conversation-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 1.5rem;
+        }
+
+        .conversation-text {
+            font-size: 1.25rem;
+            color: #1A1A1A;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .conversation-text.emphasis {
+            font-weight: 600;
+            color: #1E3A5F;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 3rem;
+            background: #FAF8F5;
+            border-radius: 16px;
+            border-left: 4px solid #C9A227;
+        }
+
+        .testimonial-quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #1A1A1A;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 5rem 0;
+            background: #FAF8F5;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.875rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6B7280;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #C9A227 0%, #B8911E 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            font-size: 1.125rem;
+            color: #6B7280;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: #1A1A1A;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            color: #6B7280;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: #1E3A5F;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #152A44;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(30, 58, 95, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1E3A5F;
+            border: 2px solid #1E3A5F;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: #1E3A5F;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Extra Info */
+        .extra-info {
+            padding: 1.5rem;
+            background: #FAF8F5;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .extra-info-text {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .extra-info-link {
+            color: #1E3A5F;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .extra-info-link:hover {
+            color: #C9A227;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-question">
+                    Feeling lost about studying abroad?
+                </h1>
+                <p class="hero-answer">
+                    You're not alone. And honestly, that's completely normal. Let me help you find clarity.
+                </p>
+
+                <div class="hero-intro">
+                    <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-award-hero.webp"
+                         alt="Duong Tran"
+                         class="hero-avatar">
+                    <div class="hero-intro-text">
+                        <div class="hero-name">Duong Tran</div>
+                        <div class="hero-role">Your Study Abroad Mentor</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-award-hero.webp"
+                     alt="Duong Tran at University of Liverpool"
+                     class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Conversation Section -->
+    <section class="conversation">
+        <div class="container">
+            <div class="conversation-grid">
+
+                <div class="conversation-block">
+                    <div class="conversation-label">LET'S TALK</div>
+                    <h2 class="conversation-title">I know what you're going through</h2>
+                    <p class="conversation-text">
+                        The endless questions. "Which university should I apply to?" "How do I write a personal statement that doesn't sound generic?" "Can I actually afford this?" "What if I don't get in?"
+                    </p>
+                    <p class="conversation-text emphasis">
+                        I've been exactly where you are right now.
+                    </p>
+                </div>
+
+                <div class="conversation-block highlight">
+                    <div class="conversation-label">HERE'S THE THING</div>
+                    <h2 class="conversation-title">You don't have to figure this out alone</h2>
+                    <p class="conversation-text">
+                        Most students struggle not because they're not smart enough or good enough, but because they don't have the right guidance. They're getting information from too many sources, feeling overwhelmed, and second-guessing every decision.
+                    </p>
+                    <p class="conversation-text">
+                        What if you had someone in your corner who's been through it all? Someone who understands the system, knows what works, and genuinely cares about your success?
+                    </p>
+                    <p class="conversation-text emphasis">
+                        That's what I'm here for.
+                    </p>
+                </div>
+
+                <div class="conversation-block">
+                    <div class="conversation-label">MY PROMISE TO YOU</div>
+                    <h2 class="conversation-title">Honest, practical, personalized guidance</h2>
+                    <p class="conversation-text">
+                        I won't give you cookie-cutter advice. I won't promise you the world. What I will do is listen to your story, understand your goals, and help you create a strategy that actually works for YOU.
+                    </p>
+                    <p class="conversation-text">
+                        Whether you're just starting to explore options or you're weeks away from deadlines, we'll work together to make this happen.
+                    </p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-quote">
+                        "Duong didn't just help me get into university—she helped me believe I could do it. Her guidance was personal, practical, and exactly what I needed."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://cdn-duongtran.chartedconsultants.com/legacy/duong-tran-hero.jpg"
+                             alt="Student"
+                             class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Minh N.</div>
+                            <div class="testimonial-role">Student, University of Manchester</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">How we'll work together</h2>
+            <p class="section-subtitle">
+                Practical, step-by-step support tailored to where you are in your journey
+            </p>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="service-icon">01</div>
+                    <h3 class="service-title">University Applications</h3>
+                    <p class="service-description">
+                        From choosing the right programs to crafting standout personal statements—we'll build applications that truly represent you.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">02</div>
+                    <h3 class="service-title">Scholarship Support</h3>
+                    <p class="service-description">
+                        I'll help you find funding opportunities and create compelling applications that increase your chances of securing scholarships.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">03</div>
+                    <h3 class="service-title">Life & Career Coaching</h3>
+                    <p class="service-description">
+                        Beyond academics—let's build the skills, mindset, and network you need to thrive in university and beyond.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">04</div>
+                    <h3 class="service-title">Ongoing Support</h3>
+                    <p class="service-description">
+                        From pre-application to post-arrival, I'm here to answer questions, solve problems, and celebrate wins with you.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to get started?</h2>
+                <p class="cta-text">
+                    Book a free 30-minute consultation where we'll talk about your goals, your concerns, and how I can help you succeed. No pressure. No sales pitch. Just an honest conversation.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#book" class="btn btn-primary">Book Free Consultation</a>
+                    <a href="#learn-more" class="btn btn-secondary">Learn More About Me</a>
+                </div>
+
+                <div class="extra-info">
+                    <p class="extra-info-text">
+                        Not sure if coaching is right for you? <a href="#" class="extra-info-link">Read my story</a> or <a href="#" class="extra-info-link">see what students are saying</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

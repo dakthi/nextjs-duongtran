@@ -1,13 +1,14 @@
 import { getPostBySlug, getPostSlugs } from '@/lib/post'
 import { notFound } from 'next/navigation'
-import { Container } from '@/components/Container'
 import Image from 'next/image'
+import Link from 'next/link'
 import { isMediaRemoteUrl } from '@/lib/media/media-client'
 import { generateMetadata as genMeta, generateBlogPostingSchema, generateBreadcrumbSchema, siteConfig } from '@/lib/seo'
 import { BlogContent } from '@/components/blog/BlogContent'
+import { Navbar1 } from '@/components/Navbar1'
+import { Footer1 } from '@/components/Footer1'
 import type { Metadata } from 'next'
 
-// Force dynamic rendering to always fetch fresh data
 export const dynamic = 'force-dynamic'
 
 type Params = {
@@ -51,6 +52,53 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   })
 }
 
+const translations = {
+  vi: {
+    navLogo: "Dương Trần",
+    navServices: "Together We Grow",
+    navBlog: "Blog",
+    navCTA: "Đặt lịch hẹn",
+    backToBlog: "← Quay lại Blog",
+    minRead: "phút đọc",
+
+    footerBrand: "Dương Trân",
+    footerTagline: "Life coach đồng hành cùng bạn trẻ Việt Nam",
+    footerLinksTitle: "LIÊN KẾT",
+    footerBlog: "Blog",
+    footerContact: "Liên hệ",
+    footerResourcesTitle: "TÀI LIỆU THAM KHẢO",
+    footerScholarship: "Xin học bổng",
+    footerStudyAbroad: "Du học",
+    footerCareer: "Sự nghiệp",
+    footerFAQ: "FAQ",
+    footerCopyright: "© Dương Trân. All rights reserved.",
+    footerPrivacy: "Chính sách bảo mật",
+    footerTerms: "Điều khoản sử dụng",
+  },
+  en: {
+    navLogo: "Duong Tran",
+    navServices: "Together We Grow",
+    navBlog: "Blog",
+    navCTA: "Book Session",
+    backToBlog: "← Back to Blog",
+    minRead: "min read",
+
+    footerBrand: "Dương Trân",
+    footerTagline: "Life coach partnering with Vietnamese youth",
+    footerLinksTitle: "LINKS",
+    footerBlog: "Blog",
+    footerContact: "Contact",
+    footerResourcesTitle: "REFERENCE MATERIALS",
+    footerScholarship: "Scholarships",
+    footerStudyAbroad: "Study Abroad",
+    footerCareer: "Career",
+    footerFAQ: "FAQ",
+    footerCopyright: "© Dương Trân. All rights reserved.",
+    footerPrivacy: "Privacy Policy",
+    footerTerms: "Terms of Use",
+  }
+}
+
 export default async function BlogPostPage({ params }: Params) {
   let post
   try {
@@ -60,6 +108,10 @@ export default async function BlogPostPage({ params }: Params) {
   }
 
   if (!post) return notFound()
+
+  const validLocales = ['en', 'vi']
+  const locale = validLocales.includes(params.locale) ? params.locale : 'en'
+  const t = translations[locale as keyof typeof translations] || translations.vi
 
   // Generate structured data
   const blogPostingSchema = generateBlogPostingSchema({
@@ -93,93 +145,118 @@ export default async function BlogPostPage({ params }: Params) {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-      {/* Header Section */}
-      <div className="py-8 bg-white border-b-2 border-jungle-green">
-        <Container>
-          {/* Breadcrumbs */}
-          <div className="space-y-3 mb-2 md:space-y-0 md:mb-6 xl:flex xl:items-center xl:gap-4">
-            {/* Back button */}
-            <div>
-              <a
-                href={`/${params.locale}/blog`}
-                className="inline-flex items-center gap-2 px-4 py-2 md:px-6 bg-jungle-green text-white hover:bg-jungle-green-dark transition-colors"
-              >
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                <span>All blog posts</span>
-              </a>
-            </div>
 
-            {/* Meta information */}
-            <div className="flex flex-wrap items-center gap-3 text-sm text-feldgrau">
-              {post.category && (
-                <>
-                  <span className="text-slate-300">|</span>
-                  <span className="whitespace-nowrap">{post.category}</span>
-                </>
-              )}
-              {post.date && (
-                <>
-                  <span className="text-slate-300">|</span>
-                  <span className="whitespace-nowrap">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                </>
-              )}
-              {post.readingTime != null && (
-                <>
-                  <span className="text-slate-300">|</span>
-                  <span className="whitespace-nowrap">{post.readingTime} min read</span>
-                </>
-              )}
+      <Navbar1 locale={locale} translations={t} />
+
+      {/* Back to Blog */}
+      <section className="py-6 bg-white border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <Link
+            href={`/${locale}/blog`}
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
+          >
+            {t.backToBlog}
+          </Link>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      {post.image && (
+        <section className="bg-white">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[600px]">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="1200px"
+                unoptimized={isMediaRemoteUrl(post.image)}
+                priority
+              />
             </div>
           </div>
+        </section>
+      )}
+
+      {/* Article Header */}
+      <section className="py-12 bg-white border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <div className="max-w-[900px]">
+          {/* Category Badge */}
+          {post.category && (
+            <div className="mb-6">
+              <span className="inline-block px-4 py-1 bg-accent-2 text-white text-xs font-semibold uppercase tracking-wider rounded-full">
+                {post.category}
+              </span>
+            </div>
+          )}
 
           {/* Title */}
-          <h1 className="w-full text-2xl md:text-3xl xl:text-4xl font-semibold text-outer-space leading-snug">
+          <h1 className="font-serif text-[clamp(2rem,4vw,3rem)] font-bold text-fg mb-6 leading-[1.2]">
             {post.title}
           </h1>
 
           {/* Excerpt */}
           {post.excerpt && (
-            <p className="mt-4 text-lg md:text-xl text-feldgrau leading-relaxed max-w-full md:max-w-[75%]">
+            <p className="text-xl text-muted leading-[1.8] mb-8">
               {post.excerpt}
             </p>
           )}
 
-          {/* Author Info in Header */}
+          {/* Meta Info */}
+          <div className="flex items-center gap-4 text-sm text-muted">
+            {post.date && (
+              <span>
+                {new Date(post.date).toLocaleDateString(locale === 'vi' ? 'vi-VN' : 'en-GB', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric'
+                })}
+              </span>
+            )}
+            {post.date && post.readingTime && <span>•</span>}
+            {post.readingTime && (
+              <span>{post.readingTime} {t.minRead}</span>
+            )}
+          </div>
+
+          {/* Author */}
           {post.expert && (
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-8 pt-8 border-t border-gray-200 flex items-center gap-4">
               {post.expert.image && (
-                <div className="w-12 h-12 rounded-full border-2 border-jungle-green overflow-hidden flex-shrink-0">
+                <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-accent">
                   <Image
                     src={post.expert.image}
                     alt={post.expert.name ?? 'Author'}
-                    width={48}
-                    height={48}
+                    width={64}
+                    height={64}
                     className="w-full h-full object-cover"
                     unoptimized={isMediaRemoteUrl(post.expert.image)}
                   />
                 </div>
               )}
               <div>
-                <p className="text-sm font-semibold text-outer-space">{post.expert.name ?? 'Duong Tran'}</p>
+                <p className="font-semibold text-fg">{post.expert.name ?? 'Duong Tran'}</p>
                 {post.expert.title && (
-                  <p className="text-xs text-feldgrau">{post.expert.title}</p>
+                  <p className="text-sm text-muted">{post.expert.title}</p>
                 )}
               </div>
             </div>
           )}
-        </Container>
-      </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Content Section */}
-      <div className="py-8 md:pt-12 md:pb-20 bg-white">
-        <Container>
-          <div className="max-w-full md:max-w-[75%]">
+      {/* Article Content */}
+      <section className="py-16 bg-[#F0EBE0]">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <div className="max-w-[900px]">
+          <div className="bg-white rounded-xl p-8 md:p-12 shadow-sm">
             {/* Quote */}
             {post.quote && (
-              <blockquote className="border-l-4 border-outer-space pl-6 italic text-lg text-feldgrau mb-12">
-                <span className="text-4xl text-jungle-green mr-2">"</span>
+              <blockquote className="border-l-4 border-accent pl-8 italic text-xl text-fg mb-12 leading-[1.8]">
+                <span className="text-4xl text-accent-2 mr-2">"</span>
                 {post.quote}
               </blockquote>
             )}
@@ -187,32 +264,14 @@ export default async function BlogPostPage({ params }: Params) {
             {/* Markdown Content */}
             <BlogContent
               content={post.content}
-              className="prose prose-lg max-w-none text-lg leading-snug md:leading-normal text-outer-space"
+              className="prose prose-lg max-w-none text-lg leading-[1.8] text-fg prose-headings:font-serif prose-headings:font-bold prose-headings:text-fg prose-h2:text-3xl prose-h3:text-2xl prose-p:mb-6 prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-fg prose-ul:my-6 prose-li:mb-2"
             />
           </div>
-        </Container>
-      </div>
-
-      {/* CTA Section */}
-      <div className="py-12 bg-white">
-        <Container>
-          <div className="bg-white border-l-4 border-gray-300 hover:border-jungle-green shadow-md hover:shadow-xl transition-all rounded-tr-md max-w-3xl py-8 px-6">
-            <div className="text-xs font-semibold tracking-widest uppercase mb-3 letter-spacing-wider text-jungle-green">
-              let's connect
-            </div>
-            <h2 className="max-w-3xl text-3xl md:text-4xl font-sans font-bold leading-tight mb-6 text-outer-space">
-              How can I help you?
-            </h2>
-            <p className="max-w-3xl text-lg leading-relaxed text-feldgrau font-medium">
-              Every blog post, every insight, and every resource shared here reflects a simple belief: thoughtful numbers make powerful changes.
-              <br /><br />
-              If you would like to work with someone who cares about the financial side of your business - and the people behind it - I would love to hear your story.
-              <br /><br />
-              Let&apos;s discuss how I can support you.
-            </p>
           </div>
-        </Container>
-      </div>
+        </div>
+      </section>
+
+      <Footer1 locale={locale} translations={t} />
     </>
   );
 }
